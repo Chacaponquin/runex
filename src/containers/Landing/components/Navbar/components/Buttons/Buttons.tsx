@@ -6,7 +6,7 @@ import React from "react";
 export default function Buttons() {
   return (
     <div className="flex items-center stroke-black gap-x-7 py-2">
-      <button className="mr-4">
+      <button className="mr-2">
         <Search size={22} />
       </button>
 

@@ -16,29 +16,29 @@ export default function Email({ size = DEFAULT_ICON_SIZE }: IconProps) {
         d="M4 39H44V24V9H24H4V24V39Z"
         fill="none"
         stroke="inherit"
-        stroke-width="4"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeLinejoin="round"
       />
       <path
         d="M4 9L24 24L44 9"
         stroke="inherit"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M24 9H4V24"
         stroke="inherit"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M44 24V9H24"
         stroke="inherit"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

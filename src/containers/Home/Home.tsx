@@ -1,12 +1,14 @@
 import React from "react";
 import { Footer, Navbar } from "./components";
+import { CartProvider } from "@modules/cart/context";
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
-
-      <Footer />
-    </div>
+    <CartProvider>
+      <div>
+        <Navbar />
+        <Footer />
+      </div>
+    </CartProvider>
   );
 }

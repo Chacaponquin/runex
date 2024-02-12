@@ -3,6 +3,10 @@ export const APP_ROUTES = {
     LOGIN: "/login",
     SIGN_UP: "/sign-up",
   },
+  SECTION: {
+    CLOTHES: "/section/clothes",
+    MEDICINE: "/section/medicine",
+  },
 };
 
 export const API_ROUTES = {

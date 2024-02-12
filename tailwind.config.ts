@@ -9,12 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        fontBold: "Montserrat Bold",
-        fontExtraBold: "Montserrat Extra Bold",
-        fontSemiBold: "Montserrat Semi Bold",
-        fontItalic: "Montserrat Italic",
-        fontLight: "Montserrat Light",
-        fontMedium: "Montserrat Medium",
+        fontRegular: "DDinPro Regular",
+        fontBold: "DDinPro Bold",
+        fontExtraBold: "DDinPro Extra Bold",
+        fontSemiBold: "DDinPro Semi Bold",
+        fontMedium: "DDinPro Medium",
       },
       backgroundImage: {},
       colors: {
@@ -101,6 +100,12 @@ const config: Config = {
           "900": "#323e47",
           "950": "#1e272e",
         },
+      },
+
+      screens: {
+        exsm: { max: "400px" },
+        esm: { max: "640px" },
+        "2xl": { min: "1400px" },
       },
     },
   },

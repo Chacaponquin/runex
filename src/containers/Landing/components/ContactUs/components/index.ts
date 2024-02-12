@@ -1,4 +1,5 @@
+import Contact from "./Contact/Contact";
 import Content from "./Content/Content";
-import ImgSection from "./ImgSection/ImgSection";
 
-export { ImgSection, Content };
+
+export {  Content , Contact};

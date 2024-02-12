@@ -9,7 +9,7 @@ export default function SignUp() {
 
   return (
     <div className="w-full flex items-center justify-start h-screen bg-dark-950 text-white px-32">
-      <main className="flex flex-col">
+      <main className="flex flex-col max-w-[600px] w-full">
         <Header />
         <Form
           form={form}

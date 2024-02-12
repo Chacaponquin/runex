@@ -21,7 +21,7 @@ export default function Questions({ faq }: Props) {
   });
 
   return (
-    <div className="flex flex-col max-w-[600px] w-full">
+    <div className="flex flex-col w-full justify-center min-h-full">
       {showQuestions.map((f) => (
         <Card key={f.id} question={f.question} response={f.response} />
       ))}

@@ -6,7 +6,7 @@ export default function Header() {
       <h1 className="font-fontSemiBold mb-3 text-5xl">
         Lorem ipsum dolor sit amet.
       </h1>
-      <p className="text-base text-gray-600">
+      <p className="text-lg text-center text-gray-600">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo animi
         sunt quod culpa iusto!
       </p>

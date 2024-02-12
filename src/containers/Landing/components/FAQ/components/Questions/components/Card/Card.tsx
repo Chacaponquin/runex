@@ -23,14 +23,14 @@ export default function Card({ question, response }: Props) {
     "gap-x-7",
     {
       "fill-dark text-dark": !open,
-      "text-red-400 fill-red-400": open,
+      "text-blue-500 fill-blue-500": open,
     }
   );
 
   return (
     <article className="flex flex-col gap-y-1.5 border-b-2 border-gray-200 pb-5 mb-4">
       <header className={HEADER_CLASS} onClick={handleChangeOpen}>
-        <h2 className="text-lg font-fontSemiBold">{question}</h2>
+        <h2 className="text-lg font-fontMedium">{question}</h2>
         <Arrow open={open} />
       </header>
 

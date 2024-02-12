@@ -17,16 +17,16 @@ export default function User({ size = DEFAULT_ICON_SIZE }: IconProps) {
         r="8"
         fill="none"
         stroke="inherit"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44"
         stroke="inherit"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

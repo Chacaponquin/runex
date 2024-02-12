@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function Logo() {
-  return (
-    <div>Logo</div>
-  )
+  return <section className="flex justify-start items-center">Logo</section>;
 }

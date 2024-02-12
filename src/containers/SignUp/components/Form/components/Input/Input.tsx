@@ -23,6 +23,7 @@ export default function Input({
   const id = useId();
 
   const CLASS = clsx(
+    "w-full",
     "flex flex-col",
     "px-6 py-2.5",
     "rounded-xl",

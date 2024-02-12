@@ -1,3 +1,5 @@
+"use client";
+
 import { APP_IMAGES, APP_ROUTES } from "@modules/app/constants";
 import { Section } from "../interfaces";
 

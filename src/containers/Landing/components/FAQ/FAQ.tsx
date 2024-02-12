@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Header, Img, Questions } from "./components";
 import { FAQ as IFAQ } from "../../interfaces";

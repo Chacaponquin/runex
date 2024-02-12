@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Contact, Content } from "./components";
 import { useContactUs } from "./hooks";

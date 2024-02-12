@@ -9,12 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        fontBold: "Montserrat Bold",
-        fontExtraBold: "Montserrat Extra Bold",
-        fontSemiBold: "Montserrat Semi Bold",
-        fontItalic: "Montserrat Italic",
-        fontLight: "Montserrat Light",
-        fontMedium: "Montserrat Medium",
+        fontRegular: "DDinPro Regular",
+        fontBold: "DDinPro Bold",
+        fontExtraBold: "DDinPro Extra Bold",
+        fontSemiBold: "DDinPro Semi Bold",
+        fontMedium: "DDinPro Medium",
       },
       backgroundImage: {},
       colors: {

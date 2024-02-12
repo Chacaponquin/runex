@@ -3,6 +3,7 @@ import ArrowLeft from "./ArrowLeft";
 import ArrowRight from "./ArrowRight";
 import ArrowUp from "./ArrowUp";
 import Bars from "./Bars";
+import Cart from "./Cart";
 import Email from "./Email";
 import Phone from "./Phone";
 import Search from "./Search";
@@ -18,4 +19,5 @@ export {
   Phone,
   User,
   Search,
+  Cart,
 };

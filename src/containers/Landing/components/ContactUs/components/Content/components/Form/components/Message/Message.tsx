@@ -17,8 +17,7 @@ export default function Message({
   const id = useId();
 
   const CLASS = clsx(
-    "h-[200px]",
-    "resize-none",
+    "h-[130px]",
     "outline outline-[2px] outline-gray-300",
     "rounded-sm",
     "px-5 py-2",

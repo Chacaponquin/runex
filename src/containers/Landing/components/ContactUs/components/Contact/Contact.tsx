@@ -8,7 +8,7 @@ interface Props {
 
 export default function Contact({ contacts }: Props) {
   return (
-    <div className="min-h-full flex flex-col bg-blue-500 rounded-lg text-white px-10 py-6">
+    <div className="lg:min-h-full flex flex-col bg-blue-500 rounded-lg text-white px-10 py-6">
       <h1 className="font-fontSemiBold whitespace-nowrap text-4xl mb-5">
         Contact information
       </h1>

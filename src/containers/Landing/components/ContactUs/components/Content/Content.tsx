@@ -10,7 +10,7 @@ interface Props {
 
 export default function Content({ form, handleChange, handleSubmit }: Props) {
   return (
-    <div className="w-full flex flex-col py-4 px-10">
+    <div className="w-full flex flex-col py-4 lg:px-10 px-4">
       <Header />
 
       <Form

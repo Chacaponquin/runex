@@ -9,7 +9,10 @@ export default function Sections() {
   const { sections } = useSections();
 
   return (
-    <Section alt={false} className="gap-x-12 justify-center">
+    <Section
+      alt={false}
+      className="gap-x-12 gap-y-4 justify-center flex-col lg:flex-row"
+    >
       {sections.map((section, index) => (
         <Card
           key={index}

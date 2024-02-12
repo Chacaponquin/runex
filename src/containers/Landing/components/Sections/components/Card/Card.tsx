@@ -32,7 +32,7 @@ export default function Card({ description, title, url, image }: Props) {
       >
         <p className="text-lg leading-7">{description}</p>
 
-        <CardTitle text={title} />
+        <CardTitle text={title} hover={hover} />
 
         <ImageSection src={image.src} hover={hover} />
       </article>

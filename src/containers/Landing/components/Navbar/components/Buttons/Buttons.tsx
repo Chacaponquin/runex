@@ -15,7 +15,7 @@ export default function Buttons() {
       </Link>
 
       <Link href={APP_ROUTES.AUTH.SIGN_UP}>
-        <button className="py-2.5 rounded-full font-fontMedium bg-blue-500 text-white px-5">
+        <button className="py-2.5 rounded-full font-fontMedium bg-blue-500 text-white px-5 whitespace-nowrap">
           Sign up
         </button>
       </Link>

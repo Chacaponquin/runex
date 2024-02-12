@@ -12,7 +12,7 @@ export default function AboutUs() {
     <Section alt={false} className="flex-col items-center">
       <Header />
 
-      <div className="grid grid-cols-3 gap-x-5">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-x-5 gap-y-3">
         {advantages.map((a, index) => (
           <Advantage
             key={index}

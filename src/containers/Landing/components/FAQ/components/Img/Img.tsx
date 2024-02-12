@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Img() {
   return (
-    <div className="min-w-[370px]">
+    <div className="min-w-[370px] xl:block hidden">
       <Image
         src={APP_IMAGES.LANDING.FAQ.src}
         alt={APP_IMAGES.LANDING.FAQ.alt}

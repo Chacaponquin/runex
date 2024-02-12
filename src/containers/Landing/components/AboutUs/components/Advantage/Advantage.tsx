@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
 
@@ -8,18 +9,28 @@ interface Props {
 }
 
 export default function Advantage({ title, description, image }: Props) {
+  const CLASS = clsx(
+    "flex xl:flex-col flex-row xl:items-start items-center",
+    "lg:py-6 py-3 esm:py-0 px-5",
+    "xl:gap-x-0 gap-x-3",
+    "rounded",
+    "border-[2px] border-blue-500"
+  );
+
   return (
-    <article className="flex flex-col py-6 px-5 border-[2px] rounded border-blue-500 transition-all duration-300">
+    <article className={CLASS}>
       <Image
         src={image.src}
         alt={image.alt}
         width={300}
         height={200}
-        className="mb-6 w-full object-contain h-[200px]"
+        className="xl:mb-6 w-full object-contain h-[200px]"
       />
 
-      <h1 className="mb-2 font-fontSemiBold text-2xl text-center">{title}</h1>
-      <p className="text-center text-base text-gray-500">{description}</p>
+      <footer className="flex flex-col">
+        <h1 className="mb-2 font-fontSemiBold text-2xl text-center">{title}</h1>
+        <p className="text-center text-base text-gray-500">{description}</p>
+      </footer>
     </article>
   );
 }

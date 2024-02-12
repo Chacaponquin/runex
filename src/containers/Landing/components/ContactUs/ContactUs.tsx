@@ -10,7 +10,7 @@ export default function ContactUs() {
 
   return (
     <Section alt={false}>
-      <div className="w-full flex bg-white rounded">
+      <div className="w-full flex bg-white rounded lg:flex-row flex-col gap-y-3">
         <Contact contacts={contacts} />
         <Content
           form={form}

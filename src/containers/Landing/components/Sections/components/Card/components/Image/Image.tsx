@@ -12,14 +12,14 @@ export default function ImageSection({ src, hover }: Props) {
       className="absolute w-full h-full top-0 left-0 rounded-xl duration-1000 flex flex-col justify-end text-white py-7 px-10"
       style={{
         backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(${src})`,
-        backgroundSize: hover ? "100%" : "110%",
+        backgroundSize: hover ? "110%" : "120%",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         visibility: hover ? "visible" : "hidden",
         transitionProperty: "background-size",
       }}
     >
-      <CardTitle text="Go" />
+      <CardTitle text="Go." hover={hover} />
     </div>
   );
 }

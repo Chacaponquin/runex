@@ -22,7 +22,6 @@ export default function useFooter() {
       ],
       title: "Empresa",
     },
-    { subSections: [], title: "Servicios" },
     {
       subSections: [
         { label: "FAQ", url: "faq" },

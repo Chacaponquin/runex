@@ -11,7 +11,9 @@ export default function Links({ links }: Props) {
     <section className="flex items-center gap-x-10 justify-center">
       {links.map((link, index) => (
         <Link key={index} href={link.url}>
-          <div>{link.label}</div>
+          <span className="text-lg hover:underline hover:underline-offset-4">
+            {link.label}
+          </span>
         </Link>
       ))}
     </section>

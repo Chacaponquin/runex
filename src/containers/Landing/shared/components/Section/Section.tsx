@@ -14,7 +14,7 @@ export default function Section({ children, alt, className }: Props) {
 
   return (
     <section className={CLASS}>
-      <div className={clsx("max-w-[1000px] flex w-full", className)}>
+      <div className={clsx("max-w-[1100px] flex w-full", className)}>
         {children}
       </div>
     </section>

@@ -23,7 +23,7 @@ export default function Card({ question, response }: Props) {
     "gap-x-7",
     {
       "fill-dark text-dark": !open,
-      "text-red-400 fill-red-400": open,
+      "text-blue-500 fill-blue-500": open,
     }
   );
 

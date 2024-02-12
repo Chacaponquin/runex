@@ -28,7 +28,7 @@ export default function Card({ description, title, url, image }: Props) {
       <article
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="bg-gray-100 cursor-pointer relative rounded-lg min-w-[420px] min-h-[300px] flex flex-col justify-between py-7 px-10"
+        className="bg-gray-100 shadow-lg cursor-pointer relative rounded-lg min-w-[420px] min-h-[300px] flex flex-col justify-between py-7 px-10"
       >
         <p className="text-lg leading-7">{description}</p>
 

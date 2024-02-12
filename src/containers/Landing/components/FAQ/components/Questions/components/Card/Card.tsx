@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowDown, ArrowRight } from "@/modules/app/modules/icon/components";
 import React, { useState } from "react";
 import { Arrow } from "./components";
 import clsx from "clsx";

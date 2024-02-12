@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function Section({ children, vertical }: Props) {
-  const CLASS = clsx("gap-4 flex", {
+  const CLASS = clsx("gap-4 flex w-full", {
     "flex-col": vertical,
   });
 

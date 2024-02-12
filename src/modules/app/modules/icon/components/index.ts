@@ -5,6 +5,8 @@ import ArrowUp from "./ArrowUp";
 import Bars from "./Bars";
 import Cart from "./Cart";
 import Email from "./Email";
+import Facebook from "./Facebook";
+import Instagram from "./Instagram";
 import Phone from "./Phone";
 import Search from "./Search";
 import User from "./User";
@@ -20,4 +22,6 @@ export {
   User,
   Search,
   Cart,
+  Instagram,
+  Facebook,
 };

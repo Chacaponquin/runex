@@ -9,7 +9,7 @@ interface Props {
 
 export default function Advantage({ title, description, image }: Props) {
   return (
-    <article className="flex flex-col py-6 px-5 border-[2px] border-gray-200 rounded hover:border-blue-500 transition-all duration-300">
+    <article className="flex flex-col py-6 px-5 border-[2px] rounded border-blue-500 transition-all duration-300">
       <Image
         src={image.src}
         alt={image.alt}

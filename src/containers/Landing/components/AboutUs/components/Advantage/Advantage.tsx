@@ -10,8 +10,8 @@ interface Props {
 
 export default function Advantage({ title, description, image }: Props) {
   const CLASS = clsx(
-    "flex xl:flex-col flex-row xl:items-start items-center",
-    "lg:py-6 py-3 esm:py-0 px-5",
+    "flex lg:flex-col esm:flex-col flex-row xl:items-start items-center",
+    "lg:py-6 py-3 esm:py-4 px-5",
     "xl:gap-x-0 gap-x-3",
     "rounded",
     "border-[2px] border-blue-500"
@@ -24,7 +24,7 @@ export default function Advantage({ title, description, image }: Props) {
         alt={image.alt}
         width={300}
         height={200}
-        className="xl:mb-6 w-full object-contain h-[200px]"
+        className="lg:mb-6 esm:mb-5 w-full object-contain h-[200px] esm:h-[160px]"
       />
 
       <footer className="flex flex-col">

@@ -21,7 +21,7 @@ export default function Landing() {
 
       <Presentation />
 
-      <main className="flex flex-col w-full gap-y-24 mt-10">
+      <main className="flex flex-col w-full xl:gap-y-24 esm:gap-y-16 gap-y-20 mt-10">
         <Sections />
         <AboutUs />
         <FAQ faq={faq} />

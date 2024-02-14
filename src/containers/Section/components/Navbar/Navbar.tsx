@@ -24,7 +24,7 @@ export default function Navbar() {
           handleChangeOpenFavorites={handleChangeOpenFavorites}
           handleChangeOpenUserOptions={handleChangeOpenUserOptions}
           openFavorites={openFavorites}
-          openUserOptions
+          openUserOptions={openUserOptions}
         />
       </nav>
     </div>

@@ -12,7 +12,7 @@ export default function Image({ alt, src }: Props) {
       <NextImage
         src={src}
         alt={alt}
-        className="rounded-lg object-cover min-w-[110px] min-h-full"
+        className="rounded-lg object-cover min-w-[110px] min-h-full w-auto h-auto"
         width={110}
         height={110}
       />

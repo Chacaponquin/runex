@@ -26,5 +26,7 @@ export function cartReducer(cart: Cart, payload: Payload) {
       break;
   }
 
+
+
   return cart;
 }

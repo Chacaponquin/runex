@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Cart as CartIcon,
   Favorite,

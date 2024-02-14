@@ -1,7 +1,7 @@
 "use client";
 
 import { Dispatch, Reducer, createContext, useReducer } from "react";
-import { Cart } from "../domain";
+import { Cart } from "../../domain";
 import { Payload, cartReducer } from "../../reducer";
 
 interface Props {

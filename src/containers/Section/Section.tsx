@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Footer, Header, Navbar } from "./components";
+import { Footer, Header, Navbar, ProductSections } from "./components";
 
 interface Props {
   section: string;
@@ -13,6 +13,11 @@ export default function Section({ section }: Props) {
     <div className="flex flex-col w-full">
       <Navbar />
       <Header />
+
+      <main className="flex flex-col w-full px-36">
+        <ProductSections />
+      </main>
+
       <Footer />
     </div>
   );

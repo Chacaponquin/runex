@@ -1,20 +1,32 @@
-import { Cart, Favorite, User } from "@modules/app/modules/icon/components";
-import React from "react";
+import {
+  Cart as CartIcon,
+  Favorite,
+  User,
+} from "@modules/app/modules/icon/components";
+import { Button, Cart } from "./components";
 
-export default function Buttons() {
+interface Props {
+  handleChangeOpenCart(): void;
+  openCart: boolean;
+  handleChangeOpenFavorites(): void;
+  handleChangeOpenUserOptions(): void;
+  openFavorites: boolean;
+  openUserOptions: boolean;
+}
+
+export default function Buttons({
+  handleChangeOpenCart,
+  openCart,
+  handleChangeOpenFavorites,
+  handleChangeOpenUserOptions,
+}: Props) {
   return (
     <section className="flex gap-x-7 items-center stroke-black">
-      <button>
-        <User size={24} />
-      </button>
-
-      <button>
-        <Favorite size={24} />
-      </button>
-
-      <button>
-        <Cart size={24} />
-      </button>
+      <Button icon={User} handleClick={handleChangeOpenUserOptions} />
+      <Button icon={Favorite} handleClick={handleChangeOpenFavorites} />
+      <Button icon={CartIcon} handleClick={handleChangeOpenCart}>
+        {openCart && <Cart />}
+      </Button>
     </section>
   );
 }

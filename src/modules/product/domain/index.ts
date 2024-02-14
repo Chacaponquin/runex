@@ -35,6 +35,10 @@ export class Product {
   }
 
   get priceStr() {
-    return `$${this.price}`;
+    return Product.str(this.price);
+  }
+
+  static str(value: number): string {
+    return `$${value}`;
   }
 }

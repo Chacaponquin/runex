@@ -15,5 +15,31 @@ export default function useProductServices() {
     return products;
   }
 
-  return { getPopularProducts };
+  async function getTrendingProducts(): Promise<Array<Product>> {
+    const products: Array<Product> = Array.from({ length: 4 }).map(() => {
+      return new Product({
+        id: faker.string.uuid(),
+        name: faker.commerce.product(),
+        price: Number(faker.commerce.price()),
+        image: faker.image.url(),
+      });
+    });
+
+    return products;
+  }
+
+  async function getNewProducts(): Promise<Array<Product>> {
+    const products: Array<Product> = Array.from({ length: 4 }).map(() => {
+      return new Product({
+        id: faker.string.uuid(),
+        name: faker.commerce.product(),
+        price: Number(faker.commerce.price()),
+        image: faker.image.url(),
+      });
+    });
+
+    return products;
+  }
+
+  return { getPopularProducts, getTrendingProducts, getNewProducts };
 }

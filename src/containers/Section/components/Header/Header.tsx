@@ -6,12 +6,12 @@ export default function Header() {
   const { sections } = useHeader();
 
   return (
-    <header className="flex flex-col items-center w-full py-4 mb-5">
-      <div className="flex items-center w-max gap-x-24 mb-4">
+    <header className="flex flex-col items-center w-full bg-gray-50">
+      <section className="flex items-center gap-x-24 bg-white py-4 w-full justify-center">
         {sections.map((section, index) => (
           <Section key={index} label={section.label} url={section.url} />
         ))}
-      </div>
+      </section>
 
       <HeaderImage />
     </header>

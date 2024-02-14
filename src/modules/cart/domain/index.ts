@@ -6,8 +6,13 @@ export interface CartProduct {
   product: Product;
 }
 
-export interface ChangeProductQuantityProps {
+export interface handleChangeProductQuantityProps {
   id: string;
+  quantity: number;
+}
+
+export interface SetProductProps {
+  productId: string;
   quantity: number;
 }
 
@@ -26,11 +31,20 @@ export class Cart {
     }));
   }
 
-  setProduct(product: Product): void {
-    this._products.push({ quantity: 0, product: product });
+  setProduct(product: SetProductProps): void {
+    const found = this._products.find(
+      (p) => p.product.id === product.productId
+    );
+
+    if (found) {
+      this._products.push({
+        quantity: product.quantity,
+        product: found.product,
+      });
+    }
   }
 
-  changeProductQuantity(props: ChangeProductQuantityProps): void {
+  handleChangeProductQuantity(props: handleChangeProductQuantityProps): void {
     this._products = this._products.map((p) => {
       if (p.product.id === props.id) {
         p.quantity = props.quantity;

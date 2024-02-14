@@ -10,11 +10,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        fontRegular: "DDinPro Regular",
-        fontBold: "DDinPro Bold",
-        fontExtraBold: "DDinPro Extra Bold",
-        fontSemiBold: "DDinPro Semi Bold",
-        fontMedium: "DDinPro Medium",
+        fontRegular: "Public Sans Regular",
+        fontBold: "Public Sans Bold",
+        fontExtraBold: "Public Sans Extra Bold",
+        fontSemiBold: "Public Sans Semi Bold",
+        fontMedium: "Public Sans Medium",
       },
       backgroundImage: {},
       colors: {

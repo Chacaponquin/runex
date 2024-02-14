@@ -15,7 +15,7 @@ export default function Button({ handleClick, icon, disabled }: Props) {
 
   return (
     <button className={CLASS} onClick={handleClick}>
-      {icon({ size: 16 })}
+      {icon({ size: 15 })}
     </button>
   );
 }

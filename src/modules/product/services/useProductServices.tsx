@@ -1,6 +1,11 @@
 import { faker } from "@faker-js/faker";
 import { Product } from "../domain";
 
+interface AddProductFavoriteProps {
+  productId: string;
+  userId: string;
+}
+
 export default function useProductServices() {
   async function getPopularProducts(): Promise<Array<Product>> {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
@@ -41,5 +46,12 @@ export default function useProductServices() {
     return products;
   }
 
-  return { getPopularProducts, getTrendingProducts, getNewProducts };
+  async function addProductToFavorites(props: AddProductFavoriteProps) {}
+
+  return {
+    getPopularProducts,
+    getTrendingProducts,
+    getNewProducts,
+    addProductToFavorites,
+  };
 }

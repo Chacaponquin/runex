@@ -8,14 +8,14 @@ interface Props {
 }
 
 export default function useProduct({ id, quantity }: Props) {
-  const { changeProductQuantity } = useCart();
+  const { handleChangeProductQuantity } = useCart();
 
   function handleIncreaseQuantity(): void {
-    changeProductQuantity({ id: id, quantity: quantity + 1 });
+    handleChangeProductQuantity({ id: id, quantity: quantity + 1 });
   }
 
   function handleDecreaseQuantity(): void {
-    changeProductQuantity({ id: id, quantity: quantity - 1 });
+    handleChangeProductQuantity({ id: id, quantity: quantity - 1 });
   }
 
   return { handleDecreaseQuantity, handleIncreaseQuantity };

@@ -14,7 +14,7 @@ export default function Section({ section }: Props) {
       <Navbar />
       <Header />
 
-      <main className="flex flex-col w-full px-44">
+      <main className="flex flex-col w-full px-44 bg-gray-50">
         <ProductSections />
       </main>
 

@@ -25,7 +25,7 @@ export default function Product({ name, image, price, id }: Props) {
         className="object-cover rounded-t w-full h-[170px]"
       />
 
-      <section className="flex flex-col py-2.5 px-4 w-full">
+      <section className="flex flex-col pt-2.5 pb-4 px-4 w-full">
         <h2 className="font-fontMedium text-lg mb-0.5">{name}</h2>
         <p className="text-sm text-gray-500 mb-2">Amazon</p>
 

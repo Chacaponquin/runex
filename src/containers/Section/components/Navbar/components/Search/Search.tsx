@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Search as SearchIcon } from "@modules/app/modules/icon/components";
 import { Input } from "./components";
 import clsx from "clsx";
@@ -30,7 +30,7 @@ export default function Search() {
   );
 
   return (
-    <search className="">
+    <search className="hidden xl:block">
       <div className={CLASS}>
         <Input handleBlur={handleBlur} handleFocus={handleFocus} />
         <SearchIcon size={22} />

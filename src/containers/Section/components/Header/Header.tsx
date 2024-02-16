@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <header className="flex flex-col items-center w-full bg-gray-50">
-      <section className="flex items-center gap-x-24 bg-white py-4 w-full justify-center">
+      <section className="flex items-center gap-x-24 bg-white py-4 esm:py-2.5 w-full justify-center">
         {sections.map((section, index) => (
           <Section key={index} label={section.label} url={section.url} />
         ))}

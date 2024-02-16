@@ -23,7 +23,7 @@ export default function Buttons({
   handleChangeOpenUserOptions,
 }: Props) {
   return (
-    <section className="flex gap-x-7 items-center stroke-black">
+    <section className="xl:flex gap-x-7 items-center stroke-black hidden">
       <Button icon={User} handleClick={handleChangeOpenUserOptions} />
       <Button icon={Favorite} handleClick={handleChangeOpenFavorites} />
       <Button icon={CartIcon} handleClick={handleChangeOpenCart}>

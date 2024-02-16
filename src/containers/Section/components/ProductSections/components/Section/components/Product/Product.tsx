@@ -16,7 +16,7 @@ export default function Product({ name, image, price, id }: Props) {
   const { handleAddProduct, handleAddToFavorite } = useProduct({ id: id });
 
   return (
-    <article className="flex flex-col rounded bg-white w-[250px]">
+    <article className="flex flex-col rounded bg-white">
       <Image
         src={image}
         alt={name}

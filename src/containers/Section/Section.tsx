@@ -10,11 +10,10 @@ import {
 import { useSection } from "./hooks";
 
 interface Props {
-  section: string;
   q: string | undefined;
 }
 
-export default function Section({ section }: Props) {
+export default function Section({}: Props) {
   const { selectedProduct } = useSection();
 
   return (
@@ -24,7 +23,7 @@ export default function Section({ section }: Props) {
       <Navbar />
       <Header />
 
-      <main className="flex flex-col w-full px-44 bg-gray-50 pb-6">
+      <main className="flex flex-col w-full bg-gray-50 pb-6">
         <ProductSections />
       </main>
 

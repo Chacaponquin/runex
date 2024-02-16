@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Buttons() {
   return (
-    <section className="flex items-center stroke-black justify-end gap-x-7 py-2">
+    <section className="xl:flex hidden items-center stroke-black justify-end gap-x-7">
       <button className="mr-2">
         <Search size={22} />
       </button>

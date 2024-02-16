@@ -9,6 +9,7 @@ import Email from "./Email";
 import Facebook from "./Facebook";
 import Favorite from "./Favorite";
 import Instagram from "./Instagram";
+import Menu from "./Menu";
 import Minus from "./Minus";
 import Phone from "./Phone";
 import Plus from "./Plus";
@@ -32,4 +33,5 @@ export {
   Dislike,
   Plus,
   Minus,
+  Menu,
 };

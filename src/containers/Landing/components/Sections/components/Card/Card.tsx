@@ -28,7 +28,7 @@ export default function Card({ description, title, url, image }: Props) {
     "shadow-lg",
     "cursor-pointer",
     "py-7 px-10",
-    "min-w-[420px] min-h-[300px]",
+    "min-h-[300px]",
     "rounded-lg",
     "text-white"
   );

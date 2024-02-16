@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Contact, Content } from "./components";
 import { useContactUs } from "./hooks";
 import { Section } from "../../shared/components";

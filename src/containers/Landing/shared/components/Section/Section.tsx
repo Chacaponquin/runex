@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function Section({ children, alt, className }: Props) {
-  const CLASS = clsx("flex flex-col items-center", "w-full", "px-7", {
+  const CLASS = clsx("flex flex-col items-center", "w-full", "px-12 esm:px-7", {
     "bg-blue-500": alt,
   });
 

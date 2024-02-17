@@ -25,6 +25,7 @@ export default function Section({}: Props) {
       />
 
       <Navbar />
+
       <Header />
 
       <main className="flex flex-col w-full bg-gray-50 pb-6">

@@ -46,7 +46,7 @@ export default function Card({ description, title, url, image }: Props) {
         className={CLASS}
         style={{
           backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(${image.src})`,
-          backgroundSize: hover ? "110%" : "120%",
+          backgroundSize: hover ? "150%" : "160%",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           transitionProperty: "background-size",

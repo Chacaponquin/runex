@@ -14,7 +14,7 @@ export default function Navbar() {
   } = useNavbar();
 
   return (
-    <div className="flex items-center w-full py-3 justify-center border-b-[2px] border-gray-100 z-30 px-4">
+    <div className="flex items-center w-full h-[70px] esm:h-[60px] justify-center border-b-[2px] border-gray-100 z-30 px-4">
       <nav className="flex items-center max-w-[1200px] w-full justify-between">
         <Logo />
         <Search />

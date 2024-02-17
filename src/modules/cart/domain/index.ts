@@ -23,7 +23,9 @@ export class Cart {
     this._products = Array.from({ length: 4 }).map(() => ({
       product: new Product({
         id: faker.string.uuid(),
-        image: faker.image.url(),
+        images: Array.from({
+          length: faker.number.int({ min: 1, max: 5 }),
+        }).map(() => faker.image.url()),
         name: faker.commerce.product(),
         price: Number(faker.commerce.price()),
       }),

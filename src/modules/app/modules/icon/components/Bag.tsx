@@ -2,10 +2,7 @@ import React from "react";
 import { IconProps } from "../interfaces";
 import { DEFAULT_ICON_SIZE } from "../constants";
 
-export default function Cart({
-  size = DEFAULT_ICON_SIZE,
-  white = false,
-}: IconProps & { white?: boolean }) {
+export default function Bag({ size = DEFAULT_ICON_SIZE }: IconProps) {
   return (
     <svg
       width={size}
@@ -14,27 +11,22 @@ export default function Cart({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="20.5"
-        cy="41.5"
-        r="3.5"
-        fill={white ? "#ffffff" : "#000000"}
-      />
-      <circle
-        cx="37.5"
-        cy="41.5"
-        r="3.5"
-        fill={white ? "#ffffff" : "#000000"}
+      <path
+        d="M6 12.6001V41.0001C6 42.1047 6.89543 43.0001 8 43.0001H40C41.1046 43.0001 42 42.1047 42 41.0001V12.6001H6Z"
+        fill="none"
+        stroke="inherit"
+        strokeWidth="4"
+        strokeLinejoin="round"
       />
       <path
-        d="M5 6L14 12L19 34H39L44 17H25"
+        d="M42 12.6L36.3333 5H11.6667L6 12.6V12.6"
         stroke="inherit"
         strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M25 26L32.2727 26L41 26"
+        d="M31.5554 19.2002C31.5554 23.3976 28.1727 26.8002 23.9999 26.8002C19.8271 26.8002 16.4443 23.3976 16.4443 19.2002"
         stroke="inherit"
         strokeWidth="4"
         strokeLinecap="round"

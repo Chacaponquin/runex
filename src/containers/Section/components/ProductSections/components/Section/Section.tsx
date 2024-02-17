@@ -6,9 +6,14 @@ import { Product } from "./components";
 interface Props {
   products: Array<IProduct>;
   title: string;
+  handleSelectProduct(id: string): void;
 }
 
-export default function Section({ products, title }: Props) {
+export default function Section({
+  products,
+  title,
+  handleSelectProduct,
+}: Props) {
   return (
     <div className="flex flex-col">
       <h1 className="font-fontSemiBold text-2xl mb-5">{title}</h1>
@@ -21,6 +26,7 @@ export default function Section({ products, title }: Props) {
             name={product.name}
             price={product.priceStr}
             id={product.id}
+            handleSelectProduct={handleSelectProduct}
           />
         ))}
       </div>

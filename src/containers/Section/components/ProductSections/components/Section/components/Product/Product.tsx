@@ -10,13 +10,26 @@ interface Props {
   image: string;
   price: string;
   id: string;
+  handleSelectProduct(id: string): void;
 }
 
-export default function Product({ name, image, price, id }: Props) {
-  const { handleAddProduct, handleAddToFavorite } = useProduct({ id: id });
+export default function Product({
+  name,
+  image,
+  price,
+  id,
+  handleSelectProduct,
+}: Props) {
+  const { handleAddProduct, handleAddToFavorite, handleSelect } = useProduct({
+    id: id,
+    handleSelectProduct: handleSelectProduct,
+  });
 
   return (
-    <article className="flex flex-col rounded bg-white">
+    <article
+      className="flex flex-col rounded bg-white cursor-pointer"
+      onClick={handleSelect}
+    >
       <Image
         src={image}
         alt={name}

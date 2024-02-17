@@ -6,9 +6,10 @@ import { useUser } from "@modules/user/hooks";
 
 interface Props {
   id: string;
+  handleSelectProduct(id: string): void;
 }
 
-export default function useProduct({ id }: Props) {
+export default function useProduct({ id, handleSelectProduct }: Props) {
   const { actualUser } = useUser();
 
   const { handleSetProduct } = useCart();
@@ -24,5 +25,9 @@ export default function useProduct({ id }: Props) {
     }
   }
 
-  return { handleAddProduct, handleAddToFavorite };
+  function handleSelect() {
+    handleSelectProduct(id);
+  }
+
+  return { handleAddProduct, handleAddToFavorite, handleSelect };
 }

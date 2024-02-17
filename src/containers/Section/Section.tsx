@@ -14,17 +14,21 @@ interface Props {
 }
 
 export default function Section({}: Props) {
-  const { selectedProduct } = useSection();
+  const { selectedProduct, handleSelectProduct, handleDeleteSelectedProduct } =
+    useSection();
 
   return (
     <div className="flex flex-col w-full">
-      <SelectedProduct selectedProduct={selectedProduct} />
+      <SelectedProduct
+        selectedProduct={selectedProduct}
+        handleDeleteSelectedProduct={handleDeleteSelectedProduct}
+      />
 
       <Navbar />
       <Header />
 
       <main className="flex flex-col w-full bg-gray-50 pb-6">
-        <ProductSections />
+        <ProductSections handleSelectProduct={handleSelectProduct} />
       </main>
 
       <Footer />

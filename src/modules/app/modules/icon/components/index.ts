@@ -2,8 +2,10 @@ import ArrowDown from "./ArrowDown";
 import ArrowLeft from "./ArrowLeft";
 import ArrowRight from "./ArrowRight";
 import ArrowUp from "./ArrowUp";
+import Bag from "./Bag";
 import Bars from "./Bars";
 import Cart from "./Cart";
+import Close from "./Close";
 import Dislike from "./Dislike";
 import Email from "./Email";
 import Facebook from "./Facebook";
@@ -34,4 +36,6 @@ export {
   Plus,
   Minus,
   Menu,
+  Close,
+  Bag,
 };

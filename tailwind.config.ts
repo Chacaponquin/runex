@@ -6,14 +6,15 @@ const config: Config = {
     "./src/containers/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
-        fontRegular: "DDinPro Regular",
-        fontBold: "DDinPro Bold",
-        fontExtraBold: "DDinPro Extra Bold",
-        fontSemiBold: "DDinPro Semi Bold",
-        fontMedium: "DDinPro Medium",
+        fontRegular: "Public Sans Regular",
+        fontBold: "Public Sans Bold",
+        fontExtraBold: "Public Sans Extra Bold",
+        fontSemiBold: "Public Sans Semi Bold",
+        fontMedium: "Public Sans Medium",
       },
       backgroundImage: {},
       colors: {

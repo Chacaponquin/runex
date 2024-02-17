@@ -3,34 +3,30 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "DDinPro Regular";
-  src: url("../assets/fonts/DDinPro/D-DIN-PRO-400-Regular.otf");
+  font-family: "Public Sans Regular";
+  src: url("../assets/fonts/Public-Sans/PublicSans-Regular.ttf");
 }
 
 @font-face {
-  font-family: "DDinPro Bold";
-  src: url("../assets/fonts/DDinPro/D-DIN-PRO-700-Bold.otf");
+  font-family: "Public Sans Bold";
+  src: url("../assets/fonts/Public-Sans/PublicSans-Bold.ttf");
 }
 
 @font-face {
-  font-family: "DDinPro Extra Bold";
-  src: url("../assets/fonts/DDinPro/D-DIN-PRO-800-ExtraBold.otf");
-}
-
-
-
-
-
-@font-face {
-  font-family: "DDinPro Medium";
-  src: url("../assets/fonts/DDinPro/D-DIN-PRO-500-Medium.otf");
+  font-family: "Public Sans Extra Bold";
+  src: url("../assets/fonts/Public-Sans/PublicSans-ExtraBold.ttf");
 }
 
 @font-face {
-  font-family: "DDinPro Semi Bold";
-  src: url("../assets/fonts/DDinPro/D-DIN-PRO-600-SemiBold.otf");
+  font-family: "Public Sans Medium";
+  src: url("../assets/fonts/Public-Sans/PublicSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Public Sans Semi Bold";
+  src: url("../assets/fonts/Public-Sans/PublicSans-SemiBold.ttf");
 }
 
 * {
-  font-family: "DDinPro Regular";
+  font-family: "Public Sans Regular";
 }

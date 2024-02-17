@@ -11,7 +11,7 @@ export default function Sections() {
   return (
     <Section
       alt={false}
-      className="gap-x-12 gap-y-4 justify-center flex-col lg:flex-row"
+      className="gap-x-12 gap-y-4 justify-center grid lg:grid-cols-2 grid-cols-1"
     >
       {sections.map((section, index) => (
         <Card

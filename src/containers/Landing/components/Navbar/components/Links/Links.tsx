@@ -8,7 +8,7 @@ interface Props {
 
 export default function Links({ links }: Props) {
   return (
-    <section className="flex items-center gap-x-10 justify-center">
+    <section className="xl:flex hidden items-center gap-x-10 justify-center">
       {links.map((link, index) => (
         <Link key={index} href={link.url}>
           <span className="text-lg hover:underline hover:underline-offset-4">

@@ -9,7 +9,7 @@ interface Props {
 export default function Resize({ children, className }: Props) {
   return (
     <section className="w-full flex justify-center px-5">
-      <div className={clsx("max-w-[1000px]", className)}>{children}</div>
+      <div className={clsx("max-w-[1200px]", className)}>{children}</div>
     </section>
   );
 }

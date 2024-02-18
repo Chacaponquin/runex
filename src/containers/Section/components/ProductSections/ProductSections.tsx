@@ -13,7 +13,7 @@ export default function ProductSections({ handleSelectProduct }: Props) {
   const { sections } = useProducts();
 
   return (
-    <Resize className="flex flex-col gap-y-10 w-full flex-wrap">
+    <Resize className="flex flex-col gap-y-10 w-full flex-wrap bg-gray-50 pb-6">
       {sections.map((s) => (
         <Section
           key={s.id}

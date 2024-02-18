@@ -1,10 +1,12 @@
 "use client";
 
+import { useBlockScroll } from "@modules/shared/hooks";
 import {
   Footer,
   Header,
   Navbar,
   ProductSections,
+  Search,
   SelectedProduct,
 } from "./components";
 import { useSection } from "./hooks";
@@ -13,9 +15,11 @@ interface Props {
   q: string | undefined;
 }
 
-export default function Section({}: Props) {
+export default function Section({ q: query }: Props) {
   const { selectedProduct, handleSelectProduct, handleDeleteSelectedProduct } =
     useSection();
+
+  useBlockScroll(selectedProduct !== null);
 
   return (
     <div className="flex flex-col w-full">
@@ -24,12 +28,16 @@ export default function Section({}: Props) {
         handleDeleteSelectedProduct={handleDeleteSelectedProduct}
       />
 
-      <Navbar />
+      <Navbar query={query} />
 
-      <Header />
+      {!query && <Header />}
 
-      <main className="flex flex-col w-full bg-gray-50 pb-6">
-        <ProductSections handleSelectProduct={handleSelectProduct} />
+      <main className="flex flex-col w-full">
+        {query ? (
+          <Search handleSelectProduct={handleSelectProduct} query={query} />
+        ) : (
+          <ProductSections handleSelectProduct={handleSelectProduct} />
+        )}
       </main>
 
       <Footer />

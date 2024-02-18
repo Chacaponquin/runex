@@ -4,7 +4,11 @@ import { Cart } from "@containers/Section/shared/components";
 import { Buttons, Logo, Search } from "./components";
 import { useNavbar } from "./hooks";
 
-export default function Navbar() {
+interface Props {
+  query: string | undefined;
+}
+
+export default function Navbar({ query }: Props) {
   const {
     handleChangeOpenCart,
     openCart,
@@ -12,13 +16,20 @@ export default function Navbar() {
     handleChangeOpenUserOptions,
     openFavorites,
     openUserOptions,
-  } = useNavbar();
+    handleSearch,
+    search,
+    handleChangeSearch,
+  } = useNavbar({ query });
 
   return (
     <div className="flex items-center w-full h-[70px] esm:h-[60px] justify-center border-b-[2px] border-gray-100 z-30 px-4">
       <nav className="flex items-center max-w-[1200px] w-full justify-between">
         <Logo />
-        <Search />
+        <Search
+          handleSearch={handleSearch}
+          handleChange={handleChangeSearch}
+          value={search}
+        />
         <Buttons
           handleChangeOpenCart={handleChangeOpenCart}
           openCart={openCart}

@@ -8,11 +8,10 @@ import clsx from "clsx";
 interface Props {
   image: { src: string; alt: string };
   title: string;
-  description: string;
   url: string;
 }
 
-export default function Card({ description, title, url, image }: Props) {
+export default function Card({ title, url, image }: Props) {
   const [hover, setHover] = useState(false);
 
   function handleMouseEnter() {
@@ -24,19 +23,14 @@ export default function Card({ description, title, url, image }: Props) {
   }
 
   const CLASS = clsx(
-    "flex flex-col justify-between",
+    "flex flex-col justify-end",
     "shadow-lg",
     "cursor-pointer",
-    "py-7 px-10",
+    "py-7 px-10 esm:px-7",
     "min-h-[300px]",
-    "rounded-lg",
+    "rounded",
     "text-white"
   );
-
-  const TEXT_CLASS = clsx("text-lg leading-7", {
-    visible: !hover,
-    invisible: hover,
-  });
 
   return (
     <Link href={url}>
@@ -53,8 +47,6 @@ export default function Card({ description, title, url, image }: Props) {
           transitionDuration: "0.9s",
         }}
       >
-        <p className={TEXT_CLASS}>{description}</p>
-
         <CardTitle text={title} hover={hover} />
       </article>
     </Link>

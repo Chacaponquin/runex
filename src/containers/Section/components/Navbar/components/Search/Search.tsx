@@ -5,7 +5,13 @@ import { Search as SearchIcon } from "@modules/app/modules/icon/components";
 import { Input } from "./components";
 import clsx from "clsx";
 
-export default function Search() {
+interface Props {
+  handleSearch(): void;
+  value: string;
+  handleChange(v: string): void;
+}
+
+export default function Search({ handleSearch, value, handleChange }: Props) {
   const [focus, setFocus] = useState(false);
 
   function handleFocus() {
@@ -29,12 +35,25 @@ export default function Search() {
     }
   );
 
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    handleSearch();
+  }
+
   return (
-    <search className="hidden xl:block">
-      <div className={CLASS}>
-        <Input handleBlur={handleBlur} handleFocus={handleFocus} />
-        <SearchIcon size={22} />
-      </div>
-    </search>
+    <form onSubmit={handleSubmit}>
+      <search className="hidden xl:block">
+        <div className={CLASS}>
+          <Input
+            handleBlur={handleBlur}
+            handleFocus={handleFocus}
+            value={value}
+            handleChange={handleChange}
+          />
+
+          <SearchIcon size={22} />
+        </div>
+      </search>
+    </form>
   );
 }

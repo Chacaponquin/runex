@@ -6,17 +6,29 @@ interface AddProductFavoriteProps {
   userId: string;
 }
 
+type FilterProductsProps = Partial<{
+  name: string;
+  minPrice: number;
+  maxPrice: number;
+  provider: string;
+  page: number;
+}>;
+
+function create(): Product {
+  return new Product({
+    id: faker.string.uuid(),
+    name: faker.lorem.words({ min: 4, max: 10 }),
+    price: Number(faker.commerce.price()),
+    images: Array.from({
+      length: faker.number.int({ min: 1, max: 5 }),
+    }).map(() => faker.image.url()),
+  });
+}
+
 export default function useProductServices() {
   async function getPopularProducts(): Promise<Array<Product>> {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
-      return new Product({
-        id: faker.string.uuid(),
-        name: faker.commerce.product(),
-        price: Number(faker.commerce.price()),
-        images: Array.from({
-          length: faker.number.int({ min: 1, max: 5 }),
-        }).map(() => faker.image.url()),
-      });
+      return create();
     });
 
     return products;
@@ -24,14 +36,7 @@ export default function useProductServices() {
 
   async function getTrendingProducts(): Promise<Array<Product>> {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
-      return new Product({
-        id: faker.string.uuid(),
-        name: faker.commerce.product(),
-        price: Number(faker.commerce.price()),
-        images: Array.from({
-          length: faker.number.int({ min: 1, max: 5 }),
-        }).map(() => faker.image.url()),
-      });
+      return create();
     });
 
     return products;
@@ -39,14 +44,7 @@ export default function useProductServices() {
 
   async function getNewProducts(): Promise<Array<Product>> {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
-      return new Product({
-        id: faker.string.uuid(),
-        name: faker.commerce.product(),
-        price: Number(faker.commerce.price()),
-        images: Array.from({
-          length: faker.number.int({ min: 1, max: 5 }),
-        }).map(() => faker.image.url()),
-      });
+      return create();
     });
 
     return products;
@@ -55,27 +53,23 @@ export default function useProductServices() {
   async function addProductToFavorites(props: AddProductFavoriteProps) {}
 
   async function getProductById(id: string): Promise<Product> {
-    return new Product({
-      id: faker.string.uuid(),
-      name: faker.commerce.product(),
-      price: Number(faker.commerce.price()),
-      images: Array.from({
-        length: faker.number.int({ min: 1, max: 5 }),
-      }).map(() => faker.image.url()),
-    });
+    return create();
   }
 
   async function getSimilarProducts(id: string): Promise<Array<Product>> {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
-      return new Product({
-        id: faker.string.uuid(),
-        name: faker.commerce.product(),
-        price: Number(faker.commerce.price()),
-        images: Array.from({
-          length: faker.number.int({ min: 1, max: 5 }),
-        }).map(() => faker.image.url()),
-      });
+      return create();
     });
+
+    return products;
+  }
+
+  async function filterProducts(
+    props: FilterProductsProps
+  ): Promise<Array<Product>> {
+    const products: Array<Product> = Array.from({ length: 25 }).map(() =>
+      create()
+    );
 
     return products;
   }
@@ -87,5 +81,6 @@ export default function useProductServices() {
     addProductToFavorites,
     getProductById,
     getSimilarProducts,
+    filterProducts,
   };
 }

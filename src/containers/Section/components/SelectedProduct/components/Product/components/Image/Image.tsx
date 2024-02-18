@@ -22,11 +22,11 @@ export default function Image({ images, name }: Props) {
         src={images[selectedImage]}
         width={400}
         height={400}
-        className="object-cover w-full h-[350px] esm:h-[280px] rounded-2xl"
+        className="object-cover w-full h-[350px] esm:h-[280px] rounded"
       />
 
       {images.length > 1 && (
-        <div className="grid grid-cols-8 esm:gap-x-1.5 w-full gap-x-3">
+        <div className="grid grid-cols-5 esm:gap-x-1.5 w-full gap-x-3">
           {images.map((img, index) => (
             <button key={index} onClick={() => handleChangeImage(index)}>
               <NextImage
@@ -34,7 +34,7 @@ export default function Image({ images, name }: Props) {
                 alt={name}
                 width={200}
                 height={200}
-                className="object-cover rounded-xl esm:rounded-lg"
+                className="object-cover rounded esm:rounded"
               />
             </button>
           ))}

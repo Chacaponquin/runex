@@ -1,5 +1,6 @@
 "use client";
 
+import { Cart } from "@containers/Section/shared/components";
 import { Buttons, Logo, Search } from "./components";
 import { useNavbar } from "./hooks";
 
@@ -27,6 +28,10 @@ export default function Navbar() {
           openUserOptions={openUserOptions}
         />
       </nav>
+
+      <div className="relative xl:hidden block">
+        {openCart && <Cart full={true} />}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Result } from "./components";
+import { Filters, Header, Result } from "./components";
 import { useSearch } from "./hooks";
 
 interface Props {
@@ -20,10 +20,13 @@ export default function Search({ handleSelectProduct, query }: Props) {
     totalPages,
     page,
     handleChangePage,
+    openFilters,
   } = useSearch({ query });
 
   return (
     <div className="flex flex-col w-full">
+      {openFilters && <Filters handleClose={handleChangeOpenFilters} />}
+
       <Header
         handleApplySearch={handleApplySearch}
         search={filters.name}

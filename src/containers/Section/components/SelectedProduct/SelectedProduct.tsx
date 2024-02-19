@@ -1,5 +1,6 @@
 "use client";
 
+import { useBlockScroll } from "@modules/shared/hooks";
 import { Product, Header } from "./components";
 import { useSelectedProduct } from "./hooks";
 
@@ -16,6 +17,8 @@ export default function SelectedProduct({
     useSelectedProduct({
       productId: selectedProduct,
     });
+
+  useBlockScroll(selectedProduct !== null);
 
   return (
     <div

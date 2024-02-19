@@ -8,7 +8,7 @@ interface Props {
 
 export default function Products({ products }: Props) {
   return (
-    <section className="flex flex-col w-full gap-y-2 mb-4">
+    <section className="flex flex-col w-full gap-y-2 mb-10">
       {products.map((product) => (
         <Product
           key={product.product.id}

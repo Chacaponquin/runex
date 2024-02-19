@@ -7,8 +7,8 @@ import clsx from "clsx";
 
 interface Props {
   handleSearch(): void;
-  value: string;
   handleChange(v: string): void;
+  value: string;
 }
 
 export default function Search({ handleSearch, value, handleChange }: Props) {
@@ -24,11 +24,12 @@ export default function Search({ handleSearch, value, handleChange }: Props) {
 
   const CLASS = clsx(
     "flex justify-between items-center",
-    "w-[600px]",
-    "rounded",
-    "py-2 px-4",
+    "w-[280px] esm:w-[200px]",
+    "rounded-full",
+    "py-2.5 px-6",
     "gap-x-4",
     "stroke-black",
+    "bg-gray-50",
     {
       "border-[2px] border-blue-500": focus,
       "border-[2px] border-gray-100": !focus,
@@ -42,16 +43,16 @@ export default function Search({ handleSearch, value, handleChange }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <search className="hidden xl:block">
+      <search className="">
         <div className={CLASS}>
+          <SearchIcon size={22} />
+
           <Input
             handleBlur={handleBlur}
             handleFocus={handleFocus}
             value={value}
             handleChange={handleChange}
           />
-
-          <SearchIcon size={22} />
         </div>
       </search>
     </form>

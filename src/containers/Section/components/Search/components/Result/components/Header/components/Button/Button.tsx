@@ -7,7 +7,7 @@ interface Props {
 export default function Button({ handleClick }: Props) {
   return (
     <button
-      className="flex items-center gap-x-3 rounded-full stroke-black border-[2px] border-gray-200 px-6 py-2.5"
+      className="flex items-center gap-x-3 rounded-full stroke-black border-[2px] border-gray-200 px-6 py-2.5 esm:px-5 esm:py-2"
       onClick={handleClick}
     >
       <Filter size={22} />

@@ -9,7 +9,7 @@ interface Props {
 
 export default function Products({ products, handleSelectProduct }: Props) {
   return (
-    <section className="grid grid-cols-3 w-full gap-x-7 gap-y-6">
+    <section className="grid lg:grid-cols-3 grid-cols-2 w-full gap-x-7 gap-y-6 esm:grid-cols-1">
       {products.map((p) => (
         <Card
           key={p.id}

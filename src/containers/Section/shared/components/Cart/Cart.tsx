@@ -6,9 +6,10 @@ import clsx from "clsx";
 
 interface Props {
   full: boolean;
+  handleChangeOpenCart(): void;
 }
 
-export default function Cart({ full }: Props) {
+export default function Cart({ full, handleChangeOpenCart }: Props) {
   const { cart } = useCart();
 
   const CLASS = clsx(
@@ -16,19 +17,20 @@ export default function Cart({ full }: Props) {
     "flex flex-col",
     "px-5 py-3",
     "shadow-lg",
-    "rounded-xl",
     "bg-white",
 
     { "min-w-[400px] max-h-[600px]": !full, "w-full h-screen": full },
 
     { absolute: !full, "fixed top-0 left-0": full },
 
-    { "-translate-x-[95%] translate-y-9": !full }
+    { "-translate-x-[95%] translate-y-9": !full },
+
+    { rounded: !full, "rounded-none": full }
   );
 
   return (
     <div className={CLASS}>
-      <Header />
+      <Header full={full} handleChangeOpenCart={handleChangeOpenCart} />
       <Products products={cart.products} />
       <Bill />
       <Footer />

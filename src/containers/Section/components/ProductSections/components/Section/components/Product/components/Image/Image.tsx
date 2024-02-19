@@ -3,20 +3,19 @@ import { Favorite } from "./components";
 interface Props {
   src: string;
   handleAddFavorite(): void;
-  isFavorite: boolean;
 }
 
-export default function Image({ src, handleAddFavorite, isFavorite }: Props) {
+export default function Image({ handleAddFavorite, src }: Props) {
   return (
     <header
+      className="h-[170px] w-full p-3 rounded-t"
       style={{
         backgroundImage: `url("${src}")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
-      className="object-cover w-full h-[200px] rounded p-4"
     >
-      <Favorite handleClick={handleAddFavorite} isFavorite={isFavorite} />
+      <Favorite handleClick={handleAddFavorite} />
     </header>
   );
 }

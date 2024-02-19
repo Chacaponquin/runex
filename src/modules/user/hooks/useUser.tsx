@@ -17,6 +17,14 @@ export default function useUser() {
     window.location.reload();
   }
 
+  function isProductFavorite(productId: string): boolean {
+    if (actualUser) {
+      return actualUser.favorites.includes(productId);
+    } else {
+      return false;
+    }
+  }
+
   const getToken = useCallback((): string => {
     return "";
   }, []);
@@ -27,5 +35,6 @@ export default function useUser() {
     handleSignOut,
     actualUser,
     fetchUserLoading: loading,
+    isProductFavorite,
   };
 }

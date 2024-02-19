@@ -12,7 +12,7 @@ export default function useCard({ id }: Props) {
   const { addProductToFavorites } = useProductServices();
 
   const { handleSetProduct } = useCart();
-  const { actualUser } = useUser();
+  const { actualUser, isProductFavorite } = useUser();
 
   function handleAddToCart() {
     handleSetProduct({ productId: id, quantity: 1 });
@@ -24,5 +24,7 @@ export default function useCard({ id }: Props) {
     }
   }
 
-  return { handleAddToCart, handleAddFavorite };
+  const isFavorite = isProductFavorite(id);
+
+  return { handleAddToCart, handleAddFavorite, isFavorite };
 }

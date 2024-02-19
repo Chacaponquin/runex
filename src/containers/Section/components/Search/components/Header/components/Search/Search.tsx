@@ -30,8 +30,11 @@ export default function Search({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full justify-center">
-      <search className="flex items-center w-full max-w-[520px] gap-x-6 px-8 py-3.5 rounded-full border-[2px] border-gray-200">
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-full justify-center esm:px-3"
+    >
+      <search className="flex items-center w-full max-w-[520px] esm:max-w-[400px] gap-x-6 px-8 py-3.5 rounded-full border-[2px] border-gray-200">
         <i className="stroke-black">
           <SearchIcon size={24} />
         </i>

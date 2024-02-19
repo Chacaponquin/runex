@@ -18,7 +18,7 @@ export default function Product({ quantity, name, image, price, id }: Props) {
   });
 
   return (
-    <div className="flex w-full px-2.5 py-2 gap-x-5 rounded-xl border-[2px] border-gray-100">
+    <div className="flex w-full px-2.5 py-2.5 gap-x-5 rounded-xl border-[2px] border-gray-100">
       <Image src={image} alt={name} />
 
       <div className="flex flex-col text-left w-full">

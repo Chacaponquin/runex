@@ -16,7 +16,9 @@ export default function Buttons({ handleChangeOpenCart, openCart }: Props) {
   return (
     <section className="flex gap-x-7 items-center stroke-black">
       <Button icon={Bag} handleClick={handleChangeOpenCart}>
-        {openCart && <Cart full={false} />}
+        {openCart && (
+          <Cart full={false} handleChangeOpenCart={handleChangeOpenCart} />
+        )}
       </Button>
 
       {actualUser && <Button icon={Favorite} />}

@@ -1,7 +1,6 @@
 import { APP_ROUTES } from "@modules/app/constants";
 import { Search } from "@modules/app/modules/icon/components";
 import Link from "next/link";
-import React from "react";
 
 export default function Buttons() {
   return (

@@ -3,7 +3,7 @@
 import { IconProps } from "@modules/app/modules/icon/interfaces";
 
 interface Props {
-  handleClick(): void;
+  handleClick?: () => void;
   children?: React.ReactNode;
   icon: React.FC<IconProps>;
 }

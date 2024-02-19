@@ -1,30 +1,30 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function useNavbar() {
-  const [openCart, setOpenCart] = useState(false);
-  const [openFavorites, setOpenFavorites] = useState(false);
-  const [openUserOptions, setOpenUserOptions] = useState(false);
+interface Props {
+  query: string | undefined;
+}
 
-  function handleChangeOpenCart() {
-    setOpenCart((prev) => !prev);
+export default function useNavbar({ query }: Props) {
+  const router = useRouter();
+
+  const [search, setSearch] = useState(query ? query : "");
+
+  function handleSearch() {
+    if (search) {
+      router.push(`?q=${search}`, { scroll: true });
+    }
   }
 
-  function handleChangeOpenFavorites() {
-    setOpenFavorites((prev) => !prev);
-  }
-
-  function handleChangeOpenUserOptions() {
-    setOpenUserOptions((prev) => !prev);
+  function handleChangeSearch(v: string) {
+    setSearch(v);
   }
 
   return {
-    handleChangeOpenCart,
-    openCart,
-    openFavorites,
-    openUserOptions,
-    handleChangeOpenFavorites,
-    handleChangeOpenUserOptions,
+    handleSearch,
+    search,
+    handleChangeSearch,
   };
 }

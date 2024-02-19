@@ -1,3 +1,4 @@
+import Cart from "./Cart/Cart";
 import Resize from "./Resize/Resize";
 
-export { Resize };
+export { Resize, Cart };

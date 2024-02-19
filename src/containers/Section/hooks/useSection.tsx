@@ -5,6 +5,12 @@ import { useState } from "react";
 export default function useSection() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
 
+  const [openCart, setOpenCart] = useState(false);
+
+  function handleChangeOpenCart() {
+    setOpenCart((prev) => !prev);
+  }
+
   function handleSelectProduct(product: string) {
     setSelectedProduct(product);
   }
@@ -13,5 +19,11 @@ export default function useSection() {
     setSelectedProduct(null);
   }
 
-  return { selectedProduct, handleDeleteSelectedProduct, handleSelectProduct };
+  return {
+    selectedProduct,
+    handleDeleteSelectedProduct,
+    handleSelectProduct,
+    openCart,
+    handleChangeOpenCart,
+  };
 }

@@ -11,13 +11,12 @@ export default function Sections() {
   return (
     <Section
       alt={false}
-      className="gap-x-12 gap-y-4 justify-center grid lg:grid-cols-2 grid-cols-1"
+      className="gap-x-12 gap-y-7 justify-center grid lg:grid-cols-2 grid-cols-1"
     >
       {sections.map((section, index) => (
         <Card
           key={index}
           title={section.title}
-          description={section.description}
           image={section.image}
           url={section.url}
         />

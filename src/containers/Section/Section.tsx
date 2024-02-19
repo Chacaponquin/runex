@@ -5,6 +5,7 @@ import {
   Header,
   Navbar,
   ProductSections,
+  Search,
   SelectedProduct,
 } from "./components";
 import { useSection } from "./hooks";
@@ -13,9 +14,14 @@ interface Props {
   q: string | undefined;
 }
 
-export default function Section({}: Props) {
-  const { selectedProduct, handleSelectProduct, handleDeleteSelectedProduct } =
-    useSection();
+export default function Section({ q: query }: Props) {
+  const {
+    selectedProduct,
+    handleSelectProduct,
+    handleDeleteSelectedProduct,
+    handleChangeOpenCart,
+    openCart,
+  } = useSection();
 
   return (
     <div className="flex flex-col w-full">
@@ -24,12 +30,20 @@ export default function Section({}: Props) {
         handleDeleteSelectedProduct={handleDeleteSelectedProduct}
       />
 
-      <Navbar />
+      <Navbar
+        query={query}
+        openCart={openCart}
+        handleChangeOpenCart={handleChangeOpenCart}
+      />
 
-      <Header />
+      {!query && <Header />}
 
-      <main className="flex flex-col w-full bg-gray-50 pb-6">
-        <ProductSections handleSelectProduct={handleSelectProduct} />
+      <main className="flex flex-col w-full">
+        {query ? (
+          <Search handleSelectProduct={handleSelectProduct} query={query} />
+        ) : (
+          <ProductSections handleSelectProduct={handleSelectProduct} />
+        )}
       </main>
 
       <Footer />

@@ -18,7 +18,7 @@ export class Product {
     this._id = id;
     this._name = name;
     this._price = price;
-    this._images = images;
+    this._images = images.slice(0, 5);
     this._provider = "Amazon";
   }
 

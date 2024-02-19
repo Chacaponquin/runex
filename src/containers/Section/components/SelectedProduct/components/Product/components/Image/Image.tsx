@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
 import NextImage from "next/image";
+import { MiniImage } from "./components";
+import { useImage } from "./hooks";
 
 interface Props {
   images: Array<string>;
@@ -9,11 +10,7 @@ interface Props {
 }
 
 export default function Image({ images, name }: Props) {
-  const [selectedImage, setSelectedImage] = useState<number>(0);
-
-  function handleChangeImage(index: number) {
-    setSelectedImage(index);
-  }
+  const { handleChangeImage, selectedImage } = useImage();
 
   return (
     <section className="flex flex-col lg:gap-y-5 gap-y-3">
@@ -22,21 +19,19 @@ export default function Image({ images, name }: Props) {
         src={images[selectedImage]}
         width={400}
         height={400}
-        className="object-cover w-full h-[350px] esm:h-[280px] rounded"
+        className="object-cover w-full h-[350px] esm:h-[280px] rounded-lg"
       />
 
       {images.length > 1 && (
         <div className="grid grid-cols-5 esm:gap-x-1.5 w-full gap-x-3">
           {images.map((img, index) => (
-            <button key={index} onClick={() => handleChangeImage(index)}>
-              <NextImage
-                src={img}
-                alt={name}
-                width={200}
-                height={200}
-                className="object-cover rounded esm:rounded"
-              />
-            </button>
+            <MiniImage
+              key={index}
+              handleClick={() => handleChangeImage(index)}
+              image={img}
+              alt={name}
+              selected={selectedImage === index}
+            />
           ))}
         </div>
       )}

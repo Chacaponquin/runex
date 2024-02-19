@@ -11,8 +11,8 @@ export class Product {
   private _price: number;
   private _images: Array<string>;
   private _provider: string;
-  private _sizes: Array<string> = [];
-  private _colors: Array<string> = [];
+  private _sizes: Array<string> = ["S", "M", "L", "XL"];
+  private _colors: Array<string> = ["orange", "red", "green"];
 
   constructor({ id, name, price, images }: Props) {
     this._id = id;
@@ -60,5 +60,17 @@ export class Product {
 
   static str(value: number): string {
     return `$${value}`;
+  }
+
+  static hexColor(color: string): string {
+    if (color === "orange") {
+      return "#f0932b";
+    } else if (color === "green") {
+      return "#6ab04c";
+    } else if (color === "red") {
+      return "#eb4d4b";
+    } else {
+      return "#2d3436";
+    }
   }
 }

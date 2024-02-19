@@ -13,15 +13,12 @@ interface Props {
 }
 
 export default function Card({ image, name, price, handleClick, id }: Props) {
-  const { handleAddToCart, handleAddFavorite, isFavorite } = useCard({
+  const { handleAddFavorite, isFavorite } = useCard({
     id: id,
   });
 
   return (
-    <article
-      className="flex flex-col w-full cursor-pointer"
-      onClick={handleClick}
-    >
+    <article className="flex flex-col w-full cursor-pointer">
       <ProductImage
         src={image}
         handleAddFavorite={handleAddFavorite}
@@ -36,7 +33,7 @@ export default function Card({ image, name, price, handleClick, id }: Props) {
             {price}
           </span>
 
-          <AddButton handleClick={handleAddToCart} />
+          <AddButton handleClick={handleClick} />
         </div>
       </div>
     </article>

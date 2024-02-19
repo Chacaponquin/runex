@@ -4,12 +4,21 @@ import { useEffect, useState } from "react";
 import { FilterForm } from "../interfaces";
 import { Product } from "@modules/product/domain";
 import { useProductServices } from "@modules/product/services";
+import {
+  MaxPrice,
+  MinPrice,
+  Page,
+  Query,
+} from "@containers/Section/value-object";
 
 interface Props {
   query: string | undefined;
+  page: string | undefined;
+  min: string | undefined;
+  max: string | undefined;
 }
 
-export default function useSearch({ query }: Props) {
+export default function useSearch({ query, max, min, page: ipage }: Props) {
   const { filterProducts } = useProductServices();
 
   const [openFilters, setOpenFilters] = useState(false);
@@ -17,13 +26,13 @@ export default function useSearch({ query }: Props) {
   const [result, setResult] = useState<Array<Product>>([]);
 
   const [filters, setFilters] = useState<FilterForm>({
-    maxPrice: 0,
-    minPrice: 0,
-    name: query ? query : "",
+    maxPrice: new MaxPrice(max).value,
+    minPrice: new MinPrice(min).value,
+    name: new Query(query).value,
     provider: "",
   });
 
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(new Page(ipage).value);
 
   const totalPages = 10;
 

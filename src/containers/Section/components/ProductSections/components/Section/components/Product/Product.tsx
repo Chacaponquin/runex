@@ -19,16 +19,13 @@ export default function Product({
   id,
   handleSelectProduct,
 }: Props) {
-  const { handleAddProduct, handleAddToFavorite, handleSelect } = useProduct({
+  const { handleAddToFavorite, handleSelect } = useProduct({
     id: id,
     handleSelectProduct: handleSelectProduct,
   });
 
   return (
-    <article
-      className="flex flex-col rounded bg-white cursor-pointer h-max"
-      onClick={handleSelect}
-    >
+    <article className="flex flex-col rounded bg-white cursor-pointer h-max">
       <ProductImage src={image} handleAddFavorite={handleAddToFavorite} />
 
       <section className="flex flex-col pt-2.5 pb-4 px-4 w-full">
@@ -39,7 +36,7 @@ export default function Product({
           <span className="text-blue-500 font-fontMedium text-sm">{price}</span>
 
           <div className="flex items-center gap-x-3">
-            <AddButton handleClick={handleAddProduct} />
+            <AddButton handleClick={handleSelect} />
           </div>
         </div>
       </section>

@@ -12,4 +12,7 @@ export const APP_IMAGES = {
       alt: "notification",
     },
   },
+  LOGIN: {
+    BG: { src: "/images/Hexagon.svg", alt: "login-bg" },
+  },
 };

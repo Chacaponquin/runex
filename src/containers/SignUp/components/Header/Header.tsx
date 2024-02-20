@@ -13,7 +13,10 @@ export default function Header() {
 
       <p className="text-gray-400">
         Already have a account ?{" "}
-        <Link href={APP_ROUTES.AUTH.LOGIN} className="text-blue-400">
+        <Link
+          href={APP_ROUTES.AUTH.LOGIN}
+          className="text-blue-400 hover:underline-offset-4 hover:underline"
+        >
           Log in
         </Link>
       </p>

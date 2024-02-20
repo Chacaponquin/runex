@@ -2,6 +2,7 @@ export const APP_ROUTES = {
   AUTH: {
     LOGIN: "/login",
     SIGN_UP: "/sign-up",
+    FORGOT_PASSWORD: "/forgot-password",
   },
   SECTION: {
     CLOTHES: "/section/clothes",

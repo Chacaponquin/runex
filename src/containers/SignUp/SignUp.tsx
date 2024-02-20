@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Form, Header } from "./components";
 import { useSignUp } from "./hooks";
 

@@ -9,6 +9,10 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      boxShadow: {
+        input: "0 0 0 4px rgba(52, 152, 219, 0.4)",
+      },
+
       fontFamily: {
         fontRegular: "Public Sans Regular",
         fontBold: "Public Sans Bold",
@@ -16,7 +20,9 @@ const config: Config = {
         fontSemiBold: "Public Sans Semi Bold",
         fontMedium: "Public Sans Medium",
       },
+
       backgroundImage: {},
+
       colors: {
         blue: {
           "50": "#f2f8fd",

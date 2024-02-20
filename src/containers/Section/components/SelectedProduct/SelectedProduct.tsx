@@ -13,10 +13,22 @@ export default function SelectedProduct({
   selectedProduct,
   handleDeleteSelectedProduct,
 }: Props) {
-  const { productInfo, loading, similarProducts, similarProductsLoading } =
-    useSelectedProduct({
-      productId: selectedProduct,
-    });
+  const {
+    productInfo,
+    loading,
+    similarProducts,
+    similarProductsLoading,
+    form,
+    handleAddToCart,
+    handleBuyNow,
+    handleChangeForm,
+    handleDecreaseQuantity,
+    handleIncreaseQuantity,
+    handleAddFavorite,
+    handleShare,
+  } = useSelectedProduct({
+    productId: selectedProduct,
+  });
 
   useBlockScroll(selectedProduct !== null);
 
@@ -31,6 +43,14 @@ export default function SelectedProduct({
         loading={loading}
         similarProducts={similarProducts}
         similarProductsLoading={similarProductsLoading}
+        form={form}
+        handleAddToCart={handleAddToCart}
+        handleBuyNow={handleBuyNow}
+        handleChangeForm={handleChangeForm}
+        handleIncreaseQuantity={handleIncreaseQuantity}
+        handleDecreaseQuantity={handleDecreaseQuantity}
+        handleAddFavorite={handleAddFavorite}
+        handleShare={handleShare}
       />
     </div>
   );

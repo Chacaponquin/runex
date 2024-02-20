@@ -5,6 +5,7 @@ import ArrowUp from "./ArrowUp";
 import Bag from "./Bag";
 import Bars from "./Bars";
 import Cart from "./Cart";
+import Check from "./Check";
 import Close from "./Close";
 import Dislike from "./Dislike";
 import Email from "./Email";
@@ -17,6 +18,7 @@ import Minus from "./Minus";
 import Phone from "./Phone";
 import Plus from "./Plus";
 import Search from "./Search";
+import Share from "./Share";
 import User from "./User";
 
 export {
@@ -40,4 +42,6 @@ export {
   Close,
   Bag,
   Filter,
+  Share,
+  Check,
 };

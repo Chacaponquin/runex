@@ -15,10 +15,6 @@ export default function useProduct({ id, handleSelectProduct }: Props) {
   const { handleSetProduct } = useCart();
   const { addProductToFavorites } = useProductServices();
 
-  function handleAddProduct() {
-    handleSetProduct({ productId: id, quantity: 1 });
-  }
-
   function handleAddToFavorite() {
     if (actualUser) {
       addProductToFavorites({ productId: id, userId: actualUser.id });
@@ -29,5 +25,5 @@ export default function useProduct({ id, handleSelectProduct }: Props) {
     handleSelectProduct(id);
   }
 
-  return { handleAddProduct, handleAddToFavorite, handleSelect };
+  return { handleAddToFavorite, handleSelect };
 }

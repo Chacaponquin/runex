@@ -6,9 +6,18 @@ import { useSearch } from "./hooks";
 interface Props {
   handleSelectProduct(id: string): void;
   query: string | undefined;
+  page: string | undefined;
+  min: string | undefined;
+  max: string | undefined;
 }
 
-export default function Search({ handleSelectProduct, query }: Props) {
+export default function Search({
+  handleSelectProduct,
+  query,
+  max,
+  min,
+  page: queryPage,
+}: Props) {
   const {
     filters,
     handleApplySearch,
@@ -21,7 +30,7 @@ export default function Search({ handleSelectProduct, query }: Props) {
     page,
     handleChangePage,
     openFilters,
-  } = useSearch({ query });
+  } = useSearch({ query: query, page: queryPage, max: max, min: min });
 
   return (
     <div className="flex flex-col w-full">

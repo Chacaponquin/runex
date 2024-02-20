@@ -13,7 +13,7 @@ export default function SimilarProducts({ products }: Props) {
     <div className="flex flex-col w-full">
       <Header />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:gap-x-7 gap-x-4 esm:gap-x-3 gap-y-6 esm:gap-y-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:gap-x-4 gap-x-4 esm:gap-x-2 gap-y-4 esm:gap-y-2">
         {products.map((p) => (
           <Product key={p.id} name={p.name} image={p.image} />
         ))}

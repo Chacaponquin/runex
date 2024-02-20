@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import React, { useId, useState } from "react";
+import { useId, useState } from "react";
 
 interface Props {
   placeholder: string;
@@ -25,8 +25,8 @@ export default function Input({
   const CLASS = clsx(
     "w-full",
     "flex flex-col",
-    "px-6 py-2.5",
-    "rounded-xl",
+    "px-6 py-2.5 esm:px-5",
+    "rounded-lg esm:rounded",
     "bg-dark-900",
     { "outline outline-blue-600": focus }
   );
@@ -43,7 +43,7 @@ export default function Input({
     <div className={CLASS}>
       <label
         htmlFor={id}
-        className="font-fontMedium mb-1 text-sm text-gray-400"
+        className="font-fontMedium mb-1 esm:mb-0 text-sm text-gray-400"
       >
         {placeholder}
       </label>

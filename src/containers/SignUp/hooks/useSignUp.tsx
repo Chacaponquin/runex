@@ -4,6 +4,8 @@ import { useState } from "react";
 import { SignUpForm } from "../interfaces";
 
 export default function useSignUp() {
+  const [loading, setLoading] = useState(false);
+
   const [form, setForm] = useState<SignUpForm>({
     confirmPassword: "",
     email: "",
@@ -18,5 +20,5 @@ export default function useSignUp() {
 
   function handleSubmit() {}
 
-  return { form, handleChange, handleSubmit };
+  return { form, handleChange, handleSubmit, loading };
 }

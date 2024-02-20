@@ -13,7 +13,7 @@ export default function Product({ image, name }: Props) {
         alt={name}
         width={200}
         height={200}
-        className="object-cover w-full rounded-xl esm:rounded-lg"
+        className="object-cover w-full rounded-lg"
       />
     </article>
   );

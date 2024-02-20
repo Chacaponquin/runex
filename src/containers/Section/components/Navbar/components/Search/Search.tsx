@@ -26,13 +26,16 @@ export default function Search({ handleSearch, value, handleChange }: Props) {
     "flex justify-between items-center",
     "w-[280px] esm:w-[200px]",
     "rounded-full",
-    "py-2.5 px-6",
+    "py-2.5 px-6 esm:px-5 esm:py-1.5",
     "gap-x-4",
     "stroke-black",
     "bg-gray-50",
+    "border-[2px] border-gray-100",
+    "transition-all duration-200",
+
     {
-      "border-[2px] border-blue-500": focus,
-      "border-[2px] border-gray-100": !focus,
+      "shadow-input !border-blue-500": focus,
+      "hover:shadow-input hover:border-blue-500": !focus,
     }
   );
 

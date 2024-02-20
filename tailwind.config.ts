@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       boxShadow: {
         input: "0 0 0 4px rgba(52, 152, 219, 0.4)",
+        search: "0 0 0 4px rgba(52, 152, 219, 0.8)",
       },
 
       fontFamily: {

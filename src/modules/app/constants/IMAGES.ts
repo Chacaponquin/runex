@@ -1,5 +1,6 @@
 export const APP_IMAGES = {
   LANDING: {
+    PRESENTATION: { src: "/images/shopping.jpg", alt: "shopping" },
     MEDICINE: { src: "/images/medicine.jpg", alt: "medicine" },
     CLOTHES: { src: "/images/clothes.jpg", alt: "clothes" },
     ADVENTAGES: {

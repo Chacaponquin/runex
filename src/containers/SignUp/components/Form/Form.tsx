@@ -1,4 +1,3 @@
-import React from "react";
 import { Buttons, Input, Section } from "./components";
 import { SignUpForm } from "../../interfaces";
 
@@ -6,10 +5,16 @@ interface Props {
   form: SignUpForm;
   handleChange(key: keyof SignUpForm, value: string): void;
   handleSubmit(): void;
+  loading: boolean;
 }
 
-export default function Form({ form, handleChange, handleSubmit }: Props) {
-  function handleSubmitForm(e: React.FormEvent<HTMLFormElement>) {
+export default function Form({
+  form,
+  handleChange,
+  handleSubmit,
+  loading,
+}: Props) {
+  function handleSubmitForm(e: React.FormEvent) {
     e.preventDefault();
     handleSubmit();
   }
@@ -62,7 +67,7 @@ export default function Form({ form, handleChange, handleSubmit }: Props) {
         />
       </Section>
 
-      <Buttons />
+      <Buttons loading={loading} />
     </form>
   );
 }

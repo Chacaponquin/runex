@@ -6,56 +6,28 @@ interface Props {
 }
 
 export class Product {
-  private _id: string;
-  private _name: string;
-  private _price: number;
-  private _images: Array<string>;
-  private _provider: string;
-  private _sizes: Array<string> = ["S", "M", "L", "XL"];
-  private _colors: Array<string> = ["orange", "red", "green"];
+  id: string;
+  name: string;
+  price: number;
+  images: Array<string>;
+  provider: string;
+  sizes: Array<string> = ["S", "M", "L", "XL"];
+  colors: Array<string> = ["orange", "red", "green"];
 
   constructor({ id, name, price, images }: Props) {
-    this._id = id;
-    this._name = name;
-    this._price = price;
-    this._images = images.slice(0, 5);
-    this._provider = "Amazon";
-  }
-
-  get id() {
-    return this._id;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  get price() {
-    return this._price;
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.images = images.slice(0, 5);
+    this.provider = "Amazon";
   }
 
   get image() {
-    return this._images[0];
-  }
-
-  get images() {
-    return this._images;
+    return this.images[0];
   }
 
   get priceStr() {
     return Product.str(this.price);
-  }
-
-  get colors() {
-    return this._colors;
-  }
-
-  get sizes() {
-    return this._sizes;
-  }
-
-  get provider() {
-    return this._provider;
   }
 
   static str(value: number): string {

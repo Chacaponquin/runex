@@ -17,16 +17,7 @@ export default function Navbar({ presentationVisible }: Props) {
     "xl:px-20 px-7 lg:py-1.5",
     "h-[70px] esm:h-[60px]",
     "transition-all duration-200",
-
-    {
-      "text-white stroke-white": presentationVisible,
-      "text-black stroke-black": !presentationVisible,
-    },
-
-    {
-      "bg-transparent": presentationVisible,
-      "bg-white": !presentationVisible,
-    },
+    "bg-white",
 
     { "shadow-lg": !presentationVisible }
   );

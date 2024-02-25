@@ -2,7 +2,13 @@
 
 import { Favorite } from "@modules/app/modules/icon/components";
 import { useProduct } from "./hooks";
-import { AddButton, Image as ProductImage } from "./components";
+import {
+  AddButton,
+  Name,
+  Price,
+  Image as ProductImage,
+  Provider,
+} from "./components";
 
 interface Props {
   name: string;
@@ -10,6 +16,7 @@ interface Props {
   price: string;
   id: string;
   handleSelectProduct(id: string): void;
+  provider: string;
 }
 
 export default function Product({
@@ -18,6 +25,7 @@ export default function Product({
   price,
   id,
   handleSelectProduct,
+  provider,
 }: Props) {
   const { handleAddToFavorite, handleSelect } = useProduct({
     id: id,
@@ -25,20 +33,18 @@ export default function Product({
   });
 
   return (
-    <article className="flex flex-col rounded bg-white cursor-pointer h-max">
+    <article className="flex flex-col rounded bg-white cursor-pointer h-max shadow-md">
       <ProductImage src={image} handleAddFavorite={handleAddToFavorite} />
 
       <section className="flex flex-col pt-2.5 pb-4 px-4 w-full">
-        <h2 className="font-fontMedium text-lg mb-0.5">{name}</h2>
-        <p className="text-sm text-gray-500 mb-4">Amazon</p>
+        <Name name={name} />
 
-        <div className="flex items-center w-full justify-between gap-x-3">
-          <span className="text-blue-500 font-fontMedium text-sm">{price}</span>
-
-          <div className="flex items-center gap-x-3">
-            <AddButton handleClick={handleSelect} />
-          </div>
+        <div className="flex items-center gap-x-3 mb-3">
+          <Price price={price} />
+          <Provider provider={provider} />
         </div>
+
+        <AddButton handleClick={handleSelect} />
       </section>
     </article>
   );

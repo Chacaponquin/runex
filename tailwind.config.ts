@@ -15,11 +15,11 @@ const config: Config = {
       },
 
       fontFamily: {
-        fontRegular: "Public Sans Regular",
-        fontBold: "Public Sans Bold",
-        fontExtraBold: "Public Sans Extra Bold",
-        fontSemiBold: "Public Sans Semi Bold",
-        fontMedium: "Public Sans Medium",
+        fontRegular: "Poppins Regular",
+        fontBold: "Poppins Bold",
+        fontExtraBold: "Poppins Extra Bold",
+        fontSemiBold: "Poppins Semi Bold",
+        fontMedium: "Poppins Medium",
       },
 
       backgroundImage: {},

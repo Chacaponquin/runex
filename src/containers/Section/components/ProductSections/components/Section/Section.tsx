@@ -26,6 +26,7 @@ export default function Section({
             name={product.name}
             price={product.priceStr}
             id={product.id}
+            provider={product.provider}
             handleSelectProduct={handleSelectProduct}
           />
         ))}

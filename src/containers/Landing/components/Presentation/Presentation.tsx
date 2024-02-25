@@ -1,8 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { Header, Search } from "./components";
-import { APP_IMAGES } from "@modules/app/constants";
+import { Header, Image as PresImage, Search } from "./components";
 import { RefObject } from "react";
 
 interface Props {
@@ -11,25 +10,23 @@ interface Props {
 
 export default function Presentation({ presentationRef }: Props) {
   const CLASS = clsx(
-    "flex flex-col items-center",
+    "grid grid-cols-1 xl:grid-cols-2",
     "h-screen min-h-[500px]",
-    "w-full",
-    "pt-36",
-    "px-5"
+    "w-full max-w-[1200px]",
+    "gap-x-20",
+    "pt-36"
   );
 
   return (
-    <header
-      className={CLASS}
-      ref={presentationRef}
-      style={{
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url(${APP_IMAGES.LANDING.PRESENTATION.src})`,
-      }}
-    >
-      <Header />
-      <Search />
+    <header className="flex w-full px-10 justify-center" ref={presentationRef}>
+      <div className={CLASS}>
+        <div className="flex flex-col w-full">
+          <Header />
+          <Search />
+        </div>
+
+        <PresImage />
+      </div>
     </header>
   );
 }

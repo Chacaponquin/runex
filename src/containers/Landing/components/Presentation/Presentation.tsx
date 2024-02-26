@@ -11,10 +11,10 @@ interface Props {
 export default function Presentation({ presentationRef }: Props) {
   const CLASS = clsx(
     "grid grid-cols-1 xl:grid-cols-2",
-    "h-screen min-h-[500px]",
+    "xl:h-screen xl:min-h-[500px]",
     "w-full max-w-[1200px]",
     "gap-x-20",
-    "pt-36"
+    "xl:pt-36 pt-28 pb-16 xl:pb-0"
   );
 
   return (

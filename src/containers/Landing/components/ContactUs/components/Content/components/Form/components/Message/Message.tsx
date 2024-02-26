@@ -18,10 +18,11 @@ export default function Message({
 
   const CLASS = clsx(
     "h-[130px]",
-    "outline outline-[2px] outline-gray-300",
-    "rounded-sm",
+    "outline outline-[2px] outline-gray-200",
+    "rounded",
     "px-5 py-2",
-    "focus:outline-gray-500"
+    "transition-all duration-200",
+    "focus:outline-blue-500 focus:shadow-input"
   );
 
   return (

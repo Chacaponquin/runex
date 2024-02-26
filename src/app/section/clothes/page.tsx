@@ -6,11 +6,12 @@ interface Props {
     page: string | undefined;
     min: string | undefined;
     max: string | undefined;
+    color: string | undefined;
+    size: string | undefined;
+    provider: string | undefined;
   };
 }
 
 export default function Page(params: Props) {
-
-
   return <Section {...params.searchParams} />;
 }

@@ -10,12 +10,16 @@ interface Props {
 export default function Favorite({ handleClick, isFavorite }: Props) {
   const CLASS = clsx(
     "shadow",
-    "hover:bg-blue-500 hover:stroke-white",
     "transition-all duration-200",
     "bg-white",
     "stroke-black",
     "p-3",
-    "rounded-full"
+    "rounded-full",
+
+    {
+      "bg-blue-500 stroke-white": isFavorite,
+      "hover:bg-blue-500 hover:stroke-white": !isFavorite,
+    }
   );
 
   return (

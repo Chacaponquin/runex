@@ -44,6 +44,7 @@ export default function Form({ form, handleChange, handleSubmit }: Props) {
         placeholder="Message"
         handleChange={(value) => handleChange("message", value)}
       />
+
       <Buttons />
     </form>
   );

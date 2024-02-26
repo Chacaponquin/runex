@@ -1,3 +1,5 @@
 import Header from "./Header/Header";
+import Image from "./Image/Image";
+import Search from "./Search/Search";
 
-export { Header };
+export { Header, Search, Image };

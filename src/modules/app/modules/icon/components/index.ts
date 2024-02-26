@@ -18,6 +18,7 @@ import Minus from "./Minus";
 import Phone from "./Phone";
 import Plus from "./Plus";
 import Search from "./Search";
+import Setting from "./Setting";
 import Share from "./Share";
 import User from "./User";
 
@@ -44,4 +45,5 @@ export {
   Filter,
   Share,
   Check,
+  Setting,
 };

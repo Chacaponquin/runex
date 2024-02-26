@@ -4,6 +4,7 @@ const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/containers/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/modules/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: "class",
@@ -11,14 +12,15 @@ const config: Config = {
     extend: {
       boxShadow: {
         input: "0 0 0 4px rgba(52, 152, 219, 0.4)",
+        search: "0 0 0 4px rgba(52, 152, 219, 0.8)",
       },
 
       fontFamily: {
-        fontRegular: "Public Sans Regular",
-        fontBold: "Public Sans Bold",
-        fontExtraBold: "Public Sans Extra Bold",
-        fontSemiBold: "Public Sans Semi Bold",
-        fontMedium: "Public Sans Medium",
+        fontRegular: "Poppins Regular",
+        fontBold: "Poppins Bold",
+        fontExtraBold: "Poppins Extra Bold",
+        fontSemiBold: "Poppins Semi Bold",
+        fontMedium: "Poppins Medium",
       },
 
       backgroundImage: {},

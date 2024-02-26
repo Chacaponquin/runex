@@ -9,6 +9,9 @@ interface Props {
   page: string | undefined;
   min: string | undefined;
   max: string | undefined;
+  color: string | undefined;
+  size: string | undefined;
+  provider: string | undefined;
 }
 
 export default function Search({
@@ -17,6 +20,9 @@ export default function Search({
   max,
   min,
   page: queryPage,
+  color,
+  size,
+  provider,
 }: Props) {
   const {
     filters,
@@ -30,11 +36,25 @@ export default function Search({
     page,
     handleChangePage,
     openFilters,
-  } = useSearch({ query: query, page: queryPage, max: max, min: min });
+  } = useSearch({
+    query: query,
+    page: queryPage,
+    max: max,
+    min: min,
+    color: color,
+    size: size,
+    provider: provider,
+  });
 
   return (
     <div className="flex flex-col w-full">
-      {openFilters && <Filters handleClose={handleChangeOpenFilters} />}
+      {openFilters && (
+        <Filters
+          handleClose={handleChangeOpenFilters}
+          filters={filters}
+          handleSubmit={handleApplySearch}
+        />
+      )}
 
       <Header
         handleApplySearch={handleApplySearch}

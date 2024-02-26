@@ -1,7 +1,6 @@
 "use client";
 
-import NextImage from "next/image";
-import { AddButton, Image as ProductImage } from "./components";
+import { AddButton, Name, Price, Image as ProductImage } from "./components";
 import { useCard } from "./hooks";
 
 interface Props {
@@ -26,15 +25,13 @@ export default function Card({ image, name, price, handleClick, id }: Props) {
       />
 
       <div className="flex flex-col pt-2">
-        <h2 className="font-fontSemiBold text-lg mb-4">{name}</h2>
+        <Name name={name} />
 
-        <div className="flex items-center w-full justify-between">
-          <span className="text-base font-fontMedium text-blue-500">
-            {price}
-          </span>
-
-          <AddButton handleClick={handleClick} />
+        <div className="flex gap-x-4 items-center mb-3">
+          <Price price={price} />
         </div>
+
+        <AddButton handleClick={handleClick} />
       </div>
     </article>
   );

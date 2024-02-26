@@ -13,13 +13,13 @@ import {
 import { useLanding } from "./hooks";
 
 export default function Landing() {
-  const { faq } = useLanding();
+  const { faq, presentationRef, presentationVisible } = useLanding();
 
   return (
     <div className="flex flex-col w-full items-center bg-white">
-      <Navbar />
+      <Navbar presentationVisible={presentationVisible} />
 
-      <Presentation />
+      <Presentation presentationRef={presentationRef} />
 
       <main className="flex flex-col w-full xl:gap-y-24 esm:gap-y-16 gap-y-20 mt-10">
         <Sections />

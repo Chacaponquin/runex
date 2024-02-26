@@ -14,7 +14,7 @@ export default function Buttons({ handleChangeOpenCart, openCart }: Props) {
   const { actualUser } = useUser();
 
   return (
-    <section className="flex gap-x-7 items-center stroke-black">
+    <section className="flex gap-x-7 esm:gap-x-5 items-center stroke-black">
       <Button icon={Bag} handleClick={handleChangeOpenCart}>
         {openCart && (
           <Cart full={false} handleChangeOpenCart={handleChangeOpenCart} />

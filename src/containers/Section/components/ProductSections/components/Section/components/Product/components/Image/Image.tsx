@@ -3,9 +3,10 @@ import { Favorite } from "./components";
 interface Props {
   src: string;
   handleAddFavorite(): void;
+  isFavorite: boolean;
 }
 
-export default function Image({ handleAddFavorite, src }: Props) {
+export default function Image({ handleAddFavorite, src, isFavorite }: Props) {
   return (
     <header
       className="h-[170px] w-full p-3 rounded-t"
@@ -15,7 +16,7 @@ export default function Image({ handleAddFavorite, src }: Props) {
         backgroundSize: "cover",
       }}
     >
-      <Favorite handleClick={handleAddFavorite} />
+      <Favorite handleClick={handleAddFavorite} isFavorite={isFavorite} />
     </header>
   );
 }

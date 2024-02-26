@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { Product } from "../domain";
+import { Product, ProductColor, ProductSize } from "../domain";
 
 interface AddProductFavoriteProps {
   productId: string;
@@ -74,6 +74,19 @@ export default function useProductServices() {
     return products;
   }
 
+  async function getAllProductsColors(): Promise<Array<ProductColor>> {
+    return [
+      { name: "Orange", color: "#f0932b" },
+      { color: "#6ab04c", name: "Green" },
+      { name: "Red", color: "#eb4d4b" },
+      { name: "Black", color: "#2d3436" },
+    ];
+  }
+
+  async function getAllProductsSizes(): Promise<Array<ProductSize>> {
+    return [{ name: "S" }, { name: "L" }, { name: "XL" }, { name: "2XL" }];
+  }
+
   return {
     getPopularProducts,
     getTrendingProducts,
@@ -82,5 +95,7 @@ export default function useProductServices() {
     getProductById,
     getSimilarProducts,
     filterProducts,
+    getAllProductsColors,
+    getAllProductsSizes,
   };
 }

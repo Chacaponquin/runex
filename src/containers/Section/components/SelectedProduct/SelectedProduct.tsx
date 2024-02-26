@@ -26,6 +26,7 @@ export default function SelectedProduct({
     handleIncreaseQuantity,
     handleAddFavorite,
     handleShare,
+    isFavorite,
   } = useSelectedProduct({
     productId: selectedProduct,
   });
@@ -39,6 +40,7 @@ export default function SelectedProduct({
     >
       <Header handleDeleteSelectedProduct={handleDeleteSelectedProduct} />
       <Product
+        isFavorite={isFavorite}
         info={productInfo}
         loading={loading}
         similarProducts={similarProducts}

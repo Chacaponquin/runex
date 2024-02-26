@@ -1,6 +1,5 @@
 "use client";
 
-import { Favorite } from "@modules/app/modules/icon/components";
 import { useProduct } from "./hooks";
 import {
   AddButton,
@@ -27,14 +26,18 @@ export default function Product({
   handleSelectProduct,
   provider,
 }: Props) {
-  const { handleAddToFavorite, handleSelect } = useProduct({
+  const { handleAddToFavorite, handleSelect, isFavorite } = useProduct({
     id: id,
     handleSelectProduct: handleSelectProduct,
   });
 
   return (
     <article className="flex flex-col rounded bg-white cursor-pointer h-max shadow-md">
-      <ProductImage src={image} handleAddFavorite={handleAddToFavorite} />
+      <ProductImage
+        src={image}
+        handleAddFavorite={handleAddToFavorite}
+        isFavorite={isFavorite}
+      />
 
       <section className="flex flex-col pt-2.5 pb-4 px-4 w-full">
         <Name name={name} />

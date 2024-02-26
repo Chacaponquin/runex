@@ -15,9 +15,20 @@ interface Props {
   page: string | undefined;
   min: string | undefined;
   max: string | undefined;
+  color: string | undefined;
+  size: string | undefined;
+  provider: string | undefined;
 }
 
-export default function Section({ q: query , max, min, page}: Props) {
+export default function Section({
+  q: query,
+  max,
+  min,
+  page,
+  color,
+  size,
+  provider,
+}: Props) {
   const {
     selectedProduct,
     handleSelectProduct,
@@ -37,13 +48,23 @@ export default function Section({ q: query , max, min, page}: Props) {
         query={query}
         openCart={openCart}
         handleChangeOpenCart={handleChangeOpenCart}
+        isSearch={Boolean(query)}
       />
 
       {!query && <Header />}
 
       <main className="flex flex-col w-full">
         {query ? (
-          <Search handleSelectProduct={handleSelectProduct} query={query} page={page} min={min} max={max}/>
+          <Search
+            handleSelectProduct={handleSelectProduct}
+            query={query}
+            page={page}
+            min={min}
+            max={max}
+            provider={provider}
+            color={color}
+            size={size}
+          />
         ) : (
           <ProductSections handleSelectProduct={handleSelectProduct} />
         )}

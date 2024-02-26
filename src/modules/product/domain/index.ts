@@ -1,3 +1,16 @@
+export interface ProductColor {
+  name: string;
+  color: string;
+}
+
+export interface ProductSize {
+  name: string;
+}
+
+export interface Provider {
+  name: string;
+}
+
 interface Props {
   id: string;
   name: string;

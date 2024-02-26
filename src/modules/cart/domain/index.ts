@@ -26,7 +26,7 @@ export class Cart {
         images: Array.from({
           length: faker.number.int({ min: 1, max: 5 }),
         }).map(() => faker.image.url()),
-        name: faker.commerce.product(),
+        name: faker.lorem.words({ min: 4, max: 10 }),
         price: Number(faker.commerce.price()),
       }),
       quantity: faker.number.int({ min: 1, max: 5 }),

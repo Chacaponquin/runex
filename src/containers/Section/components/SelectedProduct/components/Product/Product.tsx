@@ -21,6 +21,7 @@ interface Props {
   handleIncreaseQuantity(): void;
   handleAddFavorite(): void;
   handleShare(): void;
+  isFavorite: boolean
 }
 
 export default function Product({
@@ -35,7 +36,7 @@ export default function Product({
   handleDecreaseQuantity,
   handleIncreaseQuantity,
   handleAddFavorite,
-  handleShare,
+  handleShare,isFavorite
 }: Props) {
   return (
     <div className="flex flex-grow bg-white w-full justify-center rounded-t-2xl overflow-y-auto pt-10 esm:pt-6 px-5">
@@ -47,6 +48,7 @@ export default function Product({
             <Top
               handleAddFavorite={handleAddFavorite}
               handleShare={handleShare}
+              isFavorite={isFavorite}
             />
 
             <div className="grid xl:grid-cols-2 grid-cols-1 w-full gap-x-7 gap-y-5 mb-14">

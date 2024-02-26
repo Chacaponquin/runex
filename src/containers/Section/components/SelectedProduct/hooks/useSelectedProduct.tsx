@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function useSelectedProduct({ productId }: Props) {
-  const { actualUser } = useUser();
+  const { actualUser, isProductFavorite } = useUser();
   const { getProductById, getSimilarProducts, addProductToFavorites } =
     useProductServices();
 
@@ -76,6 +76,8 @@ export default function useSelectedProduct({ productId }: Props) {
     setForm((prev) => ({ ...prev, quantity: prev.quantity - 1 }));
   }
 
+  const isFavorite = productId ? isProductFavorite(productId) : false;
+
   return {
     productInfo,
     loading,
@@ -89,5 +91,6 @@ export default function useSelectedProduct({ productId }: Props) {
     handleIncreaseQuantity,
     handleAddFavorite,
     handleShare,
+    isFavorite,
   };
 }

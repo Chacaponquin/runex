@@ -4,7 +4,7 @@ import { Logo as IconLogo } from "@modules/app/components";
 
 export default function Logo() {
   return (
-    <section>
+    <section className="stroke-black">
       <Link href={APP_ROUTES.ROOT}>
         <IconLogo size={30} />
       </Link>

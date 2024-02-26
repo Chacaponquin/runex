@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Logo() {
   return (
-    <section className="flex justify-start items-center">
+    <section className="flex justify-start items-center stroke-black">
       <Link href={APP_ROUTES.ROOT}>
         <IconLogo size={30} />
       </Link>

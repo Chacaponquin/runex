@@ -12,7 +12,7 @@ export default function Header({
   handleChangeSearch,
 }: Props) {
   return (
-    <header className="flex flex-col items-center lg:pt-24 pt-20 esm:pt-14 pb-10 w-full">
+    <header className="flex flex-col items-center lg:pt-24 pt-20 esm:pt-14 pb-10 w-full px-3">
       <Title />
       <Description />
       <Search

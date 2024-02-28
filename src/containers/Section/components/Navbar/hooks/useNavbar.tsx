@@ -11,6 +11,7 @@ export default function useNavbar({ query }: Props) {
   const router = useRouter();
 
   const [search, setSearch] = useState(query ? query : "");
+  const [openSide, setOpenSide] = useState(false);
 
   function handleSearch() {
     if (search) {
@@ -22,9 +23,20 @@ export default function useNavbar({ query }: Props) {
     setSearch(v);
   }
 
+  function handleOpenSide() {
+    setOpenSide(true);
+  }
+
+  function handleCloseSide() {
+    setOpenSide(false);
+  }
+
   return {
     handleSearch,
     search,
     handleChangeSearch,
+    openSide,
+    handleCloseSide,
+    handleOpenSide,
   };
 }

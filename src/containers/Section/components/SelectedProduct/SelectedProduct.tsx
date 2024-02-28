@@ -1,7 +1,7 @@
 "use client";
 
 import { useBlockScroll } from "@modules/shared/hooks";
-import { Product, Header } from "./components";
+import { Product, Header, Share } from "./components";
 import { useSelectedProduct } from "./hooks";
 
 interface Props {
@@ -27,6 +27,8 @@ export default function SelectedProduct({
     handleAddFavorite,
     handleShare,
     isFavorite,
+    openShare,
+    handleCloseShare,
   } = useSelectedProduct({
     productId: selectedProduct,
   });
@@ -35,10 +37,11 @@ export default function SelectedProduct({
 
   return (
     <div
-      className="fixed top-0 left-0 w-full h-screen z-50 bg-black/50 flex flex-col"
+      className="fixed top-0 left-0 w-full h-screen z-40 bg-black/50 flex flex-col"
       style={{ visibility: selectedProduct ? "visible" : "hidden" }}
     >
       <Header handleDeleteSelectedProduct={handleDeleteSelectedProduct} />
+
       <Product
         isFavorite={isFavorite}
         info={productInfo}
@@ -54,6 +57,15 @@ export default function SelectedProduct({
         handleAddFavorite={handleAddFavorite}
         handleShare={handleShare}
       />
+
+      {productInfo && openShare && (
+        <Share
+          handleClose={handleCloseShare}
+          image={productInfo.image}
+          name={productInfo.name}
+          id={productInfo.id}
+        />
+      )}
     </div>
   );
 }

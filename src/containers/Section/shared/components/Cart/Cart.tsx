@@ -19,13 +19,13 @@ export default function Cart({ full, handleChangeOpenCart }: Props) {
     "shadow-lg",
     "bg-white",
 
-    { "min-w-[400px] max-h-[600px]": !full, "w-full h-screen": full },
+    { "min-w-[510px] max-h-[600px]": !full, "w-full h-screen": full },
 
     { absolute: !full, "fixed top-0 left-0": full },
 
     { "-translate-x-[95%] translate-y-9": !full },
 
-    { rounded: !full, "rounded-none": full }
+    { "rounded-lg": !full, "rounded-none": full }
   );
 
   return (

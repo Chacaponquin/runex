@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ProductForm } from "../interfaces";
 import { useUser } from "@modules/user/hooks";
 
+
 interface Props {
   productId: string | null;
 }
@@ -14,6 +15,7 @@ export default function useSelectedProduct({ productId }: Props) {
   const { actualUser, isProductFavorite } = useUser();
   const { getProductById, getSimilarProducts, addProductToFavorites } =
     useProductServices();
+
 
   const [form, setForm] = useState<ProductForm>({
     color: "",
@@ -27,13 +29,14 @@ export default function useSelectedProduct({ productId }: Props) {
   const [similarProductsLoading, setSimilarProductsLoading] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [openShare, setOpenShare] = useState(false);
+
   useEffect(() => {
     if (productId) {
       setLoading(true);
 
       getProductById(productId).then((info) => {
         setProductInfo(info);
-
         setForm({ color: info.colors[0], quantity: 1, size: info.sizes[0] });
 
         setLoading(false);
@@ -62,7 +65,13 @@ export default function useSelectedProduct({ productId }: Props) {
     }
   }
 
-  function handleShare() {}
+  function handleShare() {
+    setOpenShare(true);
+  }
+
+  function handleCloseShare() {
+    setOpenShare(false);
+  }
 
   function handleChangeForm(key: keyof ProductForm, value: unknown) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -78,6 +87,7 @@ export default function useSelectedProduct({ productId }: Props) {
 
   const isFavorite = productId ? isProductFavorite(productId) : false;
 
+
   return {
     productInfo,
     loading,
@@ -92,5 +102,8 @@ export default function useSelectedProduct({ productId }: Props) {
     handleAddFavorite,
     handleShare,
     isFavorite,
+    openShare,
+    handleCloseShare,
+ 
   };
 }

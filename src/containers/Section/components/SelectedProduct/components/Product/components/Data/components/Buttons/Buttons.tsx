@@ -7,9 +7,9 @@ interface Props {
 
 export default function Buttons({ handleAddToCart, handleBuyNow }: Props) {
   return (
-    <div className="grid grid-cols-2 gap-x-4 exsm:grid-cols-1 gap-y-2">
+    <div className="grid grid-cols-2 gap-x-4 exsm:grid-cols-1 gap-y-2 text-lg esm:text-base">
       <button
-        className="rounded bg-black text-white text-lg px-4 py-2 w-full font-fontMedium transition-all duration-200 hover:opacity-70"
+        className="rounded bg-black text-white px-4 py-2 w-full font-fontMedium transition-all duration-200 hover:opacity-70"
         onClick={handleBuyNow}
       >
         Comprar ahora
@@ -17,7 +17,7 @@ export default function Buttons({ handleAddToCart, handleBuyNow }: Props) {
 
       <button
         onClick={handleAddToCart}
-        className="w-full bg-blue-500 text-lg text-white rounded px-4 py-2 flex gap-x-4 stroke-white justify-center items-center transition-all duration-200 hover:opacity-70"
+        className="w-full bg-blue-500 text-white rounded px-4 py-2 flex gap-x-4 stroke-white justify-center items-center transition-all duration-200 hover:opacity-70"
       >
         <Bag size={22} />
         <p className="font-fontMedium">Añadir</p>

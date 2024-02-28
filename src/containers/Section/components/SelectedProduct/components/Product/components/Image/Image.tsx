@@ -19,7 +19,7 @@ export default function Image({ images, name }: Props) {
         src={images[selectedImage]}
         width={400}
         height={400}
-        className="object-cover w-full h-[350px] esm:h-[280px] rounded-lg"
+        className="object-cover w-full h-[350px] esm:h-[230px] rounded-lg"
       />
 
       {images.length > 1 && (

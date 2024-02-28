@@ -20,6 +20,7 @@ import Plus from "./Plus";
 import Search from "./Search";
 import Setting from "./Setting";
 import Share from "./Share";
+import Twitter from "./Twitter";
 import User from "./User";
 
 export {
@@ -46,4 +47,5 @@ export {
   Share,
   Check,
   Setting,
+  Twitter,
 };

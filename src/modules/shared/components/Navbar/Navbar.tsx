@@ -7,18 +7,10 @@ import { useBlockScroll, useScreen } from "@modules/shared/hooks";
 import { SCREEN_SIZES } from "@modules/app/constants";
 
 interface Props {
-  query: string | undefined;
-  handleChangeOpenCart(): void;
-  openCart: boolean;
-  isSearch: boolean;
+  query?: string;
 }
 
-export default function Navbar({
-  query,
-  handleChangeOpenCart,
-  openCart,
-  isSearch,
-}: Props) {
+export default function Navbar({ query }: Props) {
   const {
     handleSearch,
     search,
@@ -26,6 +18,8 @@ export default function Navbar({
     handleCloseSide,
     handleOpenSide,
     openSide,
+    openCart,
+    handleChangeOpenCart,
   } = useNavbar({ query });
 
   const { bigScreen } = useScreen(SCREEN_SIZES.ESM);
@@ -42,7 +36,7 @@ export default function Navbar({
         />
 
         <div className="flex items-center gap-x-6 esm:gap-x-4">
-          {!isSearch && (
+          {!query && (
             <Search
               handleSearch={handleSearch}
               handleChange={handleChangeSearch}

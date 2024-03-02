@@ -21,7 +21,7 @@ export default function Landing() {
 
       <Presentation presentationRef={presentationRef} />
 
-      <main className="flex flex-col w-full xl:gap-y-24 esm:gap-y-16 gap-y-20 mt-10">
+      <main className="flex flex-col w-full xl:gap-y-24 esm:gap-y-16 gap-y-20 mt-10 mb-20 esm:mb-12">
         <Sections />
         <AboutUs />
         <FAQ faq={faq} />

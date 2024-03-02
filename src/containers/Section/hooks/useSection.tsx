@@ -6,12 +6,6 @@ export default function useSection() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [openSideBar, setOpenSideBar] = useState(false);
 
-  const [openCart, setOpenCart] = useState(false);
-
-  function handleChangeOpenCart() {
-    setOpenCart((prev) => !prev);
-  }
-
   function handleOpenSideBar() {
     setOpenSideBar(true);
   }
@@ -32,8 +26,6 @@ export default function useSection() {
     selectedProduct,
     handleDeleteSelectedProduct,
     handleSelectProduct,
-    openCart,
-    handleChangeOpenCart,
     openSideBar,
     handleCloseSideBar,
     handleOpenSideBar,

@@ -12,10 +12,11 @@ export default function useNavbar({ query }: Props) {
 
   const [search, setSearch] = useState(query ? query : "");
   const [openSide, setOpenSide] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
 
   function handleSearch() {
     if (search) {
-      router.push(`?q=${search}`, { scroll: true });
+      router.push(`clothes/search?q=${search}`, { scroll: true });
     }
   }
 
@@ -31,6 +32,10 @@ export default function useNavbar({ query }: Props) {
     setOpenSide(false);
   }
 
+  function handleChangeOpenCart() {
+    setOpenCart((prev) => !prev);
+  }
+
   return {
     handleSearch,
     search,
@@ -38,5 +43,7 @@ export default function useNavbar({ query }: Props) {
     openSide,
     handleCloseSide,
     handleOpenSide,
+    openCart,
+    handleChangeOpenCart,
   };
 }

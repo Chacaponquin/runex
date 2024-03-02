@@ -1,11 +1,11 @@
 "use client";
 
+import { Footer, Navbar, SelectedProduct } from "@modules/shared/components";
 import { Filters, Header, Result } from "./components";
 import { useSearch } from "./hooks";
 
 interface Props {
-  handleSelectProduct(id: string): void;
-  query: string | undefined;
+  q: string | undefined;
   page: string | undefined;
   min: string | undefined;
   max: string | undefined;
@@ -15,8 +15,7 @@ interface Props {
 }
 
 export default function Search({
-  handleSelectProduct,
-  query,
+  q,
   max,
   min,
   page: queryPage,
@@ -36,8 +35,11 @@ export default function Search({
     page,
     handleChangePage,
     openFilters,
+    handleSelectProduct,
+    selectedProduct,
+    handleDeleteSelectedProduct,
   } = useSearch({
-    query: query,
+    query: q,
     page: queryPage,
     max: max,
     min: min,
@@ -48,6 +50,13 @@ export default function Search({
 
   return (
     <div className="flex flex-col w-full">
+      <SelectedProduct
+        selectedProduct={selectedProduct}
+        handleDeleteSelectedProduct={handleDeleteSelectedProduct}
+      />
+
+      <Navbar query={q} />
+
       {openFilters && (
         <Filters
           handleClose={handleChangeOpenFilters}
@@ -73,6 +82,8 @@ export default function Search({
         handleChangePage={handleChangePage}
         handleSelectProduct={handleSelectProduct}
       />
+
+      <Footer />
     </div>
   );
 }

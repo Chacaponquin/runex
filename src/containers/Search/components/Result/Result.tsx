@@ -26,7 +26,7 @@ export default function Result({
   handleSelectProduct,
 }: Props) {
   return (
-    <main className="flex flex-col w-full px-5 items-center">
+    <main className="flex flex-col w-full px-5 items-center mb-20 esm:mb-12">
       <div className="flex flex-col w-full max-w-[1100px]">
         <Header
           length={totalProducts}

@@ -57,7 +57,7 @@ export default function Navbar({ query }: Props) {
         )}
       </div>
 
-      {openSide && <Menu openMenu={openSide} />}
+      <Menu openMenu={openSide} handleCloseSide={handleCloseSide} />
     </div>
   );
 }

@@ -20,6 +20,9 @@ export default function Navbar({ query }: Props) {
     openSide,
     openCart,
     handleChangeOpenCart,
+    links,
+    handleChangeOpenUserMenu,
+    openUserMenu,
   } = useNavbar({ query });
 
   const { bigScreen } = useScreen(SCREEN_SIZES.ESM);
@@ -47,6 +50,8 @@ export default function Navbar({ query }: Props) {
           <Buttons
             handleChangeOpenCart={handleChangeOpenCart}
             openCart={openCart}
+            openUserMenu={openUserMenu}
+            handleChangeOpenUserMenu={handleChangeOpenUserMenu}
           />
         </div>
       </nav>
@@ -57,7 +62,11 @@ export default function Navbar({ query }: Props) {
         )}
       </div>
 
-      <Menu openMenu={openSide} handleCloseSide={handleCloseSide} />
+      <Menu
+        openMenu={openSide}
+        handleCloseSide={handleCloseSide}
+        links={links}
+      />
     </div>
   );
 }

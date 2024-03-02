@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function Button({ handleClick, icon, disabled }: Props) {
-  const CLASS = clsx("flex items-center justify-center", "py-2 px-1.5", {
+  const CLASS = clsx("flex items-center justify-center", "py-2 pl-2 pr-1.5", {
     "stroke-black": disabled,
     "stroke-blue-500": !disabled,
   });

@@ -6,6 +6,7 @@ import Bag from "./Bag";
 import Bars from "./Bars";
 import Cart from "./Cart";
 import Check from "./Check";
+import CheckOne from "./CheckOne";
 import Close from "./Close";
 import CreditCard from "./CreditCard";
 import Dislike from "./Dislike";
@@ -14,6 +15,7 @@ import Facebook from "./Facebook";
 import Favorite from "./Favorite";
 import Filter from "./Filter";
 import Instagram from "./Instagram";
+import Lock from "./Lock";
 import Menu from "./Menu";
 import Minus from "./Minus";
 import Money from "./Money";
@@ -52,4 +54,6 @@ export {
   Twitter,
   CreditCard,
   Money,
+  Lock,
+  CheckOne,
 };

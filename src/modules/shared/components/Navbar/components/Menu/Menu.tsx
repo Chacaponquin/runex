@@ -1,24 +1,29 @@
 import { useBlockScroll } from "@modules/shared/hooks";
-import React from "react";
+import { NavbarLink } from "../../interfaces";
+import { Header, Links } from "./components";
 
 interface Props {
   openMenu: boolean;
   handleCloseSide(): void;
+  links: Array<NavbarLink>;
 }
 
-export default function Menu({ openMenu, handleCloseSide }: Props) {
-  useBlockScroll(true);
+export default function Menu({ openMenu, handleCloseSide, links }: Props) {
+  useBlockScroll(openMenu);
 
   return (
     <div
-      className="fixed top-0 left-0 w-full h-screen z-40 bg-black/50 flex flex-col"
+      className="fixed lg:hidden top-0 left-0 w-full h-screen z-40 bg-black/50 flex flex-col"
       style={{ visibility: openMenu ? "visible" : "hidden" }}
       onClick={handleCloseSide}
     >
       <nav
-        className="flex flex-col px-10 bg-white h-screen w-[200px]"
+        className="flex flex-col px-6 bg-white h-screen w-[330px]"
         onClick={(e) => e.stopPropagation()}
-      ></nav>
+      >
+        <Header handleClose={handleCloseSide} />
+        <Links links={links} />
+      </nav>
     </div>
   );
 }

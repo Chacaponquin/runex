@@ -31,7 +31,7 @@ export default function Cart({ full, handleChangeOpenCart }: Props) {
   return (
     <div className={CLASS}>
       <Header full={full} handleChangeOpenCart={handleChangeOpenCart} />
-      <Products products={cart.products} />
+      <Products products={cart} />
       <Bill />
       <Footer />
     </div>

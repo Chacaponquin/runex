@@ -1,8 +1,8 @@
-import { ProductForm } from "@containers/Section/components/SelectedProduct/interfaces";
+import { Counter } from "@modules/cart/components";
+import { ProductForm } from "../../../../interfaces";
 import {
   Buttons,
   Color,
-  Counter,
   Name,
   Price,
   Provider,
@@ -80,6 +80,8 @@ export default function Data({
 
         <Section text="Cantidad" selected={form.quantity}>
           <Counter
+            disableDecrease={false}
+            disableIncrease={false}
             handleDecreaseQuantity={handleDecreaseQuantity}
             handleIncreaseQuantity={handleIncreaseQuantity}
             quantity={form.quantity}

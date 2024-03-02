@@ -1,7 +1,9 @@
 "use client";
 
+import { APP_ROUTES } from "@modules/app/constants";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { NavbarLink } from "../interfaces";
 
 interface Props {
   query: string | undefined;
@@ -13,6 +15,12 @@ export default function useNavbar({ query }: Props) {
   const [search, setSearch] = useState(query ? query : "");
   const [openSide, setOpenSide] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const [openUserMenu, setOpenUserMenu] = useState(false);
+
+  const links: Array<NavbarLink> = [
+    { label: "Ropa", url: APP_ROUTES.SECTION.CLOTHES, sections: [] },
+    { label: "Medicamentos", url: APP_ROUTES.SECTION.MEDICINE, sections: [] },
+  ];
 
   function handleSearch() {
     if (search) {
@@ -36,6 +44,10 @@ export default function useNavbar({ query }: Props) {
     setOpenCart((prev) => !prev);
   }
 
+  function handleChangeOpenUserMenu() {
+    setOpenUserMenu((prev) => !prev);
+  }
+
   return {
     handleSearch,
     search,
@@ -45,5 +57,8 @@ export default function useNavbar({ query }: Props) {
     handleOpenSide,
     openCart,
     handleChangeOpenCart,
+    links,
+    openUserMenu,
+    handleChangeOpenUserMenu,
   };
 }

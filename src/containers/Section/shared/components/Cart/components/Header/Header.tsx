@@ -15,7 +15,7 @@ export default function Header({ full, handleChangeOpenCart }: Props) {
   return (
     <header className={CLASS}>
       {full && <Back handleClick={handleChangeOpenCart} />}
-      <h1 className="font-fontSemiBold text-2xl text-center">My Cart</h1>
+      <h1 className="font-fontSemiBold text-2xl text-center">Mi carrito</h1>
       {full && <div />}
     </header>
   );

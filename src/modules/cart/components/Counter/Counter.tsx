@@ -1,5 +1,4 @@
 import { Minus, Plus } from "@modules/app/modules/icon/components";
-import React from "react";
 import { Button } from "./components";
 
 interface Props {
@@ -18,7 +17,7 @@ export default function Counter({
   disableIncrease,
 }: Props) {
   return (
-    <div className="flex rounded-xl border-[1px] border-gray-100">
+    <div className="flex rounded-xl border-[1px] border-gray-200">
       <Button
         icon={Minus}
         handleClick={handleDecreaseQuantity}

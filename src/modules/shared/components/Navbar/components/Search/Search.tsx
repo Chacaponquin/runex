@@ -45,7 +45,7 @@ export default function Search({ handleSearch, value, handleChange }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="lg:block hidden">
       <search className="">
         <div className={CLASS}>
           <SearchIcon size={22} />

@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function Name({ name }: Props) {
-  return <h2 className="font-fontSemiBold text-lg mb-1">{name}</h2>;
+  return <h2 className="font-fontMedium text-lg mb-1">{name}</h2>;
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { Counter, Image } from "./components";
+import { Counter } from "@modules/cart/components";
+import { Image } from "./components";
 import { useProduct } from "./hooks";
 
 interface Props {
@@ -22,7 +23,7 @@ export default function Product({ quantity, name, image, price, id }: Props) {
       <Image src={image} alt={name} />
 
       <div className="flex flex-col text-left w-full">
-        <h2 className="font-fontSemiBold text-base">{name}</h2>
+        <h2 className="font-fontMedium text-base">{name}</h2>
         <p className="text-gray-500 text-sm mb-2">Lorem ipsum dolor sit.</p>
 
         <div className="flex justify-between items-center">

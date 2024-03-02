@@ -12,31 +12,24 @@ export default function Menu({ size = DEFAULT_ICON_SIZE }: IconProps) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M23 20L23 6L6 6L6 20L23 20Z"
-        fill="none"
+        d="M7.94971 11.9497H39.9497"
         stroke="inherit"
         strokeWidth="4"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M42 42V28L25 28L25 42H42Z"
-        fill="none"
+        d="M7.94971 23.9497H39.9497"
         stroke="inherit"
         strokeWidth="4"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M31 6V20H42V6H31Z"
-        fill="none"
+        d="M7.94971 35.9497H39.9497"
         stroke="inherit"
         strokeWidth="4"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M6 28L6 42H17V28H6Z"
-        fill="none"
-        stroke="inherit"
-        strokeWidth="4"
+        strokeLinecap="round"
         strokeLinejoin="round"
       />
     </svg>

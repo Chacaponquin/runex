@@ -1,6 +1,5 @@
 "use client";
 
-import { IconProps } from "@modules/app/modules/icon/interfaces";
 import clsx from "clsx";
 import React, { useId, useState } from "react";
 
@@ -10,7 +9,6 @@ interface Props {
   name: string;
   handleChange(value: string): void;
   type: "text" | "email";
-  icon: React.FC<IconProps>;
 }
 
 export default function Input({
@@ -19,7 +17,6 @@ export default function Input({
   name,
   handleChange,
   type,
-  icon,
 }: Props) {
   const id = useId();
 
@@ -39,14 +36,14 @@ export default function Input({
     "px-5",
     "outline outline-[2px]",
     "stroke-gray-500",
-    "rounded-sm",
-    { "outline-gray-500": focus, "outline-gray-300": !focus }
+    "rounded",
+    "transition-all duration-200",
+
+    { "outline-blue-500 shadow-input": focus, "outline-gray-200": !focus }
   );
 
   return (
     <div className={CLASS}>
-      {icon({ size: 22 })}
-
       <input
         type={type}
         id={id}

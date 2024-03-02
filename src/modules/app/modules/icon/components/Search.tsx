@@ -7,28 +7,14 @@ export default function Search({ size = DEFAULT_ICON_SIZE }: IconProps) {
     <svg
       width={size}
       height={size}
-      viewBox="0 0 48 48"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M21 38C30.3888 38 38 30.3888 38 21C38 11.6112 30.3888 4 21 4C11.6112 4 4 11.6112 4 21C4 30.3888 11.6112 38 21 38Z"
-        fill="none"
+        d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
         stroke="inherit"
-        strokeWidth="4"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M26.657 14.3431C25.2093 12.8954 23.2093 12 21.0001 12C18.791 12 16.791 12.8954 15.3433 14.3431"
-        stroke="inherit"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M33.2216 33.2217L41.7069 41.707"
-        stroke="inherit"
-        strokeWidth="4"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

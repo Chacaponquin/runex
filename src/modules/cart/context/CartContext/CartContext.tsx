@@ -1,21 +1,26 @@
 "use client";
 
-import { Dispatch, Reducer, createContext, useReducer } from "react";
-import { Cart } from "../../domain";
+import { Dispatch, Reducer, createContext, useEffect, useReducer } from "react";
 import { Payload, cartReducer } from "../../reducer";
+import { CartProduct } from "@modules/cart/domain";
+import { CART_ACTIONS } from "@modules/cart/constants";
 
 interface Props {
-  cart: Cart;
+  cart: Array<CartProduct>;
   cartDispatch: Dispatch<Payload>;
 }
 
 const CartContext = createContext<Props>({} as Props);
 
 function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, cartDispatch] = useReducer<Reducer<Cart, Payload>>(
+  const [cart, cartDispatch] = useReducer<Reducer<Array<CartProduct>, Payload>>(
     cartReducer,
-    new Cart()
+    []
   );
+
+  useEffect(() => {
+    cartDispatch({ type: CART_ACTIONS.INITIAL });
+  }, []);
 
   const data = {
     cart,

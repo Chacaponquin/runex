@@ -15,7 +15,7 @@ export default function ProductSections({ handleSelectProduct }: Props) {
   return (
     <Resize
       className="flex flex-col gap-y-10 w-full flex-wrap pb-6"
-      containerClass="bg-gray-50"
+      containerClass="bg-gray-50 pb-20"
     >
       {sections.map((s) => (
         <Section

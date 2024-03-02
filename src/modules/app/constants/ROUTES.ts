@@ -8,6 +8,12 @@ export const APP_ROUTES = {
   SECTION: {
     CLOTHES: "/section/clothes",
     MEDICINE: "/section/medicine",
+    SEARCH_CLOTHES: "/section/clothes/search",
+    SEARCH_MEDICINE: "/section/medicine/search",
+  },
+  CHECKOUT: "/checkout",
+  USER: {
+    FAVORITES: "/user/favorites",
   },
 };
 

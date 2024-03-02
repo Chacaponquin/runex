@@ -24,9 +24,8 @@ export default function Form({ form, handleChange, handleSubmit }: Props) {
         value={form.fullName}
         name="full-name"
         type="text"
-        placeholder="Full Name"
+        placeholder="Nombre completo"
         handleChange={(value) => handleChange("fullName", value)}
-        icon={User}
       />
 
       <Input
@@ -34,14 +33,13 @@ export default function Form({ form, handleChange, handleSubmit }: Props) {
         name="email"
         type="email"
         placeholder="Email"
-        icon={Email}
         handleChange={(value) => handleChange("email", value)}
       />
 
       <Message
         value={form.message}
         name="message"
-        placeholder="Message"
+        placeholder="Mensaje"
         handleChange={(value) => handleChange("message", value)}
       />
 

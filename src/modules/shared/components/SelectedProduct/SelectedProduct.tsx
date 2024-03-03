@@ -7,11 +7,13 @@ import { useSelectedProduct } from "./hooks";
 interface Props {
   selectedProduct: string | null;
   handleDeleteSelectedProduct(): void;
+  handleSelectProduct(id: string): void;
 }
 
 export default function SelectedProduct({
   selectedProduct,
   handleDeleteSelectedProduct,
+  handleSelectProduct,
 }: Props) {
   const {
     productInfo,
@@ -29,8 +31,10 @@ export default function SelectedProduct({
     isFavorite,
     openShare,
     handleCloseShare,
+    handleDeleteFavorite,
   } = useSelectedProduct({
     productId: selectedProduct,
+    handleDeleteSelectedProduct: handleDeleteSelectedProduct,
   });
 
   useBlockScroll(selectedProduct !== null);
@@ -56,6 +60,8 @@ export default function SelectedProduct({
         handleDecreaseQuantity={handleDecreaseQuantity}
         handleAddFavorite={handleAddFavorite}
         handleShare={handleShare}
+        handleDeleteFavorite={handleDeleteFavorite}
+        handleSelectProduct={handleSelectProduct}
       />
 
       {productInfo && openShare && (

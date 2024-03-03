@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function Card({ image, name, price, handleClick, id }: Props) {
-  const { handleAddFavorite, isFavorite } = useCard({
+  const { handleAddFavorite, isFavorite, handleDeleteFavorite } = useCard({
     id: id,
   });
 
@@ -22,6 +22,7 @@ export default function Card({ image, name, price, handleClick, id }: Props) {
         src={image}
         handleAddFavorite={handleAddFavorite}
         isFavorite={isFavorite}
+        handleDeleteFavorite={handleDeleteFavorite}
       />
 
       <div className="flex flex-col pt-2">

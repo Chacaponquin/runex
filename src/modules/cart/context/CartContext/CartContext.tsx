@@ -10,7 +10,9 @@ interface Props {
   cartDispatch: Dispatch<Payload>;
 }
 
-const CartContext = createContext<Props>({} as Props);
+const CartContext = createContext<Props>({
+  cart: [] as Array<CartProduct>,
+} as Props);
 
 function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, cartDispatch] = useReducer<Reducer<Array<CartProduct>, Payload>>(

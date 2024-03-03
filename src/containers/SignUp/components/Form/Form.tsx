@@ -23,15 +23,15 @@ export default function Form({
     <form className="flex flex-col gap-y-5" onSubmit={handleSubmitForm}>
       <Section vertical={false}>
         <Input
-          placeholder="First name"
+          placeholder="Nombre"
           type="text"
-          name={"first-name"}
+          name="first-name"
           value={form.firstName}
           handleChange={(value) => handleChange("firstName", value)}
         />
 
         <Input
-          placeholder="Last name"
+          placeholder="Apellidos"
           type="text"
           name="last-name"
           value={form.lastName}
@@ -51,7 +51,7 @@ export default function Form({
 
       <Section vertical>
         <Input
-          placeholder="Password"
+          placeholder="Contraseña"
           type="password"
           name="password"
           value={form.password}
@@ -59,7 +59,7 @@ export default function Form({
         />
 
         <Input
-          placeholder="Confirm Password"
+          placeholder="Confirmar contraseña"
           type="password"
           value={form.confirmPassword}
           handleChange={(value) => handleChange("confirmPassword", value)}

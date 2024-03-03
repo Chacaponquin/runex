@@ -22,6 +22,8 @@ interface Props {
   handleAddFavorite(): void;
   handleShare(): void;
   isFavorite: boolean;
+  handleDeleteFavorite(): void;
+  handleSelectProduct(id: string): void;
 }
 
 export default function Product({
@@ -38,6 +40,8 @@ export default function Product({
   handleAddFavorite,
   handleShare,
   isFavorite,
+  handleDeleteFavorite,
+  handleSelectProduct,
 }: Props) {
   return (
     <div className="flex flex-grow bg-white w-full justify-center rounded-t-2xl overflow-y-auto pt-10 esm:pt-6 px-5">
@@ -50,6 +54,7 @@ export default function Product({
               handleAddFavorite={handleAddFavorite}
               handleShare={handleShare}
               isFavorite={isFavorite}
+              handleDeleteFavorite={handleDeleteFavorite}
             />
 
             <div className="grid xl:grid-cols-2 grid-cols-1 w-full gap-x-7 gap-y-5 mb-14">
@@ -73,6 +78,7 @@ export default function Product({
             <SimilarProducts
               products={similarProducts}
               loading={similarProductsLoading}
+              handleSelectProduct={handleSelectProduct}
             />
           </div>
         )}

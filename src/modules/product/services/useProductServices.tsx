@@ -6,6 +6,11 @@ interface AddProductFavoriteProps {
   userId: string;
 }
 
+interface DeleteProductFavoriteProps {
+  productId: string;
+  userId: string;
+}
+
 type FilterProductsProps = Partial<{
   name: string;
   minPrice: number;
@@ -52,6 +57,8 @@ export default function useProductServices() {
 
   async function addProductToFavorites(props: AddProductFavoriteProps) {}
 
+  async function deleteProductInFavorites(props: DeleteProductFavoriteProps) {}
+
   async function getProductById(id: string): Promise<Product> {
     return create();
   }
@@ -97,5 +104,6 @@ export default function useProductServices() {
     filterProducts,
     getAllProductsColors,
     getAllProductsSizes,
+    deleteProductInFavorites,
   };
 }

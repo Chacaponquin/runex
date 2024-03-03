@@ -4,18 +4,24 @@ import { Product } from "@modules/product/domain";
 import { useProductServices } from "@modules/product/services";
 import { useEffect, useState } from "react";
 import { ProductForm } from "../interfaces";
-import { useUser } from "@modules/user/hooks";
-
+import { useProductActions } from "@modules/product/hooks";
+import { useCart } from "@modules/cart/hooks";
 
 interface Props {
   productId: string | null;
+  handleDeleteSelectedProduct(): void;
 }
 
-export default function useSelectedProduct({ productId }: Props) {
-  const { actualUser, isProductFavorite } = useUser();
-  const { getProductById, getSimilarProducts, addProductToFavorites } =
-    useProductServices();
-
+export default function useSelectedProduct({
+  productId,
+  handleDeleteSelectedProduct,
+}: Props) {
+  const { getProductById, getSimilarProducts } = useProductServices();
+  const { handleAddFavorite, handleDeleteFavorite, isFavorite } =
+    useProductActions({
+      productId,
+    });
+  const { handleSetProduct } = useCart();
 
   const [form, setForm] = useState<ProductForm>({
     color: "",
@@ -55,16 +61,6 @@ export default function useSelectedProduct({ productId }: Props) {
     }
   }, [productId]);
 
-  function handleBuyNow() {}
-
-  function handleAddToCart() {}
-
-  function handleAddFavorite() {
-    if (actualUser && productId) {
-      addProductToFavorites({ userId: actualUser.id, productId: productId });
-    }
-  }
-
   function handleShare() {
     setOpenShare(true);
   }
@@ -85,8 +81,16 @@ export default function useSelectedProduct({ productId }: Props) {
     setForm((prev) => ({ ...prev, quantity: prev.quantity - 1 }));
   }
 
-  const isFavorite = productId ? isProductFavorite(productId) : false;
+  function handleBuyNow() {
+    handleDeleteSelectedProduct();
+  }
 
+  function handleAddToCart() {
+    if (productInfo) {
+      handleSetProduct({ quantity: form.quantity, product: productInfo });
+      handleDeleteSelectedProduct();
+    }
+  }
 
   return {
     productInfo,
@@ -104,6 +108,6 @@ export default function useSelectedProduct({ productId }: Props) {
     isFavorite,
     openShare,
     handleCloseShare,
- 
+    handleDeleteFavorite,
   };
 }

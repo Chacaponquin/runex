@@ -22,7 +22,7 @@ export default function Button({ loading }: Props) {
 
   return (
     <section className="w-full mb-6">
-      <button className={CLASS} disabled={loading}>
+      <button type="submit" className={CLASS} disabled={loading}>
         Login
       </button>
     </section>

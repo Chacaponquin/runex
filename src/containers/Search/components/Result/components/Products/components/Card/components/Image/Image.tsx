@@ -4,9 +4,15 @@ interface Props {
   src: string;
   handleAddFavorite(): void;
   isFavorite: boolean;
+  handleDeleteFavorite(): void;
 }
 
-export default function Image({ src, handleAddFavorite, isFavorite }: Props) {
+export default function Image({
+  src,
+  handleAddFavorite,
+  isFavorite,
+  handleDeleteFavorite,
+}: Props) {
   return (
     <header
       style={{
@@ -16,7 +22,11 @@ export default function Image({ src, handleAddFavorite, isFavorite }: Props) {
       }}
       className="object-cover w-full h-[200px] rounded p-4"
     >
-      <Favorite handleClick={handleAddFavorite} isFavorite={isFavorite} />
+      <Favorite
+        handleAddFavorite={handleAddFavorite}
+        isFavorite={isFavorite}
+        handleDeleteFavorite={handleDeleteFavorite}
+      />
     </header>
   );
 }

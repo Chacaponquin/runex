@@ -2,11 +2,16 @@ import { Favorite as IconFavorite } from "@modules/app/modules/icon/components";
 import clsx from "clsx";
 
 interface Props {
-  handleClick(): void;
+  handleAddFavorite(): void;
   isFavorite: boolean;
+  handleDeleteFavorite(): void;
 }
 
-export default function Favorite({ handleClick, isFavorite }: Props) {
+export default function Favorite({
+  handleAddFavorite,
+  isFavorite,
+  handleDeleteFavorite,
+}: Props) {
   const CLASS = clsx(
     "rounded-full",
     "shadow",
@@ -26,9 +31,8 @@ export default function Favorite({ handleClick, isFavorite }: Props) {
       className={CLASS}
       onClick={(e) => {
         e.stopPropagation();
-        handleClick();
+        isFavorite ? handleDeleteFavorite() : handleAddFavorite();
       }}
-      disabled={isFavorite}
     >
       <IconFavorite size={22} />
     </button>

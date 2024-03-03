@@ -26,17 +26,19 @@ export default function Product({
   handleSelectProduct,
   provider,
 }: Props) {
-  const { handleAddToFavorite, handleSelect, isFavorite } = useProduct({
-    id: id,
-    handleSelectProduct: handleSelectProduct,
-  });
+  const { handleSelect, isFavorite, handleAddFavorite, handleDeleteFavorite } =
+    useProduct({
+      id: id,
+      handleSelectProduct: handleSelectProduct,
+    });
 
   return (
     <article className="flex flex-col rounded bg-white cursor-pointer h-max shadow-md">
       <ProductImage
         src={image}
-        handleAddFavorite={handleAddToFavorite}
+        handleAddFavorite={handleAddFavorite}
         isFavorite={isFavorite}
+        handleDeleteFavorite={handleDeleteFavorite}
       />
 
       <section className="flex flex-col pt-2.5 pb-4 px-4 w-full">

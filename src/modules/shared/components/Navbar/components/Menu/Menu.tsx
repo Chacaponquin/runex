@@ -17,13 +17,13 @@ export default function Menu({ openMenu, handleCloseSide, links }: Props) {
       style={{ visibility: openMenu ? "visible" : "hidden" }}
       onClick={handleCloseSide}
     >
-      <nav
+      <aside
         className="flex flex-col px-6 bg-white h-screen w-[330px]"
         onClick={(e) => e.stopPropagation()}
       >
         <Header handleClose={handleCloseSide} />
         <Links links={links} />
-      </nav>
+      </aside>
     </div>
   );
 }

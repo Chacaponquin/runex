@@ -41,10 +41,10 @@ export default function Content({
           />
         </Section>
 
-        <Section id={passwordId} title="Password">
+        <Section id={passwordId} title="Contraseña">
           <Input
             type="password"
-            placeholder="Password"
+            placeholder="Contraseña"
             id={passwordId}
             name="password"
             value={form.password}

@@ -52,6 +52,7 @@ export default function Navbar({ query }: Props) {
             openCart={openCart}
             openUserMenu={openUserMenu}
             handleChangeOpenUserMenu={handleChangeOpenUserMenu}
+            isSearch={query ? true : false}
           />
         </div>
       </nav>

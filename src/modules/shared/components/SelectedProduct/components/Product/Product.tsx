@@ -23,6 +23,7 @@ interface Props {
   handleShare(): void;
   isFavorite: boolean;
   handleDeleteFavorite(): void;
+  handleSelectProduct(id: string): void;
 }
 
 export default function Product({
@@ -40,6 +41,7 @@ export default function Product({
   handleShare,
   isFavorite,
   handleDeleteFavorite,
+  handleSelectProduct,
 }: Props) {
   return (
     <div className="flex flex-grow bg-white w-full justify-center rounded-t-2xl overflow-y-auto pt-10 esm:pt-6 px-5">
@@ -76,6 +78,7 @@ export default function Product({
             <SimilarProducts
               products={similarProducts}
               loading={similarProductsLoading}
+              handleSelectProduct={handleSelectProduct}
             />
           </div>
         )}

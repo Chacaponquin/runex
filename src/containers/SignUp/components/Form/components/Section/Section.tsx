@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import React from "react";
 
 interface Props {
   vertical: boolean;
@@ -7,8 +6,9 @@ interface Props {
 }
 
 export default function Section({ children, vertical }: Props) {
-  const CLASS = clsx("flex", "w-full", "gap-4", "esm:flex-col", {
-    "flex-col": vertical,
+  const CLASS = clsx("grid", "w-full", "gap-4", "esm:grid-cols-1", {
+    "grid-cols-1": vertical,
+    "grid-cols-2": !vertical,
   });
 
   return <section className={CLASS}>{children}</section>;

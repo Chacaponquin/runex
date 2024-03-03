@@ -9,11 +9,11 @@ interface Props {
 export default function Media({ content, icon }: Props) {
   return (
     <div className="flex gap-x-5 stroke-white items-center">
-      <span className="flex items-center justify-center p-3 bg-white stroke-black rounded-full">
-        {icon({ size: 22 })}
+      <span className="flex items-center justify-center p-2 bg-white stroke-black rounded-full">
+        {icon({ size: 20 })}
       </span>
 
-      <span className="text-lg">{content}</span>
+      <span className="text-base">{content}</span>
     </div>
   );
 }

@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function Provider({ provider }: Props) {
-  return <p className="text-gray-500 text-xl esm:text-lg">({provider})</p>;
+  return <p className="text-gray-500 text-lg esm:text-base">({provider})</p>;
 }

@@ -53,6 +53,7 @@ export default function Search({
       <SelectedProduct
         selectedProduct={selectedProduct}
         handleDeleteSelectedProduct={handleDeleteSelectedProduct}
+        handleSelectProduct={handleSelectProduct}
       />
 
       <Navbar query={q} />

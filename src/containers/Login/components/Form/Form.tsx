@@ -20,7 +20,7 @@ export default function Form({
 }: Props) {
   return (
     <section className="flex flex-col h-full w-full items-center justify-center px-8 py-4">
-      <main className="flex flex-col w-full max-w-[500px]">
+      <main className="flex flex-col w-full max-w-[550px]">
         <Header />
 
         <Content

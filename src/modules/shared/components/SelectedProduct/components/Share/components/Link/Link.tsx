@@ -12,7 +12,7 @@ export default function Link({ link, handleCopy, copied }: Props) {
     <section className="flex flex-col w-full">
       <p className="text-base text-gray-500 mb-1">or copy link</p>
 
-      <div className="flex rounded bg-gray-50 px-7 py-3 gap-x-5 w-full">
+      <div className="flex rounded bg-gray-50 px-5 py-3 gap-x-5 w-full">
         <input
           readOnly={true}
           type="text"

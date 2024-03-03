@@ -10,7 +10,7 @@ export default function Left({ contacts }: Props) {
   return (
     <section className="lg:items-center flex flex-col">
       <div className="flex flex-col lg:text-center">
-        <h1 className="uppercase text-2xl font-fontSemiBold mb-2">
+        <h1 className="uppercase text-xl font-fontSemiBold mb-2">
           How can we help?
         </h1>
 

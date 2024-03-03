@@ -17,7 +17,7 @@ export default function Session({ handleChangeRemember, form }: Props) {
         href={APP_ROUTES.AUTH.FORGOT_PASSWORD}
         className="hover:underline hover:underline-offset-4 text-blue-500 text-sm"
       >
-        Forgot password?
+        Olvidaste tu contraeña?
       </Link>
     </section>
   );

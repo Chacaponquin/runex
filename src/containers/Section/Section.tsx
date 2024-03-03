@@ -13,6 +13,7 @@ export default function Section() {
       <SelectedProduct
         selectedProduct={selectedProduct}
         handleDeleteSelectedProduct={handleDeleteSelectedProduct}
+        handleSelectProduct={handleSelectProduct}
       />
       <Navbar />
       <Header />

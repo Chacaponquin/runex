@@ -16,6 +16,7 @@ interface Props {
   handleChangeOpenUserMenu(): void;
   openCart: boolean;
   openUserMenu: boolean;
+  isSearch: boolean;
 }
 
 export default function Buttons({
@@ -23,16 +24,19 @@ export default function Buttons({
   openCart,
   handleChangeOpenUserMenu,
   openUserMenu,
+  isSearch,
 }: Props) {
   const { actualUser } = useUser();
 
   return (
     <section className="flex gap-x-7 esm:gap-x-5 items-center stroke-black">
-      <LinkButton
-        icon={Search}
-        link={APP_ROUTES.SECTION.SEARCH_CLOTHES}
-        className="lg:hidden"
-      />
+      {!isSearch && (
+        <LinkButton
+          icon={Search}
+          link={APP_ROUTES.SECTION.SEARCH_CLOTHES}
+          className="lg:hidden"
+        />
+      )}
 
       <Button icon={Bag} handleClick={handleChangeOpenCart}>
         {openCart && (

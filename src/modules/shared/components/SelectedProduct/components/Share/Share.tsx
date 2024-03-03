@@ -1,4 +1,3 @@
-import React from "react";
 import { Header, Link, Social } from "./components";
 import { useShare } from "./hooks";
 

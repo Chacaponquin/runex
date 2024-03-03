@@ -11,7 +11,7 @@ interface ChangeProductQuantityProps {
 }
 
 interface SetProductProps {
-  productId: string;
+  product: Product;
   quantity: number;
 }
 
@@ -29,7 +29,7 @@ export default function useCart() {
 
   function handleSetProduct(props: SetProductProps): void {
     cartDispatch({
-      payload: { productId: props.productId, quantity: props.quantity },
+      payload: { product: props.product, quantity: props.quantity },
       type: CART_ACTIONS.SET_PRODUCT,
     });
   }

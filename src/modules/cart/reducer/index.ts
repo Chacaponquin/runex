@@ -6,7 +6,7 @@ import { Product } from "@modules/product/domain";
 export type Payload =
   | {
       type: CART_ACTIONS.SET_PRODUCT;
-      payload: { productId: string; quantity: number };
+      payload: { product: Product; quantity: number };
     }
   | {
       type: CART_ACTIONS.CHANGE_PRODUCT_QUANTITY;
@@ -28,19 +28,13 @@ export function cartReducer(cart: Array<CartProduct>, payload: Payload) {
     }
 
     case CART_ACTIONS.SET_PRODUCT: {
-      const found = cart.find(
-        (p) => p.product.id === payload.payload.productId
-      );
-
-      if (found) {
-        return [
-          ...cart,
-          {
-            quantity: payload.payload.quantity,
-            product: found.product,
-          },
-        ];
-      }
+      return [
+        ...cart,
+        {
+          quantity: payload.payload.quantity,
+          product: payload.payload.product,
+        },
+      ];
     }
 
     case CART_ACTIONS.DELETE_PRODUCT: {

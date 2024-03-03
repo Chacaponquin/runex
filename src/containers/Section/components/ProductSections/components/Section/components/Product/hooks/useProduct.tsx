@@ -1,6 +1,6 @@
 "use client";
 
-import { useProductServices } from "@modules/product/services";
+import { useProductActions } from "@modules/product/hooks";
 import { useUser } from "@modules/user/hooks";
 
 interface Props {
@@ -9,21 +9,19 @@ interface Props {
 }
 
 export default function useProduct({ id, handleSelectProduct }: Props) {
-  const { actualUser, isProductFavorite } = useUser();
-
-  const { addProductToFavorites } = useProductServices();
-
-  function handleAddToFavorite() {
-    if (actualUser) {
-      addProductToFavorites({ productId: id, userId: actualUser.id });
-    }
-  }
+  const { handleAddFavorite, handleDeleteFavorite, isFavorite } =
+    useProductActions({
+      productId: id,
+    });
 
   function handleSelect() {
     handleSelectProduct(id);
   }
 
-  const isFavorite = isProductFavorite(id);
-
-  return { handleAddToFavorite, handleSelect, isFavorite };
+  return {
+    handleSelect,
+    isFavorite,
+    handleAddFavorite,
+    handleDeleteFavorite,
+  };
 }

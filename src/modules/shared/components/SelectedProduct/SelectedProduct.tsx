@@ -29,8 +29,10 @@ export default function SelectedProduct({
     isFavorite,
     openShare,
     handleCloseShare,
+    handleDeleteFavorite,
   } = useSelectedProduct({
     productId: selectedProduct,
+    handleDeleteSelectedProduct: handleDeleteSelectedProduct,
   });
 
   useBlockScroll(selectedProduct !== null);
@@ -56,6 +58,7 @@ export default function SelectedProduct({
         handleDecreaseQuantity={handleDecreaseQuantity}
         handleAddFavorite={handleAddFavorite}
         handleShare={handleShare}
+        handleDeleteFavorite={handleDeleteFavorite}
       />
 
       {productInfo && openShare && (

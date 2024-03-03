@@ -5,7 +5,12 @@ import { useCallback, useContext } from "react";
 import { UserContext } from "../context";
 
 export default function useUser() {
-  const { actualUser, loading } = useContext(UserContext);
+  const {
+    actualUser,
+    loading,
+    handleAddProductToFavorites: handleAddProductToFavoritesContext,
+    handleDeleteProductInFavorites: handleDeleteProductInFavoritesContext,
+  } = useContext(UserContext);
 
   function handleSignIn(token: string) {
     localStorage.setItem(TOKEN_LOCATION, token);
@@ -25,6 +30,14 @@ export default function useUser() {
     }
   }
 
+  function handleAddProductToFavorites(productId: string) {
+    handleAddProductToFavoritesContext(productId);
+  }
+
+  function handleDeleteProductInFavorites(productId: string) {
+    handleDeleteProductInFavoritesContext(productId);
+  }
+
   const getToken = useCallback((): string => {
     return "";
   }, []);
@@ -36,5 +49,7 @@ export default function useUser() {
     actualUser,
     fetchUserLoading: loading,
     isProductFavorite,
+    handleAddProductToFavorites,
+    handleDeleteProductInFavorites,
   };
 }

@@ -1,13 +1,17 @@
 import { Favorite as IconFavorite } from "@modules/app/modules/icon/components";
-import { useUser } from "@modules/user/hooks";
 import clsx from "clsx";
 
 interface Props {
-  handleClick(): void;
+  handleAddFavorite(): void;
   isFavorite: boolean;
+  handleDeleteFavorite(): void;
 }
 
-export default function Favorite({ handleClick, isFavorite }: Props) {
+export default function Favorite({
+  handleAddFavorite,
+  isFavorite,
+  handleDeleteFavorite,
+}: Props) {
   const CLASS = clsx(
     "shadow",
     "transition-all duration-200",
@@ -27,7 +31,7 @@ export default function Favorite({ handleClick, isFavorite }: Props) {
       className={CLASS}
       onClick={(e) => {
         e.stopPropagation();
-        handleClick();
+        isFavorite ? handleDeleteFavorite() : handleAddFavorite();
       }}
       disabled={isFavorite}
     >

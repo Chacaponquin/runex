@@ -13,18 +13,20 @@ export default function ProductSections({ handleSelectProduct }: Props) {
   const { sections } = useProducts();
 
   return (
-    <Resize
-      className="flex flex-col gap-y-10 w-full flex-wrap pb-6"
-      containerClass="bg-gray-50 pb-20"
-    >
-      {sections.map((s) => (
-        <Section
-          key={s.id}
-          products={s.products}
-          title={s.title}
-          handleSelectProduct={handleSelectProduct}
-        />
-      ))}
-    </Resize>
+    <main className="flex flex-col w-full">
+      <Resize
+        className="flex flex-col gap-y-10 w-full flex-wrap pb-6"
+        containerClass="bg-gray-50 pb-20"
+      >
+        {sections.map((s) => (
+          <Section
+            key={s.id}
+            products={s.products}
+            title={s.title}
+            handleSelectProduct={handleSelectProduct}
+          />
+        ))}
+      </Resize>
+    </main>
   );
 }

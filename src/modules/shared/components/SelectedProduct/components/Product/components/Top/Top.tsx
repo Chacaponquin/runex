@@ -4,16 +4,22 @@ import { Button } from "./components";
 interface Props {
   handleAddFavorite(): void;
   handleShare(): void;
-  isFavorite: boolean
+  isFavorite: boolean;
+  handleDeleteFavorite(): void;
 }
 
-export default function Top({ handleAddFavorite, handleShare, isFavorite }: Props) {
+export default function Top({
+  handleAddFavorite,
+  handleShare,
+  isFavorite,
+  handleDeleteFavorite,
+}: Props) {
   return (
     <div className="flex justify-end mb-2 items-center gap-x-4">
       <Button
         icon={Favorite}
-        handleClick={handleAddFavorite}
-        disabled={isFavorite}
+        handleClick={isFavorite ? handleDeleteFavorite : handleAddFavorite}
+        disabled={false}
       />
 
       <Button icon={Share} disabled={false} handleClick={handleShare} />

@@ -4,7 +4,6 @@ import { Footer, Navbar, SelectedProduct } from "@modules/shared/components";
 import { Header, ProductSections } from "./components";
 import { useSection } from "./hooks";
 
-
 export default function Section() {
   const { selectedProduct, handleSelectProduct, handleDeleteSelectedProduct } =
     useSection();
@@ -15,15 +14,9 @@ export default function Section() {
         selectedProduct={selectedProduct}
         handleDeleteSelectedProduct={handleDeleteSelectedProduct}
       />
-
       <Navbar />
-
       <Header />
-
-      <main className="flex flex-col w-full">
-        <ProductSections handleSelectProduct={handleSelectProduct} />
-      </main>
-
+      <ProductSections handleSelectProduct={handleSelectProduct} />
       <Footer />
     </div>
   );

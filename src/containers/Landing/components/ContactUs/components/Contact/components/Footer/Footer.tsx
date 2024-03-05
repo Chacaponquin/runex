@@ -10,9 +10,9 @@ export default function Footer({ contacts }: Props) {
     <footer className="flex flex-col gap-y-5">
       {contacts.map((contact, index) => (
         <div key={index} className="flex gap-x-5 stroke-white">
-          <span className="min-w-max">{contact.icon({ size: 28 })}</span>
+          <span className="min-w-max">{contact.icon({ size: 24 })}</span>
 
-          <p className="text-xl esm:text-lg">{contact.content}</p>
+          <p className="text-lg">{contact.content}</p>
         </div>
       ))}
     </footer>

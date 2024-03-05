@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Image() {
   return (
-    <div className="w-full mb-8">
+    <div className="w-full">
       <div
         className="flex w-full h-[370px]"
         style={{

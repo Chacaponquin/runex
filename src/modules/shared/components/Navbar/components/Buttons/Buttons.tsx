@@ -46,13 +46,10 @@ export default function Buttons({
 
       <LinkButton icon={Favorite} link={APP_ROUTES.USER.FAVORITES} />
 
-      {actualUser ? (
-        <Button icon={User} handleClick={handleChangeOpenUserMenu}>
-          {openUserMenu && <UserMenu />}
-        </Button>
-      ) : (
-        <LinkButton icon={User} link={APP_ROUTES.AUTH.LOGIN} />
-      )}
+      <LinkButton
+        icon={User}
+        link={actualUser ? APP_ROUTES.USER.ORDERS : APP_ROUTES.AUTH.LOGIN}
+      />
     </section>
   );
 }

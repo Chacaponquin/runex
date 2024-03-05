@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { Header, Image as PresImage, Search } from "./components";
+import { Header, Search } from "./components";
 import { RefObject } from "react";
 
 interface Props {
@@ -24,8 +24,6 @@ export default function Presentation({ presentationRef }: Props) {
           <Header />
           <Search />
         </div>
-
-        <PresImage />
       </div>
     </header>
   );

@@ -14,11 +14,13 @@ export const APP_ROUTES = {
   CHECKOUT: "/checkout",
   USER: {
     FAVORITES: "/user/favorites",
+    ORDERS: "/user/orders",
   },
 };
 
 export const API_ROUTES = {
   USER: {
-    GET_CURRENT_USER: "/user-token",
+    GET_CURRENT_USER: "/user/user-token",
+    CONTACT: "/user/contact",
   },
 };

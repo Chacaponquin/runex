@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Section } from "../../shared/components";
 import { Advantage, Header } from "./components";
 import { useAboutUs } from "./hooks";

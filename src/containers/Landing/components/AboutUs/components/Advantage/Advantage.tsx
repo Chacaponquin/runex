@@ -28,7 +28,7 @@ export default function Advantage({ title, description, image }: Props) {
       />
 
       <footer className="flex flex-col">
-        <h1 className="mb-2 font-fontSemiBold text-2xl text-center">{title}</h1>
+        <h1 className="mb-2 font-fontMedium text-2xl text-center">{title}</h1>
         <p className="text-center text-base text-gray-500">{description}</p>
       </footer>
     </article>

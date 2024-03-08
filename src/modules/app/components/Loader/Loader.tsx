@@ -1,6 +1,6 @@
-import { bouncy } from "ldrs";
+"use client";
 
-bouncy.register();
+import "ldrs";
 
 interface Props {
   size: number;

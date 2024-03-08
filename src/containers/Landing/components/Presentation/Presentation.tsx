@@ -2,10 +2,10 @@
 
 import clsx from "clsx";
 import { Header, Search } from "./components";
-import React, { RefObject } from "react";
+import { RefObject } from "react";
 
 interface Props {
-  presentationRef: RefObject<HTMLElement>;
+  presentationRef: RefObject<HTMLHeadElement>;
 }
 
 export default function Presentation({ presentationRef }: Props) {

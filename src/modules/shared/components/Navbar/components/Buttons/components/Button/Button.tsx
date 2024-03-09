@@ -3,12 +3,11 @@
 import { IconProps } from "@modules/app/modules/icon/interfaces";
 
 interface Props {
-  handleClick?: () => void;
-  children?: React.ReactNode;
+  handleClick(): void;
   icon: React.FC<IconProps>;
 }
 
-export default function Button({ children, handleClick, icon }: Props) {
+export default function Button({ handleClick, icon }: Props) {
   return (
     <div className="relative flex flex-col">
       <button
@@ -17,8 +16,6 @@ export default function Button({ children, handleClick, icon }: Props) {
       >
         {icon({ size: 22 })}
       </button>
-
-      {children}
     </div>
   );
 }

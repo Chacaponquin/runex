@@ -4,7 +4,6 @@ import { Cart } from "@containers/Section/shared/components";
 import { Buttons, Logo, Menu, Search } from "./components";
 import { useNavbar } from "./hooks";
 import { useBlockScroll, useScreen } from "@modules/shared/hooks";
-import { SCREEN_SIZES } from "@modules/app/constants";
 
 interface Props {
   query?: string;
@@ -21,13 +20,7 @@ export default function Navbar({ query }: Props) {
     openCart,
     handleChangeOpenCart,
     links,
-    handleChangeOpenUserMenu,
-    openUserMenu,
   } = useNavbar({ query });
-
-  const { bigScreen } = useScreen(SCREEN_SIZES.ESM);
-
-  useBlockScroll(!bigScreen && openCart);
 
   return (
     <div className="flex items-center w-full h-[70px] justify-center z-30 px-5">
@@ -49,19 +42,12 @@ export default function Navbar({ query }: Props) {
 
           <Buttons
             handleChangeOpenCart={handleChangeOpenCart}
-            openCart={openCart}
-            openUserMenu={openUserMenu}
-            handleChangeOpenUserMenu={handleChangeOpenUserMenu}
             isSearch={query ? true : false}
           />
         </div>
       </nav>
 
-      <div className="relative sm:hidden block">
-        {openCart && (
-          <Cart full={true} handleChangeOpenCart={handleChangeOpenCart} />
-        )}
-      </div>
+      {openCart && <Cart handleChangeOpenCart={handleChangeOpenCart} />}
 
       <Menu
         openMenu={openSide}

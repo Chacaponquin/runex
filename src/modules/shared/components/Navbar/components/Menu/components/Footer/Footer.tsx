@@ -1,10 +1,10 @@
 import { APP_ROUTES } from "@modules/app/constants";
-import { Search } from "@modules/app/modules/icon/components";
 import Link from "next/link";
+import React from "react";
 
-export default function Buttons() {
+export default function Footer() {
   return (
-    <section className="xl:flex hidden items-center stroke-black justify-end gap-x-7">
+    <footer className="py-3 w-full flex items-center gap-x-10 justify-center">
       <Link href={APP_ROUTES.AUTH.LOGIN}>
         <button className="font-fontMedium hover:underline hover:underline-offset-4">
           Login
@@ -16,6 +16,6 @@ export default function Buttons() {
           Sign up
         </button>
       </Link>
-    </section>
+    </footer>
   );
 }

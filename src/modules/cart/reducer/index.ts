@@ -42,17 +42,7 @@ export function cartReducer(cart: Array<CartProduct>, payload: Payload) {
     }
 
     case CART_ACTIONS.INITIAL: {
-      return Array.from({ length: 4 }).map(() => ({
-        product: new Product({
-          id: faker.string.uuid(),
-          images: Array.from({
-            length: faker.number.int({ min: 1, max: 5 }),
-          }).map(() => faker.image.url()),
-          name: faker.lorem.words({ min: 4, max: 10 }),
-          price: Number(faker.commerce.price()),
-        }),
-        quantity: faker.number.int({ min: 1, max: 5 }),
-      }));
+      return [];
     }
   }
 }

@@ -3,13 +3,15 @@
 import { Cart } from "@containers/Section/shared/components";
 import { Buttons, Logo, Menu, Search } from "./components";
 import { useNavbar } from "./hooks";
-import { useBlockScroll, useScreen } from "@modules/shared/hooks";
+import clsx from "clsx";
 
 interface Props {
   query?: string;
+  disableSearch: boolean;
+  fixed: boolean;
 }
 
-export default function Navbar({ query }: Props) {
+export default function Navbar({ query, disableSearch, fixed }: Props) {
   const {
     handleSearch,
     search,
@@ -22,8 +24,18 @@ export default function Navbar({ query }: Props) {
     links,
   } = useNavbar({ query });
 
+  const CLASS = clsx(
+    "flex items-center justify-center",
+    "w-full h-[70px]",
+    "px-5",
+    "z-30",
+    "bg-white",
+
+    { "fixed top-0 left-0": fixed }
+  );
+
   return (
-    <div className="flex items-center w-full h-[70px] justify-center z-30 px-5">
+    <div className={CLASS}>
       <nav className="flex items-center max-w-[1200px] w-full justify-between">
         <Logo
           openSide={openSide}
@@ -31,8 +43,8 @@ export default function Navbar({ query }: Props) {
           handleCloseSide={handleCloseSide}
         />
 
-        <div className="flex items-center gap-x-6 esm:gap-x-4">
-          {!query && (
+        <section className="flex items-center gap-x-6 esm:gap-x-4">
+          {!disableSearch && !query && (
             <Search
               handleSearch={handleSearch}
               handleChange={handleChangeSearch}
@@ -44,16 +56,18 @@ export default function Navbar({ query }: Props) {
             handleChangeOpenCart={handleChangeOpenCart}
             isSearch={query ? true : false}
           />
-        </div>
+        </section>
       </nav>
 
       {openCart && <Cart handleChangeOpenCart={handleChangeOpenCart} />}
 
-      <Menu
-        openMenu={openSide}
-        handleCloseSide={handleCloseSide}
-        links={links}
-      />
+      {openSide && (
+        <Menu
+          openMenu={openSide}
+          handleCloseSide={handleCloseSide}
+          links={links}
+        />
+      )}
     </div>
   );
 }

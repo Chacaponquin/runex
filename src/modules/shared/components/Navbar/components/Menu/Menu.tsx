@@ -1,6 +1,6 @@
 import { useBlockScroll } from "@modules/shared/hooks";
 import { NavbarLink } from "../../interfaces";
-import { Header, Links } from "./components";
+import { Footer, Header, Links } from "./components";
 
 interface Props {
   openMenu: boolean;
@@ -18,11 +18,12 @@ export default function Menu({ openMenu, handleCloseSide, links }: Props) {
       onClick={handleCloseSide}
     >
       <aside
-        className="flex flex-col px-6 bg-white h-screen w-[330px]"
+        className="flex flex-col px-6 bg-white h-full w-[330px]"
         onClick={(e) => e.stopPropagation()}
       >
         <Header handleClose={handleCloseSide} />
         <Links links={links} />
+        <Footer />
       </aside>
     </div>
   );

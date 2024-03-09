@@ -15,7 +15,7 @@ export default function Section() {
         handleDeleteSelectedProduct={handleDeleteSelectedProduct}
         handleSelectProduct={handleSelectProduct}
       />
-      <Navbar />
+      <Navbar disableSearch={false} fixed={false} />
       <Header />
       <ProductSections handleSelectProduct={handleSelectProduct} />
       <Footer />

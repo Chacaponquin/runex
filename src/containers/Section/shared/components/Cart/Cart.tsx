@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@modules/cart/hooks";
-import { Bill, Footer, Header, Products } from "./components";
+import { Bill, Empty, Footer, Header, Products } from "./components";
 import clsx from "clsx";
 import { useBlockScroll } from "@modules/shared/hooks";
 
@@ -36,9 +36,15 @@ export default function Cart({ handleChangeOpenCart }: Props) {
     <div className={CONTAINER_CLASS} onClick={handleChangeOpenCart}>
       <div className={CLASS} onClick={(e) => e.stopPropagation()}>
         <Header handleChangeOpenCart={handleChangeOpenCart} />
-        <Products products={cart} />
-        <Bill />
-        <Footer />
+
+        {cart.length > 0 ? (
+          <Products products={cart} />
+        ) : (
+          <Empty handleClose={handleChangeOpenCart} />
+        )}
+
+        {cart.length > 0 && <Bill />}
+        {cart.length > 0 && <Footer />}
       </div>
     </div>
   );

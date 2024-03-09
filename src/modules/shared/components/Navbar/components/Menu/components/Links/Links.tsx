@@ -7,9 +7,9 @@ interface Props {
 
 export default function Links({ links }: Props) {
   return (
-    <ul className="flex flex-col w-full gap-y-3">
+    <ul className="flex flex-col w-full gap-y-5 flex-grow">
       {links.map((l, index) => (
-        <Item key={index} url={l.url} name={l.label} />
+        <Item key={index} url={l.url} name={l.label} subs={l.sections} />
       ))}
     </ul>
   );

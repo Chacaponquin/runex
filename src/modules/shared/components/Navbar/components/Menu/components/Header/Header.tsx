@@ -6,9 +6,9 @@ interface Props {
 
 export default function Header({ handleClose }: Props) {
   return (
-    <header className="flex justify-end pt-4 mb-4">
+    <header className="flex justify-end pt-4 mb-2">
       <button className="stroke-black" onClick={handleClose}>
-        <Close size={16} />
+        <Close size={18} />
       </button>
     </header>
   );

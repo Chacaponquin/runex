@@ -2,14 +2,12 @@
 
 import React from "react";
 import { Header, Img, Questions } from "./components";
-import { FAQ as IFAQ } from "../../interfaces";
 import { Section } from "../../shared/components";
+import { useFAQ } from "./hooks";
 
-interface Props {
-  faq: Array<IFAQ>;
-}
+export default function FAQ() {
+  const { faq } = useFAQ();
 
-export default function FAQ({ faq }: Props) {
   return (
     <Section alt={false} className="flex-col">
       <Header />

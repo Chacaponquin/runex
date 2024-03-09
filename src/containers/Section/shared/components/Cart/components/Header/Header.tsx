@@ -10,9 +10,9 @@ export default function Header({ handleChangeOpenCart }: Props) {
 
   return (
     <header className={CLASS}>
-   <Back handleClick={handleChangeOpenCart} />
-      <h1 className="font-fontSemiBold text-2xl text-center">Mi carrito</h1>
       <div />
+      <h1 className="font-fontSemiBold text-2xl text-center">Mi carrito</h1>
+      <Back handleClick={handleChangeOpenCart} />
     </header>
   );
 }

@@ -4,5 +4,6 @@ import Landing from "./Landing/Landing";
 import Section from "./Section/Section";
 import Search from "./Search/Search";
 import Checkout from "./Checkout/Checkout";
+import User from "./User/User";
 
-export { SignUp, Login, Landing, Section, Search, Checkout };
+export { SignUp, Login, Landing, Section, Search, Checkout, User };

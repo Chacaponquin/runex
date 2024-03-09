@@ -7,7 +7,7 @@ export default function Header() {
         Why you picking us
       </h1>
 
-      <p className="text-gray-500 max-w-[600px] text-lg">
+      <p className="text-gray-500 max-w-[600px] text-lg esm:text-base">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus fugit
         dolores temporibus ullam facere facilis labore voluptatibus eos omnis
         natus impedit, sequi itaque, animi officiis?

@@ -1,6 +1,8 @@
+"use client";
+
 interface Props {
-  route: string
-  children: React.ReactNode
+  route: string;
+  children: React.ReactNode;
 }
 
 export default function ExternalLink({ route, children }: Props) {
@@ -8,5 +10,5 @@ export default function ExternalLink({ route, children }: Props) {
     <a href={route} target="_blank" rel="noreferrer">
       {children}
     </a>
-  )
+  );
 }

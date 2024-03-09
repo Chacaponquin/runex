@@ -13,10 +13,10 @@ export default function ProductSections({ handleSelectProduct }: Props) {
   const { sections } = useProducts();
 
   return (
-    <main className="flex flex-col w-full">
+    <main className="flex flex-col w-full bg-gray-100 pt-8">
       <Resize
         className="flex flex-col gap-y-10 w-full flex-wrap pb-6"
-        containerClass="bg-gray-50 pb-20"
+        containerClass="pb-20"
       >
         {sections.map((s) => (
           <Section

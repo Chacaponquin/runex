@@ -56,7 +56,7 @@ export default function Search({
         handleSelectProduct={handleSelectProduct}
       />
 
-      <Navbar query={q} />
+      <Navbar query={q} disableSearch={false} fixed={false} />
 
       {openFilters && (
         <Filters

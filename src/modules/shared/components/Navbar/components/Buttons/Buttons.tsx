@@ -13,19 +13,10 @@ import { useUser } from "@modules/user/hooks";
 
 interface Props {
   handleChangeOpenCart(): void;
-  handleChangeOpenUserMenu(): void;
-  openCart: boolean;
-  openUserMenu: boolean;
   isSearch: boolean;
 }
 
-export default function Buttons({
-  handleChangeOpenCart,
-  openCart,
-  handleChangeOpenUserMenu,
-  openUserMenu,
-  isSearch,
-}: Props) {
+export default function Buttons({ handleChangeOpenCart, isSearch }: Props) {
   const { actualUser } = useUser();
 
   return (
@@ -38,21 +29,14 @@ export default function Buttons({
         />
       )}
 
-      <Button icon={Bag} handleClick={handleChangeOpenCart}>
-        {openCart && (
-          <Cart full={false} handleChangeOpenCart={handleChangeOpenCart} />
-        )}
-      </Button>
+      <Button icon={Bag} handleClick={handleChangeOpenCart} />
 
       <LinkButton icon={Favorite} link={APP_ROUTES.USER.FAVORITES} />
 
-      {actualUser ? (
-        <Button icon={User} handleClick={handleChangeOpenUserMenu}>
-          {openUserMenu && <UserMenu />}
-        </Button>
-      ) : (
-        <LinkButton icon={User} link={APP_ROUTES.AUTH.LOGIN} />
-      )}
+      <LinkButton
+        icon={User}
+        link={actualUser ? APP_ROUTES.USER.ORDERS : APP_ROUTES.AUTH.LOGIN}
+      />
     </section>
   );
 }

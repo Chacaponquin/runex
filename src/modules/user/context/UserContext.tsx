@@ -17,7 +17,7 @@ const UserContext = createContext<Props>({
 } as Props);
 
 function UserProvider({ children }: { children: React.ReactNode }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [actualUser, setActualUser] = useState<CurrentUser | null>(null);
 
   const { getUserByToken } = useUserServices();

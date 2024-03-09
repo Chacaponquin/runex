@@ -20,7 +20,10 @@ export default function Search() {
   );
 
   return (
-    <form className="flex items-center shadow-lg" onSubmit={handleSubmit}>
+    <form
+      className="flex items-center shadow-lg w-full max-w-[580px]"
+      onSubmit={handleSubmit}
+    >
       <search className={CLASS}>
         <i>
           <IconSearch size={23} />

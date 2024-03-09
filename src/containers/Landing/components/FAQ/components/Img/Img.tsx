@@ -1,17 +1,14 @@
 import { APP_IMAGES } from "@modules/app/constants";
-import Image from "next/image";
-import React from "react";
 
 export default function Img() {
   return (
-    <div className="min-w-[370px] xl:block hidden">
-      <Image
-        src={APP_IMAGES.LANDING.FAQ.src}
-        alt={APP_IMAGES.LANDING.FAQ.alt}
-        width={300}
-        height={400}
-        className="object-contain w-full"
-      />
-    </div>
+    <div
+      className="rounded-t-[300px] w-full max-w-[440px] h-[600px] lg:block hidden"
+      style={{
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundImage: `linear-gradient(rgba(52, 152, 219, 0.3), rgba(52, 152, 219, 0.3)), url(${APP_IMAGES.LANDING.PRESENTATION.src})`,
+      }}
+    ></div>
   );
 }

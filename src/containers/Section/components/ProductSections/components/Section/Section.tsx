@@ -1,10 +1,10 @@
 "use client";
 
-import { Product as IProduct } from "@modules/product/domain";
-import { Product } from "./components";
+import { Product } from "@modules/product/components";
+import { Product as ProductClass } from "@modules/product/domain";
 
 interface Props {
-  products: Array<IProduct>;
+  products: Array<ProductClass>;
   title: string;
   handleSelectProduct(id: string): void;
 }

@@ -9,9 +9,9 @@ export default function useProducts() {
     useProductServices();
 
   const [sections, setSections] = useState<Array<ProductSection>>([
-    { products: [], title: "New Products", id: 1 },
-    { products: [], title: "Trending", id: 2 },
-    { products: [], title: "Top Rated", id: 3 },
+    { products: [], title: "Nuevos productos", id: 1 },
+    { products: [], title: "En tendencia", id: 2 },
+    { products: [], title: "Favorites", id: 3 },
   ]);
 
   useEffect(() => {

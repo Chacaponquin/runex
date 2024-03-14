@@ -26,11 +26,17 @@ export default function Product({
   handleSelectProduct,
   provider,
 }: Props) {
-  const { handleSelect, isFavorite, handleAddFavorite, handleDeleteFavorite } =
-    useProduct({
-      id: id,
-      handleSelectProduct: handleSelectProduct,
-    });
+  const {
+    handleSelect,
+    isFavorite,
+    handleAddFavorite,
+    handleDeleteFavorite,
+    isInCart,
+    handleDelete,
+  } = useProduct({
+    id: id,
+    handleSelectProduct: handleSelectProduct,
+  });
 
   return (
     <article className="flex flex-col rounded bg-white cursor-pointer h-max shadow-md">
@@ -49,7 +55,11 @@ export default function Product({
           <Provider provider={provider} />
         </div>
 
-        <AddButton handleClick={handleSelect} />
+        <AddButton
+          handleAdd={handleSelect}
+          isInCart={isInCart}
+          handleDelete={handleDelete}
+        />
       </section>
     </article>
   );

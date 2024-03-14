@@ -1,4 +1,4 @@
-import { Search, Section } from "@containers";
+import { Search } from "@containers";
 
 interface Props {
   searchParams: {

@@ -5,5 +5,6 @@ import Section from "./Section/Section";
 import Search from "./Search/Search";
 import Checkout from "./Checkout/Checkout";
 import User from "./User/User";
+import Admin from "./Admin/Admin";
 
-export { SignUp, Login, Landing, Section, Search, Checkout, User };
+export { SignUp, Login, Landing, Section, Search, Checkout, User, Admin };

@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import Check from "./Check";
 import CheckOne from "./CheckOne";
 import Close from "./Close";
+import Clothe from "./Clothe";
 import CreditCard from "./CreditCard";
 import Dislike from "./Dislike";
 import Email from "./Email";
@@ -56,4 +57,5 @@ export {
   Money,
   Lock,
   CheckOne,
+  Clothe,
 };

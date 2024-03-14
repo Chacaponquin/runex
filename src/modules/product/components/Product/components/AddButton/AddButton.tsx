@@ -1,11 +1,18 @@
 import { Bag } from "@modules/app/modules/icon/components";
 import clsx from "clsx";
+import { Fragment } from "react";
 
 interface Props {
-  handleClick(): void;
+  handleAdd(): void;
+  isInCart: boolean;
+  handleDelete(): void;
 }
 
-export default function AddButton({ handleClick }: Props) {
+export default function AddButton({
+  handleAdd,
+  isInCart,
+  handleDelete,
+}: Props) {
   const CLASS = clsx(
     "flex items-center justify-center",
     "bg-blue-500",
@@ -20,9 +27,15 @@ export default function AddButton({ handleClick }: Props) {
   );
 
   return (
-    <button className={CLASS} onClick={handleClick}>
-      <Bag size={20} />
-      <p className="font-fontMedium">Añadir</p>
+    <button className={CLASS} onClick={isInCart ? handleDelete : handleAdd}>
+      {!isInCart ? (
+        <Fragment>
+          <Bag size={20} />
+          <p className="font-fontMedium">Añadir</p>
+        </Fragment>
+      ) : (
+        <p className="font-fontMedium">Eliminar</p>
+      )}
     </button>
   );
 }

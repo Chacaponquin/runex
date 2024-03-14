@@ -79,6 +79,10 @@ export default function useCart() {
     }
   }
 
+  function existProduct(id: string): boolean {
+    return cart.some((p) => p.product.id === id && p.quantity > 0);
+  }
+
   return {
     cart,
     handleChangeProductQuantity,
@@ -87,5 +91,6 @@ export default function useCart() {
     totalBillStr,
     totalQuantityStr,
     totalProductPrice,
+    existProduct,
   };
 }

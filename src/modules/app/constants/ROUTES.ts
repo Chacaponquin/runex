@@ -16,6 +16,11 @@ export const APP_ROUTES = {
     FAVORITES: "/user/favorites",
     ORDERS: "/user/orders",
   },
+  ADMIN: {
+    ROOT: "/admin",
+    CLOTHES: "/admin/clothes",
+    ORDERS: "/admin/orders",
+  },
 };
 
 export const API_ROUTES = {

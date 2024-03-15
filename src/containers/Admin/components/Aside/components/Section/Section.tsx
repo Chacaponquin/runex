@@ -13,7 +13,7 @@ export default function Section({ icon, title, active, url }: Props) {
   const CLASS = clsx(
     "rounded",
     "flex items-center",
-    "gap-6",
+    "gap-5",
     "py-3 px-5",
     {
       "bg-blue-500": active,
@@ -27,7 +27,7 @@ export default function Section({ icon, title, active, url }: Props) {
       <li className={CLASS}>
         <i>{icon({ size: 24 })}</i>
 
-        <h2>{title}</h2>
+        <h2 className="font-fontMedium">{title}</h2>
       </li>
     </Link>
   );

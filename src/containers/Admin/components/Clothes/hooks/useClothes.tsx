@@ -4,9 +4,12 @@ import { useProductServices } from "@modules/product/services";
 import { useEffect, useMemo, useState } from "react";
 import { Name } from "../components";
 import { DefaultCell } from "@containers/Admin/shared/components";
+import { useModal } from "@containers/Admin/hooks";
 
 export default function useClothes() {
   const { getClothes } = useProductServices();
+
+  const { handleOpenAddClothe: handleOpenAddClotheHook } = useModal();
 
   const [clothes, setClothes] = useState<Array<Clothe>>([]);
 
@@ -27,5 +30,9 @@ export default function useClothes() {
     };
   }, [clothes]);
 
-  return { tableData };
+  function handleOpenAddClothe() {
+    handleOpenAddClotheHook();
+  }
+
+  return { tableData, handleOpenAddClothe };
 }

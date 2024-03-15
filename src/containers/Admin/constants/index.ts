@@ -1,4 +1,4 @@
-export enum ADMIN_SECTIONS {
-  CLOTHE,
-  ORDERS,
-}
+import { MODAL_ACTIONS } from "./MODAL";
+import { ADMIN_SECTIONS } from "./SECTIONS";
+
+export { ADMIN_SECTIONS, MODAL_ACTIONS };

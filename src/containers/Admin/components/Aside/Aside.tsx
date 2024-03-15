@@ -7,7 +7,7 @@ export default function Aside() {
 
   const CLASS = clsx(
     "flex flex-col",
-    "max-w-[300px] w-full h-screen",
+    "max-w-[240px] w-full h-screen",
     "bg-white",
     "py-5 px-6"
   );

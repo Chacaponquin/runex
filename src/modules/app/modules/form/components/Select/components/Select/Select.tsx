@@ -17,7 +17,7 @@ export default function Select({ text, openOptions }: Props) {
     "transition-all duration-300",
     "flex items-center justify-between",
     "text-black",
-    "border-2 border-gray-300",
+    "border-2 border-gray-200",
     "px-4 py-2",
 
     { "border-blue-500": openOptions, "hover:border-blue-500": !openOptions }

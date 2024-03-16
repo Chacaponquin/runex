@@ -28,10 +28,23 @@ export default function InputText({
     "outline outline-[2px]",
     "transition-all duration-200",
     {
-      "px-4 py-1.5": size === "sm",
-      "px-5 py-2": size === "lg",
+      "py-1.5": size === "sm",
+      "py-2": size === "lg",
     },
-    { "outline-blue-500 shadow-input": focus, "outline-gray-200": !focus }
+
+    {
+      "px-3": size === "sm",
+      "px-4": size === "lg",
+      "px-5": size === "xl",
+    },
+
+    { "outline-blue-500 shadow-input": focus, "outline-gray-200": !focus },
+
+    {
+      "text-sm": size === "sm",
+      "text-base": size === "lg",
+      "text-lg": size === "xl",
+    }
   );
 
   return (

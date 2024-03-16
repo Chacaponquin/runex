@@ -18,14 +18,22 @@ export default function AddClothe() {
     handleSave,
     providers,
     handleChangeProvider,
+    handleChangeImages,
+    handleDeleteImage,
+    handleAddSize,
+    handleDeleteSize,
   } = useAddClothe();
 
   return (
-    <Modal className="flex flex-col" max={900} handleSubmit={handleSave}>
+    <Modal className="flex flex-col" max={1100} handleSubmit={handleSave}>
       <Header />
 
-      <section className="grid grid-cols-2 gap-x-6 w-full">
-        <ImageInput />
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5 w-full">
+        <ImageInput
+          handleChangeImages={handleChangeImages}
+          images={form.images}
+          handleDeleteImage={handleDeleteImage}
+        />
 
         <div className="flex flex-col gap-y-5 mb-6">
           <FormSection label="Nombre">
@@ -50,7 +58,11 @@ export default function AddClothe() {
           </FormSection>
 
           <FormSection label="Tallas">
-            <Sizes />
+            <Sizes
+              sizes={form.sizes}
+              handleAddSize={handleAddSize}
+              handleDeleteSize={handleDeleteSize}
+            />
           </FormSection>
 
           <FormSection label="Colores">

@@ -24,14 +24,16 @@ export default function Modal({
   const CLASS = clsx(
     "fixed top-0 left-0",
     "flex items-center justify-center",
-    "h-screen w-full",
-    "bg-black/50"
+    "h-svh w-full",
+    "bg-black/50",
+    "px-3 py-4",
+    "overflow-y-auto"
   );
 
   const FORM_CLASS = clsx(
     "w-full",
     "bg-white",
-    "px-8 py-5",
+    "px-8 esm:px-5 py-5",
     "rounded",
     className
   );

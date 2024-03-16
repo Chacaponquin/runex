@@ -11,6 +11,9 @@ export default function useAddClothe() {
     name: "",
     price: 0,
     provider: providers[0].name,
+    images: [],
+    colors: [],
+    sizes: [],
   });
 
   function handleChangeName(name: string) {
@@ -29,6 +32,34 @@ export default function useAddClothe() {
     setForm((prev) => ({ ...prev, provider: prov }));
   }
 
+  function handleChangeImages(files: FileList): void {
+    for (let i = 0; i < files.length; i++) {
+      const file = files.item(i);
+
+      if (file) {
+        setForm((prev) => ({ ...prev, images: [...prev.images, file] }));
+      }
+    }
+  }
+
+  function handleDeleteImage(index: number) {
+    setForm((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, inx) => inx !== index),
+    }));
+  }
+
+  function handleAddSize(size: string) {
+    setForm((prev) => ({ ...prev, sizes: [...prev.sizes, size] }));
+  }
+
+  function handleDeleteSize(index: number) {
+    setForm((prev) => ({
+      ...prev,
+      sizes: prev.sizes.filter((_, inx) => inx !== index),
+    }));
+  }
+
   return {
     form,
     handleChangeName,
@@ -37,5 +68,9 @@ export default function useAddClothe() {
     handleSave,
     providers,
     handleChangeProvider,
+    handleChangeImages,
+    handleDeleteImage,
+    handleAddSize,
+    handleDeleteSize,
   };
 }

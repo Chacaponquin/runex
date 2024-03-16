@@ -1,17 +1,28 @@
-import { Upload } from "@modules/app/modules/icon/components";
-import React from "react";
+import { Card, Input } from "./components";
 
-export default function ImageInput() {
+interface Props {
+  handleChangeImages(e: FileList): void;
+  images: Array<File>;
+  handleDeleteImage(i: number): void;
+}
+
+export default function ImageInput({
+  handleChangeImages,
+  images,
+  handleDeleteImage,
+}: Props) {
   return (
-    <div className="">
-      <div className="stroke-black fill-black">
-        <i>
-          <Upload size={32} />
-        </i>
+    <div className="flex flex-col">
+      <Input handleChangeImages={handleChangeImages} />
 
-        <h1>
-          Arrastra las imágenes o <button>navega</button>
-        </h1>
+      <div className="flex flex-col gap-y-2">
+        {images.map((i, index) => (
+          <Card
+            key={index}
+            image={i}
+            handleDelete={() => handleDeleteImage(index)}
+          />
+        ))}
       </div>
     </div>
   );

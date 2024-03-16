@@ -40,7 +40,7 @@ export default function InputNumber({
       case "xl":
         return 43;
       default:
-        return 30;
+        return 33;
     }
   }, [size]);
 
@@ -151,9 +151,10 @@ export default function InputNumber({
   const CONTAINER_CLASS = clsx(
     "flex items-center",
     "border-2",
-    "bg-white dark:bg-scale-5",
+    "bg-white",
     "transition-all duration-300",
     "rounded",
+
     {
       "border-purple-6": isFocus || isHover,
       "border-scale-11": !isFocus && !isHover,
@@ -161,13 +162,17 @@ export default function InputNumber({
   );
 
   const INPUT_CLASS = clsx(
-    "h-full w-full outline-none text-sm bg-transparent",
-    "py-1.5 px-2",
+    "h-full w-full",
+    "bg-transparent",
+    "py-1.5",
+    "outline-none",
+
     {
-      "text-base": size === "sm",
-      "text-lg": size === "lg",
-      "text-xl": size === "xl",
+      "text-sm": size === "sm",
+      "text-base": size === "lg",
+      "text-lg": size === "xl",
     },
+
     {
       "px-3": size === "sm",
       "px-4": size === "lg",

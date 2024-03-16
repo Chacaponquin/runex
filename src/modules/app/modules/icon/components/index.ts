@@ -26,6 +26,7 @@ import Search from "./Search";
 import Setting from "./Setting";
 import Share from "./Share";
 import Twitter from "./Twitter";
+import Upload from "./Upload";
 import User from "./User";
 
 export {
@@ -58,4 +59,5 @@ export {
   Lock,
   CheckOne,
   Clothe,
+  Upload,
 };

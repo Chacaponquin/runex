@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { Sizes } from "../../interfaces/dimension";
+import { useState } from "react";
 
 interface Props {
   placeholder: string;
@@ -20,10 +21,18 @@ export default function InputText({
   type,
   value,
 }: Props) {
-  const CLASS = clsx("outline-none", {
-    "px-4 py-1": size === "sm",
-    "px-5 py-1.5": size === "lg",
-  });
+  const [focus, setFocus] = useState(false);
+
+  const CLASS = clsx(
+    "rounded",
+    "outline outline-[2px]",
+    "transition-all duration-200",
+    {
+      "px-4 py-1.5": size === "sm",
+      "px-5 py-2": size === "lg",
+    },
+    { "outline-blue-500 shadow-input": focus, "outline-gray-200": !focus }
+  );
 
   return (
     <input
@@ -33,6 +42,8 @@ export default function InputText({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
+      onFocus={() => setFocus(true)}
+      onBlur={() => setFocus(false)}
     />
   );
 }

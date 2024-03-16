@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { FormProps } from "../../interfaces/form";
 import { Size } from "../../interfaces/dimension";
@@ -26,7 +26,6 @@ export default function Select<T>({
   options,
   placeholder,
   value,
-  dimension = "normal",
   height = 300,
   size,
   id,
@@ -45,7 +44,7 @@ export default function Select<T>({
         { label: o[labelKey] as string, value: o[valueKey] as string },
       ]);
     });
-  }, [options]);
+  }, [options, labelKey, valueKey]);
 
   useEffect(() => {
     selectOptions.forEach((o, index) => {

@@ -8,8 +8,6 @@ import { useMemo } from "react";
 export default function useAside() {
   const path = usePathname();
 
-  console.log(path);
-
   const active: ADMIN_SECTIONS = useMemo(() => {
     const sect = path.split("/").at(-1) as string;
 

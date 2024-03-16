@@ -12,7 +12,7 @@ export default function Select({ text, openOptions }: Props) {
     "w-full",
     "cursor-pointer",
     "gap-5",
-    "rounded-sm",
+    "rounded",
     "whitespace-nowrap",
     "transition-all duration-300",
     "flex items-center justify-between",

@@ -1,28 +1,29 @@
-import { useMemo, useState, useRef, useId } from "react";
-import { FormProps } from "../../interfaces/form";
-import { Size } from "../../interfaces/dimension";
+import { useMemo, useState, useRef } from "react";
 import { ArrowDown, ArrowUp } from "@modules/app/modules/icon/components";
 import clsx from "clsx";
 import { Button } from "./components";
+import { Sizes } from "../../interfaces/dimension";
 
-interface Props extends FormProps<number> {
+interface Props {
   min?: number;
   max?: number;
-  step?: number;
-  size?: Size;
-  name?: string;
+  id?: string;
+  value: number;
+  step: number;
+  name: string;
+  onChange(v: number): void;
+  size: Sizes;
 }
 
 export default function InputNumber({
   min,
   max,
   step = 1,
-  size = "full",
-  dimension = "normal",
   value,
   onChange,
-  id,
   name,
+  size,
+  id,
 }: Props) {
   const [isFocus, setIsFocus] = useState(false);
   const [isHover, setIsHover] = useState(false);
@@ -31,17 +32,17 @@ export default function InputNumber({
   const downButton = useRef<HTMLButtonElement | null>(null);
 
   const height = useMemo(() => {
-    switch (dimension) {
-      case "small":
+    switch (size) {
+      case "sm":
         return 33;
-      case "normal":
+      case "lg":
         return 38;
-      case "large":
+      case "xl":
         return 43;
       default:
         return 30;
     }
-  }, [dimension]);
+  }, [size]);
 
   function handleIncrease() {
     const nextValue = value ? Number(Number(value + step).toFixed(2)) : 1;
@@ -148,9 +149,11 @@ export default function InputNumber({
   }
 
   const CONTAINER_CLASS = clsx(
-    "flex items-center rounded-sm transition-all duration-300",
+    "flex items-center",
     "border-2",
     "bg-white dark:bg-scale-5",
+    "transition-all duration-300",
+    "rounded",
     {
       "border-purple-6": isFocus || isHover,
       "border-scale-11": !isFocus && !isHover,
@@ -161,14 +164,14 @@ export default function InputNumber({
     "h-full w-full outline-none text-sm bg-transparent",
     "py-1.5 px-2",
     {
-      "text-base": dimension === "small",
-      "text-lg": dimension === "normal",
-      "text-xl": dimension === "large",
+      "text-base": size === "sm",
+      "text-lg": size === "lg",
+      "text-xl": size === "xl",
     },
     {
-      "px-3": dimension === "small",
-      "px-4": dimension === "normal",
-      "px-5": dimension === "large",
+      "px-3": size === "sm",
+      "px-4": size === "lg",
+      "px-5": size === "xl",
     }
   );
 
@@ -181,18 +184,15 @@ export default function InputNumber({
   }
 
   return (
-    <div
-      className={CONTAINER_CLASS}
-      style={{ height: height, width: size === "full" ? `100%` : `${size}px` }}
-    >
+    <div className={CONTAINER_CLASS} style={{ height: height, width: `100%` }}>
       <input
         className={INPUT_CLASS}
         type="text"
         onChange={(e) => handleChangeInputValue(e.target.value)}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleBlur}
         value={value === undefined ? 0 : value}
         id={id}
         min={min}

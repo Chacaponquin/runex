@@ -1,12 +1,22 @@
+"use client";
+
 import { useModal } from "@containers/Admin/hooks";
 import { useBlockScroll } from "@modules/shared/hooks";
 import clsx from "clsx";
 
 interface Props {
   children: React.ReactNode;
+  className: string;
+  max: number;
+  handleSubmit(): void;
 }
 
-export default function Modal({ children }: Props) {
+export default function Modal({
+  children,
+  className,
+  max,
+  handleSubmit,
+}: Props) {
   useBlockScroll(true);
 
   const { handleClose } = useModal();
@@ -18,12 +28,29 @@ export default function Modal({ children }: Props) {
     "bg-black/50"
   );
 
+  const FORM_CLASS = clsx(
+    "w-full",
+    "bg-white",
+    "px-8 py-5",
+    "rounded",
+    className
+  );
+
+  function handleFormSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    handleSubmit();
+    handleClose();
+  }
+
   return (
     <div className={CLASS} onClick={handleClose}>
       <form
-        action=""
         onClick={(e) => e.stopPropagation()}
-        className={clsx("bg-white", "px-5 py-3", "rounded")}
+        className={FORM_CLASS}
+        style={{
+          maxWidth: `${max}px`,
+        }}
+        onSubmit={handleFormSubmit}
       >
         {children}
       </form>

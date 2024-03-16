@@ -1,6 +1,4 @@
-export interface Provider {
-  name: string;
-}
+
 
 export interface ProductProps {
   id: string;

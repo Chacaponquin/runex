@@ -10,4 +10,8 @@ export interface ProductSize {
   name: string;
 }
 
+export interface Provider {
+  name: string;
+}
+
 export { Product, Clothe };

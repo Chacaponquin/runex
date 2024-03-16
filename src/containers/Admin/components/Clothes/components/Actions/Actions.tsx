@@ -13,6 +13,7 @@ export default function Actions({ handleOpenAddClothe }: Props) {
         color="primary"
         disabled={false}
         size="sm"
+        rounded="full"
       />
     </div>
   );

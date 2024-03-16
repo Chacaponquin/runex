@@ -6,7 +6,7 @@ interface Props {
 export default function FormSection({ children, label }: Props) {
   return (
     <section className="flex flex-col">
-      <label>{label}</label>
+      <label className="text-lg mb-1 font-fontMedium">{label}</label>
       {children}
     </section>
   );

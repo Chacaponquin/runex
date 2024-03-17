@@ -22,6 +22,11 @@ export default function AddClothe() {
     handleDeleteImage,
     handleAddSize,
     handleDeleteSize,
+    handleAddColor,
+    handleDeleteColor,
+    handleChangeCategory,
+    categories,
+    loading,
   } = useAddClothe();
 
   return (
@@ -36,7 +41,7 @@ export default function AddClothe() {
         />
 
         <div className="flex flex-col gap-y-5 mb-6">
-          <FormSection label="Nombre">
+          <FormSection label="Nombre" required>
             <InputText
               type="text"
               name="product-name"
@@ -47,7 +52,7 @@ export default function AddClothe() {
             />
           </FormSection>
 
-          <FormSection label="Precio">
+          <FormSection label="Precio" required>
             <InputNumber
               value={form.price}
               onChange={handleChangePrice}
@@ -57,7 +62,7 @@ export default function AddClothe() {
             />
           </FormSection>
 
-          <FormSection label="Tallas">
+          <FormSection label="Tallas" required>
             <Sizes
               sizes={form.sizes}
               handleAddSize={handleAddSize}
@@ -65,11 +70,14 @@ export default function AddClothe() {
             />
           </FormSection>
 
-          <FormSection label="Colores">
-            <Colors />
+          <FormSection label="Colores" required>
+            <Colors
+              handleAddColor={handleAddColor}
+              handleDeleteColor={handleDeleteColor}
+            />
           </FormSection>
 
-          <FormSection label="Provedor">
+          <FormSection label="Provedor" required>
             <Select
               labelKey="name"
               options={providers}
@@ -79,10 +87,21 @@ export default function AddClothe() {
               placeholder="Provedor"
             />
           </FormSection>
+
+          <FormSection label="Categoría" required>
+            <Select
+              value={form.category}
+              options={categories}
+              labelKey="name"
+              valueKey="name"
+              onChange={handleChangeCategory}
+              placeholder="Categoría"
+            />
+          </FormSection>
         </div>
       </section>
 
-      <Buttons handleCancel={handleCancel} />
+      <Buttons handleCancel={handleCancel} loading={loading} />
     </Modal>
   );
 }

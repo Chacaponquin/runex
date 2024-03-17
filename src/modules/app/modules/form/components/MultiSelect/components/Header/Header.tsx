@@ -1,13 +1,14 @@
 import { ArrowDown } from "@modules/app/modules/icon/components";
 import clsx from "clsx";
+import React from "react";
 
 interface Props {
+  openOptions: boolean;
   text: string;
   onClick(): void;
-  openOptions: boolean;
 }
 
-export default function Select({ text, openOptions, onClick }: Props) {
+export default function Header({ openOptions, text, onClick }: Props) {
   const CLASS = clsx(
     "w-full",
     "cursor-pointer",

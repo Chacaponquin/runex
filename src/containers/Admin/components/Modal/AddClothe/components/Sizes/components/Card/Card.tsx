@@ -11,7 +11,7 @@ export default function Card({ size, handleDeleteSize }: Props) {
     "flex items-center",
     "gap-x-2",
     "bg-blue-100",
-    "px-2 py-0.5",
+    "px-3 py-1",
     "text-blue-600",
     "stroke-blue-600",
     "rounded-full"

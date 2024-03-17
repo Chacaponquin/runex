@@ -1,3 +1,4 @@
+import useClotheServices from "./useClotheServices";
 import useProductServices from "./useProductServices";
 
-export { useProductServices };
+export { useProductServices, useClotheServices };

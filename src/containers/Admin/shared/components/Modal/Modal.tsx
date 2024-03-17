@@ -41,7 +41,6 @@ export default function Modal({
   function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
     handleSubmit();
-    handleClose();
   }
 
   return (

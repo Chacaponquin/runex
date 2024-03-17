@@ -30,7 +30,7 @@ export default function Button({
     {
       "px-4 py-1.5": size === "sm",
       "px-5 py-2": size === "lg",
-      "px-8 py-3": size === "xl",
+      "px-7 py-2.5": size === "xl",
     },
 
     { "text-white": color === "primary", "text-black": color === "cancel" },
@@ -39,7 +39,9 @@ export default function Button({
       "rounded-full": rounded === "full",
       rounded: rounded === "sm",
       "rounded-lg": rounded === "lg",
-    }
+    },
+
+    { "text-base": size === "sm" || size === "lg", "text-lg": size === "xl" }
   );
 
   return (

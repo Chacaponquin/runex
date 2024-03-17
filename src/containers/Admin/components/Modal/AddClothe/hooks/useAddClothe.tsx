@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { AddCLotheForm } from "../interfaces";
-import { useProduct } from "@modules/product/hooks";
+import { useClothes } from "@modules/product/hooks";
+import { useClotheServices } from "@modules/product/services";
 
 export default function useAddClothe() {
-  const { providers } = useProduct();
+  const { providers, categories } = useClothes();
+  const { createClothe, uploadImages } = useClotheServices();
+
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState<AddCLotheForm>({
     name: "",
@@ -14,6 +18,7 @@ export default function useAddClothe() {
     images: [],
     colors: [],
     sizes: [],
+    category: categories[0].name,
   });
 
   function handleChangeName(name: string) {
@@ -23,10 +28,6 @@ export default function useAddClothe() {
   function handleChangePrice(value: number) {
     setForm((prev) => ({ ...prev, price: value }));
   }
-
-  function handleSave() {}
-
-  function handleCancel() {}
 
   function handleChangeProvider(prov: string) {
     setForm((prev) => ({ ...prev, provider: prov }));
@@ -60,6 +61,49 @@ export default function useAddClothe() {
     }));
   }
 
+  function handleAddColor(color: string) {
+    setForm((prev) => ({ ...prev, colors: [...prev.colors, color] }));
+  }
+
+  function handleDeleteColor(color: string) {
+    setForm((prev) => ({
+      ...prev,
+      colors: prev.colors.filter((c) => c !== color),
+    }));
+  }
+
+  function handleChangeCategory(cat: string) {
+    setForm((prev) => ({ ...prev, category: cat }));
+  }
+
+  function handleSave() {
+    setLoading(true);
+
+    uploadImages(form.images)
+      .then(() => {
+        createClothe({
+          body: form,
+          onFinally() {
+            setLoading(false);
+          },
+          onError() {
+            // create error
+          },
+          onSuccess() {
+            // create success
+          },
+        });
+      })
+      .catch(() => {
+        // upload error
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  function handleCancel() {}
+
   return {
     form,
     handleChangeName,
@@ -72,5 +116,10 @@ export default function useAddClothe() {
     handleDeleteImage,
     handleAddSize,
     handleDeleteSize,
+    handleAddColor,
+    handleDeleteColor,
+    handleChangeCategory,
+    categories,
+    loading,
   };
 }

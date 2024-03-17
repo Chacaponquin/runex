@@ -14,4 +14,8 @@ export interface Provider {
   name: string;
 }
 
+export interface ProductCategory {
+  name: string;
+}
+
 export { Product, Clothe };

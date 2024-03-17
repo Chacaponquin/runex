@@ -1,4 +1,4 @@
-import { Provider } from "../domain";
+import { ProductColor } from "../domain";
 
 interface BuildProductLinkProps {
   id: string;
@@ -6,7 +6,12 @@ interface BuildProductLinkProps {
 }
 
 export default function useProduct() {
-  const providers: Array<Provider> = [{ name: "Amazon" }, { name: "HyM" }];
+  const colors: Array<ProductColor> = [
+    { name: "Orange", color: "#f0932b" },
+    { color: "#6ab04c", name: "Green" },
+    { name: "Red", color: "#eb4d4b" },
+    { name: "Black", color: "#2d3436" },
+  ];
 
   function buildProductLink({ type, id }: BuildProductLinkProps) {
     return `https://runess.com/${type}/p=${id}`;
@@ -25,7 +30,7 @@ export default function useProduct() {
   }
 
   return {
-    providers,
+    colors,
     buildProductLink,
     buildProductInstagramLink,
     buildProductFacebookLink,

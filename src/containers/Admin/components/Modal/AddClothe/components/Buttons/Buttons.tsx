@@ -2,24 +2,25 @@ import { Button } from "@modules/app/modules/ui/components";
 
 interface Props {
   handleCancel(): void;
+  loading: boolean;
 }
 
-export default function Buttons({ handleCancel }: Props) {
+export default function Buttons({ handleCancel, loading }: Props) {
   return (
     <section className="flex gap-x-4 items-center justify-end">
       <Button
         color="cancel"
-        disabled={false}
+        disabled={loading}
         handleClick={handleCancel}
-        size="lg"
+        size="xl"
         text="Cancelar"
         rounded="full"
       />
 
       <Button
         color="primary"
-        disabled={false}
-        size="lg"
+        disabled={loading}
+        size="xl"
         text="Guardar"
         rounded="full"
         type="submit"

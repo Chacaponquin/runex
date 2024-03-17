@@ -1,12 +1,5 @@
 import clsx from "clsx";
-import {
-  ReactElement,
-  useRef,
-  useEffect,
-  useState,
-  useCallback,
-  useMemo,
-} from "react";
+import { ReactElement, useRef, useEffect, useState, useCallback } from "react";
 
 interface Props {
   header: ReactElement;
@@ -14,7 +7,7 @@ interface Props {
   className?: string;
   id?: string;
   height?: number;
-  size?: "full" | "auto" | number;
+  enableHideList: boolean;
 }
 
 export default function Dropdown({
@@ -23,7 +16,7 @@ export default function Dropdown({
   className: inputClassName,
   id,
   height,
-  size = "auto",
+  enableHideList,
 }: Props) {
   const [open, setOpen] = useState(false);
 
@@ -47,7 +40,9 @@ export default function Dropdown({
   }
 
   function handleClickList() {
-    setOpen(false);
+    if (enableHideList) {
+      setOpen(false);
+    }
   }
 
   useEffect(() => {
@@ -67,23 +62,13 @@ export default function Dropdown({
     };
   }, [onClickOutside]);
 
-  const SIZE = useMemo(() => {
-    if (size === "auto") {
-      return "auto";
-    } else if (size === "full") {
-      return "100%";
-    } else {
-      return `${size}px`;
-    }
-  }, [size]);
-
   return (
-    <div id={id} ref={wrapperRef} style={{ width: SIZE }}>
+    <div id={id} ref={wrapperRef} style={{ width: "100%" }}>
       <div
         className="flex items-center"
         onClick={handleOpen}
         ref={headerRef}
-        style={{ width: SIZE }}
+        style={{ width: "100%" }}
       >
         {header}
       </div>

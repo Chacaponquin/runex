@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { RefObject } from "react";
+import { RefObject, useState } from "react";
 
 interface Props {
   handleChange(v: string): void;
@@ -14,14 +14,19 @@ export default function Input({
   inputRef,
   isEmpty,
 }: Props) {
+  const [focus, setFocus] = useState(false);
+
   const CLASS = clsx(
-    "outline outline-2 outline-gray-200",
+    "outline outline-[2px]",
     "rounded",
     "focus:outline-2 focus:outline-blue-500",
-    "py-0.5 px-2",
+    "py-1 px-2.5",
     "text-sm",
+    "transition-all duration-200",
 
-    { "w-full": isEmpty, "w-[140px]": !isEmpty }
+    { "w-full": isEmpty, "w-[140px]": !isEmpty },
+
+    { "outline-blue-500 shadow-input": focus, "outline-gray-200": !focus }
   );
 
   return (
@@ -32,6 +37,9 @@ export default function Input({
       value={value}
       className={CLASS}
       name="product-size"
+      onFocus={() => setFocus(true)}
+      onBlur={() => setFocus(false)}
+      placeholder="Talla"
     />
   );
 }

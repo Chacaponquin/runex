@@ -28,4 +28,5 @@ export const API_ROUTES = {
     GET_CURRENT_USER: "/user/user-token",
     CONTACT: "/user/contact",
   },
+  CLOTHE: { CREATE: "/clothe/create", UPLOAD_IMAGES: "/clothe/upload-images" },
 };

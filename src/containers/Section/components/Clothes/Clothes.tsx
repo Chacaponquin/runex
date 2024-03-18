@@ -1,12 +1,13 @@
 "use client";
 
 import { Footer, Navbar, SelectedProduct } from "@modules/shared/components";
-import { Header, ProductSections } from "./components";
-import { useSection } from "./hooks";
+import { useClothes } from "./hooks";
+import { Header, ProductSections } from "@containers/Section/shared/components";
+import { APP_IMAGES } from "@modules/app/constants";
 
-export default function Section() {
+export default function Clothes() {
   const { selectedProduct, handleSelectProduct, handleDeleteSelectedProduct } =
-    useSection();
+    useClothes();
 
   return (
     <div className="flex flex-col w-full">
@@ -16,7 +17,7 @@ export default function Section() {
         handleSelectProduct={handleSelectProduct}
       />
       <Navbar disableSearch={false} fixed={false} />
-      <Header />
+      <Header image={APP_IMAGES.LANDING.CLOTHES} />
       <ProductSections handleSelectProduct={handleSelectProduct} />
       <Footer />
     </div>

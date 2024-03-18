@@ -6,9 +6,10 @@ interface Props {
   id: string;
   name: string;
   value: number;
+  onChange(v: number): void;
 }
 
-export default function Input({ id, max, min, name, value }: Props) {
+export default function Input({ id, max, min, name, value, onChange }: Props) {
   return (
     <InputNumber
       id={id}
@@ -17,6 +18,8 @@ export default function Input({ id, max, min, name, value }: Props) {
       min={min}
       name={name}
       step={1}
+      size="lg"
+      onChange={onChange}
     />
   );
 }

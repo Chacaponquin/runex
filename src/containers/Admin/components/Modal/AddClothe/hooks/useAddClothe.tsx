@@ -4,14 +4,24 @@ import { useState } from "react";
 import { AddCLotheForm } from "../interfaces";
 import { useClothes } from "@modules/product/hooks";
 import { useClotheServices } from "@modules/product/services";
+import { useToast } from "@modules/app/modules/toast/hooks";
+import { useValidator } from "@modules/app/modules/form/hooks";
+import { NotValidateField } from "@modules/app/modules/form/domain";
+import {
+  ClotheColorsValidator,
+  ClotheSizesValidator,
+  ProductImagesValidator,
+  ProductNameValidator,
+} from "@modules/product/domain";
 
 export default function useAddClothe() {
+  const { error, success } = useToast();
   const { providers, categories } = useClothes();
   const { createClothe, uploadImages } = useClotheServices();
 
   const [loading, setLoading] = useState(false);
 
-  const [form, setForm] = useState<AddCLotheForm>({
+  const INITIAL_FORM = {
     name: "",
     price: 0,
     provider: providers[0].name,
@@ -19,7 +29,19 @@ export default function useAddClothe() {
     colors: [],
     sizes: [],
     category: categories[0].name,
+  };
+
+  const { validate } = useValidator<AddCLotheForm>({
+    category: new NotValidateField(),
+    colors: new ClotheColorsValidator(),
+    images: new ProductImagesValidator(),
+    name: new ProductNameValidator(),
+    price: new NotValidateField(),
+    provider: new NotValidateField(),
+    sizes: new ClotheSizesValidator(),
   });
+
+  const [form, setForm] = useState<AddCLotheForm>(INITIAL_FORM);
 
   function handleChangeName(name: string) {
     setForm((prev) => ({ ...prev, name: name }));
@@ -77,29 +99,44 @@ export default function useAddClothe() {
   }
 
   function handleSave() {
-    setLoading(true);
+    const validated = validate(form);
 
-    uploadImages(form.images)
-      .then(() => {
-        createClothe({
-          body: form,
-          onFinally() {
-            setLoading(false);
-          },
-          onError() {
-            // create error
-          },
-          onSuccess() {
-            // create success
-          },
+    if (validated) {
+      setLoading(true);
+
+      uploadImages(form.images)
+        .then((urls) => {
+          createClothe({
+            body: { ...form, images: urls },
+            onFinally() {
+              setLoading(false);
+            },
+            onError() {
+              error({
+                id: "product-creation",
+                message: "Hubo un error creando el producto",
+              });
+            },
+            onSuccess() {
+              success({
+                id: "create-product",
+                message: "Producto creado con éxito",
+              });
+
+              setForm(INITIAL_FORM);
+            },
+          });
+        })
+        .catch(() => {
+          error({
+            id: "upload-image",
+            message: "Hubo un error al subir las imágenes",
+          });
+        })
+        .finally(() => {
+          setLoading(false);
         });
-      })
-      .catch(() => {
-        // upload error
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    }
   }
 
   function handleCancel() {}

@@ -5,4 +5,5 @@ export interface CreateClotheDTO {
   sizes: Array<string>;
   colors: Array<string>;
   category: string;
+  images: Array<string>;
 }

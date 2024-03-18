@@ -2,17 +2,8 @@
 
 import { useState } from "react";
 
-export default function useSection() {
+export default function useClothes() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
-  const [openSideBar, setOpenSideBar] = useState(false);
-
-  function handleOpenSideBar() {
-    setOpenSideBar(true);
-  }
-
-  function handleCloseSideBar() {
-    setOpenSideBar(false);
-  }
 
   function handleSelectProduct(product: string) {
     setSelectedProduct(product);
@@ -26,8 +17,5 @@ export default function useSection() {
     selectedProduct,
     handleDeleteSelectedProduct,
     handleSelectProduct,
-    openSideBar,
-    handleCloseSideBar,
-    handleOpenSideBar,
   };
 }

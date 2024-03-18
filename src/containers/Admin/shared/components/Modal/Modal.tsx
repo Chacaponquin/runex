@@ -27,7 +27,8 @@ export default function Modal({
     "h-svh w-full",
     "bg-black/50",
     "px-3 py-4",
-    "overflow-y-auto"
+    "overflow-y-auto",
+    "z-50"
   );
 
   const FORM_CLASS = clsx(

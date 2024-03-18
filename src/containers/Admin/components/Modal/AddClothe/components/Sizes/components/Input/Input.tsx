@@ -20,13 +20,15 @@ export default function Input({
     "outline outline-[2px]",
     "rounded",
     "focus:outline-2 focus:outline-blue-500",
-    "py-1 px-2.5",
-    "text-sm",
-    "transition-all duration-200",
+    "duration-200",
 
     { "w-full": isEmpty, "w-[140px]": !isEmpty },
 
-    { "outline-blue-500 shadow-input": focus, "outline-gray-200": !focus }
+    { "outline-blue-500 shadow-input": focus, "outline-gray-200": !focus },
+
+    { "text-sm": !isEmpty, "text-base": isEmpty },
+
+    { "py-1 px-2.5": !isEmpty, "py-2 px-4": isEmpty }
   );
 
   return (
@@ -40,6 +42,7 @@ export default function Input({
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       placeholder="Talla"
+      style={{ transitionProperty: "outline box-shadow" }}
     />
   );
 }

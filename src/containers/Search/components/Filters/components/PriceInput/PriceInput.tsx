@@ -4,9 +4,16 @@ import { Input } from "./components";
 interface Props {
   priceMin: number;
   priceMax: number;
+  handleChangePriceMin(v: number): void;
+  handleChangePriceMax(v: number): void;
 }
 
-export default function PriceInput({ priceMax, priceMin }: Props) {
+export default function PriceInput({
+  priceMax,
+  priceMin,
+  handleChangePriceMax,
+  handleChangePriceMin,
+}: Props) {
   const priceMinId = useId();
   const priceMaxId = useId();
 
@@ -18,6 +25,7 @@ export default function PriceInput({ priceMax, priceMin }: Props) {
         max={priceMax}
         min={0}
         name="price-min"
+        onChange={handleChangePriceMin}
       />
 
       <p className="text-base">hasta</p>
@@ -28,6 +36,7 @@ export default function PriceInput({ priceMax, priceMin }: Props) {
         name="price-max"
         max={99999999}
         min={priceMin}
+        onChange={handleChangePriceMax}
       />
     </div>
   );

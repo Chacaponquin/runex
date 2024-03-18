@@ -20,7 +20,6 @@ export default function Button({
   type,
 }: Props) {
   const CLASS = clsx(
-    "rounded",
     "transition-all duration-200",
     "hover:opacity-70",
     "font-fontMedium",
@@ -41,7 +40,9 @@ export default function Button({
       "rounded-lg": rounded === "lg",
     },
 
-    { "text-base": size === "sm" || size === "lg", "text-lg": size === "xl" }
+    { "text-base": size === "sm" || size === "lg", "text-lg": size === "xl" },
+
+    { "opacity-70": disabled }
   );
 
   return (

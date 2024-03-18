@@ -7,17 +7,26 @@ import { UploadImageException } from "../exceptions";
 export default function useClotheServices() {
   const { post, axiosInstance } = useFetch();
 
-  async function uploadImages(images: Array<File>): Promise<void> {
+  async function uploadImages(images: Array<File>): Promise<Array<string>> {
+    const all = [] as Array<string>;
+
     for (const image of images) {
       try {
         const form = new FormData();
         form.append("image", image);
 
-        await axiosInstance.post(API_ROUTES.CLOTHE.UPLOAD_IMAGES, form);
+        const response = await axiosInstance.post(
+          API_ROUTES.CLOTHE.UPLOAD_IMAGES,
+          form
+        );
+
+        all.push(response.data[0]);
       } catch (error) {
         throw new UploadImageException();
       }
     }
+
+    return all;
   }
 
   function createClothe(props: PostProps<void, CreateClotheDTO>) {

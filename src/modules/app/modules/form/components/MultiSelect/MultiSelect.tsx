@@ -7,11 +7,13 @@ import clsx from "clsx";
 
 interface Props<T> {
   placeholder: string;
-  options: Array<T & { selected: boolean }>;
+  options: Array<T>;
   id: string;
   render: React.FC<T>;
   handleSelect(index: number): void;
   handleDelete(indexx: number): void;
+  selected: Array<string>;
+  valueKey: keyof T;
 }
 
 export default function MultiSelect<T>({
@@ -21,6 +23,8 @@ export default function MultiSelect<T>({
   render,
   handleDelete,
   handleSelect,
+  valueKey,
+  selected,
 }: Props<T>) {
   const [openOptions, setOpenOptions] = useState(false);
 
@@ -49,7 +53,7 @@ export default function MultiSelect<T>({
           key={index}
           render={render}
           option={o}
-          selected={o.selected}
+          selected={selected.includes(o[valueKey] as string)}
           handleDelete={() => handleDelete(index)}
           handleSelect={() => handleSelect(index)}
         />

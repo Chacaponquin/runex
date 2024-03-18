@@ -17,11 +17,18 @@ interface Props {
 export default function Filters({ handleClose, filters, handleSubmit }: Props) {
   useBlockScroll(true);
 
-  const { form, handleSubmitForm, providerOptions, colorOptions, sizeOptions } =
-    useFilters({
-      handleSubmit: handleSubmit,
-      filters: filters,
-    });
+  const {
+    form,
+    handleSubmitForm,
+    providerOptions,
+    colorOptions,
+    sizeOptions,
+    handleChangePriceMax,
+    handleChangePriceMin,
+  } = useFilters({
+    handleSubmit: handleSubmit,
+    filters: filters,
+  });
 
   const CLASS = clsx(
     "flex justify-center items-center",
@@ -80,7 +87,12 @@ export default function Filters({ handleClose, filters, handleSubmit }: Props) {
           </Section>
 
           <Section title="Precios">
-            <PriceInput priceMax={form.priceMax} priceMin={form.priceMin} />
+            <PriceInput
+              priceMax={form.priceMax}
+              priceMin={form.priceMin}
+              handleChangePriceMax={handleChangePriceMax}
+              handleChangePriceMin={handleChangePriceMin}
+            />
           </Section>
         </div>
 

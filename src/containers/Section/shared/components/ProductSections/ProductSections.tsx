@@ -3,7 +3,7 @@
 import React from "react";
 import { useProducts } from "./hooks";
 import { Section } from "./components";
-import { Resize } from "@containers/Section/shared/components";
+import Resize from "../Resize/Resize";
 
 interface Props {
   handleSelectProduct(id: string): void;

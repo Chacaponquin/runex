@@ -1,5 +1,5 @@
-import { Section } from "@containers";
+import { Clothes } from "@containers";
 
 export default function Page() {
-  return <Section />;
+  return <Clothes />;
 }

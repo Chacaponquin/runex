@@ -6,8 +6,7 @@ import {
   Search,
   User,
 } from "@modules/app/modules/icon/components";
-import { Button, LinkButton, UserMenu } from "./components";
-import { Cart } from "@containers/Section/shared/components";
+import { Button, LinkButton } from "./components";
 import { APP_ROUTES } from "@modules/app/constants";
 import { useUser } from "@modules/user/hooks";
 

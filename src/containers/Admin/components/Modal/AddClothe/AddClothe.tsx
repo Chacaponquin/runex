@@ -59,6 +59,7 @@ export default function AddClothe() {
               name="product-price"
               step={1}
               size="lg"
+              min={0}
             />
           </FormSection>
 
@@ -74,6 +75,7 @@ export default function AddClothe() {
             <Colors
               handleAddColor={handleAddColor}
               handleDeleteColor={handleDeleteColor}
+              colors={form.colors}
             />
           </FormSection>
 

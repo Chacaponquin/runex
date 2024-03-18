@@ -41,7 +41,7 @@ export default function SelectedProduct({
 
   return (
     <div
-      className="fixed top-0 left-0 w-full h-screen z-40 bg-black/50 flex flex-col"
+      className="fixed top-0 left-0 w-full h-svh z-40 bg-black/50 flex flex-col"
       style={{ visibility: selectedProduct ? "visible" : "hidden" }}
     >
       <Header handleDeleteSelectedProduct={handleDeleteSelectedProduct} />

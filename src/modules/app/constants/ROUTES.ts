@@ -21,6 +21,13 @@ export const APP_ROUTES = {
     CLOTHES: "/admin/clothes",
     ORDERS: "/admin/orders",
   },
+  INFO: {
+    CONDITION_TERMS: "/info/condition-terms",
+    HOW_TO_BUY: "/info/how-to-buy",
+    PENALTIES: "/info/penalties",
+    RETURNS: "/info/returns",
+    PRIVACITY: "/info/privacity",
+  },
 };
 
 export const API_ROUTES = {

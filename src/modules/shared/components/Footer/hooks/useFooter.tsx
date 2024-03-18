@@ -7,7 +7,7 @@ import {
   Phone,
 } from "@modules/app/modules/icon/components";
 import { FooterContact, FooterSection } from "../interfaces";
-import { CONTACT } from "@modules/app/constants";
+import { APP_ROUTES, CONTACT } from "@modules/app/constants";
 
 export default function useFooter() {
   const year = new Date().getFullYear();
@@ -15,10 +15,13 @@ export default function useFooter() {
   const sections: Array<FooterSection> = [
     {
       subSections: [
-        { label: "Términos y condiciones", url: "term-conditions" },
-        { label: "Privacidad y cookies", url: "privacity" },
-        { label: "Penalidades y sobrecargos", url: "sob" },
-        { label: "Devoluciones y reembolsos", url: "sob" },
+        {
+          label: "Términos y condiciones",
+          url: APP_ROUTES.INFO.CONDITION_TERMS,
+        },
+        { label: "Privacidad y cookies", url: APP_ROUTES.INFO.PRIVACITY },
+        { label: "Penalidades y sobrecargos", url: APP_ROUTES.INFO.PENALTIES },
+        { label: "Devoluciones y reembolsos", url: APP_ROUTES.INFO.RETURNS },
       ],
       title: "Empresa",
     },
@@ -26,7 +29,7 @@ export default function useFooter() {
       subSections: [
         { label: "FAQ", url: "faq" },
         { label: "Contact us", url: "contact us" },
-        { label: "Como comprar?", url: "como" },
+        { label: "Como comprar?", url: APP_ROUTES.INFO.HOW_TO_BUY },
       ],
       title: "Ayuda",
     },

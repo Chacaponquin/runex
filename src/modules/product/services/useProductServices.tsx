@@ -1,5 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { Clothe, Product, ProductColor, ProductSize } from "../domain";
+import { FetchProps } from "@modules/app/modules/http/interfaces";
 
 interface AddProductFavoriteProps {
   productId: string;
@@ -44,28 +45,34 @@ export default function useProductServices() {
     });
   }
 
-  async function getPopularProducts(): Promise<Array<Product>> {
+  function getPopularProducts(props: FetchProps<Array<Product>>): void {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
       return create();
     });
 
-    return products;
+    if (props.onSuccess) {
+      props.onSuccess(products);
+    }
   }
 
-  async function getTrendingProducts(): Promise<Array<Product>> {
+  function getTrendingProducts(props: FetchProps<Array<Product>>): void {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
       return create();
     });
 
-    return products;
+    if (props.onSuccess) {
+      props.onSuccess(products);
+    }
   }
 
-  async function getNewProducts(): Promise<Array<Product>> {
+  function getNewProducts(props: FetchProps<Array<Product>>): void {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
       return create();
     });
 
-    return products;
+    if (props.onSuccess) {
+      props.onSuccess(products);
+    }
   }
 
   async function addProductToFavorites(props: AddProductFavoriteProps) {}
@@ -93,8 +100,6 @@ export default function useProductServices() {
 
     return products;
   }
-
-  
 
   async function getAllProductsSizes(): Promise<Array<ProductSize>> {
     return [{ name: "S" }, { name: "L" }, { name: "XL" }, { name: "2XL" }];

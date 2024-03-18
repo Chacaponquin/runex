@@ -4,10 +4,13 @@ import { Footer, Navbar, SelectedProduct } from "@modules/shared/components";
 import { useClothes } from "./hooks";
 import { Header, ProductSections } from "@containers/Section/shared/components";
 import { APP_IMAGES } from "@modules/app/constants";
+import { useProductServices } from "@modules/product/services";
 
 export default function Clothes() {
   const { selectedProduct, handleSelectProduct, handleDeleteSelectedProduct } =
     useClothes();
+  const { getNewProducts, getPopularProducts, getTrendingProducts } =
+    useProductServices();
 
   return (
     <div className="flex flex-col w-full">
@@ -18,7 +21,12 @@ export default function Clothes() {
       />
       <Navbar disableSearch={false} fixed={false} />
       <Header image={APP_IMAGES.LANDING.CLOTHES} />
-      <ProductSections handleSelectProduct={handleSelectProduct} />
+      <ProductSections
+        handleSelectProduct={handleSelectProduct}
+        getNewProducts={getNewProducts}
+        getPopularProducts={getPopularProducts}
+        getTrendingProducts={getTrendingProducts}
+      />
       <Footer />
     </div>
   );

@@ -6,7 +6,7 @@ interface Props {
 
 export default function Back({ handleClick }: Props) {
   return (
-    <div className="flex justify-end items-center">
+    <div className="flex justify-end items-center absolute right-0">
       <button onClick={handleClick} className="fill-black">
         <ArrowRight size={24} />
       </button>

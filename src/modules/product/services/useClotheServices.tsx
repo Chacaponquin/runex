@@ -1,7 +1,7 @@
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { CreateClotheDTO } from "../dto/clothe";
 import { API_ROUTES } from "@modules/app/constants";
-import { PostProps } from "@modules/app/modules/http/interfaces/fetch";
+import { PostProps } from "@modules/app/modules/http/interfaces";
 import { UploadImageException } from "../exceptions";
 
 export default function useClotheServices() {

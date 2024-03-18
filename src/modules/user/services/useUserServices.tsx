@@ -1,5 +1,5 @@
 import { useFetch } from "@modules/app/modules/http/hooks";
-import { FetchFunctionsProps } from "@modules/app/modules/http/interfaces/fetch";
+import { FetchFunctionsProps } from "@modules/app/modules/http/interfaces";
 import { API_ROUTES } from "@modules/app/constants";
 import { CurrentUser } from "../domain";
 

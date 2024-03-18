@@ -10,10 +10,10 @@ interface Props {
 export default function Admin({ children }: Props) {
   return (
     <ModalProvider>
-      <div className="w-full flex">
+      <div className="w-full flex bg-gray-100 px-3 py-3 gap-x-3">
         <Aside />
 
-        <main className="flex flex-col w-full bg-gray-100/50 px-10 py-3">
+        <main className="flex flex-col w-full">
           <Navbar />
           {children}
         </main>

@@ -7,12 +7,12 @@ interface Props {
 
 export default function Name({ name, image }: Props) {
   return (
-    <div className="flex items-center gap-x-5">
+    <div className="flex items-center gap-x-5 max-w-[500px]">
       <Image
         src={image}
         alt={name}
-        className="rounded w-[80px] h-[60px]"
-        width={50}
+        className="rounded"
+        width={60}
         height={50}
       />
 

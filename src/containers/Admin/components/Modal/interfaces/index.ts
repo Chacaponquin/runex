@@ -1,4 +1,4 @@
-export interface AddCLotheForm {
+export interface ClotheForm {
   name: string;
   price: number;
   provider: string;

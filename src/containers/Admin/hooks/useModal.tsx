@@ -11,5 +11,9 @@ export default function useModal() {
     handleOpenModal({ type: MODAL_ACTIONS.ADD_CLOTHE });
   }
 
-  return { handleClose, handleOpenAddClothe };
+  function handleOpenEditClothe(id: string) {
+    handleOpenModal({ type: MODAL_ACTIONS.EDIT_CLOTHE, id: id });
+  }
+
+  return { handleClose, handleOpenAddClothe, handleOpenEditClothe };
 }

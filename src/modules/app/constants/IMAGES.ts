@@ -16,4 +16,5 @@ export const APP_IMAGES = {
   LOGIN: {
     BG: { src: "/images/Hexagon.svg", alt: "login-bg" },
   },
+  USER: { src: "/images/user.jpg", alt: "user" },
 };

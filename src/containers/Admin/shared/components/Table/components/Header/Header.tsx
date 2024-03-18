@@ -7,7 +7,7 @@ interface Props {
 
 export default function Header({ header, actions }: Props) {
   return (
-    <header className="flex w-full justify-between mb-4">
+    <header className="flex w-full items-center justify-between mb-4">
       <h1 className="font-fontMedium text-xl">{header}</h1>
       {actions}
     </header>

@@ -3,7 +3,7 @@ import clsx from "clsx";
 interface Props {
   text: string;
   handleClick?: () => void;
-  color: "primary" | "cancel";
+  color: "primary" | "cancel" | "danger";
   disabled: boolean;
   size: "sm" | "lg" | "xl";
   rounded: "full" | "lg" | "sm";
@@ -24,7 +24,11 @@ export default function Button({
     "hover:opacity-70",
     "font-fontMedium",
 
-    { "bg-blue-500": color === "primary", "bg-white": color === "cancel" },
+    {
+      "bg-blue-500": color === "primary",
+      "bg-gray-100": color === "cancel",
+      "bg-red-400": color === "danger",
+    },
 
     {
       "px-4 py-1.5": size === "sm",
@@ -32,7 +36,10 @@ export default function Button({
       "px-7 py-2.5": size === "xl",
     },
 
-    { "text-white": color === "primary", "text-black": color === "cancel" },
+    {
+      "text-white": color === "primary" || color === "danger",
+      "text-black": color === "cancel",
+    },
 
     {
       "rounded-full": rounded === "full",
@@ -40,7 +47,11 @@ export default function Button({
       "rounded-lg": rounded === "lg",
     },
 
-    { "text-base": size === "sm" || size === "lg", "text-lg": size === "xl" },
+    {
+      "text-base": size === "lg",
+      "text-lg": size === "xl",
+      "text-sm": size === "sm",
+    },
 
     { "opacity-70": disabled }
   );

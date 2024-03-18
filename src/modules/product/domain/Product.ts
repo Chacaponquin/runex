@@ -1,10 +1,9 @@
-
-
 export interface ProductProps {
   id: string;
   name: string;
   price: number;
   images: Array<string>;
+  category: string;
 }
 
 export class Product {
@@ -13,15 +12,17 @@ export class Product {
   readonly price: number;
   readonly images: Array<string>;
   readonly provider: string;
+  readonly category: string;
   readonly sizes: Array<string> = ["S", "M", "L", "XL"];
   readonly colors: Array<string> = ["orange", "red", "green"];
 
-  constructor({ id, name, price, images }: ProductProps) {
+  constructor({ id, name, price, images, category }: ProductProps) {
     this.id = id;
     this.name = name;
     this.price = price;
     this.images = images.slice(0, 5);
     this.provider = "Amazon";
+    this.category = category;
   }
 
   get image() {
@@ -47,4 +48,10 @@ export class Product {
       return "#2d3436";
     }
   }
+}
+
+export interface ProductImage {
+  name: string;
+  size: number;
+  source: string;
 }

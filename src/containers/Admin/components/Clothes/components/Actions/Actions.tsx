@@ -9,10 +9,10 @@ export default function Actions({ handleOpenAddClothe }: Props) {
     <div className="flex items-center">
       <Button
         handleClick={handleOpenAddClothe}
-        text="Añadir"
+        text="Añadir ropa"
         color="primary"
         disabled={false}
-        size="sm"
+        size="lg"
         rounded="full"
       />
     </div>

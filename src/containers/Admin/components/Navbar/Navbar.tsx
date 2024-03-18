@@ -1,5 +1,21 @@
 import React from "react";
+import { User } from "./components";
+import clsx from "clsx";
 
 export default function Navbar() {
-  return <nav className="mb-4 flex w-full bg-white py-3 px-8 rounded-lg"></nav>;
+  const CLASS = clsx(
+    "flex justify-end items-center",
+    "mb-4",
+    "rounded-lg",
+    "py-3 px-8",
+    "w-full",
+    "bg-white",
+    "shadow-md"
+  );
+
+  return (
+    <nav className={CLASS}>
+      <User />
+    </nav>
+  );
 }

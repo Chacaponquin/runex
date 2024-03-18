@@ -10,7 +10,7 @@ interface Props {
 
 export default function Table({ header, data, actions }: Props) {
   return (
-    <div className="bg-white px-8 py-5 rounded-xl">
+    <div className="bg-white px-8 py-5 rounded-xl shadow-lg">
       <Header header={header} actions={actions} />
 
       <table className="table-auto w-full">

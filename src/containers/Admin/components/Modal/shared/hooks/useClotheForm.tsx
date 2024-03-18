@@ -1,10 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AddCLotheForm } from "../interfaces";
-import { useClothes } from "@modules/product/hooks";
-import { useClotheServices } from "@modules/product/services";
-import { useToast } from "@modules/app/modules/toast/hooks";
+import { ClotheForm } from "../../interfaces";
 import { useValidator } from "@modules/app/modules/form/hooks";
 import { NotValidateField } from "@modules/app/modules/form/domain";
 import {
@@ -13,13 +10,10 @@ import {
   ProductImagesValidator,
   ProductNameValidator,
 } from "@modules/product/domain";
+import { useClothes } from "@modules/product/hooks";
 
-export default function useAddClothe() {
-  const { error, success } = useToast();
+export default function useClotheForm() {
   const { providers, categories } = useClothes();
-  const { createClothe, uploadImages } = useClotheServices();
-
-  const [loading, setLoading] = useState(false);
 
   const INITIAL_FORM = {
     name: "",
@@ -31,7 +25,9 @@ export default function useAddClothe() {
     category: categories[0].name,
   };
 
-  const { validate } = useValidator<AddCLotheForm>({
+  const [form, setForm] = useState<ClotheForm>(INITIAL_FORM);
+
+  const { validate } = useValidator<ClotheForm>({
     category: new NotValidateField(),
     colors: new ClotheColorsValidator(),
     images: new ProductImagesValidator(),
@@ -40,8 +36,6 @@ export default function useAddClothe() {
     provider: new NotValidateField(),
     sizes: new ClotheSizesValidator(),
   });
-
-  const [form, setForm] = useState<AddCLotheForm>(INITIAL_FORM);
 
   function handleChangeName(name: string) {
     setForm((prev) => ({ ...prev, name: name }));
@@ -98,65 +92,29 @@ export default function useAddClothe() {
     setForm((prev) => ({ ...prev, category: cat }));
   }
 
-  function handleSave() {
-    const validated = validate(form);
-
-    if (validated) {
-      setLoading(true);
-
-      uploadImages(form.images)
-        .then((urls) => {
-          createClothe({
-            body: { ...form, images: urls },
-            onFinally() {
-              setLoading(false);
-            },
-            onError() {
-              error({
-                id: "product-creation",
-                message: "Hubo un error creando el producto",
-              });
-            },
-            onSuccess() {
-              success({
-                id: "create-product",
-                message: "Producto creado con éxito",
-              });
-
-              setForm(INITIAL_FORM);
-            },
-          });
-        })
-        .catch(() => {
-          error({
-            id: "upload-image",
-            message: "Hubo un error al subir las imágenes",
-          });
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
+  function handleChangeForm(form: ClotheForm) {
+    setForm(form);
   }
 
-  function handleCancel() {}
+  function handleReset() {
+    setForm(INITIAL_FORM);
+  }
 
   return {
     form,
-    handleChangeName,
-    handleChangePrice,
-    handleCancel,
-    handleSave,
-    providers,
-    handleChangeProvider,
-    handleChangeImages,
-    handleDeleteImage,
-    handleAddSize,
-    handleDeleteSize,
     handleAddColor,
     handleDeleteColor,
     handleChangeCategory,
-    categories,
-    loading,
+    handleDeleteSize,
+    handleAddSize,
+    handleChangeImages,
+    handleDeleteImage,
+    handleChangeName,
+    handleChangePrice,
+    handleChangeProvider,
+    validate,
+    handleChangeForm,
+    handleReset,
+    providers, categories
   };
 }

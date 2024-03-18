@@ -45,6 +45,26 @@ export default function useFetch() {
       });
   }
 
+  function remove<T>(props: FetchProps<T> & { url: string }): void {
+    axiosInstance
+      .delete(props.url)
+      .then((data) => {
+        if (props.onSuccess) {
+          props.onSuccess(data.data);
+        }
+      })
+      .catch((error) => {
+        if (props.onError) {
+          props.onError(error);
+        }
+      })
+      .finally(() => {
+        if (props.onFinally) {
+          props.onFinally();
+        }
+      });
+  }
+
   function post<T, B>(props: PostProps<T, B> & { url: string }): void {
     axiosInstance
       .post<T>(props.url, props.body)
@@ -65,5 +85,5 @@ export default function useFetch() {
       });
   }
 
-  return { get, post, axiosInstance };
+  return { get, post, axiosInstance, remove };
 }

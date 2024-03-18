@@ -1,7 +1,7 @@
-import React, { createContext, useState } from "react";
+import React, { Fragment, createContext, useState } from "react";
 import { ModalProps } from "../interfaces/modal";
 import { MODAL_ACTIONS } from "../constants";
-import { AddClothe } from "../components";
+import { AddClothe, EditClothe } from "../components";
 
 interface Props {
   openModal: null | ModalProps;
@@ -26,8 +26,13 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ModalContext.Provider value={value}>
-      {openModal && openModal.type === MODAL_ACTIONS.ADD_CLOTHE && (
-        <AddClothe />
+      {openModal && (
+        <Fragment>
+          {openModal.type === MODAL_ACTIONS.ADD_CLOTHE && <AddClothe />}
+          {openModal.type === MODAL_ACTIONS.EDIT_CLOTHE && (
+            <EditClothe id={openModal.id} />
+          )}
+        </Fragment>
       )}
       {children}
     </ModalContext.Provider>

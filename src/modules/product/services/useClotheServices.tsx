@@ -1,11 +1,24 @@
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { CreateClotheDTO } from "../dto/clothe";
 import { API_ROUTES } from "@modules/app/constants";
-import { PostProps } from "@modules/app/modules/http/interfaces";
+import { FetchProps, PostProps } from "@modules/app/modules/http/interfaces";
 import { UploadImageException } from "../exceptions";
+import { Clothe } from "../domain";
+import { faker } from "@faker-js/faker";
 
+function create() {
+  return new Clothe({
+    id: faker.string.uuid(),
+    name: faker.lorem.words({ min: 4, max: 10 }),
+    price: Number(faker.commerce.price()),
+    images: Array.from({
+      length: faker.number.int({ min: 1, max: 5 }),
+    }).map(() => faker.image.url()),
+    category: faker.helpers.arrayElement(['Zapatos']),
+  });
+}
 export default function useClotheServices() {
-  const { post, axiosInstance } = useFetch();
+  const { post, axiosInstance, remove } = useFetch();
 
   async function uploadImages(images: Array<File>): Promise<Array<string>> {
     const all = [] as Array<string>;
@@ -37,5 +50,21 @@ export default function useClotheServices() {
     });
   }
 
-  return { createClothe, uploadImages };
+  function deleteClothe(props: FetchProps<undefined>) {
+    remove({ ...props, url: API_ROUTES.CLOTHE.REMOVE });
+  }
+
+  function getClothes(props: FetchProps<Array<Clothe>>): void {
+    if (props.onSuccess) {
+      props.onSuccess(Array.from({ length: 20 }).map(() => create()));
+    }
+  }
+
+  function findById(props: FetchProps<Clothe | null> & { id: string }): void {
+    if (props.onSuccess) {
+      props.onSuccess(create());
+    }
+  }
+
+  return { createClothe, uploadImages, deleteClothe, getClothes, findById };
 }

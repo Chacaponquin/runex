@@ -19,7 +19,9 @@ export default function ImageInput({
         {images.map((i, index) => (
           <Card
             key={index}
-            image={i}
+            source={URL.createObjectURL(i)}
+            name={i.name}
+            size={i.size}
             handleDelete={() => handleDeleteImage(index)}
           />
         ))}

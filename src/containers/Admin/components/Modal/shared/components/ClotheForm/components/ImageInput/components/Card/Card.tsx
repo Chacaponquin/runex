@@ -1,14 +1,15 @@
 import Image from "next/image";
 import { Info } from "./components";
+import { ProductImage } from "@modules/product/domain";
 
 interface Props {
-  image: File;
+  name: string;
+  source: string;
   handleDelete(): void;
+  size: number;
 }
 
-export default function Card({ image, handleDelete }: Props) {
-  const source = URL.createObjectURL(image);
-
+export default function Card({ name, source, size, handleDelete }: Props) {
   return (
     <article className="flex justify-between items-center gap-x-4 text-gray-500 text-sm">
       <section className="flex items-center gap-x-4">
@@ -16,16 +17,16 @@ export default function Card({ image, handleDelete }: Props) {
           <Image
             width={55}
             height={55}
-            alt={image.name}
+            alt={name}
             src={source}
             className="object-cover w-[55px] h-[55px] rounded"
           />
         </figure>
 
-        <p>{image.name}</p>
+        <p>{name}</p>
       </section>
 
-      <Info handleDelete={handleDelete} size={image.size} />
+      <Info handleDelete={handleDelete} size={size} />
     </article>
   );
 }

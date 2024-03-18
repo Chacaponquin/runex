@@ -7,26 +7,30 @@ export default function Aside() {
 
   const CLASS = clsx(
     "flex flex-col",
-    "max-w-[240px] w-full h-screen",
+    "w-[240px] h-full",
     "bg-white",
-    "py-5 px-6"
+    "py-5 px-3",
+    "shadow-lg",
+    "rounded-xl"
   );
 
   return (
-    <aside className={CLASS}>
-      <Header />
+    <div className="h-svh">
+      <aside className={CLASS}>
+        <Header />
 
-      <ul className="flex flex-col gap-y-3">
-        {sections.map((s, index) => (
-          <Section
-            key={index}
-            icon={s.icon}
-            title={s.title}
-            active={active === s.section}
-            url={s.url}
-          />
-        ))}
-      </ul>
-    </aside>
+        <ul className="flex flex-col gap-y-3">
+          {sections.map((s, index) => (
+            <Section
+              key={index}
+              icon={s.icon}
+              title={s.title}
+              active={active === s.section}
+              url={s.url}
+            />
+          ))}
+        </ul>
+      </aside>
+    </div>
   );
 }

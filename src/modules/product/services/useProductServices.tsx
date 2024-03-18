@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { Clothe, Product, ProductColor, ProductSize } from "../domain";
+import { Product, ProductSize } from "../domain";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
 
 interface AddProductFavoriteProps {
@@ -28,23 +28,11 @@ function create(): Product {
     images: Array.from({
       length: faker.number.int({ min: 1, max: 5 }),
     }).map(() => faker.image.url()),
+    category: faker.helpers.arrayElement(["Zapatos"]),
   });
 }
 
 export default function useProductServices() {
-  async function getClothes(): Promise<Array<Clothe>> {
-    return Array.from({ length: 20 }).map(() => {
-      return new Clothe({
-        id: faker.string.uuid(),
-        name: faker.lorem.words({ min: 4, max: 10 }),
-        price: Number(faker.commerce.price()),
-        images: Array.from({
-          length: faker.number.int({ min: 1, max: 5 }),
-        }).map(() => faker.image.url()),
-      });
-    });
-  }
-
   function getPopularProducts(props: FetchProps<Array<Product>>): void {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
       return create();
@@ -115,6 +103,5 @@ export default function useProductServices() {
     filterProducts,
     getAllProductsSizes,
     deleteProductInFavorites,
-    getClothes,
   };
 }

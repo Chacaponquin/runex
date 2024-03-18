@@ -1,4 +1,4 @@
-import Header from "./Header/Header";
-import ProductSections from "./ProductSections/ProductSections";
+import Clothes from "./Clothes/Clothes";
+import Medicine from "./Medicine/Medicine";
 
-export { Header, ProductSections };
+export { Clothes, Medicine };

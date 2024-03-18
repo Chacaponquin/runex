@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { Product, ProductColor, ProductSize } from "../domain";
+import { Clothe, Product, ProductColor, ProductSize } from "../domain";
 
 interface AddProductFavoriteProps {
   productId: string;
@@ -31,6 +31,19 @@ function create(): Product {
 }
 
 export default function useProductServices() {
+  async function getClothes(): Promise<Array<Clothe>> {
+    return Array.from({ length: 20 }).map(() => {
+      return new Clothe({
+        id: faker.string.uuid(),
+        name: faker.lorem.words({ min: 4, max: 10 }),
+        price: Number(faker.commerce.price()),
+        images: Array.from({
+          length: faker.number.int({ min: 1, max: 5 }),
+        }).map(() => faker.image.url()),
+      });
+    });
+  }
+
   async function getPopularProducts(): Promise<Array<Product>> {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
       return create();
@@ -81,14 +94,7 @@ export default function useProductServices() {
     return products;
   }
 
-  async function getAllProductsColors(): Promise<Array<ProductColor>> {
-    return [
-      { name: "Orange", color: "#f0932b" },
-      { color: "#6ab04c", name: "Green" },
-      { name: "Red", color: "#eb4d4b" },
-      { name: "Black", color: "#2d3436" },
-    ];
-  }
+  
 
   async function getAllProductsSizes(): Promise<Array<ProductSize>> {
     return [{ name: "S" }, { name: "L" }, { name: "XL" }, { name: "2XL" }];
@@ -102,8 +108,8 @@ export default function useProductServices() {
     getProductById,
     getSimilarProducts,
     filterProducts,
-    getAllProductsColors,
     getAllProductsSizes,
     deleteProductInFavorites,
+    getClothes,
   };
 }

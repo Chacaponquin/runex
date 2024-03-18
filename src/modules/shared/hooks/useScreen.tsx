@@ -1,27 +1,29 @@
-import { useEffect, useState } from "react"
+"use client";
+
+import { useEffect, useState } from "react";
 
 export default function useScreen(size: number) {
-  const [bigScreen, setBigScreen] = useState(true)
+  const [bigScreen, setBigScreen] = useState(true);
 
   useEffect(() => {
     function handleResize() {
-      const width = window.innerWidth
+      const width = window.innerWidth;
 
       if (width > size) {
-        setBigScreen(true)
+        setBigScreen(true);
       } else {
-        setBigScreen(false)
+        setBigScreen(false);
       }
     }
 
-    handleResize()
+    handleResize();
 
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-  return { bigScreen }
+  return { bigScreen };
 }

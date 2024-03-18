@@ -1,4 +1,5 @@
-import Cart from "./Cart/Cart";
+import Header from "./Header/Header";
+import ProductSections from "./ProductSections/ProductSections";
 import Resize from "./Resize/Resize";
 
-export { Resize, Cart };
+export { Header, ProductSections, Resize };

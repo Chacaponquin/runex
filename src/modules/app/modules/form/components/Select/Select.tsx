@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { FormProps } from "../../interfaces/form";
 import { Size } from "../../interfaces/dimension";
@@ -6,12 +6,10 @@ import { Option, Select as Header } from "./components";
 import { Dropdown } from "..";
 
 interface Props<T> extends FormProps<any> {
-  size?: Size;
   placeholder: string;
   options: Array<T>;
   labelKey: keyof T;
   valueKey: keyof T;
-  height?: number;
 }
 
 interface SelectOptions {
@@ -26,9 +24,6 @@ export default function Select<T>({
   options,
   placeholder,
   value,
-  dimension = "normal",
-  height = 300,
-  size,
   id,
 }: Props<T>) {
   const [openOptions, setOpenOptions] = useState(false);
@@ -45,7 +40,7 @@ export default function Select<T>({
         { label: o[labelKey] as string, value: o[valueKey] as string },
       ]);
     });
-  }, [options]);
+  }, [options, labelKey, valueKey]);
 
   useEffect(() => {
     selectOptions.forEach((o, index) => {
@@ -67,7 +62,7 @@ export default function Select<T>({
     setOpenOptions((prev) => !prev);
   }
 
-  const SELECTED_CLASS = clsx("bg-white dark:bg-scale-5 shadow-lg");
+  const SELECTED_CLASS = clsx("bg-white shadow-lg");
 
   return (
     <Dropdown
@@ -84,8 +79,8 @@ export default function Select<T>({
         />
       }
       className={SELECTED_CLASS}
-      height={height}
-      size={size === "full" ? "full" : "auto"}
+      height={300}
+      enableHideList={true}
     >
       {options.map((_, index) => (
         <Option

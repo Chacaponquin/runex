@@ -7,24 +7,24 @@ interface Props {
   openOptions: boolean;
 }
 
-export default function Select({ text, openOptions }: Props) {
+export default function Select({ text, openOptions, onClick }: Props) {
   const CLASS = clsx(
     "w-full",
     "cursor-pointer",
     "gap-5",
-    "rounded-sm",
+    "rounded",
     "whitespace-nowrap",
     "transition-all duration-300",
     "flex items-center justify-between",
     "text-black",
-    "border-2 border-gray-300",
+    "border-2 border-gray-200",
     "px-4 py-2",
 
     { "border-blue-500": openOptions, "hover:border-blue-500": !openOptions }
   );
 
   return (
-    <button className={CLASS} type="button">
+    <button className={CLASS} type="button" onClick={onClick}>
       <p className="pointer-events-none overflow-x-auto no-scroll">{text}</p>
 
       <i className="stroke-black ">

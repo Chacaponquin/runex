@@ -1,6 +1,6 @@
 "use client";
 
-import { useProduct } from "@modules/product/hooks";
+import { useClothes, useProduct } from "@modules/product/hooks";
 import { useEffect, useState } from "react";
 import { Form } from "../interfaces";
 import { FilterForm } from "../../../interfaces";
@@ -18,17 +18,13 @@ interface ProviderOption {
 }
 
 export default function useFilters({ handleSubmit, filters }: Props) {
-  const { getAllProductsColors, getAllProductsSizes } = useProductServices();
-  const { providers } = useProduct();
+  const { getAllProductsSizes } = useProductServices();
+  const { providers } = useClothes();
+  const { colors } = useProduct();
 
-  const [colorOptions, setColorOptions] = useState<Array<ProductColor>>([]);
   const [sizeOptions, setSizeOptions] = useState<Array<ProductSize>>([]);
 
   useEffect(() => {
-    getAllProductsColors().then((data) => {
-      setColorOptions(data);
-    });
-
     getAllProductsSizes().then((data) => {
       setSizeOptions(data);
     });
@@ -47,10 +43,26 @@ export default function useFilters({ handleSubmit, filters }: Props) {
     handleSubmit();
   }
 
+  function handleChangePriceMin(value: number) {
+    setForm((prev) => ({ ...prev, priceMin: value }));
+  }
+
+  function handleChangePriceMax(value: number) {
+    setForm((prev) => ({ ...prev, priceMax: value }));
+  }
+
   const providerOptions: Array<ProviderOption> = providers.map((p, index) => ({
     id: String(index),
     name: p.name,
   }));
 
-  return { form, handleSubmitForm, providerOptions, colorOptions, sizeOptions };
+  return {
+    form,
+    handleSubmitForm,
+    providerOptions,
+    colorOptions: colors,
+    sizeOptions,
+    handleChangePriceMax,
+    handleChangePriceMin,
+  };
 }

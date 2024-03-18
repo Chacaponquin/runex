@@ -6,9 +6,7 @@ import { CurrentUser } from "../domain";
 export default function useUserServices() {
   const { get } = useFetch();
 
-  async function getUserByToken(
-    props: FetchFunctionsProps<CurrentUser>
-  ): Promise<void> {
+  function getUserByToken(props: FetchFunctionsProps<CurrentUser>) {
     get({
       url: API_ROUTES.USER.GET_CURRENT_USER,
       onError: props.onError,

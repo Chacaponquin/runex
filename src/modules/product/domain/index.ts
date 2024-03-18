@@ -1,3 +1,7 @@
+import { FieldValidator } from "@modules/app/modules/form/domain";
+import { Clothe } from "./Clothe";
+import { Product } from "./Product";
+
 export interface ProductColor {
   name: string;
   color: string;
@@ -11,51 +15,76 @@ export interface Provider {
   name: string;
 }
 
-interface Props {
-  id: string;
+export interface ProductCategory {
   name: string;
-  price: number;
-  images: Array<string>;
 }
 
-export class Product {
-  id: string;
-  name: string;
-  price: number;
-  images: Array<string>;
-  provider: string;
-  sizes: Array<string> = ["S", "M", "L", "XL"];
-  colors: Array<string> = ["orange", "red", "green"];
+export { Product, Clothe };
 
-  constructor({ id, name, price, images }: Props) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    this.images = images.slice(0, 5);
-    this.provider = "Amazon";
+export class ProductNameValidator extends FieldValidator<string> {
+  constructor() {
+    super({
+      message: "El nombre del producto debe tener al menos 5 caracteres",
+      id: "product-name",
+    });
   }
 
-  get image() {
-    return this.images[0];
-  }
-
-  get priceStr() {
-    return Product.str(this.price);
-  }
-
-  static str(value: number): string {
-    return `$${value}`;
-  }
-
-  static hexColor(color: string): string {
-    if (color === "orange") {
-      return "#f0932b";
-    } else if (color === "green") {
-      return "#6ab04c";
-    } else if (color === "red") {
-      return "#eb4d4b";
-    } else {
-      return "#2d3436";
+  public validate(value: string): boolean {
+    if (value.length < 5) {
+      return false;
     }
+
+    return true;
+  }
+}
+
+export class ProductImagesValidator extends FieldValidator<Array<File>> {
+  constructor() {
+    super({
+      id: "product-image",
+      message: "El producto debe tener al menos 1 imagen",
+    });
+  }
+
+  public validate(value: File[]): boolean {
+    if (value.length < 1) {
+      return false;
+    }
+
+    return true;
+  }
+}
+
+export class ClotheColorsValidator extends FieldValidator<Array<string>> {
+  constructor() {
+    super({
+      id: "clothe-colors",
+      message: "El producto debe tener al menos 1 color seleccionado",
+    });
+  }
+
+  public validate(value: string[]): boolean {
+    if (value.length < 1) {
+      return false;
+    }
+
+    return true;
+  }
+}
+
+export class ClotheSizesValidator extends FieldValidator<Array<string>> {
+  constructor() {
+    super({
+      id: "clothe-colors",
+      message: "El producto debe tener al menos 1 talla",
+    });
+  }
+
+  public validate(value: string[]): boolean {
+    if (value.length < 1) {
+      return false;
+    }
+
+    return true;
   }
 }

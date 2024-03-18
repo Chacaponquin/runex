@@ -10,16 +10,14 @@ export default function useFetch() {
   const { getToken } = useUser();
   const { API_ROUTE } = useEnv();
 
-  const axiosInstance = useMemo(
-    () =>
-      axios.create({
-        baseURL: API_ROUTE,
-        headers: {
-          authorization: `Bearer ${getToken()}`,
-        },
-      }),
-    []
-  );
+  const axiosInstance = useMemo(() => {
+    return axios.create({
+      baseURL: API_ROUTE,
+      headers: {
+        authorization: `Bearer ${getToken()}`,
+      },
+    });
+  }, [API_ROUTE, getToken]);
 
   useEffect(() => {
     axiosInstance.interceptors.request.use(undefined, function (error) {
@@ -27,8 +25,8 @@ export default function useFetch() {
     });
   }, []);
 
-  async function get<T>(props: GetProps<T>): Promise<void> {
-    return axiosInstance
+  function get<T>(props: GetProps<T>): void {
+    axiosInstance
       .get<T>(props.url)
       .then((data) => {
         if (props.onSuccess) {
@@ -47,10 +45,8 @@ export default function useFetch() {
       });
   }
 
-  async function post<T, B>(
-    props: PostProps<T, B> & { url: string }
-  ): Promise<void> {
-    return axiosInstance
+  function post<T, B>(props: PostProps<T, B> & { url: string }): void {
+    axiosInstance
       .post<T>(props.url, props.body)
       .then((data) => {
         if (props.onSuccess) {
@@ -69,5 +65,5 @@ export default function useFetch() {
       });
   }
 
-  return { get, post };
+  return { get, post, axiosInstance };
 }

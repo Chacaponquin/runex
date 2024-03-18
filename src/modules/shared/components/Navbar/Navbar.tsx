@@ -1,7 +1,6 @@
 "use client";
 
-import { Cart } from "@containers/Section/shared/components";
-import { Buttons, Logo, Menu, Search } from "./components";
+import { Buttons, Cart, Logo, Menu, Search } from "./components";
 import { useNavbar } from "./hooks";
 import clsx from "clsx";
 

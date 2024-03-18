@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import Check from "./Check";
 import CheckOne from "./CheckOne";
 import Close from "./Close";
+import Clothe from "./Clothe";
 import CreditCard from "./CreditCard";
 import Dislike from "./Dislike";
 import Email from "./Email";
@@ -25,6 +26,7 @@ import Search from "./Search";
 import Setting from "./Setting";
 import Share from "./Share";
 import Twitter from "./Twitter";
+import Upload from "./Upload";
 import User from "./User";
 
 export {
@@ -56,4 +58,6 @@ export {
   Money,
   Lock,
   CheckOne,
+  Clothe,
+  Upload,
 };

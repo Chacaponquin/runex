@@ -12,7 +12,7 @@ import {
   Provider,
   Query,
   Size,
-} from "@containers/Section/value-object";
+} from "@containers/Search/value-object";
 
 interface Props {
   query: string | undefined;

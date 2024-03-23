@@ -5,7 +5,7 @@ import { Info } from "./components";
 import { useCart } from "@modules/cart/hooks";
 
 export default function Bill() {
-  const { cart, totalQuantityStr, totalBillStr } = useCart();
+  const { totalQuantityStr, totalBillStr } = useCart();
 
   return (
     <section className="flex flex-col w-full mb-3">

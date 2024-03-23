@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import { CellActions, Name } from "../components";
 import { DefaultCell } from "@containers/Admin/shared/components";
 import { useModal } from "@containers/Admin/hooks";
-import { Button } from "@modules/app/modules/ui/components";
 import { useToast } from "@modules/app/modules/toast/hooks";
 
 export default function useClothes() {

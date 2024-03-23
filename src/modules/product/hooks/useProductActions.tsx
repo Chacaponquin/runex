@@ -26,14 +26,20 @@ export default function useProductActions({ productId }: Props) {
   function handleAddFavorite() {
     if (actualUser && productId) {
       handleAddProductToFavorites(productId);
-      addProductToFavorites({ userId: actualUser.id, productId: productId });
+
+      addProductToFavorites({
+        body: { userId: actualUser.id, productId: productId },
+      });
     }
   }
 
   function handleDeleteFavorite() {
     if (actualUser && productId) {
       handleDeleteProductInFavorites(productId);
-      deleteProductInFavorites({ userId: actualUser.id, productId: productId });
+
+      deleteProductInFavorites({
+        body: { userId: actualUser.id, productId: productId },
+      });
     }
   }
 

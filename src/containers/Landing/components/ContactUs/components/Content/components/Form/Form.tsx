@@ -1,7 +1,6 @@
 import React from "react";
 import { Buttons, Input, Message } from "./components";
 import { ContactUsForm } from "../../../../interfaces";
-import { Email, User } from "@modules/app/modules/icon/components";
 
 interface Props {
   form: ContactUsForm;

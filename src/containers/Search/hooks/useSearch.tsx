@@ -55,8 +55,11 @@ export default function useSearch({
   const totalPages = 10;
 
   useEffect(() => {
-    filterProducts(filters).then((data) => {
-      setResult(data);
+    filterProducts({
+      body: filters,
+      onSuccess(data) {
+        setResult(data);
+      },
     });
   }, [page]);
 

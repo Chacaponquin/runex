@@ -4,7 +4,7 @@ import { useClothes, useProduct } from "@modules/product/hooks";
 import { useEffect, useState } from "react";
 import { Form } from "../interfaces";
 import { FilterForm } from "../../../interfaces";
-import { ProductColor, ProductSize } from "@modules/product/domain";
+import { ProductSize } from "@modules/product/domain";
 import { useProductServices } from "@modules/product/services";
 
 interface Props {
@@ -25,8 +25,10 @@ export default function useFilters({ handleSubmit, filters }: Props) {
   const [sizeOptions, setSizeOptions] = useState<Array<ProductSize>>([]);
 
   useEffect(() => {
-    getAllProductsSizes().then((data) => {
-      setSizeOptions(data);
+    getAllProductsSizes({
+      onSuccess(data) {
+        setSizeOptions(data);
+      },
     });
   }, []);
 

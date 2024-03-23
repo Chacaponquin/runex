@@ -1,6 +1,6 @@
 import { Upload } from "@modules/app/modules/icon/components";
 import clsx from "clsx";
-import { ChangeEvent, createRef } from "react";
+import { createRef } from "react";
 
 interface Props {
   handleChangeImages(e: FileList): void;

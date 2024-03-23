@@ -11,8 +11,9 @@ export default function Option({ onClick, text, selected }: Props) {
     "py-2 px-4",
     "cursor-pointer",
     "duration-300 transition-all",
-    "hover:bg-gray-100",
-    "bg-gray-50"
+    "bg-gray-50",
+
+    { "bg-gray-100": selected, "hover:bg-gray-100": !selected }
   );
 
   return (

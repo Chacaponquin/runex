@@ -1,4 +1,4 @@
-interface Props<V> {
+interface Props {
   message: string;
   id: string;
 }
@@ -7,7 +7,7 @@ export abstract class FieldValidator<V> {
   public readonly message: string;
   public readonly id: string;
 
-  constructor({ message, id }: Props<V>) {
+  constructor({ message, id }: Props) {
     this.message = message;
     this.id = id;
   }

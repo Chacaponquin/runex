@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { Product, ProductSize } from "../domain";
-import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { FetchProps, PostProps } from "@modules/app/modules/http/interfaces";
 import { API_ROUTES } from "@modules/app/constants";
 import { UploadImageException } from "../exceptions";
 import { useFetch } from "@modules/app/modules/http/hooks";
@@ -97,9 +97,15 @@ export default function useProductServices() {
     }
   }
 
-  async function addProductToFavorites(props: AddProductFavoriteProps) {}
+  function addProductToFavorites({}: PostProps<
+    void,
+    AddProductFavoriteProps
+  >) {}
 
-  async function deleteProductInFavorites(props: DeleteProductFavoriteProps) {}
+  function deleteProductInFavorites({}: PostProps<
+    void,
+    DeleteProductFavoriteProps
+  >) {}
 
   function getProductById(props: FetchProps<Product> & { id: string }): void {
     if (props.onSuccess) props.onSuccess(create());
@@ -117,18 +123,27 @@ export default function useProductServices() {
     if (props.onFinally) props.onFinally();
   }
 
-  async function filterProducts(
-    props: FilterProductsProps
-  ): Promise<Array<Product>> {
+  function filterProducts(
+    props: PostProps<Array<Product>, FilterProductsProps>
+  ): void {
     const products: Array<Product> = Array.from({ length: 25 }).map(() =>
       create()
     );
 
-    return products;
+    if (props.onSuccess) props.onSuccess(products);
+    if (props.onFinally) props.onFinally();
   }
 
-  async function getAllProductsSizes(): Promise<Array<ProductSize>> {
-    return [{ name: "S" }, { name: "L" }, { name: "XL" }, { name: "2XL" }];
+  function getAllProductsSizes(props: FetchProps<Array<ProductSize>>): void {
+    if (props.onSuccess)
+      props.onSuccess([
+        { name: "S" },
+        { name: "L" },
+        { name: "XL" },
+        { name: "2XL" },
+      ]);
+
+    if (props.onFinally) props.onFinally();
   }
 
   return {

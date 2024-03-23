@@ -24,7 +24,7 @@ export default function useClotheForm() {
   const { providers, categories } = useClothes();
   const { uploadImages: uploadImagesService } = useProductServices();
 
-  const INITIAL_FORM = {
+  const INITIAL_FORM: ClotheForm = {
     name: "",
     price: 0,
     provider: providers[0].name,
@@ -134,6 +134,8 @@ export default function useClotheForm() {
     const validated = validate(form);
 
     if (validated) {
+      setLoading(true);
+
       uploadImagesService(uploadImages.map((i) => i.file))
         .then((urls) => next(urls))
         .catch(() => {

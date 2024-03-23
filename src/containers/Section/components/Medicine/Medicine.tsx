@@ -1,7 +1,7 @@
 "use client";
 
 import { Header, ProductSections } from "@containers/Section/shared/components";
-import { Footer, Navbar, SelectedProduct } from "@modules/shared/components";
+import { Footer, Navbar } from "@modules/shared/components";
 import { useMedicine } from "./hooks";
 import { APP_IMAGES } from "@modules/app/constants";
 import { useProductServices } from "@modules/product/services";

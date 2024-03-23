@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Info } from "./components";
-import { ProductImage } from "@modules/product/domain";
 
 interface Props {
   name: string;

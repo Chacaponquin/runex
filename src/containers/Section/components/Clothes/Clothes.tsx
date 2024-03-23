@@ -1,6 +1,6 @@
 "use client";
 
-import { Footer, Navbar, SelectedProduct } from "@modules/shared/components";
+import { Footer, Navbar } from "@modules/shared/components";
 import { useClothes } from "./hooks";
 import { Header, ProductSections } from "@containers/Section/shared/components";
 import { APP_IMAGES } from "@modules/app/constants";

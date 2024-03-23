@@ -14,7 +14,7 @@ function create() {
     images: Array.from({
       length: faker.number.int({ min: 1, max: 5 }),
     }).map(() => faker.image.url()),
-    category: faker.helpers.arrayElement(['Zapatos']),
+    category: faker.helpers.arrayElement(["Zapatos"]),
   });
 }
 export default function useClotheServices() {
@@ -60,10 +60,12 @@ export default function useClotheServices() {
     }
   }
 
-  function findById(props: FetchProps<Clothe | null> & { id: string }): void {
+  function findById(props: FetchProps<Clothe> & { id: string }): void {
     if (props.onSuccess) {
       props.onSuccess(create());
     }
+
+    if (props.onFinally) props.onFinally();
   }
 
   return { createClothe, uploadImages, deleteClothe, getClothes, findById };

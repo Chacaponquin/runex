@@ -67,16 +67,20 @@ export default function useProductServices() {
 
   async function deleteProductInFavorites(props: DeleteProductFavoriteProps) {}
 
-  async function getProductById(id: string): Promise<Product> {
-    return create();
+  function getProductById(props: FetchProps<Product> & { id: string }): void {
+    if (props.onSuccess) props.onSuccess(create());
+    if (props.onFinally) props.onFinally();
   }
 
-  async function getSimilarProducts(id: string): Promise<Array<Product>> {
+  function getSimilarProducts(
+    props: FetchProps<Array<Product>> & { id: string }
+  ): void {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
       return create();
     });
 
-    return products;
+    if (props.onSuccess) props.onSuccess(products);
+    if (props.onFinally) props.onFinally();
   }
 
   async function filterProducts(

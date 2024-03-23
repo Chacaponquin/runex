@@ -13,8 +13,6 @@ export class Product {
   readonly images: Array<string>;
   readonly provider: string;
   readonly category: string;
-  readonly sizes: Array<string> = ["S", "M", "L", "XL"];
-  readonly colors: Array<string> = ["orange", "red", "green"];
 
   constructor({ id, name, price, images, category }: ProductProps) {
     this.id = id;

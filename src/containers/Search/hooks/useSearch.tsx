@@ -60,8 +60,8 @@ export default function useSearch({
     });
   }, [page]);
 
-  function handleChangeFilter(key: keyof FilterForm, value: unknown) {
-    setFilters((prev) => ({ ...prev, [key]: value }));
+  function handleChangeName(name: string) {
+    setFilters((prev) => ({ ...prev, name: name }));
   }
 
   function handleNextPage() {
@@ -94,7 +94,6 @@ export default function useSearch({
 
   return {
     filters,
-    handleChangeFilter,
     handleApplySearch,
     result,
     openFilters,
@@ -107,5 +106,6 @@ export default function useSearch({
     selectedProduct,
     handleSelectProduct,
     handleDeleteSelectedProduct,
+    handleChangeName,
   };
 }

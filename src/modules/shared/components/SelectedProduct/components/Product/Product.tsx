@@ -16,7 +16,6 @@ interface Props {
   handleAddToCart(): void;
   handleBuyNow(): void;
   form: ProductForm;
-  handleChangeForm(key: keyof ProductForm, value: unknown): void;
   handleDecreaseQuantity(): void;
   handleIncreaseQuantity(): void;
   handleAddFavorite(): void;
@@ -24,6 +23,7 @@ interface Props {
   isFavorite: boolean;
   handleDeleteFavorite(): void;
   handleSelectProduct(id: string): void;
+  extra: React.ReactNode;
 }
 
 export default function Product({
@@ -34,7 +34,6 @@ export default function Product({
   form,
   handleAddToCart,
   handleBuyNow,
-  handleChangeForm,
   handleDecreaseQuantity,
   handleIncreaseQuantity,
   handleAddFavorite,
@@ -42,6 +41,7 @@ export default function Product({
   isFavorite,
   handleDeleteFavorite,
   handleSelectProduct,
+  extra,
 }: Props) {
   return (
     <div className="flex flex-grow bg-white w-full justify-center rounded-t-2xl overflow-y-auto pt-10 esm:pt-6 px-5">
@@ -61,15 +61,13 @@ export default function Product({
               <ProductImage images={info.images} name={info.name} />
 
               <Data
+                extra={extra}
                 name={info.name}
                 price={info.priceStr}
-                colors={info.colors}
                 provider={info.provider}
-                sizes={info.sizes}
                 form={form}
                 handleAddToCart={handleAddToCart}
                 handleBuyNow={handleBuyNow}
-                handleChangeForm={handleChangeForm}
                 handleDecreaseQuantity={handleDecreaseQuantity}
                 handleIncreaseQuantity={handleIncreaseQuantity}
               />

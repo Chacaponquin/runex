@@ -1,8 +1,8 @@
-import { ChacaHttpError } from "./error";
+import { HttpError } from "./error";
 
 export interface FetchProps<T> {
   onSuccess?: (data: T) => void;
-  onError?: (error: ChacaHttpError) => void;
+  onError?: (error: HttpError) => void;
   onFinally?: () => void;
 }
 

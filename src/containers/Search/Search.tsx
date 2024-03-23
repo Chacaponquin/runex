@@ -1,7 +1,7 @@
 "use client";
 
-import { Footer, Navbar, SelectedProduct } from "@modules/shared/components";
-import { Filters, Header, Result } from "./components";
+import { Footer, Navbar } from "@modules/shared/components";
+import { Filters, Header, Result, SelectedProduct } from "./components";
 import { useSearch } from "./hooks";
 
 interface Props {
@@ -26,7 +26,6 @@ export default function Search({
   const {
     filters,
     handleApplySearch,
-    handleChangeFilter,
     result,
     handleChangeOpenFilters,
     handleBackPage,
@@ -38,6 +37,7 @@ export default function Search({
     handleSelectProduct,
     selectedProduct,
     handleDeleteSelectedProduct,
+    handleChangeName,
   } = useSearch({
     query: q,
     page: queryPage,
@@ -69,7 +69,7 @@ export default function Search({
       <Header
         handleApplySearch={handleApplySearch}
         search={filters.name}
-        handleChangeSearch={(value) => handleChangeFilter("name", value)}
+        handleChangeSearch={handleChangeName}
       />
 
       <Result

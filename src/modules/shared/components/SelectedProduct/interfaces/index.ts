@@ -1,5 +1,5 @@
+import { HttpError } from "@modules/app/modules/http/interfaces/error";
+
 export interface ProductForm {
-  size: string;
-  color: string;
-  quantity: number
+  quantity: number;
 }

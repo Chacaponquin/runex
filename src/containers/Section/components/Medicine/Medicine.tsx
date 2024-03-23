@@ -5,6 +5,7 @@ import { Footer, Navbar, SelectedProduct } from "@modules/shared/components";
 import { useMedicine } from "./hooks";
 import { APP_IMAGES } from "@modules/app/constants";
 import { useProductServices } from "@modules/product/services";
+import { MedicineSelected } from "./components";
 
 export default function Medicine() {
   const { handleDeleteSelectedProduct, handleSelectProduct, selectedProduct } =
@@ -14,7 +15,7 @@ export default function Medicine() {
 
   return (
     <div className="flex flex-col w-full">
-      <SelectedProduct
+      <MedicineSelected
         selectedProduct={selectedProduct}
         handleDeleteSelectedProduct={handleDeleteSelectedProduct}
         handleSelectProduct={handleSelectProduct}

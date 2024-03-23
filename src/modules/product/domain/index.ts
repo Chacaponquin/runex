@@ -1,6 +1,7 @@
 import { FieldValidator } from "@modules/app/modules/form/domain";
 import { Clothe } from "./Clothe";
 import { Product, ProductImage } from "./Product";
+import { Medicine } from "./Medicine";
 
 export interface ProductColor {
   name: string;
@@ -19,7 +20,7 @@ export interface ProductCategory {
   name: string;
 }
 
-export { Product, Clothe };
+export { Product, Clothe, Medicine };
 
 export type { ProductImage };
 

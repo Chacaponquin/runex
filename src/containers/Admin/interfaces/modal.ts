@@ -9,4 +9,17 @@ export type EditClotheProps = {
   id: string;
 };
 
-export type ModalProps = AddClotheProps | EditClotheProps;
+export type EditMedicineProps = {
+  type: MODAL_ACTIONS.EDIT_MEDICINE;
+  id: string;
+};
+
+export type AddMedicineProps = {
+  type: MODAL_ACTIONS.ADD_MEDICINE;
+};
+
+export type ModalProps =
+  | AddClotheProps
+  | EditClotheProps
+  | EditMedicineProps
+  | AddMedicineProps;

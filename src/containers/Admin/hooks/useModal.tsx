@@ -15,5 +15,19 @@ export default function useModal() {
     handleOpenModal({ type: MODAL_ACTIONS.EDIT_CLOTHE, id: id });
   }
 
-  return { handleClose, handleOpenAddClothe, handleOpenEditClothe };
+  function handleOpenAddMedicine() {
+    handleOpenModal({ type: MODAL_ACTIONS.ADD_MEDICINE });
+  }
+
+  function handleOpenEditMedicine(id: string) {
+    handleOpenModal({ type: MODAL_ACTIONS.EDIT_MEDICINE, id: id });
+  }
+
+  return {
+    handleClose,
+    handleOpenAddClothe,
+    handleOpenEditClothe,
+    handleOpenEditMedicine,
+    handleOpenAddMedicine,
+  };
 }

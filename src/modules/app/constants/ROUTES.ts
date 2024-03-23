@@ -39,5 +39,6 @@ export const API_ROUTES = {
     CREATE: "/clothe/create",
     UPLOAD_IMAGES: "/clothe/upload-images",
     REMOVE: "/clothe/remove",
+    EDIT: "/clothe/edit",
   },
 };

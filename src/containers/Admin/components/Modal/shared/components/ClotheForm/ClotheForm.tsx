@@ -11,7 +11,7 @@ import { ProductCategory, Provider } from "@modules/product/domain";
 interface Props {
   form: IClotheForm;
   handleChangeImages(f: FileList): void;
-  handleDeleteImage(index: number): void;
+  handleDeleteImage(id: string): void;
   handleChangeName(n: string): void;
   handleChangePrice(v: number): void;
   handleAddSize(s: string): void;

@@ -9,7 +9,14 @@ function create(): Medicine {
     price: Number(faker.commerce.price()),
     images: Array.from({
       length: faker.number.int({ min: 1, max: 5 }),
-    }).map(() => faker.image.url()),
+    }).map(() => {
+      return {
+        source: faker.image.url(),
+        id: faker.string.uuid(),
+        name: faker.lorem.words(),
+        size: faker.number.int(),
+      };
+    }),
     category: faker.helpers.arrayElement(["Zapatos"]),
   });
 }

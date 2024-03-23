@@ -1,8 +1,11 @@
 import { useFetch } from "@modules/app/modules/http/hooks";
-import { CreateClotheDTO } from "../dto/clothe";
+import { CreateClotheDTO, EditClotheDTO } from "../dto/clothe";
 import { API_ROUTES } from "@modules/app/constants";
-import { FetchProps, PostProps } from "@modules/app/modules/http/interfaces";
-import { UploadImageException } from "../exceptions";
+import {
+  FetchProps,
+  PostProps,
+  PutProps,
+} from "@modules/app/modules/http/interfaces";
 import { Clothe } from "../domain";
 import { faker } from "@faker-js/faker";
 
@@ -13,39 +16,32 @@ function create() {
     price: Number(faker.commerce.price()),
     images: Array.from({
       length: faker.number.int({ min: 1, max: 5 }),
-    }).map(() => faker.image.url()),
+    }).map(() => {
+      return {
+        source: faker.image.url(),
+        id: faker.string.uuid(),
+        name: faker.lorem.words(),
+        size: faker.number.int(),
+      };
+    }),
     category: faker.helpers.arrayElement(["Zapatos"]),
   });
 }
 export default function useClotheServices() {
-  const { post, axiosInstance, remove } = useFetch();
-
-  async function uploadImages(images: Array<File>): Promise<Array<string>> {
-    const all = [] as Array<string>;
-
-    for (const image of images) {
-      try {
-        const form = new FormData();
-        form.append("image", image);
-
-        const response = await axiosInstance.post(
-          API_ROUTES.CLOTHE.UPLOAD_IMAGES,
-          form
-        );
-
-        all.push(response.data[0]);
-      } catch (error) {
-        throw new UploadImageException();
-      }
-    }
-
-    return all;
-  }
+  const { post, remove, put } = useFetch();
 
   function createClothe(props: PostProps<void, CreateClotheDTO>) {
     post<void, CreateClotheDTO>({
       ...props,
       url: API_ROUTES.CLOTHE.CREATE,
+      body: props.body,
+    });
+  }
+
+  function editClothe(props: PutProps<void, EditClotheDTO>) {
+    put<void, EditClotheDTO>({
+      ...props,
+      url: API_ROUTES.CLOTHE.EDIT,
       body: props.body,
     });
   }
@@ -68,5 +64,5 @@ export default function useClotheServices() {
     if (props.onFinally) props.onFinally();
   }
 
-  return { createClothe, uploadImages, deleteClothe, getClothes, findById };
+  return { createClothe, deleteClothe, getClothes, findById, editClothe };
 }

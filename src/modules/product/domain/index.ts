@@ -42,7 +42,7 @@ export class ProductNameValidator extends FieldValidator<string> {
 }
 
 export class ProductImagesValidator extends FieldValidator<
-  Array<File> | Array<ProductImage>
+  Array<ProductImage>
 > {
   constructor() {
     super({
@@ -51,7 +51,7 @@ export class ProductImagesValidator extends FieldValidator<
     });
   }
 
-  public validate(value: File[] | ProductImage[]): boolean {
+  public validate(value: ProductImage[]): boolean {
     if (value.length < 1) {
       return false;
     }

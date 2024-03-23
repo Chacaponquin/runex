@@ -1,9 +1,16 @@
+import { ProductImage } from "@modules/product/domain";
+
 export interface ClotheForm {
   name: string;
   price: number;
   provider: string;
-  images: Array<File>;
+  images: Array<ProductImage>;
   sizes: Array<string>;
   colors: Array<string>;
   category: string;
 }
+
+export type UploadImage = {
+  file: File;
+  id: string;
+};

@@ -24,7 +24,7 @@ export default function Sizes({
     "flex-wrap",
     "w-full",
     "rounded",
-    "gap-x-3 gap-y-2",
+    "gap-x-2 gap-y-2",
     "cursor-text"
   );
 

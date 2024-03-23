@@ -1,18 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { useClotheServices } from "@modules/product/services";
 import { useToast } from "@modules/app/modules/toast/hooks";
 import { useClotheForm } from "../../../shared/hooks";
 
 export default function useAddClothe() {
   const { error, success } = useToast();
-  const { createClothe, uploadImages } = useClotheServices();
+  const { createClothe } = useClotheServices();
 
-  const [loading, setLoading] = useState(false);
   const {
     form,
-    validate,
+    handleSubmit,
     handleAddColor,
     handleAddSize,
     handleChangeCategory,
@@ -26,47 +24,35 @@ export default function useAddClothe() {
     handleReset,
     categories,
     providers,
+    loading,
+    handleChangeLoading,
   } = useClotheForm();
 
   function handleSave() {
-    const validated = validate(form);
+    handleSubmit({
+      next(urls) {
+        createClothe({
+          body: { ...form, images: urls },
+          onFinally() {
+            handleChangeLoading(false);
+          },
+          onError() {
+            error({
+              id: "product-creation",
+              message: "Hubo un error creando el producto",
+            });
+          },
+          onSuccess() {
+            success({
+              id: "create-product",
+              message: "Producto creado con éxito",
+            });
 
-    if (validated) {
-      setLoading(true);
-
-      uploadImages(form.images)
-        .then((urls) => {
-          createClothe({
-            body: { ...form, images: urls },
-            onFinally() {
-              setLoading(false);
-            },
-            onError() {
-              error({
-                id: "product-creation",
-                message: "Hubo un error creando el producto",
-              });
-            },
-            onSuccess() {
-              success({
-                id: "create-product",
-                message: "Producto creado con éxito",
-              });
-
-              handleReset();
-            },
-          });
-        })
-        .catch(() => {
-          error({
-            id: "upload-image",
-            message: "Hubo un error al subir las imágenes",
-          });
-        })
-        .finally(() => {
-          setLoading(false);
+            handleReset();
+          },
         });
-    }
+      },
+    });
   }
 
   return {

@@ -9,3 +9,7 @@ export interface FetchProps<T> {
 export interface PostProps<T, B> extends FetchProps<T> {
   body: B;
 }
+
+export interface PutProps<T, B> extends FetchProps<T> {
+  body: B;
+}

@@ -1,6 +1,9 @@
 import { faker } from "@faker-js/faker";
 import { Product, ProductSize } from "../domain";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { API_ROUTES } from "@modules/app/constants";
+import { UploadImageException } from "../exceptions";
+import { useFetch } from "@modules/app/modules/http/hooks";
 
 interface AddProductFavoriteProps {
   productId: string;
@@ -27,12 +30,43 @@ function create(): Product {
     price: Number(faker.commerce.price()),
     images: Array.from({
       length: faker.number.int({ min: 1, max: 5 }),
-    }).map(() => faker.image.url()),
+    }).map(() => {
+      return {
+        source: faker.image.url(),
+        id: faker.string.uuid(),
+        name: faker.lorem.words(),
+        size: faker.number.int(),
+      };
+    }),
     category: faker.helpers.arrayElement(["Zapatos"]),
   });
 }
 
 export default function useProductServices() {
+  const { axiosInstance } = useFetch();
+
+  async function uploadImages(images: Array<File>): Promise<Array<string>> {
+    const all = [] as Array<string>;
+
+    for (const image of images) {
+      try {
+        const form = new FormData();
+        form.append("image", image);
+
+        const response = await axiosInstance.post(
+          API_ROUTES.CLOTHE.UPLOAD_IMAGES,
+          form
+        );
+
+        all.push(response.data[0]);
+      } catch (error) {
+        throw new UploadImageException();
+      }
+    }
+
+    return all;
+  }
+
   function getPopularProducts(props: FetchProps<Array<Product>>): void {
     const products: Array<Product> = Array.from({ length: 4 }).map(() => {
       return create();
@@ -107,5 +141,6 @@ export default function useProductServices() {
     filterProducts,
     getAllProductsSizes,
     deleteProductInFavorites,
+    uploadImages,
   };
 }

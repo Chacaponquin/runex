@@ -85,5 +85,25 @@ export default function useFetch() {
       });
   }
 
-  return { get, post, axiosInstance, remove };
+  function put<T, B>(props: PostProps<T, B> & { url: string }): void {
+    axiosInstance
+      .put<T>(props.url, props.body)
+      .then((data) => {
+        if (props.onSuccess) {
+          props.onSuccess(data.data);
+        }
+      })
+      .catch((error) => {
+        if (props.onError) {
+          props.onError(error);
+        }
+      })
+      .finally(() => {
+        if (props.onFinally) {
+          props.onFinally();
+        }
+      });
+  }
+
+  return { get, post, axiosInstance, remove, put };
 }

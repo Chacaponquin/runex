@@ -3,17 +3,25 @@
 import { useClotheServices } from "@modules/product/services";
 import { useEffect, useState } from "react";
 import { useClotheForm } from "../../../shared/hooks";
+import { useToast } from "@modules/app/modules/toast/hooks";
 
 interface Props {
   id: string;
 }
 
 export default function useEditClothe(props: Props) {
-  const [editLoading, setEditLoading] = useState(false);
+  const { error, success } = useToast();
   const [fetchLoading, setFetchLoading] = useState(false);
 
-  const { findById } = useClotheServices();
-  const { handleChangeForm, ...rest } = useClotheForm();
+  const { findById, editClothe } = useClotheServices();
+  const {
+    handleChangeForm,
+    handleSubmit,
+    loading: editLoading,
+    handleChangeLoading,
+    form,
+    ...rest
+  } = useClotheForm();
 
   useEffect(() => {
     setFetchLoading(true);
@@ -25,7 +33,7 @@ export default function useEditClothe(props: Props) {
           handleChangeForm({
             category: product.category,
             colors: product.colors,
-            images: [],
+            images: product.imagesData,
             name: product.name,
             price: product.price,
             provider: product.provider,
@@ -40,8 +48,29 @@ export default function useEditClothe(props: Props) {
   }, []);
 
   function handleEdit() {
-    setEditLoading(true);
+    handleSubmit({
+      next(urls) {
+        editClothe({
+          body: { ...form, images: [...urls, ...form.images.map((i) => i.id)] },
+          onFinally() {
+            handleChangeLoading(false);
+          },
+          onError() {
+            error({
+              id: "edit-product",
+              message: "Hubo un error editando el producto",
+            });
+          },
+          onSuccess() {
+            success({
+              id: "edit-product",
+              message: "Producto editado con éxito",
+            });
+          },
+        });
+      },
+    });
   }
 
-  return { handleEdit, editLoading, fetchLoading, ...rest };
+  return { handleEdit, editLoading, fetchLoading, form, ...rest };
 }

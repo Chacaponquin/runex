@@ -1,6 +1,9 @@
 import { faker } from "@faker-js/faker";
 import { Medicine } from "../domain";
-import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { FetchProps, PutProps } from "@modules/app/modules/http/interfaces";
+import { useFetch } from "@modules/app/modules/http/hooks";
+import { API_ROUTES } from "@modules/app/constants";
+import { EditMedicineDTO } from "../dto/medicine";
 
 function create(): Medicine {
   return new Medicine({
@@ -22,6 +25,8 @@ function create(): Medicine {
 }
 
 export default function useMedicineServices() {
+  const { put, remove } = useFetch();
+
   function findById(props: FetchProps<Medicine> & { id: string }): void {
     if (props.onSuccess) {
       props.onSuccess(create());
@@ -30,5 +35,25 @@ export default function useMedicineServices() {
     if (props.onFinally) props.onFinally();
   }
 
-  return { findById };
+  function editMedicine(props: PutProps<void, EditMedicineDTO>) {
+    put<void, EditMedicineDTO>({
+      ...props,
+      url: API_ROUTES.MEDICINE.EDIT,
+      body: props.body,
+    });
+  }
+
+  function deleteMedicine(props: FetchProps<undefined>) {
+    remove({ ...props, url: API_ROUTES.MEDICINE.REMOVE });
+  }
+
+  function getMedicines(props: FetchProps<Array<Medicine>>) {
+    if (props.onSuccess) {
+      props.onSuccess(Array.from({ length: 20 }).map(() => create()));
+    }
+
+    if (props.onFinally) props.onFinally();
+  }
+
+  return { findById, editMedicine, deleteMedicine, getMedicines };
 }

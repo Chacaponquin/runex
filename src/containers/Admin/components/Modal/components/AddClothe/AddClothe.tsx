@@ -8,7 +8,7 @@ export default function AddClothe() {
   const { handleSave, loading, ...rest } = useAddClothe();
 
   return (
-    <Modal className="flex flex-col" max={1100} handleSubmit={handleSave}>
+    <Modal className="flex flex-col" loading={false} handleSubmit={handleSave}>
       <Header text="Añadir Ropa" />
       <ClotheForm {...rest} />
       <Buttons loading={loading} />

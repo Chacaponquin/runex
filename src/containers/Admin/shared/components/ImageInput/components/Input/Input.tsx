@@ -24,7 +24,7 @@ export default function Input({ handleChangeImages }: Props) {
   const CLASS = clsx(
     "flex flex-col items-center justify-center",
     "border-[3px] border-gray-300 border-dashed",
-    "h-[300px]",
+    "sm:h-[300px] h-[240px]",
     "mb-4",
     "cursor-pointer",
     "hover:bg-blue-50",
@@ -47,7 +47,7 @@ export default function Input({ handleChangeImages }: Props) {
         <Upload size={48} />
       </i>
 
-      <h1 className="text-lg text-center">
+      <h1 className="sm:text-lg text-base text-center">
         Arrastra las imágenes o{" "}
         <span className="underline underline-offset-2 text-blue-500">
           navega

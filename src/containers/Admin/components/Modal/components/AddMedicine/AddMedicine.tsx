@@ -6,7 +6,7 @@ export default function AddMedicine() {
   const { handleAdd, loading, ...rest } = useAddMedicine();
 
   return (
-    <Modal max={1100} handleSubmit={handleAdd} className="flex flex-col">
+    <Modal loading={false} handleSubmit={handleAdd} className="flex flex-col">
       <Header text="Añadir Medicamento" />
       <MedicineForm {...rest} />
       <Buttons loading={loading} />

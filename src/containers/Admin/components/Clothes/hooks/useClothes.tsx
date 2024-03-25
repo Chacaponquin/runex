@@ -2,8 +2,8 @@ import { TableData } from "@containers/Admin/shared/components/Table/interfaces"
 import { Clothe } from "@modules/product/domain";
 import { useClotheServices } from "@modules/product/services";
 import { useEffect, useMemo, useState } from "react";
-import { CellActions, Name } from "../components";
-import { DefaultCell } from "@containers/Admin/shared/components";
+import { CellActions } from "../components";
+import { DefaultCell, ProductName } from "@containers/Admin/shared/components";
 import { useModal } from "@containers/Admin/hooks";
 import { useToast } from "@modules/app/modules/toast/hooks";
 
@@ -51,7 +51,7 @@ export default function useClothes() {
       columns: ["Producto", "Precio", "Proveedor", "Acciones"],
       body: clothes.map((c) => {
         return [
-          <Name name={c.name} image={c.image} key={c.id} />,
+          <ProductName name={c.name} image={c.image} key={c.id} />,
           <DefaultCell key={c.id}>{c.priceStr}</DefaultCell>,
           <DefaultCell key={c.id}>{c.provider}</DefaultCell>,
           <CellActions

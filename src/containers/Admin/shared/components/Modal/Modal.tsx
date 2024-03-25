@@ -3,18 +3,19 @@
 import { useModal } from "@containers/Admin/hooks";
 import { useBlockScroll } from "@modules/shared/hooks";
 import clsx from "clsx";
+import { Loading } from "./components";
 
 interface Props {
   children: React.ReactNode;
   className: string;
-  max: number;
   handleSubmit(): void;
+  loading: boolean;
 }
 
 export default function Modal({
   children,
   className,
-  max,
+  loading,
   handleSubmit,
 }: Props) {
   useBlockScroll(true);
@@ -27,15 +28,15 @@ export default function Modal({
     "h-svh w-full",
     "bg-black/50",
     "px-3 py-4",
-    "overflow-y-auto",
     "z-50"
   );
 
   const FORM_CLASS = clsx(
-    "w-full",
+    "w-full max-h-full",
     "bg-white",
     "px-8 esm:px-5 py-5",
     "rounded",
+    "overflow-auto",
     className
   );
 
@@ -46,16 +47,20 @@ export default function Modal({
 
   return (
     <div className={CLASS} onClick={handleClose}>
-      <form
-        onClick={(e) => e.stopPropagation()}
-        className={FORM_CLASS}
-        style={{
-          maxWidth: `${max}px`,
-        }}
-        onSubmit={handleFormSubmit}
-      >
-        {children}
-      </form>
+      {loading ? (
+        <Loading />
+      ) : (
+        <form
+          onClick={(e) => e.stopPropagation()}
+          className={FORM_CLASS}
+          style={{
+            maxWidth: `1100px`,
+          }}
+          onSubmit={handleFormSubmit}
+        >
+          {children}
+        </form>
+      )}
     </div>
   );
 }

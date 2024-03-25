@@ -1,5 +1,6 @@
 import Aside from "./Aside/Aside";
 import Clothes from "./Clothes/Clothes";
+import Medicines from "./Medicines/Medicines";
 import AddClothe from "./Modal/components/AddClothe/AddClothe";
 import AddMedicine from "./Modal/components/AddMedicine/AddMedicine";
 import EditClothe from "./Modal/components/EditClothe/EditClothe";
@@ -16,4 +17,5 @@ export {
   EditClothe,
   EditMedicine,
   AddMedicine,
+  Medicines,
 };

@@ -14,7 +14,7 @@ export default function Buttons({ loading }: Props) {
         color="cancel"
         disabled={loading}
         handleClick={handleClose}
-        size="xl"
+        size="lg"
         text="Cancelar"
         rounded="full"
       />
@@ -22,7 +22,7 @@ export default function Buttons({ loading }: Props) {
       <Button
         color="primary"
         disabled={loading}
-        size="xl"
+        size="lg"
         text="Guardar"
         rounded="full"
         type="submit"

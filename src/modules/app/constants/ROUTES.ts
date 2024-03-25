@@ -20,6 +20,7 @@ export const APP_ROUTES = {
     ROOT: "/admin",
     CLOTHES: "/admin/clothes",
     ORDERS: "/admin/orders",
+    MEDICINES: "/admin/medicines",
   },
   INFO: {
     CONDITION_TERMS: "/info/condition-terms",
@@ -40,5 +41,10 @@ export const API_ROUTES = {
     UPLOAD_IMAGES: "/clothe/upload-images",
     REMOVE: "/clothe/remove",
     EDIT: "/clothe/edit",
+  },
+  MEDICINE: {
+    CREATE: "/medicine/clothe",
+    EDIT: "/medicine/clothe",
+    REMOVE: "/medicine/remove",
   },
 };

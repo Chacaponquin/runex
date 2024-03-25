@@ -54,6 +54,8 @@ export default function useClotheServices() {
     if (props.onSuccess) {
       props.onSuccess(Array.from({ length: 20 }).map(() => create()));
     }
+
+    if (props.onFinally) props.onFinally();
   }
 
   function findById(props: FetchProps<Clothe> & { id: string }): void {

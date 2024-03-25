@@ -1,15 +1,15 @@
 import { Button } from "@modules/app/modules/ui/components";
 
 interface Props {
-  handleOpenAddClothe(): void;
+  handleAdd(): void;
 }
 
-export default function Actions({ handleOpenAddClothe }: Props) {
+export default function Actions({ handleAdd }: Props) {
   return (
     <div className="flex items-center">
       <Button
-        handleClick={handleOpenAddClothe}
-        text="Añadir ropa"
+        handleClick={handleAdd}
+        text="Añadir medicina"
         color="primary"
         disabled={false}
         size="sm"

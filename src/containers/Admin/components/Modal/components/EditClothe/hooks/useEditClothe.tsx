@@ -29,17 +29,15 @@ export default function useEditClothe(props: Props) {
     findById({
       id: props.id,
       onSuccess(product) {
-        if (product) {
-          handleChangeForm({
-            category: product.category,
-            colors: product.colors,
-            images: product.imagesData,
-            name: product.name,
-            price: product.price,
-            provider: product.provider,
-            sizes: product.sizes,
-          });
-        }
+        handleChangeForm({
+          category: product.category,
+          colors: product.colors,
+          images: product.imagesData,
+          name: product.name,
+          price: product.price,
+          provider: product.provider,
+          sizes: product.sizes,
+        });
       },
       onFinally() {
         setFetchLoading(false);

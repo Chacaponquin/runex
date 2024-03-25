@@ -1,3 +1,4 @@
+import Menu from "./Menu/Menu";
 import User from "./User/User";
 
-export { User };
+export { User, Menu };

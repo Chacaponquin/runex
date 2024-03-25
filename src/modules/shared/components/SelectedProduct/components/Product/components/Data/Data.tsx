@@ -1,42 +1,31 @@
 import { Counter } from "@modules/cart/components";
 import { ProductForm } from "../../../../interfaces";
-import {
-  Buttons,
-  Color,
-  Name,
-  Price,
-  Provider,
-  Section,
-  Size,
-} from "./components";
-import { Product } from "@modules/product/domain";
+import { Buttons, Name, Price, Provider } from "./components";
+import React from "react";
+import { Section } from "@modules/shared/components/SelectedProduct/shared/components";
 
 interface Props {
   name: string;
   price: string;
-  sizes: Array<string>;
-  colors: Array<string>;
   provider: string;
   handleAddToCart(): void;
   handleBuyNow(): void;
   form: ProductForm;
-  handleChangeForm(key: keyof ProductForm, value: unknown): void;
   handleDecreaseQuantity(): void;
   handleIncreaseQuantity(): void;
+  extra: React.ReactNode;
 }
 
 export default function Data({
   name,
-  colors,
   price,
-  sizes,
   provider,
   form,
   handleAddToCart,
   handleBuyNow,
-  handleChangeForm,
   handleDecreaseQuantity,
   handleIncreaseQuantity,
+  extra,
 }: Props) {
   return (
     <div className="flex flex-col w-full">
@@ -48,35 +37,7 @@ export default function Data({
       </div>
 
       <div className="flex flex-col gap-y-3.5 w-full lg:mb-12 mb-9 esm:mb-7">
-        {sizes.length > 0 && (
-          <Section text="Talla" selected={form.size}>
-            <div className="flex gap-x-3">
-              {sizes.map((s, index) => (
-                <Size
-                  key={index}
-                  size={s}
-                  selected={s === form.size}
-                  handleChange={() => handleChangeForm("size", s)}
-                />
-              ))}
-            </div>
-          </Section>
-        )}
-
-        {colors.length > 0 && (
-          <Section text="Color" selected={form.color}>
-            <div className="flex gap-x-3">
-              {colors.map((c, index) => (
-                <Color
-                  key={index}
-                  handleChange={() => handleChangeForm("color", c)}
-                  color={Product.hexColor(c)}
-                  selected={c === form.color}
-                />
-              ))}
-            </div>
-          </Section>
-        )}
+        {extra}
 
         <Section text="Cantidad" selected={form.quantity}>
           <Counter

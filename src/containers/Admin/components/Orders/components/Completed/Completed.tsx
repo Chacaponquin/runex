@@ -9,7 +9,7 @@ export default function Completed({ completed }: Props) {
     "w-max",
     "rounded-full",
     "text-sm",
-    "px-5 py-2",
+    "px-4 py-1.5",
     { "bg-green-100": completed, "bg-yellow-100": !completed },
     {
       "text-green-500": completed,

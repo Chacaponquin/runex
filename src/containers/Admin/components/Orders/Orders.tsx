@@ -9,7 +9,12 @@ export default function Orders() {
 
   return (
     <div className="w-full overflow-auto">
-      <Table header="Orders" data={tableData} actions={<Fragment></Fragment>} />
+      <Table
+        header="Orders"
+        data={tableData}
+        loading={false}
+        actions={<Fragment></Fragment>}
+      />
     </div>
   );
 }

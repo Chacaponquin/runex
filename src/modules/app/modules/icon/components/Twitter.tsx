@@ -5,8 +5,8 @@ import { DEFAULT_ICON_SIZE } from "../constants";
 export default function Twitter({ size = DEFAULT_ICON_SIZE }: IconProps) {
   return (
     <svg
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

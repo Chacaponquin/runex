@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import { CART_ACTIONS } from "../constants/ACTIONS";
 import { CartProduct } from "../domain";
 import { Product } from "@modules/product/domain";

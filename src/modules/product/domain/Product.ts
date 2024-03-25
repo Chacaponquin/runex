@@ -1,31 +1,41 @@
-
-
 export interface ProductProps {
   id: string;
   name: string;
   price: number;
-  images: Array<string>;
+  images: Array<ProductImage>;
+  category: string;
+}
+
+export interface ProductImage {
+  id: string;
+  size: number;
+  name: string;
+  source: string;
 }
 
 export class Product {
   readonly id: string;
   readonly name: string;
   readonly price: number;
-  readonly images: Array<string>;
+  readonly imagesData: Array<ProductImage>;
   readonly provider: string;
-  readonly sizes: Array<string> = ["S", "M", "L", "XL"];
-  readonly colors: Array<string> = ["orange", "red", "green"];
+  readonly category: string;
 
-  constructor({ id, name, price, images }: ProductProps) {
+  constructor({ id, name, price, images, category }: ProductProps) {
     this.id = id;
     this.name = name;
     this.price = price;
-    this.images = images.slice(0, 5);
+    this.imagesData = images;
     this.provider = "Amazon";
+    this.category = category;
   }
 
   get image() {
-    return this.images[0];
+    return this.imagesData[0].source;
+  }
+
+  get images(): Array<string> {
+    return this.imagesData.map((i) => i.source);
   }
 
   get priceStr() {

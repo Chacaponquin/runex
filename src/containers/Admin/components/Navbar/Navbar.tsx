@@ -1,5 +1,26 @@
 import React from "react";
+import { Menu, User } from "./components";
+import clsx from "clsx";
 
-export default function Navbar() {
-  return <nav className="mb-4 flex w-full bg-white py-3 px-8 rounded-lg"></nav>;
+interface Props {
+  handleChangeOpenAside(): void;
+}
+
+export default function Navbar({ handleChangeOpenAside }: Props) {
+  const CLASS = clsx(
+    "flex lg:justify-end justify-between items-center",
+    "mb-2",
+    "rounded-lg",
+    "py-2.5 lg:px-8 px-5",
+    "w-full",
+    "bg-white",
+    "shadow-md"
+  );
+
+  return (
+    <nav className={CLASS}>
+      <Menu handleClick={handleChangeOpenAside} />
+      <User />
+    </nav>
+  );
 }

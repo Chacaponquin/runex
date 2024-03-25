@@ -1,6 +1,7 @@
 import { FieldValidator } from "@modules/app/modules/form/domain";
 import { Clothe } from "./Clothe";
-import { Product } from "./Product";
+import { Product, ProductImage } from "./Product";
+import { Medicine } from "./Medicine";
 
 export interface ProductColor {
   name: string;
@@ -19,7 +20,9 @@ export interface ProductCategory {
   name: string;
 }
 
-export { Product, Clothe };
+export { Product, Clothe, Medicine };
+
+export type { ProductImage };
 
 export class ProductNameValidator extends FieldValidator<string> {
   constructor() {
@@ -38,7 +41,9 @@ export class ProductNameValidator extends FieldValidator<string> {
   }
 }
 
-export class ProductImagesValidator extends FieldValidator<Array<File>> {
+export class ProductImagesValidator extends FieldValidator<
+  Array<ProductImage>
+> {
   constructor() {
     super({
       id: "product-image",
@@ -46,7 +51,7 @@ export class ProductImagesValidator extends FieldValidator<Array<File>> {
     });
   }
 
-  public validate(value: File[]): boolean {
+  public validate(value: ProductImage[]): boolean {
     if (value.length < 1) {
       return false;
     }

@@ -6,7 +6,7 @@ import { Button, Input } from "./components";
 import { useSearch } from "./hooks";
 
 export default function Search() {
-  const { focus, handleBlur, handleFocus, id, handleSubmit } = useSearch();
+  const { handleBlur, handleFocus, id, handleSubmit } = useSearch();
 
   const CLASS = clsx(
     "w-full",

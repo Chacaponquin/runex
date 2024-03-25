@@ -4,13 +4,27 @@ import React from "react";
 import { useProducts } from "./hooks";
 import { Section } from "./components";
 import Resize from "../Resize/Resize";
+import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { Product } from "@modules/product/domain";
 
 interface Props {
   handleSelectProduct(id: string): void;
+  getNewProducts(props: FetchProps<Array<Product>>): void;
+  getPopularProducts(props: FetchProps<Array<Product>>): void;
+  getTrendingProducts(props: FetchProps<Array<Product>>): void;
 }
 
-export default function ProductSections({ handleSelectProduct }: Props) {
-  const { sections } = useProducts();
+export default function ProductSections({
+  handleSelectProduct,
+  getNewProducts,
+  getPopularProducts,
+  getTrendingProducts,
+}: Props) {
+  const { sections } = useProducts({
+    getNewProducts,
+    getPopularProducts,
+    getTrendingProducts,
+  });
 
   return (
     <main className="flex flex-col w-full bg-gray-100 pt-8">

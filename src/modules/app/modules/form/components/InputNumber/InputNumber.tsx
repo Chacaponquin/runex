@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo, useState, useRef } from "react";
 import { ArrowDown, ArrowUp } from "@modules/app/modules/icon/components";
 import clsx from "clsx";

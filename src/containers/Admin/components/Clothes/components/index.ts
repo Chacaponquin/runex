@@ -1,4 +1,5 @@
 import Actions from "./Actions/Actions";
-import Name from "./Name/Name";
+import CellActions from "./CellActions/CellActions";
 
-export { Name, Actions };
+
+export { Actions, CellActions };

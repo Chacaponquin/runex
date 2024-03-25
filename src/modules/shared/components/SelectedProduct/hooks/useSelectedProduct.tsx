@@ -1,22 +1,29 @@
 "use client";
 
 import { Product } from "@modules/product/domain";
-import { useProductServices } from "@modules/product/services";
 import { useEffect, useState } from "react";
 import { ProductForm } from "../interfaces";
 import { useProductActions } from "@modules/product/hooks";
 import { useCart } from "@modules/cart/hooks";
+import { FetchProps } from "@modules/app/modules/http/interfaces";
 
-interface Props {
+interface Props<T> {
   productId: string | null;
   handleDeleteSelectedProduct(): void;
+  getProduct(props: FetchProps<T>): void;
+  getSimilarProducts(props: FetchProps<Array<Product>> & { id: string }): void;
+  onFetchSuccess(data: T): void;
+  productInfo: T | null;
 }
 
-export default function useSelectedProduct({
+export default function useSelectedProduct<T extends Product>({
   productId,
   handleDeleteSelectedProduct,
-}: Props) {
-  const { getProductById, getSimilarProducts } = useProductServices();
+  getProduct,
+  getSimilarProducts,
+  onFetchSuccess,
+  productInfo,
+}: Props<T>) {
   const { handleAddFavorite, handleDeleteFavorite, isFavorite } =
     useProductActions({
       productId,
@@ -24,13 +31,11 @@ export default function useSelectedProduct({
   const { handleSetProduct } = useCart();
 
   const [form, setForm] = useState<ProductForm>({
-    color: "",
-    size: "",
     quantity: 1,
   });
 
-  const [productInfo, setProductInfo] = useState<Product | null>(null);
   const [similarProducts, setSimilarProducts] = useState<Array<Product>>([]);
+  const [notFound, setNotFound] = useState(false);
 
   const [similarProductsLoading, setSimilarProductsLoading] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -41,11 +46,16 @@ export default function useSelectedProduct({
     if (productId) {
       setLoading(true);
 
-      getProductById(productId).then((info) => {
-        setProductInfo(info);
-        setForm({ color: info.colors[0], quantity: 1, size: info.sizes[0] });
-
-        setLoading(false);
+      getProduct({
+        onSuccess(info) {
+          onFetchSuccess(info);
+        },
+        onFinally() {
+          setLoading(false);
+        },
+        onError() {
+          setNotFound(true);
+        },
       });
     }
   }, [productId]);
@@ -54,9 +64,14 @@ export default function useSelectedProduct({
     if (productId) {
       setSimilarProductsLoading(true);
 
-      getSimilarProducts(productId).then((data) => {
-        setSimilarProducts(data);
-        setSimilarProductsLoading(false);
+      getSimilarProducts({
+        id: productId,
+        onSuccess(data) {
+          setSimilarProducts(data);
+        },
+        onFinally() {
+          setSimilarProductsLoading(false);
+        },
       });
     }
   }, [productId]);
@@ -67,10 +82,6 @@ export default function useSelectedProduct({
 
   function handleCloseShare() {
     setOpenShare(false);
-  }
-
-  function handleChangeForm(key: keyof ProductForm, value: unknown) {
-    setForm((prev) => ({ ...prev, [key]: value }));
   }
 
   function handleIncreaseQuantity() {
@@ -93,14 +104,12 @@ export default function useSelectedProduct({
   }
 
   return {
-    productInfo,
     loading,
     similarProductsLoading,
     similarProducts,
     handleBuyNow,
     handleAddToCart,
     form,
-    handleChangeForm,
     handleDecreaseQuantity,
     handleIncreaseQuantity,
     handleAddFavorite,
@@ -109,5 +118,6 @@ export default function useSelectedProduct({
     openShare,
     handleCloseShare,
     handleDeleteFavorite,
+    notFound,
   };
 }

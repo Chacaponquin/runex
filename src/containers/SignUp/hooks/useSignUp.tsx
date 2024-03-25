@@ -18,7 +18,9 @@ export default function useSignUp() {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    setLoading(true);
+  }
 
   return { form, handleChange, handleSubmit, loading };
 }

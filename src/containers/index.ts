@@ -6,6 +6,7 @@ import Checkout from "./Checkout/Checkout";
 import User from "./User/User";
 import Admin from "./Admin/Admin";
 import { Clothes, Medicine } from "./Section/components";
+import Information from "./Information/Information";
 
 export {
   SignUp,
@@ -17,4 +18,5 @@ export {
   Admin,
   Clothes,
   Medicine,
+  Information,
 };

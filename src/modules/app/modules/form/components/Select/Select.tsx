@@ -1,7 +1,8 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { FormProps } from "../../interfaces/form";
-import { Size } from "../../interfaces/dimension";
 import { Option, Select as Header } from "./components";
 import { Dropdown } from "..";
 

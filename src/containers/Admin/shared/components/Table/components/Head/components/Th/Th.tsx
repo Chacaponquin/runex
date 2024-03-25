@@ -7,10 +7,11 @@ interface Props {
 
 export default function Th({ text, isFirst }: Props) {
   const CLASS = clsx(
-    "text-base",
+    "text-sm",
+    "text-gray-700",
     "font-normal",
     "text-left",
-    "py-2.5",
+    "py-3",
     "font-fontMedium",
     "rounded",
     "uppercase",

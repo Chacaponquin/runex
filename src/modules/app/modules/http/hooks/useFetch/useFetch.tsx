@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEnv } from "@modules/app/modules/env/hooks";
 import { useUser } from "@modules/user/hooks";
 import { useEffect, useMemo } from "react";
-import { GetProps, PostProps } from "../../interfaces/fetch";
+import { FetchProps, PostProps } from "../../interfaces";
 
 export default function useFetch() {
   const { getToken } = useUser();
@@ -25,9 +25,29 @@ export default function useFetch() {
     });
   }, []);
 
-  function get<T>(props: GetProps<T>): void {
+  function get<T>(props: FetchProps<T> & { url: string }): void {
     axiosInstance
       .get<T>(props.url)
+      .then((data) => {
+        if (props.onSuccess) {
+          props.onSuccess(data.data);
+        }
+      })
+      .catch((error) => {
+        if (props.onError) {
+          props.onError(error);
+        }
+      })
+      .finally(() => {
+        if (props.onFinally) {
+          props.onFinally();
+        }
+      });
+  }
+
+  function remove<T>(props: FetchProps<T> & { url: string }): void {
+    axiosInstance
+      .delete(props.url)
       .then((data) => {
         if (props.onSuccess) {
           props.onSuccess(data.data);
@@ -65,5 +85,25 @@ export default function useFetch() {
       });
   }
 
-  return { get, post, axiosInstance };
+  function put<T, B>(props: PostProps<T, B> & { url: string }): void {
+    axiosInstance
+      .put<T>(props.url, props.body)
+      .then((data) => {
+        if (props.onSuccess) {
+          props.onSuccess(data.data);
+        }
+      })
+      .catch((error) => {
+        if (props.onError) {
+          props.onError(error);
+        }
+      })
+      .finally(() => {
+        if (props.onFinally) {
+          props.onFinally();
+        }
+      });
+  }
+
+  return { get, post, axiosInstance, remove, put };
 }

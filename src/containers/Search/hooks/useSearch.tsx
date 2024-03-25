@@ -55,13 +55,16 @@ export default function useSearch({
   const totalPages = 10;
 
   useEffect(() => {
-    filterProducts(filters).then((data) => {
-      setResult(data);
+    filterProducts({
+      body: filters,
+      onSuccess(data) {
+        setResult(data);
+      },
     });
   }, [page]);
 
-  function handleChangeFilter(key: keyof FilterForm, value: unknown) {
-    setFilters((prev) => ({ ...prev, [key]: value }));
+  function handleChangeName(name: string) {
+    setFilters((prev) => ({ ...prev, name: name }));
   }
 
   function handleNextPage() {
@@ -94,7 +97,6 @@ export default function useSearch({
 
   return {
     filters,
-    handleChangeFilter,
     handleApplySearch,
     result,
     openFilters,
@@ -107,5 +109,6 @@ export default function useSearch({
     selectedProduct,
     handleSelectProduct,
     handleDeleteSelectedProduct,
+    handleChangeName,
   };
 }

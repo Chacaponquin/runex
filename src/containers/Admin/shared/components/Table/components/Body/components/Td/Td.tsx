@@ -7,5 +7,5 @@ interface Props {
 }
 
 export default function Td({ children, isFirst }: Props) {
-  return <td className={clsx("py-2", { "pl-4": isFirst })}>{children}</td>;
+  return <td className={clsx("py-2.5", { "pl-4": isFirst })}>{children}</td>;
 }

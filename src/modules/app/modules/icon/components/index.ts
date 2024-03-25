@@ -17,6 +17,7 @@ import Favorite from "./Favorite";
 import Filter from "./Filter";
 import Instagram from "./Instagram";
 import Lock from "./Lock";
+import Medicine from "./Medicine";
 import Menu from "./Menu";
 import Minus from "./Minus";
 import Money from "./Money";
@@ -60,4 +61,5 @@ export {
   CheckOne,
   Clothe,
   Upload,
+  Medicine,
 };

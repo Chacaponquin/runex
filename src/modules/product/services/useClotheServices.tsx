@@ -46,8 +46,8 @@ export default function useClotheServices() {
     });
   }
 
-  function deleteClothe(props: FetchProps<undefined>) {
-    remove({ ...props, url: API_ROUTES.CLOTHE.REMOVE });
+  function deleteClothe(props: FetchProps<undefined> & { id: string }) {
+    remove({ ...props, url: API_ROUTES.CLOTHE.REMOVE(props.id) });
   }
 
   function getClothes(props: FetchProps<Array<Clothe>>): void {

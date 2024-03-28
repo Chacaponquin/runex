@@ -10,7 +10,7 @@ export default function useFetch() {
   const { getToken } = useUser();
   const { API_ROUTE } = useEnv();
 
-  const axiosInstance = useMemo(() => {
+  const instance = useMemo(() => {
     return axios.create({
       baseURL: API_ROUTE,
       headers: {
@@ -20,13 +20,13 @@ export default function useFetch() {
   }, [API_ROUTE, getToken]);
 
   useEffect(() => {
-    axiosInstance.interceptors.request.use(undefined, function (error) {
+    instance.interceptors.request.use(undefined, function (error) {
       Promise.reject(error);
     });
   }, []);
 
   function get<T>(props: FetchProps<T> & { url: string }): void {
-    axiosInstance
+    instance
       .get<T>(props.url)
       .then((data) => {
         if (props.onSuccess) {
@@ -46,7 +46,7 @@ export default function useFetch() {
   }
 
   function remove<T>(props: FetchProps<T> & { url: string }): void {
-    axiosInstance
+    instance
       .delete(props.url)
       .then((data) => {
         if (props.onSuccess) {
@@ -66,7 +66,7 @@ export default function useFetch() {
   }
 
   function post<T, B>(props: PostProps<T, B> & { url: string }): void {
-    axiosInstance
+    instance
       .post<T>(props.url, props.body)
       .then((data) => {
         if (props.onSuccess) {
@@ -86,7 +86,7 @@ export default function useFetch() {
   }
 
   function put<T, B>(props: PostProps<T, B> & { url: string }): void {
-    axiosInstance
+    instance
       .put<T>(props.url, props.body)
       .then((data) => {
         if (props.onSuccess) {
@@ -105,5 +105,5 @@ export default function useFetch() {
       });
   }
 
-  return { get, post, axiosInstance, remove, put };
+  return { get, post, instance, remove, put };
 }

@@ -43,8 +43,8 @@ export default function useMedicineServices() {
     });
   }
 
-  function deleteMedicine(props: FetchProps<undefined>) {
-    remove({ ...props, url: API_ROUTES.MEDICINE.REMOVE });
+  function deleteMedicine(props: FetchProps<undefined> & { id: string }) {
+    remove({ ...props, url: API_ROUTES.MEDICINE.REMOVE(props.id) });
   }
 
   function getMedicines(props: FetchProps<Array<Medicine>>) {
@@ -55,5 +55,10 @@ export default function useMedicineServices() {
     if (props.onFinally) props.onFinally();
   }
 
-  return { findById, editMedicine, deleteMedicine, getMedicines };
+  return {
+    findById,
+    editMedicine,
+    deleteMedicine,
+    getMedicines,
+  };
 }

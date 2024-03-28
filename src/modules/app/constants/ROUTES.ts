@@ -39,12 +39,12 @@ export const API_ROUTES = {
   CLOTHE: {
     CREATE: "/clothe/create",
     UPLOAD_IMAGES: "/clothe/upload-images",
-    REMOVE: "/clothe/remove",
+    REMOVE: (id: string) => `/clothe/remove/${id}`,
     EDIT: "/clothe/edit",
   },
   MEDICINE: {
     CREATE: "/medicine/clothe",
     EDIT: "/medicine/clothe",
-    REMOVE: "/medicine/remove",
+    REMOVE: (id: string) => `/medicine/remove/${id}`,
   },
 };

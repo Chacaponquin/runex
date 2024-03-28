@@ -43,7 +43,7 @@ function create(): Product {
 }
 
 export default function useProductServices() {
-  const { axiosInstance } = useFetch();
+  const { instance } = useFetch();
 
   async function uploadImages(images: Array<File>): Promise<Array<string>> {
     const all = [] as Array<string>;
@@ -53,7 +53,7 @@ export default function useProductServices() {
         const form = new FormData();
         form.append("image", image);
 
-        const response = await axiosInstance.post(
+        const response = await instance.post(
           API_ROUTES.CLOTHE.UPLOAD_IMAGES,
           form
         );

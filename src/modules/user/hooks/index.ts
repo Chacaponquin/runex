@@ -1,3 +1,4 @@
-import useUser from "./useUser"
+import useAdminUser from "./useAdminUser";
+import useUser from "./useUser";
 
-export { useUser }
+export { useUser, useAdminUser };

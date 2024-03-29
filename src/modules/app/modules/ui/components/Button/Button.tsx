@@ -8,6 +8,7 @@ interface Props {
   size: "sm" | "lg" | "xl";
   rounded: "full" | "lg" | "sm";
   type?: "button" | "submit";
+  full?: boolean;
 }
 
 export default function Button({
@@ -18,6 +19,7 @@ export default function Button({
   size,
   rounded,
   type,
+  full = false,
 }: Props) {
   const CLASS = clsx(
     "transition-all duration-200",
@@ -53,7 +55,9 @@ export default function Button({
       "text-sm": size === "sm",
     },
 
-    { "opacity-70": disabled }
+    { "opacity-70": disabled },
+
+    { "w-full": full, "w-max": !full }
   );
 
   return (

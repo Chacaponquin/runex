@@ -36,6 +36,9 @@ export const API_ROUTES = {
     GET_CURRENT_USER: "/user/user-token",
     CONTACT: "/user/contact",
   },
+  ADMIN_USER: {
+    SIGN_IN: "/admin/sign-in",
+  },
   CLOTHE: {
     CREATE: "/clothe/create",
     UPLOAD_IMAGES: "/clothe/upload-images",

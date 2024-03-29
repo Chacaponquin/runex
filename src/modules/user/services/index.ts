@@ -1,3 +1,4 @@
-import useUserServices from "./useUserServices"
+import useAdminUserServices from "./useAdminUserServices";
+import useUserServices from "./useUserServices";
 
-export { useUserServices }
+export { useUserServices, useAdminUserServices };

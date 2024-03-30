@@ -16,7 +16,7 @@ export default function SelectedProduct({
   handleSelectProduct,
   selectedProduct,
 }: Props) {
-  const { onFetchSuccess, productInfo } = useSelectedProduct();
+  const { onFetchSuccess, productInfo, handleAdd } = useSelectedProduct();
   const { getSimilarProducts, getProductById } = useProductServices();
 
   return (
@@ -28,6 +28,7 @@ export default function SelectedProduct({
       getSimilarProducts={getSimilarProducts}
       onFetchSuccess={onFetchSuccess}
       productInfo={productInfo}
+      handleAdd={handleAdd}
     >
       <Fragment></Fragment>
     </SharedSelectedProduct>

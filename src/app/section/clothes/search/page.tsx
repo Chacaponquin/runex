@@ -1,15 +1,8 @@
 import { Search } from "@containers";
+import { UrlSearchParams } from "@containers/Search/interfaces";
 
 interface Props {
-  searchParams: {
-    q: string | undefined;
-    page: string | undefined;
-    min: string | undefined;
-    max: string | undefined;
-    color: string | undefined;
-    size: string | undefined;
-    provider: string | undefined;
-  };
+  searchParams: UrlSearchParams;
 }
 
 export default function Page(params: Props) {

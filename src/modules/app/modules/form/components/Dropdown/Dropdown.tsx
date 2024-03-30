@@ -15,7 +15,7 @@ interface Props {
 export default function Dropdown({
   children,
   header,
-  className: inputClassName,
+  className,
   id,
   height,
   enableHideList,
@@ -30,7 +30,7 @@ export default function Dropdown({
     "z-50",
     "overflow-auto",
     "mt-1.5",
-    inputClassName
+    className
   );
 
   const onClickOutside = useCallback(() => {

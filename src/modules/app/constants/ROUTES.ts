@@ -9,7 +9,10 @@ export const APP_ROUTES = {
     CLOTHES: "/section/clothes",
     MEDICINE: "/section/medicines",
     SEARCH_CLOTHES: "/section/clothes/search",
-    SEARCH_MEDICINE: "/section/medicine/search",
+    SEARCH_MEDICINE: "/section/medicines/search",
+    BUILD_SEARCH_ROUTE({ search, url }: { url: string; search: string }) {
+      return `${url}?q=${search}`;
+    },
   },
   CHECKOUT: "/checkout",
   USER: {

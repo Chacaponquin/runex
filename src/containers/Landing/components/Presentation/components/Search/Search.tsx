@@ -1,35 +1,49 @@
 "use client";
 
-import { Search as IconSearch } from "@modules/app/modules/icon/components";
 import clsx from "clsx";
-import { Button, Input } from "./components";
+import { Button, Input, Sections } from "./components";
 import { useSearch } from "./hooks";
 
 export default function Search() {
-  const { handleBlur, handleFocus, id, handleSubmit } = useSearch();
+  const {
+    handleBlur,
+    handleFocus,
+    id,
+    handleSubmit,
+    sections,
+    selectedSection,
+    handleChangeSelectedSection,
+    handleChangeSearch,
+    search,
+  } = useSearch();
 
   const CLASS = clsx(
     "w-full",
     "flex items-center",
-    "gap-x-5",
-    "stroke-black",
-    "bg-gray-50",
-    "px-7 py-3.5 esm:px-6 esm:py-3",
+    "px-7 py-3.5 esm:px-5 esm:py-3",
     "rounded-l-md",
     "transition-all duration-200"
   );
 
   return (
     <form
-      className="flex items-center shadow-lg w-full max-w-[580px]"
+      className="flex items-center shadow-lg w-full max-w-[700px] bg-gray-50 py-1 px-3"
       onSubmit={handleSubmit}
     >
-      <search className={CLASS}>
-        <i>
-          <IconSearch size={23} />
-        </i>
+      <Sections
+        sections={sections}
+        selectedSection={selectedSection}
+        handleChangeSelectedSection={handleChangeSelectedSection}
+      />
 
-        <Input handleBlur={handleBlur} handleFocus={handleFocus} id={id} />
+      <search className={CLASS}>
+        <Input
+          handleBlur={handleBlur}
+          handleFocus={handleFocus}
+          id={id}
+          value={search}
+          handleChange={handleChangeSearch}
+        />
       </search>
 
       <Button />

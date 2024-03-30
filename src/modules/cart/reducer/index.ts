@@ -1,11 +1,12 @@
 import { CART_ACTIONS } from "../constants/ACTIONS";
 import { CartProduct } from "../domain";
-import { Product } from "@modules/product/domain";
 
 export type Payload =
   | {
       type: CART_ACTIONS.SET_PRODUCT;
-      payload: { product: Product; quantity: number };
+      payload: {
+        product: CartProduct;
+      };
     }
   | {
       type: CART_ACTIONS.CHANGE_PRODUCT_QUANTITY;
@@ -27,13 +28,7 @@ export function cartReducer(cart: Array<CartProduct>, payload: Payload) {
     }
 
     case CART_ACTIONS.SET_PRODUCT: {
-      return [
-        ...cart,
-        {
-          quantity: payload.payload.quantity,
-          product: payload.payload.product,
-        },
-      ];
+      return [...cart, payload.payload.product];
     }
 
     case CART_ACTIONS.DELETE_PRODUCT: {

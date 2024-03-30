@@ -4,15 +4,15 @@ import { useContext } from "react";
 import { CartContext } from "../context";
 import { CART_ACTIONS } from "../constants";
 import { Product } from "@modules/product/domain";
+import { CartProduct } from "../domain";
 
 interface ChangeProductQuantityProps {
   id: string;
   quantity: number;
 }
 
-interface SetProductProps {
-  product: Product;
-  quantity: number;
+interface AddProductProps {
+  product: CartProduct;
 }
 
 export default function useCart() {
@@ -27,9 +27,9 @@ export default function useCart() {
     });
   }
 
-  function handleSetProduct(props: SetProductProps): void {
+  function handleSetProduct(props: AddProductProps): void {
     cartDispatch({
-      payload: { product: props.product, quantity: props.quantity },
+      payload: { product: props.product },
       type: CART_ACTIONS.SET_PRODUCT,
     });
   }
@@ -86,11 +86,11 @@ export default function useCart() {
   return {
     cart,
     handleChangeProductQuantity,
-    handleSetProduct,
     handleDeleteProduct,
     totalBillStr,
     totalQuantityStr,
     totalProductPrice,
     existProduct,
+    handleSetProduct,
   };
 }

@@ -7,7 +7,7 @@ export const APP_ROUTES = {
   },
   SECTION: {
     CLOTHES: "/section/clothes",
-    MEDICINE: "/section/medicine",
+    MEDICINE: "/section/medicines",
     SEARCH_CLOTHES: "/section/clothes/search",
     SEARCH_MEDICINE: "/section/medicine/search",
   },

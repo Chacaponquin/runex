@@ -19,7 +19,7 @@ export default function MedicineSelected({
   handleSelectProduct,
   selectedProduct,
 }: Props) {
-  const { onFetchSuccess, productInfo } = useSelectedMedicine();
+  const { onFetchSuccess, productInfo, handleAdd } = useSelectedMedicine();
   const { getSimilarProducts } = useProductServices();
   const { findById } = useMedicineServices();
 
@@ -32,6 +32,7 @@ export default function MedicineSelected({
       getProduct={findById}
       getSimilarProducts={getSimilarProducts}
       productInfo={productInfo}
+      handleAdd={handleAdd}
     >
       <Fragment></Fragment>
     </SelectedProduct>

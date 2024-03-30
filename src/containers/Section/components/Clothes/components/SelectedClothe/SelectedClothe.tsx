@@ -28,6 +28,7 @@ export default function SelectedClothe({
     handleChangeColor,
     handleChangeSize,
     productInfo,
+    handleAdd,
   } = useSelectedClothe();
   const { findById } = useClotheServices();
   const { getSimilarProducts } = useProductServices();
@@ -41,6 +42,7 @@ export default function SelectedClothe({
       getProduct={findById}
       getSimilarProducts={getSimilarProducts}
       productInfo={productInfo}
+      handleAdd={handleAdd}
     >
       <Fragment>
         {productInfo && productInfo.sizes.length > 0 && (

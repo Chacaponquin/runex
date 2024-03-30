@@ -1,3 +1,4 @@
+import { useUser } from "@modules/user/hooks";
 import { Favorite } from "./components";
 
 interface Props {
@@ -13,6 +14,8 @@ export default function Image({
   isFavorite,
   handleDeleteFavorite,
 }: Props) {
+  const { actualUser } = useUser();
+
   return (
     <header
       className="h-[170px] w-full p-3 rounded-t"
@@ -22,11 +25,13 @@ export default function Image({
         backgroundSize: "cover",
       }}
     >
-      <Favorite
-        handleAddFavorite={handleAddFavorite}
-        isFavorite={isFavorite}
-        handleDeleteFavorite={handleDeleteFavorite}
-      />
+      {actualUser && (
+        <Favorite
+          handleAddFavorite={handleAddFavorite}
+          isFavorite={isFavorite}
+          handleDeleteFavorite={handleDeleteFavorite}
+        />
+      )}
     </header>
   );
 }

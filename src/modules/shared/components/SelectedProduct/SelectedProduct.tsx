@@ -5,6 +5,7 @@ import { Product as ProductComponent, Header, Share } from "./components";
 import { useSelectedProduct } from "./hooks";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
 import { Product } from "@modules/product/domain";
+import { AddProductProps } from "./interfaces";
 
 interface Props<T> {
   selectedProduct: string | null;
@@ -15,6 +16,7 @@ interface Props<T> {
   onFetchSuccess(data: T): void;
   children: React.ReactNode;
   productInfo: T | null;
+  handleAdd(props: AddProductProps): void;
 }
 
 export default function SelectedProduct<T extends Product>({
@@ -26,6 +28,7 @@ export default function SelectedProduct<T extends Product>({
   onFetchSuccess,
   children,
   productInfo,
+  handleAdd,
 }: Props<T>) {
   const {
     loading,
@@ -49,6 +52,7 @@ export default function SelectedProduct<T extends Product>({
     getSimilarProducts,
     onFetchSuccess,
     productInfo,
+    handleAdd,
   });
 
   useBlockScroll(selectedProduct !== null);

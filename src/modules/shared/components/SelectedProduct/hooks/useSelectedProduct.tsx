@@ -2,9 +2,8 @@
 
 import { Product } from "@modules/product/domain";
 import { useEffect, useState } from "react";
-import { ProductForm } from "../interfaces";
+import { AddProductProps, ProductForm } from "../interfaces";
 import { useProductActions } from "@modules/product/hooks";
-import { useCart } from "@modules/cart/hooks";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
 
 interface Props<T> {
@@ -14,6 +13,7 @@ interface Props<T> {
   getSimilarProducts(props: FetchProps<Array<Product>> & { id: string }): void;
   onFetchSuccess(data: T): void;
   productInfo: T | null;
+  handleAdd(props: AddProductProps): void;
 }
 
 export default function useSelectedProduct<T extends Product>({
@@ -23,12 +23,12 @@ export default function useSelectedProduct<T extends Product>({
   getSimilarProducts,
   onFetchSuccess,
   productInfo,
+  handleAdd,
 }: Props<T>) {
   const { handleAddFavorite, handleDeleteFavorite, isFavorite } =
     useProductActions({
       productId,
     });
-  const { handleSetProduct } = useCart();
 
   const [form, setForm] = useState<ProductForm>({
     quantity: 1,
@@ -98,7 +98,7 @@ export default function useSelectedProduct<T extends Product>({
 
   function handleAddToCart() {
     if (productInfo) {
-      handleSetProduct({ quantity: form.quantity, product: productInfo });
+      handleAdd({ quantity: form.quantity, product: productInfo });
       handleDeleteSelectedProduct();
     }
   }

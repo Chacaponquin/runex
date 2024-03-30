@@ -12,10 +12,12 @@ import {
   ContactFullNameValidator,
   ContactMessageValidator,
 } from "../domain";
+import { useUser } from "@modules/user/hooks";
 
 export default function useContactUs() {
   const { sendMessage } = useUserServices();
   const { error } = useToast();
+  const { actualUser } = useUser();
 
   const { validate } = useValidator<ContactUsForm>({
     email: new ContactEmailValidator(),
@@ -41,7 +43,7 @@ export default function useContactUs() {
       setLoading(true);
 
       sendMessage({
-        body: { ...form, user: null },
+        body: { ...form, user: actualUser ? actualUser.id : null },
         onError() {
           error({
             id: "send-message",

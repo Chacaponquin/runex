@@ -1,10 +1,11 @@
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { API_ROUTES } from "@modules/app/constants";
 import { CurrentUser } from "../domain";
-import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { FetchProps, PostProps } from "@modules/app/modules/http/interfaces";
+import { SendMessageDTO } from "../dto/user";
 
 export default function useUserServices() {
-  const { get } = useFetch();
+  const { get, post } = useFetch();
 
   function getUserByToken(props: FetchProps<CurrentUser>) {
     get({
@@ -15,5 +16,9 @@ export default function useUserServices() {
     });
   }
 
-  return { getUserByToken };
+  function sendMessage(props: PostProps<void, SendMessageDTO>) {
+    post({ ...props, url: API_ROUTES.USER.CONTACT });
+  }
+
+  return { getUserByToken, sendMessage };
 }

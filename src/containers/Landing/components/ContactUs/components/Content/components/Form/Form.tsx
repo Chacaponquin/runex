@@ -6,9 +6,17 @@ interface Props {
   form: ContactUsForm;
   handleChange(key: keyof ContactUsForm, value: string): void;
   handleSubmit(): void;
+  loading: boolean;
+  completed: boolean;
 }
 
-export default function Form({ form, handleChange, handleSubmit }: Props) {
+export default function Form({
+  form,
+  handleChange,
+  handleSubmit,
+  loading,
+  completed,
+}: Props) {
   function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
     handleSubmit();
@@ -42,7 +50,7 @@ export default function Form({ form, handleChange, handleSubmit }: Props) {
         handleChange={(value) => handleChange("message", value)}
       />
 
-      <Buttons />
+      <Buttons loading={loading} completed={completed} />
     </form>
   );
 }

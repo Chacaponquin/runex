@@ -11,17 +11,7 @@ import { Section } from "@modules/shared/components/SelectedProduct/shared/compo
 import { Color, Size } from "./components";
 import { Product } from "@modules/product/domain";
 
-interface Props {
-  selectedProduct: string | null;
-  handleDeleteSelectedProduct(): void;
-  handleSelectProduct(id: string): void;
-}
-
-export default function SelectedClothe({
-  handleDeleteSelectedProduct,
-  handleSelectProduct,
-  selectedProduct,
-}: Props) {
+export default function SelectedClothe() {
   const {
     onFetchSuccess,
     form,
@@ -35,9 +25,6 @@ export default function SelectedClothe({
 
   return (
     <SelectedProduct
-      selectedProduct={selectedProduct}
-      handleDeleteSelectedProduct={handleDeleteSelectedProduct}
-      handleSelectProduct={handleSelectProduct}
       onFetchSuccess={onFetchSuccess}
       getProduct={findById}
       getSimilarProducts={getSimilarProducts}

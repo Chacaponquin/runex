@@ -22,7 +22,6 @@ interface Props {
   handleShare(): void;
   isFavorite: boolean;
   handleDeleteFavorite(): void;
-  handleSelectProduct(id: string): void;
   extra: React.ReactNode;
 }
 
@@ -40,7 +39,6 @@ export default function Product({
   handleShare,
   isFavorite,
   handleDeleteFavorite,
-  handleSelectProduct,
   extra,
 }: Props) {
   return (
@@ -76,7 +74,6 @@ export default function Product({
             <SimilarProducts
               products={similarProducts}
               loading={similarProductsLoading}
-              handleSelectProduct={handleSelectProduct}
             />
           </div>
         )}

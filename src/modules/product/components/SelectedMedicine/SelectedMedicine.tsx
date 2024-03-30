@@ -8,26 +8,13 @@ import {
   useProductServices,
 } from "@modules/product/services";
 
-interface Props {
-  selectedProduct: string | null;
-  handleDeleteSelectedProduct(): void;
-  handleSelectProduct(id: string): void;
-}
-
-export default function MedicineSelected({
-  handleDeleteSelectedProduct,
-  handleSelectProduct,
-  selectedProduct,
-}: Props) {
+export default function SelectedMedicine() {
   const { onFetchSuccess, productInfo, handleAdd } = useSelectedMedicine();
   const { getSimilarProducts } = useProductServices();
   const { findById } = useMedicineServices();
 
   return (
     <SelectedProduct
-      selectedProduct={selectedProduct}
-      handleDeleteSelectedProduct={handleDeleteSelectedProduct}
-      handleSelectProduct={handleSelectProduct}
       onFetchSuccess={onFetchSuccess}
       getProduct={findById}
       getSimilarProducts={getSimilarProducts}

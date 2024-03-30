@@ -35,8 +35,6 @@ export default function useSearch({
 }: Props) {
   const { filterProducts } = useProductServices();
 
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
-
   const [openFilters, setOpenFilters] = useState(false);
 
   const [result, setResult] = useState<Array<Product>>([]);
@@ -87,14 +85,6 @@ export default function useSearch({
     setOpenFilters((prev) => !prev);
   }
 
-  function handleSelectProduct(product: string) {
-    setSelectedProduct(product);
-  }
-
-  function handleDeleteSelectedProduct() {
-    setSelectedProduct(null);
-  }
-
   return {
     filters,
     handleApplySearch,
@@ -106,9 +96,6 @@ export default function useSearch({
     totalPages,
     page,
     handleChangePage,
-    selectedProduct,
-    handleSelectProduct,
-    handleDeleteSelectedProduct,
     handleChangeName,
   };
 }

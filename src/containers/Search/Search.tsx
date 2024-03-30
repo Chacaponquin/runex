@@ -1,7 +1,7 @@
 "use client";
 
 import { Footer, Navbar } from "@modules/shared/components";
-import { Filters, Header, Result, SelectedProduct } from "./components";
+import { Filters, Header, Result } from "./components";
 import { useSearch } from "./hooks";
 
 interface Props {
@@ -34,9 +34,6 @@ export default function Search({
     page,
     handleChangePage,
     openFilters,
-    handleSelectProduct,
-    selectedProduct,
-    handleDeleteSelectedProduct,
     handleChangeName,
   } = useSearch({
     query: q,
@@ -50,12 +47,6 @@ export default function Search({
 
   return (
     <div className="flex flex-col w-full">
-      <SelectedProduct
-        selectedProduct={selectedProduct}
-        handleDeleteSelectedProduct={handleDeleteSelectedProduct}
-        handleSelectProduct={handleSelectProduct}
-      />
-
       <Navbar query={q} disableSearch={false} fixed={false} />
 
       {openFilters && (
@@ -81,7 +72,6 @@ export default function Search({
         currentPage={page}
         totalPages={totalPages}
         handleChangePage={handleChangePage}
-        handleSelectProduct={handleSelectProduct}
       />
 
       <Footer />

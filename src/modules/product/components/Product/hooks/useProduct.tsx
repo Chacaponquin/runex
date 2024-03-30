@@ -1,13 +1,16 @@
 "use client";
 
-import { useProductActions } from "@modules/product/hooks";
+import { PRODUCT_TYPES } from "@modules/product/constants";
+import { useProductActions, useSelectProduct } from "@modules/product/hooks";
 
 interface Props {
   id: string;
-  handleSelectProduct(id: string): void;
+  type: PRODUCT_TYPES;
 }
 
-export default function useProduct({ id, handleSelectProduct }: Props) {
+export default function useProduct({ id, type }: Props) {
+  const { handleSelectProduct } = useSelectProduct();
+
   const {
     handleAddFavorite,
     handleDeleteFavorite,
@@ -19,7 +22,7 @@ export default function useProduct({ id, handleSelectProduct }: Props) {
   });
 
   function handleSelect() {
-    handleSelectProduct(id);
+    handleSelectProduct({ id: id, type: type });
   }
 
   return {

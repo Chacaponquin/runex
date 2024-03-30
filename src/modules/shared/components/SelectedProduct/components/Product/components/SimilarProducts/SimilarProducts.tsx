@@ -2,18 +2,16 @@
 
 import { Product as ProductClass } from "@modules/product/domain";
 import { Header, Loading, Product } from "./components";
+import { useSelectProduct } from "@modules/product/hooks";
 
 interface Props {
   products: Array<ProductClass>;
   loading: boolean;
-  handleSelectProduct(id: string): void;
 }
 
-export default function SimilarProducts({
-  products,
-  handleSelectProduct,
-  loading,
-}: Props) {
+export default function SimilarProducts({ products, loading }: Props) {
+  const { handleSelectProduct } = useSelectProduct();
+
   return (
     <div className="flex flex-col w-full">
       <Header />
@@ -29,7 +27,9 @@ export default function SimilarProducts({
               image={p.image}
               price={p.priceStr}
               provider={p.provider}
-              handleClick={() => handleSelectProduct(p.id)}
+              handleClick={() =>
+                handleSelectProduct({ id: p.id, type: p.type })
+              }
             />
           ))}
         </div>

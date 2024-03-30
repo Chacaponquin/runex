@@ -6,14 +6,9 @@ import { Product as ProductClass } from "@modules/product/domain";
 interface Props {
   products: Array<ProductClass>;
   title: string;
-  handleSelectProduct(id: string): void;
 }
 
-export default function Section({
-  products,
-  title,
-  handleSelectProduct,
-}: Props) {
+export default function Section({ products, title }: Props) {
   return (
     <div className="flex flex-col">
       <h1 className="font-fontSemiBold text-2xl mb-5">{title}</h1>
@@ -27,7 +22,7 @@ export default function Section({
             price={product.priceStr}
             id={product.id}
             provider={product.provider}
-            handleSelectProduct={handleSelectProduct}
+            type={product.type}
           />
         ))}
       </div>

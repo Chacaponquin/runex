@@ -8,14 +8,12 @@ import { FetchProps } from "@modules/app/modules/http/interfaces";
 import { Product } from "@modules/product/domain";
 
 interface Props {
-  handleSelectProduct(id: string): void;
   getNewProducts(props: FetchProps<Array<Product>>): void;
   getPopularProducts(props: FetchProps<Array<Product>>): void;
   getTrendingProducts(props: FetchProps<Array<Product>>): void;
 }
 
 export default function ProductSections({
-  handleSelectProduct,
   getNewProducts,
   getPopularProducts,
   getTrendingProducts,
@@ -33,12 +31,7 @@ export default function ProductSections({
         containerClass="pb-20"
       >
         {sections.map((s) => (
-          <Section
-            key={s.id}
-            products={s.products}
-            title={s.title}
-            handleSelectProduct={handleSelectProduct}
-          />
+          <Section key={s.id} products={s.products} title={s.title} />
         ))}
       </Resize>
     </main>

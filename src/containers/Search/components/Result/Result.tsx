@@ -11,7 +11,6 @@ interface Props {
   totalPages: number;
   totalProducts: number;
   handleChangePage(p: number): void;
-  handleSelectProduct(id: string): void;
 }
 
 export default function Result({
@@ -23,7 +22,6 @@ export default function Result({
   totalPages,
   totalProducts,
   handleChangePage,
-  handleSelectProduct,
 }: Props) {
   return (
     <main className="flex flex-col w-full px-5 items-center mb-20 esm:mb-12">
@@ -33,10 +31,7 @@ export default function Result({
           handleChangeOpenFilters={handleChangeOpenFilters}
         />
 
-        <Products
-          products={products}
-          handleSelectProduct={handleSelectProduct}
-        />
+        <Products products={products} />
 
         <Scroll
           handleNext={handleNextPage}

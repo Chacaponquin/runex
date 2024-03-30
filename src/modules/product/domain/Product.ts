@@ -1,9 +1,13 @@
+import { PRODUCT_TYPES } from "../constants";
+
 export interface ProductProps {
   id: string;
   name: string;
   price: number;
   images: Array<ProductImage>;
   category: string;
+  type: PRODUCT_TYPES;
+  provider: string;
 }
 
 export interface ProductImage {
@@ -20,14 +24,24 @@ export class Product {
   readonly imagesData: Array<ProductImage>;
   readonly provider: string;
   readonly category: string;
+  readonly type: PRODUCT_TYPES;
 
-  constructor({ id, name, price, images, category }: ProductProps) {
+  constructor({
+    id,
+    name,
+    price,
+    images,
+    category,
+    type,
+    provider,
+  }: ProductProps) {
     this.id = id;
     this.name = name;
     this.price = price;
     this.imagesData = images;
-    this.provider = "Amazon";
+    this.provider = provider;
     this.category = category;
+    this.type = type;
   }
 
   get image() {

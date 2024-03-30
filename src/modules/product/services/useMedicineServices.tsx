@@ -21,6 +21,7 @@ function create(): Medicine {
       };
     }),
     category: faker.helpers.arrayElement(["Zapatos"]),
+    provider: "Amazon",
   });
 }
 

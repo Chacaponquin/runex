@@ -3,13 +3,11 @@
 import { Product } from "@modules/product/domain";
 import { useEffect, useState } from "react";
 import { AddProductProps, ProductForm } from "../interfaces";
-import { useProductActions } from "@modules/product/hooks";
+import { useProductActions, useSelectProduct } from "@modules/product/hooks";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
 
 interface Props<T> {
-  productId: string | null;
-  handleDeleteSelectedProduct(): void;
-  getProduct(props: FetchProps<T>): void;
+  getProduct(props: FetchProps<T> & { id: string }): void;
   getSimilarProducts(props: FetchProps<Array<Product>> & { id: string }): void;
   onFetchSuccess(data: T): void;
   productInfo: T | null;
@@ -17,17 +15,17 @@ interface Props<T> {
 }
 
 export default function useSelectedProduct<T extends Product>({
-  productId,
-  handleDeleteSelectedProduct,
   getProduct,
   getSimilarProducts,
   onFetchSuccess,
   productInfo,
   handleAdd,
 }: Props<T>) {
+  const { selectedProduct, handleDeleteSelectedProduct } = useSelectProduct();
+
   const { handleAddFavorite, handleDeleteFavorite, isFavorite } =
     useProductActions({
-      productId,
+      productId: selectedProduct ? selectedProduct.id : null,
     });
 
   const [form, setForm] = useState<ProductForm>({
@@ -43,10 +41,11 @@ export default function useSelectedProduct<T extends Product>({
   const [openShare, setOpenShare] = useState(false);
 
   useEffect(() => {
-    if (productId) {
+    if (selectedProduct) {
       setLoading(true);
 
       getProduct({
+        id: selectedProduct.id,
         onSuccess(info) {
           onFetchSuccess(info);
         },
@@ -58,14 +57,14 @@ export default function useSelectedProduct<T extends Product>({
         },
       });
     }
-  }, [productId]);
+  }, [selectedProduct]);
 
   useEffect(() => {
-    if (productId) {
+    if (selectedProduct) {
       setSimilarProductsLoading(true);
 
       getSimilarProducts({
-        id: productId,
+        id: selectedProduct.id,
         onSuccess(data) {
           setSimilarProducts(data);
         },
@@ -74,7 +73,7 @@ export default function useSelectedProduct<T extends Product>({
         },
       });
     }
-  }, [productId]);
+  }, [selectedProduct]);
 
   function handleShare() {
     setOpenShare(true);

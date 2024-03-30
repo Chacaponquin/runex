@@ -8,13 +8,14 @@ import {
   Image as ProductImage,
   Provider,
 } from "./components";
+import { PRODUCT_TYPES } from "@modules/product/constants";
 
 interface Props {
   name: string;
   image: string;
   price: string;
   id: string;
-  handleSelectProduct(id: string): void;
+  type: PRODUCT_TYPES;
   provider: string;
 }
 
@@ -23,8 +24,8 @@ export default function Product({
   image,
   price,
   id,
-  handleSelectProduct,
   provider,
+  type,
 }: Props) {
   const {
     handleSelect,
@@ -35,7 +36,7 @@ export default function Product({
     handleDelete,
   } = useProduct({
     id: id,
-    handleSelectProduct: handleSelectProduct,
+    type: type,
   });
 
   return (

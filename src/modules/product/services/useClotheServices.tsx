@@ -25,6 +25,9 @@ function create() {
       };
     }),
     category: faker.helpers.arrayElement(["Zapatos"]),
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["orange", "red", "green"],
+    provider: "Amazon",
   });
 }
 export default function useClotheServices() {

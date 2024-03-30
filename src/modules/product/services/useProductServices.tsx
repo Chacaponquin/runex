@@ -4,6 +4,7 @@ import { FetchProps, PostProps } from "@modules/app/modules/http/interfaces";
 import { API_ROUTES } from "@modules/app/constants";
 import { UploadImageException } from "../exceptions";
 import { useFetch } from "@modules/app/modules/http/hooks";
+import { PRODUCT_TYPES } from "../constants";
 
 interface AddProductFavoriteProps {
   productId: string;
@@ -39,6 +40,11 @@ function create(): Product {
       };
     }),
     category: faker.helpers.arrayElement(["Zapatos"]),
+    type: faker.helpers.arrayElement([
+      PRODUCT_TYPES.CLOTHE,
+      PRODUCT_TYPES.MEDICINE,
+    ]),
+    provider: "Amazon",
   });
 }
 

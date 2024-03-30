@@ -7,6 +7,7 @@ import User from "./User/User";
 import Admin from "./Admin/Admin";
 import { Clothes, Medicine } from "./Section/components";
 import Information from "./Information/Information";
+import NotFound from "./Errors/NotFound/NotFound";
 
 export {
   SignUp,
@@ -19,4 +20,5 @@ export {
   Clothes,
   Medicine,
   Information,
+  NotFound,
 };

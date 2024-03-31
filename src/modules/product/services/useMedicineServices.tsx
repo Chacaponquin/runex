@@ -1,9 +1,13 @@
 import { faker } from "@faker-js/faker";
 import { Medicine } from "../domain";
-import { FetchProps, PutProps } from "@modules/app/modules/http/interfaces";
+import {
+  FetchProps,
+  PostProps,
+  PutProps,
+} from "@modules/app/modules/http/interfaces";
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { API_ROUTES } from "@modules/app/constants";
-import { EditMedicineDTO } from "../dto/medicine";
+import { EditMedicineDTO, FilterMedicineDTO } from "../dto/medicine";
 
 function create(): Medicine {
   return new Medicine({
@@ -26,7 +30,7 @@ function create(): Medicine {
 }
 
 export default function useMedicineServices() {
-  const { put, remove } = useFetch();
+  const { put, remove, post } = useFetch();
 
   function findById(props: FetchProps<Medicine> & { id: string }): void {
     if (props.onSuccess) {
@@ -56,10 +60,18 @@ export default function useMedicineServices() {
     if (props.onFinally) props.onFinally();
   }
 
+  function filter(props: PostProps<Medicine[], FilterMedicineDTO>) {
+    post<Medicine[], FilterMedicineDTO>({
+      ...props,
+      url: API_ROUTES.MEDICINE.FILTER,
+    });
+  }
+
   return {
     findById,
     editMedicine,
     deleteMedicine,
     getMedicines,
+    filter,
   };
 }

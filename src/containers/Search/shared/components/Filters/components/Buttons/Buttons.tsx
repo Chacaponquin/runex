@@ -1,16 +1,16 @@
+import { useContext } from "react";
 import { Button } from "./components";
+import { SearchContext } from "@containers/Search/contexts";
 
-interface Props {
-  handleClose(): void;
-}
+export default function Buttons() {
+  const { handleCloseFilters } = useContext(SearchContext);
 
-export default function Buttons({ handleClose }: Props) {
   return (
     <section className="grid grid-cols-2 gap-x-3">
       <Button
         text="Cancelar"
         color="dark"
-        handleClick={handleClose}
+        handleClick={handleCloseFilters}
         type="button"
       />
 

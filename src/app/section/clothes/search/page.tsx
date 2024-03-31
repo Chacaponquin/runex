@@ -1,10 +1,10 @@
-import { Search } from "@containers";
-import { UrlSearchParams } from "@containers/Search/interfaces";
+import { SearchClothe } from "@containers/Search/components";
+import { SearchClotheParams } from "@containers/Search/components/SearchClothe/interfaces";
 
 interface Props {
-  searchParams: UrlSearchParams;
+  searchParams: SearchClotheParams;
 }
 
 export default function Page(params: Props) {
-  return <Search {...params.searchParams} />;
+  return <SearchClothe params={params.searchParams} />;
 }

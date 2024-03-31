@@ -1,9 +1,9 @@
-import { Color } from "./Color";
+import { Colors } from "./Colors";
 import { MaxPrice } from "./MaxPrice";
 import { MinPrice } from "./MinPrice";
 import { Page } from "./Page";
 import { Provider } from "./Provider";
 import { Query } from "./Query";
-import { Size } from "./Size";
+import { Sizes } from "./Sizes";
 
-export { MaxPrice, MinPrice, Page, Query, Provider, Color, Size };
+export { MaxPrice, MinPrice, Page, Query, Provider, Colors, Sizes };

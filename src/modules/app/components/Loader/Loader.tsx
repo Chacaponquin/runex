@@ -1,11 +1,11 @@
 "use client";
 
-import "ldrs";
+import "./style.css";
 
 interface Props {
   size: number;
 }
 
 export default function Loader({ size }: Props) {
-  return <l-bouncy size={size} color="black"></l-bouncy>;
+  return <div className="loader" style={{ width: `${size}px` }}></div>;
 }

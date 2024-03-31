@@ -63,10 +63,12 @@ export const API_ROUTES = {
     UPLOAD_IMAGES: "/clothe/upload-images",
     REMOVE: (id: string) => `/clothe/remove/${id}`,
     EDIT: "/clothe/edit",
+    FILTER: "/clothe/filter",
   },
   MEDICINE: {
     CREATE: "/medicine/clothe",
     EDIT: "/medicine/clothe",
     REMOVE: (id: string) => `/medicine/remove/${id}`,
+    FILTER: "/medicine/filter",
   },
 };

@@ -1,5 +1,9 @@
 import { useFetch } from "@modules/app/modules/http/hooks";
-import { CreateClotheDTO, EditClotheDTO } from "../dto/clothe";
+import {
+  CreateClotheDTO,
+  EditClotheDTO,
+  FilterClothesDTO,
+} from "../dto/clothe";
 import { API_ROUTES } from "@modules/app/constants";
 import {
   FetchProps,
@@ -30,6 +34,7 @@ function create() {
     provider: "Amazon",
   });
 }
+
 export default function useClotheServices() {
   const { post, remove, put } = useFetch();
 
@@ -38,6 +43,13 @@ export default function useClotheServices() {
       ...props,
       url: API_ROUTES.CLOTHE.CREATE,
       body: props.body,
+    });
+  }
+
+  function filter(props: PostProps<Clothe[], FilterClothesDTO>) {
+    post<Clothe[], FilterClothesDTO>({
+      ...props,
+      url: API_ROUTES.CLOTHE.FILTER,
     });
   }
 
@@ -69,5 +81,12 @@ export default function useClotheServices() {
     if (props.onFinally) props.onFinally();
   }
 
-  return { createClothe, deleteClothe, getClothes, findById, editClothe };
+  return {
+    createClothe,
+    deleteClothe,
+    getClothes,
+    findById,
+    editClothe,
+    filter,
+  };
 }

@@ -1,3 +1,4 @@
+import { ArrowDown } from "@modules/app/modules/icon/components";
 import { IconProps } from "@modules/app/modules/icon/interfaces";
 import clsx from "clsx";
 
@@ -11,16 +12,20 @@ export default function Selected({ icon, title }: Props) {
     "flex items-center",
     "text-white",
     "cursor-pointer",
-    "px-5 py-2 esm:px-2",
+    "pl-5 pr-3 py-2 esm:px-2",
     "rounded",
-    "bg-blue-500",
-    "gap-x-4"
+    "bg-blue-500"
   );
 
   return (
     <div className={CLASS}>
-      <i className="stroke-white">{icon({ size: 26 })}</i>
+      <i className="stroke-white mr-4">{icon({ size: 26 })}</i>
+
       <span className="text-base font-fontMedium esm:hidden">{title}</span>
+
+      <i className="stroke-white ml-3 esm:hidden">
+        <ArrowDown size={23} />
+      </i>
     </div>
   );
 }

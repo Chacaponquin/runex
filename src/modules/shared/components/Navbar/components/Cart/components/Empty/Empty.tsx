@@ -11,7 +11,7 @@ export default function Empty({ handleClose }: Props) {
   const { bigScreen } = useScreen(SCREEN_SIZES.ESM);
 
   return (
-    <div className="flex w-full flex-col items-center py-16">
+    <div className="flex w-full flex-col items-center pt-32">
       <i className="stroke-black mb-6 esm:mb-5">
         <Bag size={bigScreen ? 60 : 48} />
       </i>

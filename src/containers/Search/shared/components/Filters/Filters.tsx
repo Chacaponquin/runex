@@ -2,33 +2,29 @@
 
 import { useBlockScroll } from "@modules/shared/hooks";
 import clsx from "clsx";
-import { Buttons, Header, PriceInput, Section } from "./components";
-import { FilterForm } from "../../interfaces";
+import { Buttons, Header, PriceInput } from "./components";
 import { useFilters } from "./hooks";
-import { useId } from "react";
+import { useContext, useId } from "react";
 import { Select } from "@modules/app/modules/form/components";
+import { SearchContext } from "@containers/Search/contexts";
+import Section from "../Section/Section";
 
 interface Props {
-  handleClose(): void;
-  filters: FilterForm;
-  handleSubmit(): void;
+  children: React.ReactNode;
 }
 
-export default function Filters({ handleClose, filters, handleSubmit }: Props) {
+export default function Filters({ children }: Props) {
   useBlockScroll(true);
+
+  const { handleCloseFilters } = useContext(SearchContext);
 
   const {
     form,
     handleSubmitForm,
     providerOptions,
-    colorOptions,
-    sizeOptions,
     handleChangePriceMax,
     handleChangePriceMin,
-  } = useFilters({
-    handleSubmit: handleSubmit,
-    filters: filters,
-  });
+  } = useFilters();
 
   const CLASS = clsx(
     "flex justify-center items-center",
@@ -40,11 +36,9 @@ export default function Filters({ handleClose, filters, handleSubmit }: Props) {
   );
 
   const selectId = useId();
-  const colorId = useId();
-  const sizeId = useId();
 
   return (
-    <div className={CLASS} onClick={handleClose}>
+    <div className={CLASS} onClick={handleCloseFilters}>
       <form
         className="bg-white rounded px-10 esm:px-7 py-4 w-full max-w-[600px] flex flex-col"
         onSubmit={handleSubmitForm}
@@ -53,17 +47,6 @@ export default function Filters({ handleClose, filters, handleSubmit }: Props) {
         <Header />
 
         <div className="flex flex-col gap-y-5 w-full mb-7">
-          <Section title="Color">
-            <Select
-              options={colorOptions}
-              labelKey="name"
-              valueKey="color"
-              placeholder="Color"
-              id={colorId}
-              value={form.color}
-            />
-          </Section>
-
           <Section title="Tienda">
             <Select
               options={providerOptions}
@@ -75,28 +58,19 @@ export default function Filters({ handleClose, filters, handleSubmit }: Props) {
             />
           </Section>
 
-          <Section title="Talla">
-            <Select
-              options={sizeOptions}
-              labelKey="name"
-              valueKey="name"
-              placeholder="Talla"
-              value={form.size}
-              id={sizeId}
-            />
-          </Section>
-
           <Section title="Precios">
             <PriceInput
-              priceMax={form.priceMax}
-              priceMin={form.priceMin}
+              priceMax={form.maxPrice}
+              priceMin={form.minPrice}
               handleChangePriceMax={handleChangePriceMax}
               handleChangePriceMin={handleChangePriceMin}
             />
           </Section>
+
+          {children}
         </div>
 
-        <Buttons handleClose={handleClose} />
+        <Buttons />
       </form>
     </div>
   );

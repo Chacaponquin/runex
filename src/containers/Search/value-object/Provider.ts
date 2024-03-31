@@ -1,15 +1,11 @@
 export class Provider {
-  private _value: string;
+  readonly value: string;
 
   constructor(value: string | undefined) {
     if (value) {
-      this._value = value;
+      this.value = value;
     } else {
-      this._value = "";
+      this.value = "";
     }
-  }
-
-  get value() {
-    return this._value;
   }
 }

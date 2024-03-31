@@ -5,6 +5,7 @@ import { Clothe, Medicine } from "@modules/app/modules/icon/components";
 import React, { useId, useState } from "react";
 import { SearchSection } from "../interfaces";
 import { useRouter } from "next/navigation";
+import { PRODUCT_TYPES } from "@modules/product/constants";
 
 export default function useSearch() {
   const navigate = useRouter();
@@ -18,11 +19,13 @@ export default function useSearch() {
       icon: Clothe,
       searchUrl: APP_ROUTES.SECTION.SEARCH_CLOTHES,
       title: "Ropa",
+      type: PRODUCT_TYPES.CLOTHE,
     },
     {
       icon: Medicine,
       searchUrl: APP_ROUTES.SECTION.SEARCH_MEDICINE,
       title: "Medicina",
+      type: PRODUCT_TYPES.MEDICINE,
     },
   ];
 
@@ -42,7 +45,7 @@ export default function useSearch() {
     const selected = sections[selectedSection];
 
     const route = APP_ROUTES.SECTION.BUILD_SEARCH_ROUTE({
-      url: selected.searchUrl,
+      section: selected.type,
       search: search,
     });
 

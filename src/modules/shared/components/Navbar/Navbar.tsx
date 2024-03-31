@@ -1,16 +1,16 @@
 "use client";
 
+import { PRODUCT_TYPES } from "@modules/product/constants";
 import { Buttons, Cart, Logo, Menu, Search } from "./components";
 import { useNavbar } from "./hooks";
 import clsx from "clsx";
 
 interface Props {
-  query?: string;
-  disableSearch: boolean;
+  search?: { type: PRODUCT_TYPES };
   fixed: boolean;
 }
 
-export default function Navbar({ query, disableSearch, fixed }: Props) {
+export default function Navbar({ search: isearch, fixed }: Props) {
   const {
     handleSearch,
     search,
@@ -21,7 +21,9 @@ export default function Navbar({ query, disableSearch, fixed }: Props) {
     openCart,
     handleChangeOpenCart,
     links,
-  } = useNavbar({ query });
+  } = useNavbar({
+    type: isearch ? isearch.type : undefined,
+  });
 
   const CLASS = clsx(
     "flex items-center justify-center",
@@ -43,7 +45,7 @@ export default function Navbar({ query, disableSearch, fixed }: Props) {
         />
 
         <section className="flex items-center gap-x-6 esm:gap-x-4">
-          {!disableSearch && !query && (
+          {isearch && (
             <Search
               handleSearch={handleSearch}
               handleChange={handleChangeSearch}
@@ -53,7 +55,7 @@ export default function Navbar({ query, disableSearch, fixed }: Props) {
 
           <Buttons
             handleChangeOpenCart={handleChangeOpenCart}
-            isSearch={query ? true : false}
+            isSearch={isearch ? true : false}
           />
         </section>
       </nav>

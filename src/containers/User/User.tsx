@@ -19,7 +19,7 @@ export default function User({ children }: Props) {
     <PageLoader loading={fetchUserLoading}>
       <Redirect url={APP_ROUTES.ROOT} condition={actualUser !== null}>
         <div className="w-full flex flex-col">
-          <Navbar disableSearch={true} fixed={false} />
+          <Navbar fixed={false} />
           <Header />
 
           <div className="flex flex-col flex-grow items-center w-full h-full bg-gray-50 px-5">

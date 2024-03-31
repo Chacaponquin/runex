@@ -47,7 +47,7 @@ export default function Search({
 
   return (
     <div className="flex flex-col w-full">
-      <Navbar query={q} disableSearch={false} fixed={false} />
+      <Navbar fixed={false} />
 
       {openFilters && (
         <Filters

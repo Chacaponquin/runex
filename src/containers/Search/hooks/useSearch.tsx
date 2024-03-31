@@ -36,6 +36,7 @@ export default function useSearch({
   const { filterProducts } = useProductServices();
 
   const [openFilters, setOpenFilters] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [result, setResult] = useState<Array<Product>>([]);
 
@@ -53,10 +54,15 @@ export default function useSearch({
   const totalPages = 10;
 
   useEffect(() => {
+    setLoading(true);
+
     filterProducts({
       body: filters,
       onSuccess(data) {
         setResult(data);
+      },
+      onFinally() {
+        setLoading(false);
       },
     });
   }, [page]);
@@ -97,5 +103,6 @@ export default function useSearch({
     page,
     handleChangePage,
     handleChangeName,
+    loading,
   };
 }

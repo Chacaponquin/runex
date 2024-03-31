@@ -17,7 +17,7 @@ export default function Landing() {
 
   return (
     <div className="flex flex-col w-full items-center bg-white">
-      <Navbar disableSearch={true} fixed={true} />
+      <Navbar fixed={true} />
 
       <Presentation presentationRef={presentationRef} />
 

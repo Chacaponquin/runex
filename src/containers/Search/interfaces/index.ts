@@ -1,4 +1,4 @@
-import { PostProps } from "@modules/app/modules/http/interfaces";
+import { BodyProps } from "@modules/app/modules/http/interfaces";
 import { Product } from "@modules/product/domain";
 
 export interface FilterForm {
@@ -17,7 +17,7 @@ export type SearchProductParams = Partial<{
   page: string;
 }>;
 
-export type SearchFilterFunctionProps = PostProps<
+export type SearchFilterFunctionProps = BodyProps<
   Product[],
   FilterForm & { name: string }
 >;

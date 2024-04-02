@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from "axios";
 import { useEnv } from "@modules/app/modules/env/hooks";
 import { useUser } from "@modules/user/hooks";
 import { useEffect, useMemo } from "react";
-import { FetchProps, PostProps } from "../../interfaces";
+import { FetchProps, BodyProps } from "../../interfaces";
 import { handleError } from "../../utils";
 
 export default function useFetch() {
@@ -55,11 +55,11 @@ export default function useFetch() {
     resolve(instance.delete(props.url), props);
   }
 
-  function post<T, B>(props: PostProps<T, B> & { url: string }): void {
+  function post<T, B>(props: BodyProps<T, B> & { url: string }): void {
     resolve(instance.post<T>(props.url, props.body), props);
   }
 
-  function put<T, B>(props: PostProps<T, B> & { url: string }): void {
+  function put<T, B>(props: BodyProps<T, B> & { url: string }): void {
     resolve(instance.put<T>(props.url, props.body), props);
   }
 

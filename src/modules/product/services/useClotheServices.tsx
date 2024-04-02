@@ -8,7 +8,7 @@ import {
 import { API_ROUTES } from "@modules/app/constants";
 import {
   FetchProps,
-  PostProps,
+  BodyProps,
   PutProps,
 } from "@modules/app/modules/http/interfaces";
 import { Clothe, Product, ProductSize } from "../domain";
@@ -32,7 +32,7 @@ export default function useClotheServices() {
     });
   }
 
-  function createClothe(props: PostProps<void, CreateClotheDTO>) {
+  function createClothe(props: BodyProps<void, CreateClotheDTO>) {
     post<void, CreateClotheDTO>({
       ...props,
       url: API_ROUTES.CLOTHE.CREATE,
@@ -40,7 +40,7 @@ export default function useClotheServices() {
     });
   }
 
-  function filter(props: PostProps<Clothe[], FilterClothesDTO>) {
+  function filter(props: BodyProps<Clothe[], FilterClothesDTO>) {
     post<RespClotheDTO[], FilterClothesDTO>({
       ...props,
       onSuccess(data) {
@@ -62,7 +62,7 @@ export default function useClotheServices() {
     remove({ ...props, url: API_ROUTES.CLOTHE.REMOVE(props.id) });
   }
 
-  function getClothes(props: PostProps<Clothe[], GetDTO>): void {
+  function getClothes(props: BodyProps<Clothe[], GetDTO>): void {
     post<RespClotheDTO[], GetDTO>({
       ...props,
       onSuccess(data) {
@@ -117,7 +117,7 @@ export default function useClotheServices() {
     });
   }
 
-  function getNews(props: PostProps<Product[], GetSpecificProductsDTO>) {
+  function getNews(props: BodyProps<Product[], GetSpecificProductsDTO>) {
     post<RespProductDTO[], GetSpecificProductsDTO>({
       ...props,
       onSuccess(data) {
@@ -127,7 +127,7 @@ export default function useClotheServices() {
     });
   }
 
-  function getTrending(props: PostProps<Product[], GetSpecificProductsDTO>) {
+  function getTrending(props: BodyProps<Product[], GetSpecificProductsDTO>) {
     post<RespProductDTO[], GetSpecificProductsDTO>({
       ...props,
       onSuccess(data) {
@@ -137,7 +137,7 @@ export default function useClotheServices() {
     });
   }
 
-  function getPopular(props: PostProps<Product[], GetSpecificProductsDTO>) {
+  function getPopular(props: BodyProps<Product[], GetSpecificProductsDTO>) {
     post<RespProductDTO[], GetSpecificProductsDTO>({
       ...props,
       onSuccess(data) {

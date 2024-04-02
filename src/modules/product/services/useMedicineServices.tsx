@@ -3,7 +3,7 @@
 import { Medicine, Product } from "../domain";
 import {
   FetchProps,
-  PostProps,
+  BodyProps,
   PutProps,
 } from "@modules/app/modules/http/interfaces";
 import { useFetch } from "@modules/app/modules/http/hooks";
@@ -55,7 +55,7 @@ export default function useMedicineServices() {
     remove({ ...props, url: API_ROUTES.MEDICINE.REMOVE(props.id) });
   }
 
-  function getMedicines(props: PostProps<Medicine[], GetDTO>) {
+  function getMedicines(props: BodyProps<Medicine[], GetDTO>) {
     post<RespMedicineDTO[], GetDTO>({
       ...props,
       onSuccess(data) {
@@ -67,7 +67,7 @@ export default function useMedicineServices() {
     });
   }
 
-  function filter(props: PostProps<Medicine[], FilterMedicineDTO>) {
+  function filter(props: BodyProps<Medicine[], FilterMedicineDTO>) {
     post<RespMedicineDTO[], FilterMedicineDTO>({
       ...props,
       onSuccess(data) {
@@ -91,7 +91,7 @@ export default function useMedicineServices() {
     });
   }
 
-  function getNews(props: PostProps<Product[], GetSpecificProductsDTO>) {
+  function getNews(props: BodyProps<Product[], GetSpecificProductsDTO>) {
     post<RespProductDTO[], GetSpecificProductsDTO>({
       ...props,
       onSuccess(data) {
@@ -101,7 +101,7 @@ export default function useMedicineServices() {
     });
   }
 
-  function getTrending(props: PostProps<Product[], GetSpecificProductsDTO>) {
+  function getTrending(props: BodyProps<Product[], GetSpecificProductsDTO>) {
     post<RespProductDTO[], GetSpecificProductsDTO>({
       ...props,
       onSuccess(data) {
@@ -111,7 +111,7 @@ export default function useMedicineServices() {
     });
   }
 
-  function getPopular(props: PostProps<Product[], GetSpecificProductsDTO>) {
+  function getPopular(props: BodyProps<Product[], GetSpecificProductsDTO>) {
     post<RespProductDTO[], GetSpecificProductsDTO>({
       ...props,
       onSuccess(data) {

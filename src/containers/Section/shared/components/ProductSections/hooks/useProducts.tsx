@@ -2,19 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { ProductSection } from "../interfaces";
-import { PostProps } from "@modules/app/modules/http/interfaces";
+import { BodyProps } from "@modules/app/modules/http/interfaces";
 import { Product } from "@modules/product/domain";
 import { GetSpecificProductsDTO } from "@modules/product/dto/product";
 
 interface Props {
   getNewProducts(
-    props: PostProps<Array<Product>, GetSpecificProductsDTO>
+    props: BodyProps<Array<Product>, GetSpecificProductsDTO>
   ): void;
   getPopularProducts(
-    props: PostProps<Array<Product>, GetSpecificProductsDTO>
+    props: BodyProps<Array<Product>, GetSpecificProductsDTO>
   ): void;
   getTrendingProducts(
-    props: PostProps<Array<Product>, GetSpecificProductsDTO>
+    props: BodyProps<Array<Product>, GetSpecificProductsDTO>
   ): void;
 }
 

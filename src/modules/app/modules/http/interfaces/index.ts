@@ -6,7 +6,7 @@ export interface FetchProps<T> {
   onFinally?: () => void;
 }
 
-export interface PostProps<T, B> extends FetchProps<T> {
+export interface BodyProps<T, B> extends FetchProps<T> {
   body: B;
 }
 

@@ -2,10 +2,7 @@
 
 import { SelectedProduct } from "@modules/shared/components";
 import { useSelectedClothe } from "./hooks";
-import {
-  useClotheServices,
-  useProductServices,
-} from "@modules/product/services";
+import { useClotheServices } from "@modules/product/services";
 import { Fragment } from "react";
 import { Section } from "@modules/shared/components/SelectedProduct/shared/components";
 import { Color, Size } from "./components";
@@ -20,14 +17,13 @@ export default function SelectedClothe() {
     productInfo,
     handleAdd,
   } = useSelectedClothe();
-  const { findById } = useClotheServices();
-  const { getSimilarProducts } = useProductServices();
+  const { findById, getSimilars } = useClotheServices();
 
   return (
     <SelectedProduct
       onFetchSuccess={onFetchSuccess}
       getProduct={findById}
-      getSimilarProducts={getSimilarProducts}
+      getSimilarProducts={getSimilars}
       productInfo={productInfo}
       handleAdd={handleAdd}
     >

@@ -1,4 +1,4 @@
-import { FilterProductDTO } from "./product";
+import { FilterProductDTO, RespProductDTO } from "./product";
 
 export interface EditMedicineDTO {
   name: string;
@@ -9,3 +9,5 @@ export interface EditMedicineDTO {
 }
 
 export interface FilterMedicineDTO extends FilterProductDTO {}
+
+export interface RespMedicineDTO extends RespProductDTO {}

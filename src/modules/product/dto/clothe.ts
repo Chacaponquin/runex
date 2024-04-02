@@ -1,4 +1,4 @@
-import { FilterProductDTO } from "./product";
+import { FilterProductDTO, RespProductDTO } from "./product";
 
 export interface CreateClotheDTO {
   name: string;
@@ -23,4 +23,9 @@ export interface EditClotheDTO {
 export interface FilterClothesDTO extends FilterProductDTO {
   colors: string[];
   sizes: string[];
+}
+
+export interface RespClotheDTO extends RespProductDTO {
+  sizes: Array<string>;
+  colors: Array<string>;
 }

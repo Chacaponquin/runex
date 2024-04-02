@@ -1,4 +1,4 @@
 export enum PRODUCT_TYPES {
-  CLOTHE = "clothe",
-  MEDICINE = "medicine",
+  CLOTHE = "C",
+  MEDICINE = "M",
 }

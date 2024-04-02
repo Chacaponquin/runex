@@ -1,10 +1,8 @@
 import { PRODUCT_TYPES } from "../constants";
+import { RespClotheDTO } from "../dto/clothe";
 import { Product, ProductProps } from "./Product";
 
-type Props = Omit<ProductProps, "type"> & {
-  sizes: Array<string>;
-  colors: Array<string>;
-};
+type Props = Omit<ProductProps, "type"> & Omit<RespClotheDTO, "type">;
 
 export class Clothe extends Product {
   readonly sizes: Array<string>;

@@ -22,9 +22,11 @@ export default function useMedicines() {
 
   const [medicines, setMedicines] = useState<Array<Medicine>>([]);
   const [loading, setLoading] = useState(false);
+  const [page] = useState(1);
 
   useEffect(() => {
     getMedicines({
+      body: { page: page },
       onSuccess(data) {
         setMedicines(data);
       },
@@ -32,7 +34,7 @@ export default function useMedicines() {
         setLoading(true);
       },
     });
-  }, []);
+  }, [page]);
 
   function handleDeleteMedicine(id: string) {
     setMedicines((prev) => prev.filter((c) => c.id !== id));

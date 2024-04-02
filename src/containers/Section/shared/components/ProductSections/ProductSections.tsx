@@ -4,13 +4,20 @@ import React from "react";
 import { useProducts } from "./hooks";
 import { Section } from "./components";
 import Resize from "../Resize/Resize";
-import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { PostProps } from "@modules/app/modules/http/interfaces";
 import { Product } from "@modules/product/domain";
+import { GetSpecificProductsDTO } from "@modules/product/dto/product";
 
 interface Props {
-  getNewProducts(props: FetchProps<Array<Product>>): void;
-  getPopularProducts(props: FetchProps<Array<Product>>): void;
-  getTrendingProducts(props: FetchProps<Array<Product>>): void;
+  getNewProducts(
+    props: PostProps<Array<Product>, GetSpecificProductsDTO>
+  ): void;
+  getPopularProducts(
+    props: PostProps<Array<Product>, GetSpecificProductsDTO>
+  ): void;
+  getTrendingProducts(
+    props: PostProps<Array<Product>, GetSpecificProductsDTO>
+  ): void;
 }
 
 export default function ProductSections({

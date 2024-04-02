@@ -1,21 +1,11 @@
 import { PRODUCT_TYPES } from "../constants";
+import { RespProductDTO, RespProductImageDTO } from "../dto/product";
 
-export interface ProductProps {
-  id: string;
-  name: string;
-  price: number;
+export interface ProductProps extends RespProductDTO {
   images: Array<ProductImage>;
-  category: string;
-  type: PRODUCT_TYPES;
-  provider: string;
 }
 
-export interface ProductImage {
-  id: string;
-  size: number;
-  name: string;
-  source: string;
-}
+export interface ProductImage extends RespProductImageDTO {}
 
 export class Product {
   readonly id: string;
@@ -23,7 +13,7 @@ export class Product {
   readonly price: number;
   readonly imagesData: Array<ProductImage>;
   readonly provider: string;
-  readonly category: string;
+  readonly categories: Array<string>;
   readonly type: PRODUCT_TYPES;
 
   constructor({
@@ -31,7 +21,7 @@ export class Product {
     name,
     price,
     images,
-    category,
+    categories,
     type,
     provider,
   }: ProductProps) {
@@ -40,7 +30,7 @@ export class Product {
     this.price = price;
     this.imagesData = images;
     this.provider = provider;
-    this.category = category;
+    this.categories = categories;
     this.type = type;
   }
 

@@ -3,21 +3,17 @@
 import { SelectedProduct } from "@modules/shared/components";
 import { useSelectedMedicine } from "./hooks";
 import { Fragment } from "react";
-import {
-  useMedicineServices,
-  useProductServices,
-} from "@modules/product/services";
+import { useMedicineServices } from "@modules/product/services";
 
 export default function SelectedMedicine() {
   const { onFetchSuccess, productInfo, handleAdd } = useSelectedMedicine();
-  const { getSimilarProducts } = useProductServices();
-  const { findById } = useMedicineServices();
+  const { findById, getSimilars } = useMedicineServices();
 
   return (
     <SelectedProduct
       onFetchSuccess={onFetchSuccess}
       getProduct={findById}
-      getSimilarProducts={getSimilarProducts}
+      getSimilarProducts={getSimilars}
       productInfo={productInfo}
       handleAdd={handleAdd}
     >

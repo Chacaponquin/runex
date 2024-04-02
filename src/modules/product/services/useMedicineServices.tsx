@@ -1,5 +1,6 @@
-import { faker } from "@faker-js/faker";
-import { Medicine } from "../domain";
+"use client";
+
+import { Medicine, Product } from "../domain";
 import {
   FetchProps,
   PostProps,
@@ -7,37 +8,39 @@ import {
 } from "@modules/app/modules/http/interfaces";
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { API_ROUTES } from "@modules/app/constants";
-import { EditMedicineDTO, FilterMedicineDTO } from "../dto/medicine";
-
-function create(): Medicine {
-  return new Medicine({
-    id: faker.string.uuid(),
-    name: faker.lorem.words({ min: 4, max: 10 }),
-    price: Number(faker.commerce.price()),
-    images: Array.from({
-      length: faker.number.int({ min: 1, max: 5 }),
-    }).map(() => {
-      return {
-        source: faker.image.url(),
-        id: faker.string.uuid(),
-        name: faker.lorem.words(),
-        size: faker.number.int(),
-      };
-    }),
-    category: faker.helpers.arrayElement(["Zapatos"]),
-    provider: "Amazon",
-  });
-}
+import {
+  EditMedicineDTO,
+  FilterMedicineDTO,
+  RespMedicineDTO,
+} from "../dto/medicine";
+import { GetDTO, GetSpecificProductsDTO, RespProductDTO } from "../dto/product";
+import useProductServices from "./useProductServices";
 
 export default function useMedicineServices() {
-  const { put, remove, post } = useFetch();
+  const { map: mapProduct } = useProductServices();
+  const { put, remove, post, get } = useFetch();
+
+  function map(m: RespMedicineDTO): Medicine {
+    return new Medicine({
+      id: m.id,
+      categories: m.categories,
+      images: m.images,
+      name: m.name,
+      price: m.price,
+      provider: m.provider,
+    });
+  }
 
   function findById(props: FetchProps<Medicine> & { id: string }): void {
-    if (props.onSuccess) {
-      props.onSuccess(create());
-    }
-
-    if (props.onFinally) props.onFinally();
+    get<RespMedicineDTO>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) {
+          props.onSuccess(map(data));
+        }
+      },
+      url: API_ROUTES.MEDICINE.FIND(props.id),
+    });
   }
 
   function editMedicine(props: PutProps<void, EditMedicineDTO>) {
@@ -52,18 +55,69 @@ export default function useMedicineServices() {
     remove({ ...props, url: API_ROUTES.MEDICINE.REMOVE(props.id) });
   }
 
-  function getMedicines(props: FetchProps<Array<Medicine>>) {
-    if (props.onSuccess) {
-      props.onSuccess(Array.from({ length: 20 }).map(() => create()));
-    }
-
-    if (props.onFinally) props.onFinally();
+  function getMedicines(props: PostProps<Medicine[], GetDTO>) {
+    post<RespMedicineDTO[], GetDTO>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) {
+          props.onSuccess(data.map((d) => map(d)));
+        }
+      },
+      url: API_ROUTES.MEDICINE.GET,
+    });
   }
 
   function filter(props: PostProps<Medicine[], FilterMedicineDTO>) {
-    post<Medicine[], FilterMedicineDTO>({
+    post<RespMedicineDTO[], FilterMedicineDTO>({
       ...props,
+      onSuccess(data) {
+        if (props.onSuccess) {
+          props.onSuccess(data.map((d) => map(d)));
+        }
+      },
       url: API_ROUTES.MEDICINE.FILTER,
+    });
+  }
+
+  function getSimilars(props: FetchProps<Product[]> & { id: string }) {
+    get<RespProductDTO[]>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) {
+          props.onSuccess(data.map((d) => mapProduct(d)));
+        }
+      },
+      url: API_ROUTES.MEDICINE.SIMILARS(props.id),
+    });
+  }
+
+  function getNews(props: PostProps<Product[], GetSpecificProductsDTO>) {
+    post<RespProductDTO[], GetSpecificProductsDTO>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
+      },
+      url: API_ROUTES.CLOTHE.NEW,
+    });
+  }
+
+  function getTrending(props: PostProps<Product[], GetSpecificProductsDTO>) {
+    post<RespProductDTO[], GetSpecificProductsDTO>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
+      },
+      url: API_ROUTES.CLOTHE.TRENDING,
+    });
+  }
+
+  function getPopular(props: PostProps<Product[], GetSpecificProductsDTO>) {
+    post<RespProductDTO[], GetSpecificProductsDTO>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
+      },
+      url: API_ROUTES.CLOTHE.POPULAR,
     });
   }
 
@@ -73,5 +127,9 @@ export default function useMedicineServices() {
     deleteMedicine,
     getMedicines,
     filter,
+    getSimilars,
+    getNews,
+    getPopular,
+    getTrending,
   };
 }

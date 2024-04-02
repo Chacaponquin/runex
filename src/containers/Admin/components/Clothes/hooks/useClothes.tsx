@@ -21,11 +21,13 @@ export default function useClothes() {
 
   const [fetchLoading, setFetchLoading] = useState(false);
   const [clothes, setClothes] = useState<Array<Clothe>>([]);
+  const [page] = useState(1);
 
   useEffect(() => {
     setFetchLoading(true);
 
     getClothes({
+      body: { page: page },
       onSuccess(data) {
         setClothes(data);
       },
@@ -33,7 +35,7 @@ export default function useClothes() {
         setFetchLoading(false);
       },
     });
-  }, []);
+  }, [page]);
 
   function handleDeleteClothe(id: string) {
     setClothes((prev) => prev.filter((c) => c.id !== id));

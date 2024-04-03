@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function Buttons({ handleChangeOpenCart, isSearch }: Props) {
-  const { actualUser } = useUser();
+  const { actualUser, fetchUserLoading } = useUser();
 
   return (
     <section className="flex gap-x-7 esm:gap-x-5 items-center stroke-black">
@@ -25,16 +25,22 @@ export default function Buttons({ handleChangeOpenCart, isSearch }: Props) {
           icon={Search}
           link={APP_ROUTES.SECTION.SEARCH_CLOTHES}
           className="lg:hidden"
+          disabled={false}
         />
       )}
 
       <Button icon={Bag} handleClick={handleChangeOpenCart} />
 
-      <LinkButton icon={Favorite} link={APP_ROUTES.USER.FAVORITES} />
+      <LinkButton
+        icon={Favorite}
+        link={APP_ROUTES.USER.FAVORITES}
+        disabled={false}
+      />
 
       <LinkButton
         icon={User}
         link={actualUser ? APP_ROUTES.USER.ORDERS : APP_ROUTES.AUTH.LOGIN}
+        disabled={fetchUserLoading}
       />
     </section>
   );

@@ -13,12 +13,12 @@ interface Props {
   handleRemoveUser(): void;
 }
 
-const UserContext = createContext<Props>({
+export const UserContext = createContext<Props>({
   actualUser: null,
   loading: true,
 } as Props);
 
-function UserProvider({ children }: { children: React.ReactNode }) {
+export function UserProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [actualUser, setActualUser] = useState<CurrentUser | null>(null);
 
@@ -78,5 +78,3 @@ function UserProvider({ children }: { children: React.ReactNode }) {
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 }
-
-export { UserContext, UserProvider };

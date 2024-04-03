@@ -1,8 +1,11 @@
+"use client";
+
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { API_ROUTES } from "@modules/app/constants";
 import { CurrentUser } from "../domain";
 import { FetchProps, BodyProps } from "@modules/app/modules/http/interfaces";
 import { LoginUserDTO, RespUserDTO, SendMessageDTO } from "../dto/user";
+import { useUser } from "../hooks";
 
 interface AddProductFavoriteDTO {
   productId: string;
@@ -16,9 +19,14 @@ interface DeleteProductFavoriteDTO {
 
 export default function useUserServices() {
   const { get, post, put } = useFetch();
+  const { getRefreshToken } = useUser();
 
   function getUserByToken(props: FetchProps<CurrentUser>) {
-    get({ ...props, url: API_ROUTES.USER.GET_CURRENT_USER });
+    get({
+      ...props,
+      url: API_ROUTES.USER.GET_CURRENT_USER,
+      authorization: getRefreshToken(),
+    });
   }
 
   function sendMessage(props: BodyProps<void, SendMessageDTO>) {

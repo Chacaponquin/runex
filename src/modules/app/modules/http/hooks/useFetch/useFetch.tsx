@@ -12,13 +12,19 @@ export default function useFetch() {
   const { API_ROUTE } = useEnv();
 
   const instance = useMemo(() => {
+    const token = getAccessToken();
+
     return axios.create({
       baseURL: API_ROUTE,
-      headers: {
-        authorization: `Bearer ${getAccessToken()}`,
-      },
+      headers: buildHeader(token),
     });
-  }, [API_ROUTE]);
+  }, [getAccessToken]);
+
+  function buildHeader(token: string | undefined) {
+    return {
+      authorization: token ? `Bearer ${token}` : undefined,
+    };
+  }
 
   useEffect(() => {
     instance.interceptors.request.use(undefined, handleError);
@@ -48,19 +54,35 @@ export default function useFetch() {
   }
 
   function get<T>(props: FetchProps<T> & { url: string }): void {
-    resolve(instance.get<T>(props.url), props);
+    resolve(
+      instance.get<T>(props.url, { headers: buildHeader(props.authorization) }),
+      props
+    );
   }
 
   function remove<T>(props: FetchProps<T> & { url: string }): void {
-    resolve(instance.delete(props.url), props);
+    resolve(
+      instance.delete(props.url, { headers: buildHeader(props.authorization) }),
+      props
+    );
   }
 
   function post<T, B>(props: BodyProps<T, B> & { url: string }): void {
-    resolve(instance.post<T>(props.url, props.body), props);
+    resolve(
+      instance.post<T>(props.url, props.body, {
+        headers: buildHeader(props.authorization),
+      }),
+      props
+    );
   }
 
   function put<T, B>(props: BodyProps<T, B> & { url: string }): void {
-    resolve(instance.put<T>(props.url, props.body), props);
+    resolve(
+      instance.put<T>(props.url, props.body, {
+        headers: buildHeader(props.authorization),
+      }),
+      props
+    );
   }
 
   return { get, post, instance, remove, put };

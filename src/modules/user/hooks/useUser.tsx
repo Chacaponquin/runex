@@ -60,10 +60,12 @@ export default function useUser() {
     handleDeleteProductInFavoritesContext(productId);
   }
 
-  function getAccessToken(): string {
-    const token = get(STORAGE_KEYS.ACCESS_TOKEN);
+  function getAccessToken(): string | undefined {
+    return get(STORAGE_KEYS.ACCESS_TOKEN);
+  }
 
-    return token || "";
+  function getRefreshToken(): string | undefined {
+    return get(STORAGE_KEYS.REFRESH_TOKEN);
   }
 
   return {
@@ -75,5 +77,6 @@ export default function useUser() {
     isProductFavorite,
     handleAddProductToFavorites,
     handleDeleteProductInFavorites,
+    getRefreshToken,
   };
 }

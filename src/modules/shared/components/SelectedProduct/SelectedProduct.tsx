@@ -10,7 +10,7 @@ import { useSelectProduct } from "@modules/product/hooks";
 
 interface Props<T> {
   getProduct(props: FetchProps<T>): void;
-  getSimilarProducts(props: FetchProps<Array<Product>> & { id: string }): void;
+  getSimilarProducts(props: FetchProps<Product[]> & { id: string }): void;
   onFetchSuccess(data: T): void;
   children: React.ReactNode;
   productInfo: T | null;

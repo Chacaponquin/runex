@@ -97,7 +97,7 @@ export default function useMedicineServices() {
       onSuccess(data) {
         if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
       },
-      url: API_ROUTES.CLOTHE.NEW,
+      url: API_ROUTES.MEDICINE.NEW,
     });
   }
 
@@ -107,7 +107,7 @@ export default function useMedicineServices() {
       onSuccess(data) {
         if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
       },
-      url: API_ROUTES.CLOTHE.TRENDING,
+      url: API_ROUTES.MEDICINE.TRENDING,
     });
   }
 
@@ -117,7 +117,7 @@ export default function useMedicineServices() {
       onSuccess(data) {
         if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
       },
-      url: API_ROUTES.CLOTHE.POPULAR,
+      url: API_ROUTES.MEDICINE.POPULAR,
     });
   }
 

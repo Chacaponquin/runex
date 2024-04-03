@@ -15,3 +15,13 @@ export interface SendMessageDTO {
   message: string;
   user: string | null;
 }
+
+export interface RespUserDTO {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  favorites: Array<string>;
+  accessToken: string;
+  refreshToken: string;
+}

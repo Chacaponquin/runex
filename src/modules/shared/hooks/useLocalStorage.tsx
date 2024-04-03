@@ -21,5 +21,11 @@ export default function useLocalStorage() {
     }
   }
 
-  return { get, set };
+  function remove(key: STORAGE_KEYS): void {
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem(key);
+    }
+  }
+
+  return { get, set, remove };
 }

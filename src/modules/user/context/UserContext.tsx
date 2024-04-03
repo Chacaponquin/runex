@@ -9,6 +9,8 @@ interface Props {
   loading: boolean;
   handleAddProductToFavorites(id: string): void;
   handleDeleteProductInFavorites(id: string): void;
+  handleChangeUser(user: CurrentUser): void;
+  handleRemoveUser(): void;
 }
 
 const UserContext = createContext<Props>({
@@ -57,11 +59,21 @@ function UserProvider({ children }: { children: React.ReactNode }) {
     });
   }
 
+  function handleChangeUser(user: CurrentUser): void {
+    setActualUser(user);
+  }
+
+  function handleRemoveUser() {
+    setActualUser(null);
+  }
+
   const data = {
     actualUser,
     loading,
     handleAddProductToFavorites,
     handleDeleteProductInFavorites,
+    handleChangeUser,
+    handleRemoveUser,
   };
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;

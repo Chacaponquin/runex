@@ -56,6 +56,7 @@ export const API_ROUTES = {
     CONTACT: "/user/contact",
     ADD_PRODUCT_FAVORITE: "/user/add-product-favorite",
     DELETE_PRODUCT_FAVORITE: "/user/delete-product-favorite",
+    LOGIN: "/auth/login",
   },
   ADMIN_USER: {
     SIGN_IN: "/admin/sign-in",

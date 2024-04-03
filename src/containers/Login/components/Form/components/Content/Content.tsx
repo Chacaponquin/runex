@@ -28,7 +28,7 @@ export default function Content({
   }
 
   return (
-    <form className="flex flex-col" onClick={handleSubmit}>
+    <form className="flex flex-col" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-y-4 mb-5">
         <Section id={emailId} title="Email">
           <Input

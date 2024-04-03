@@ -17,7 +17,7 @@ export default function SearchClothe({ params }: Props) {
 
   return (
     <SearchProvider filterFunction={filterFunction} params={params}>
-      <Search filter={<ClotheFilter form={form} />} />
+      <Search filter={<ClotheFilter form={form} />} product="Clothe" />
     </SearchProvider>
   );
 }

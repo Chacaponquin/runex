@@ -10,6 +10,7 @@ interface Props {
   totalPages: number;
   totalProducts: number;
   handleChangePage(p: number): void;
+  loading: boolean;
 }
 
 export default function Result({
@@ -20,13 +21,14 @@ export default function Result({
   totalPages,
   totalProducts,
   handleChangePage,
+  loading,
 }: Props) {
   return (
     <main className="flex flex-col w-full px-5 items-center mb-20 esm:mb-12">
       <div className="flex flex-col w-full max-w-[1100px]">
         <Header length={totalProducts} />
 
-        <Products products={products} />
+        <Products products={products} loading={loading} />
 
         <Scroll
           handleNext={handleNextPage}

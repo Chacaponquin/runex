@@ -1,14 +1,15 @@
 "use client";
 
 import { Footer, Navbar } from "@modules/shared/components";
-import { Header, Loading, Result } from "../../../components";
+import { Header, Result } from "./components";
 import { useSearch } from "@containers/Search/hooks";
 
 interface Props {
   filter: React.ReactNode;
+  product: string;
 }
 
-export default function Search({ filter }: Props) {
+export default function Search({ filter, product }: Props) {
   const {
     loading,
     openFilters,
@@ -33,21 +34,19 @@ export default function Search({ filter }: Props) {
         handleChangeSearch={handleChangeName}
         handleApplySearch={handleSearchByName}
         search={name}
+        product={product}
       />
 
-      {loading ? (
-        <Loading />
-      ) : (
-        <Result
-          totalProducts={result.length}
-          products={result}
-          handleNextPage={handleNextPage}
-          handleBackPage={handleBackPage}
-          currentPage={filters.page}
-          totalPages={totalPages}
-          handleChangePage={handleChangePage}
-        />
-      )}
+      <Result
+        totalProducts={result.length}
+        products={result}
+        handleNextPage={handleNextPage}
+        handleBackPage={handleBackPage}
+        currentPage={filters.page}
+        totalPages={totalPages}
+        handleChangePage={handleChangePage}
+        loading={loading}
+      />
 
       <Footer />
     </div>

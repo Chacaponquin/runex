@@ -68,6 +68,7 @@ export const API_ROUTES = {
     FILTER: "/clothe/filter",
     GET: "/clothe",
     ALL_SIZES: "/clothe/all-sizes",
+    ALL_COLORS: "/clothe/all-colors",
     SIMILARS: (id: string) => `/clothe/similars/${id}`,
     FIND: (id: string) => `/clothe/find/${id}`,
     TRENDING: "/clothe/trending",

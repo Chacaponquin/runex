@@ -11,7 +11,7 @@ import {
   BodyProps,
   PutProps,
 } from "@modules/app/modules/http/interfaces";
-import { Clothe, Product, ProductSize } from "../domain";
+import { Clothe, Product, ProductColor, ProductSize } from "../domain";
 import { GetDTO, GetSpecificProductsDTO, RespProductDTO } from "../dto/product";
 import useProductServices from "./useProductServices";
 
@@ -92,25 +92,16 @@ export default function useClotheServices() {
     });
   }
 
+  function getAllColors(props: FetchProps<ProductColor[]>) {
+    get<ProductColor[]>({ ...props, url: API_ROUTES.CLOTHE.ALL_COLORS });
+  }
+
   function getSimilars(props: FetchProps<Product[]> & { id: string }) {
     get<RespProductDTO[]>({
       ...props,
       onSuccess(data) {
         if (props.onSuccess) {
-          props.onSuccess(
-            data.map(
-              (d) =>
-                new Product({
-                  id: d.id,
-                  categories: d.categories,
-                  images: d.images,
-                  name: d.name,
-                  price: d.price,
-                  provider: d.provider,
-                  type: d.type,
-                })
-            )
-          );
+          props.onSuccess(data.map((d) => mapProduct(d)));
         }
       },
       url: API_ROUTES.CLOTHE.SIMILARS(props.id),
@@ -159,5 +150,6 @@ export default function useClotheServices() {
     getNews,
     getPopular,
     getTrending,
+    getAllColors,
   };
 }

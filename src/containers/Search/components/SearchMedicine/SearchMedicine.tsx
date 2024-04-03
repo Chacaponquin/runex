@@ -15,7 +15,7 @@ export default function SearchMedicine({ params }: Props) {
 
   return (
     <SearchProvider params={params} filterFunction={filterFunction}>
-      <Search filter={<Fragment></Fragment>} />
+      <Search filter={<Fragment></Fragment>} product="Medicine" />
     </SearchProvider>
   );
 }

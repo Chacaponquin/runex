@@ -1,7 +1,6 @@
 import { Product as ProductClass } from "@modules/product/domain";
 import {
   Image as ProductImage,
-  Loading,
   Data,
   SimilarProducts,
   Top,
@@ -44,19 +43,22 @@ export default function Product({
   return (
     <div className="flex flex-grow bg-white w-full justify-center rounded-t-2xl overflow-y-auto pt-10 esm:pt-6 px-5">
       <div className="flex h-full flex-col max-w-[1100px] w-full">
-        {loading && <Loading />}
-
         {info && (
           <div className="flex flex-col w-full">
             <Top
               handleAddFavorite={handleAddFavorite}
               handleShare={handleShare}
               isFavorite={isFavorite}
+              loading={loading}
               handleDeleteFavorite={handleDeleteFavorite}
             />
 
             <div className="grid xl:grid-cols-2 grid-cols-1 w-full gap-x-7 gap-y-5 mb-14">
-              <ProductImage images={info.images} name={info.name} />
+              <ProductImage
+                images={info.images}
+                name={info.name}
+                loading={loading}
+              />
 
               <Data
                 extra={extra}
@@ -68,6 +70,7 @@ export default function Product({
                 handleBuyNow={handleBuyNow}
                 handleDecreaseQuantity={handleDecreaseQuantity}
                 handleIncreaseQuantity={handleIncreaseQuantity}
+                loading={loading}
               />
             </div>
 

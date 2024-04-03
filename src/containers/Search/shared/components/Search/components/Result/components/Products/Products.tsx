@@ -11,11 +11,9 @@ export default function Products({ products, loading }: Props) {
   return (
     <section className="grid lg:grid-cols-3 grid-cols-2 w-full gap-x-2 gap-y-5 esm:grid-cols-1">
       {loading ? (
-        <Fragment>
-          {Array.from({ length: 8 }).map((_, index) => (
-            <ProductLoader key={index} />
-          ))}
-        </Fragment>
+
+            <ProductLoader size={8} />
+      
       ) : (
         <Fragment>
           {products.map((p) => (

@@ -16,7 +16,7 @@ export default function Input({
   return (
     <input
       type="text"
-      placeholder="Search"
+      placeholder="Buscar"
       className="outline-none w-full bg-transparent"
       onFocus={handleFocus}
       onBlur={handleBlur}

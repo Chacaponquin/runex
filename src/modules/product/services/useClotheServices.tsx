@@ -114,7 +114,7 @@ export default function useClotheServices() {
       onSuccess(data) {
         if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
       },
-      url: API_ROUTES.MEDICINE.NEW,
+      url: API_ROUTES.CLOTHE.NEW,
     });
   }
 
@@ -124,7 +124,7 @@ export default function useClotheServices() {
       onSuccess(data) {
         if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
       },
-      url: API_ROUTES.MEDICINE.TRENDING,
+      url: API_ROUTES.CLOTHE.TRENDING,
     });
   }
 
@@ -134,7 +134,7 @@ export default function useClotheServices() {
       onSuccess(data) {
         if (props.onSuccess) props.onSuccess(data.map((d) => mapProduct(d)));
       },
-      url: API_ROUTES.MEDICINE.POPULAR,
+      url: API_ROUTES.CLOTHE.POPULAR,
     });
   }
 

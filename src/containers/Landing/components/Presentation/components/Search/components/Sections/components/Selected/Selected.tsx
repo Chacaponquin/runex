@@ -19,12 +19,12 @@ export default function Selected({ icon, title }: Props) {
 
   return (
     <div className={CLASS}>
-      <i className="stroke-white mr-4 esm:mr-0">{icon({ size: 26 })}</i>
+      <i className="stroke-white mr-3 esm:mr-0">{icon({ size: 26 })}</i>
 
       <span className="text-base font-fontMedium esm:hidden">{title}</span>
 
       <i className="stroke-white ml-3 esm:hidden">
-        <ArrowDown size={23} />
+        <ArrowDown size={21} />
       </i>
     </div>
   );

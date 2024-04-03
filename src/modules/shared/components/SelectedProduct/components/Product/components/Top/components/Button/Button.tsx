@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function Button({ handleClick, disabled, icon }: Props) {
-  const { bigScreen } = useScreen(SCREEN_SIZES.ESM);
+  const { condition } = useScreen(SCREEN_SIZES.ESM);
 
   const CLASS = clsx(
     "bg-white",
@@ -28,7 +28,7 @@ export default function Button({ handleClick, disabled, icon }: Props) {
 
   return (
     <button className={CLASS} onClick={handleClick} disabled={disabled}>
-      {icon({ size: bigScreen ? 22 : 20 })}
+      {icon({ size: condition ? 22 : 20 })}
     </button>
   );
 }

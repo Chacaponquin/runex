@@ -5,13 +5,13 @@ import { Button } from "./components";
 import { SCREEN_SIZES } from "@modules/app/constants";
 
 export default function NotFound() {
-  const { bigScreen } = useScreen(SCREEN_SIZES.LG);
+  const { condition } = useScreen(SCREEN_SIZES.LG);
 
   return (
     <div
       className="h-svh w-full flex justify-center pt-32 px-5 bg-no-repeat bg-cover"
       style={{
-        backgroundImage: bigScreen ? `url('/backgrounds/404.svg')` : undefined,
+        backgroundImage: condition ? `url('/backgrounds/404.svg')` : undefined,
       }}
     >
       <main className="flex flex-col items-center w-full max-w-[600px]">

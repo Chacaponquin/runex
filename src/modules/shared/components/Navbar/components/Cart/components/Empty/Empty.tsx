@@ -8,12 +8,12 @@ interface Props {
 }
 
 export default function Empty({ handleClose }: Props) {
-  const { bigScreen } = useScreen(SCREEN_SIZES.ESM);
+  const { condition } = useScreen(SCREEN_SIZES.ESM);
 
   return (
     <div className="flex w-full flex-col items-center pt-32">
       <i className="stroke-black mb-6 esm:mb-5">
-        <Bag size={bigScreen ? 60 : 48} />
+        <Bag size={condition ? 60 : 48} />
       </i>
 
       <h1 className="font-fontSemiBold text-3xl esm:text-2xl text-center mb-6">

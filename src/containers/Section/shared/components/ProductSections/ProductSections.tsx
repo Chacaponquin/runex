@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useProducts } from "./hooks";
 import { Section } from "./components";
 import Resize from "../Resize/Resize";
 import { BodyProps } from "@modules/app/modules/http/interfaces";
@@ -25,21 +24,15 @@ export default function ProductSections({
   getPopularProducts,
   getTrendingProducts,
 }: Props) {
-  const { sections } = useProducts({
-    getNewProducts,
-    getPopularProducts,
-    getTrendingProducts,
-  });
-
   return (
     <main className="flex flex-col w-full bg-gray-100 pt-8">
       <Resize
         className="flex flex-col gap-y-10 w-full flex-wrap pb-6"
         containerClass="pb-20"
       >
-        {sections.map((s) => (
-          <Section key={s.id} products={s.products} title={s.title} />
-        ))}
+        <Section title="Nuevos Productos" getProducts={getNewProducts} />
+        <Section title="Populares" getProducts={getPopularProducts} />
+        <Section title="Trending" getProducts={getTrendingProducts} />
       </Resize>
     </main>
   );

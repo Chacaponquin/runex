@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function useScroll({ totalPages }: Props) {
-  const { bigScreen } = useScreen(SCREEN_SIZES.MD);
+  const { condition } = useScreen(SCREEN_SIZES.MD);
 
   const pages: Array<number> = useMemo(() => {
     const result: Array<number> = [];
@@ -17,11 +17,11 @@ export default function useScroll({ totalPages }: Props) {
     let i = 1;
     while (i <= totalPages) {
       result.push(i);
-      i = i + (!bigScreen ? 3 : 1);
+      i = i + (!condition ? 3 : 1);
     }
 
     return result;
-  }, [totalPages, bigScreen]);
+  }, [totalPages, condition]);
 
   return { pages };
 }

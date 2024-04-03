@@ -4,12 +4,12 @@ import { CurrentUser } from "../domain";
 import { FetchProps, BodyProps } from "@modules/app/modules/http/interfaces";
 import { SendMessageDTO } from "../dto/user";
 
-interface AddProductFavoriteProps {
+interface AddProductFavoriteDTO {
   productId: string;
   userId: string;
 }
 
-interface DeleteProductFavoriteProps {
+interface DeleteProductFavoriteDTO {
   productId: string;
   userId: string;
 }
@@ -18,12 +18,7 @@ export default function useUserServices() {
   const { get, post, put } = useFetch();
 
   function getUserByToken(props: FetchProps<CurrentUser>) {
-    get({
-      url: API_ROUTES.USER.GET_CURRENT_USER,
-      onError: props.onError,
-      onFinally: props.onFinally,
-      onSuccess: props.onSuccess,
-    });
+    get({ ...props, url: API_ROUTES.USER.GET_CURRENT_USER });
   }
 
   function sendMessage(props: BodyProps<void, SendMessageDTO>) {
@@ -31,13 +26,13 @@ export default function useUserServices() {
   }
 
   function addProductToFavorites(
-    props: BodyProps<void, AddProductFavoriteProps>
+    props: BodyProps<void, AddProductFavoriteDTO>
   ) {
     put({ ...props, url: API_ROUTES.USER.ADD_PRODUCT_FAVORITE });
   }
 
   function deleteProductInFavorites(
-    props: BodyProps<void, DeleteProductFavoriteProps>
+    props: BodyProps<void, DeleteProductFavoriteDTO>
   ) {
     put({ ...props, url: API_ROUTES.USER.DELETE_PRODUCT_FAVORITE });
   }

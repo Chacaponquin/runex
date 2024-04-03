@@ -8,17 +8,17 @@ import { FetchProps, BodyProps } from "../../interfaces";
 import { handleError } from "../../utils";
 
 export default function useFetch() {
-  const { getToken } = useUser();
+  const { getAccessToken } = useUser();
   const { API_ROUTE } = useEnv();
 
   const instance = useMemo(() => {
     return axios.create({
       baseURL: API_ROUTE,
       headers: {
-        authorization: `Bearer ${getToken()}`,
+        authorization: `Bearer ${getAccessToken()}`,
       },
     });
-  }, [API_ROUTE, getToken]);
+  }, [API_ROUTE]);
 
   useEffect(() => {
     instance.interceptors.request.use(undefined, handleError);

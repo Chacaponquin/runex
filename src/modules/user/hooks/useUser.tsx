@@ -1,10 +1,14 @@
 "use client";
 
 import { TOKEN_LOCATION } from "../constants";
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../context";
+import { useLocalStorage } from "@modules/shared/hooks";
+import { STORAGE_KEYS } from "@modules/app/constants";
 
 export default function useUser() {
+  const { get } = useLocalStorage();
+
   const {
     actualUser,
     loading,
@@ -38,12 +42,14 @@ export default function useUser() {
     handleDeleteProductInFavoritesContext(productId);
   }
 
-  const getToken = useCallback((): string => {
-    return "";
-  }, []);
+  function getAccessToken(): string {
+    const token = get(STORAGE_KEYS.ACCESS_TOKEN);
+
+    return token || "";
+  }
 
   return {
-    getToken,
+    getAccessToken,
     handleSignIn,
     handleSignOut,
     actualUser,

@@ -8,7 +8,7 @@ export default function Login() {
   const {
     form,
     handleSubmit,
-    handleChangeEmail,
+    handleChangeUsername,
     handleChangePassword,
     loading,
   } = useLogin();
@@ -21,14 +21,14 @@ export default function Login() {
       >
         <Header />
 
-        <Section label="Email">
+        <Section label="Usuario">
           <InputText
-            name="admin-email"
-            type="email"
-            onChange={handleChangeEmail}
-            placeholder="Email"
+            name="admin-username"
+            type="text"
+            onChange={handleChangeUsername}
+            placeholder="Usuario"
             size="lg"
-            value={form.email}
+            value={form.username}
           />
         </Section>
 

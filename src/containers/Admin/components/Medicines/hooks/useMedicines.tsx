@@ -25,13 +25,15 @@ export default function useMedicines() {
   const [page] = useState(1);
 
   useEffect(() => {
+    setLoading(true);
+
     getMedicines({
       body: { page: page },
       onSuccess(data) {
         setMedicines(data);
       },
       onFinally() {
-        setLoading(true);
+        setLoading(false);
       },
     });
   }, [page]);

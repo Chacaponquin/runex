@@ -1,3 +1,4 @@
+import Loader from "./Loader/Loader";
 import Td from "./Td/Td";
 
-export { Td };
+export { Td, Loader };

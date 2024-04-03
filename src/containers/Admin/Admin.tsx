@@ -13,7 +13,7 @@ export default function Admin({ children }: Props) {
 
   return (
     <ModalProvider>
-      {user ? (
+      {user && (
         <div className="w-full flex bg-gray-100 px-3 py-3 gap-x-3">
           <Aside
             openAside={openAside}
@@ -25,9 +25,9 @@ export default function Admin({ children }: Props) {
             {children}
           </main>
         </div>
-      ) : (
-        <Login />
       )}
+
+      {!user && <Login />}
     </ModalProvider>
   );
 }

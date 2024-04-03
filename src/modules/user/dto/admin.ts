@@ -1,11 +1,11 @@
 export interface SignInAdminUserDTO {
-  email: string;
+  username: string;
   password: string;
 }
 
 export interface ResponseSignInAdminDTO {
   email: string;
   username: string;
-  token: string;
+  accessToken: string;
   id: string;
 }

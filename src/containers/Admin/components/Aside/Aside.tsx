@@ -32,7 +32,7 @@ export default function Aside({ handleChangeOpenAside, openAside }: Props) {
     "py-5 px-3",
     "shadow-lg",
 
-    { "rounded-lg": condition }
+    { rounded: condition }
   );
 
   return (

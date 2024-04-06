@@ -4,9 +4,10 @@ import clsx from "clsx";
 
 interface Props {
   handleChangeOpenAside(): void;
+  username: string;
 }
 
-export default function Navbar({ handleChangeOpenAside }: Props) {
+export default function Navbar({ handleChangeOpenAside, username }: Props) {
   const CLASS = clsx(
     "flex lg:justify-end justify-between items-center",
     "mb-2",
@@ -20,7 +21,7 @@ export default function Navbar({ handleChangeOpenAside }: Props) {
   return (
     <nav className={CLASS}>
       <Menu handleClick={handleChangeOpenAside} />
-      <User />
+      <User username={username} />
     </nav>
   );
 }

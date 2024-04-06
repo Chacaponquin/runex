@@ -51,6 +51,9 @@ export const APP_ROUTES = {
 };
 
 export const API_ROUTES = {
+  ORDER: {
+    GET: "/order",
+  },
   USER: {
     GET_CURRENT_USER: "/user/user-token",
     CONTACT: "/user/contact",

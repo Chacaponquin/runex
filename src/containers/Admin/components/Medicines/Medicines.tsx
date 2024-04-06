@@ -13,6 +13,7 @@ export default function Medicines() {
     handleAddMedicine,
     loading,
     selectedItems,
+    handleNextPage,
   } = useMedicines();
 
   return (
@@ -27,6 +28,7 @@ export default function Medicines() {
         />
       }
       loading={loading}
+      handleNext={handleNextPage}
     />
   );
 }

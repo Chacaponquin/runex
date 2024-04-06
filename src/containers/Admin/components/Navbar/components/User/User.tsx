@@ -1,8 +1,11 @@
 import { APP_IMAGES } from "@modules/app/constants";
 import Image from "next/image";
-import React from "react";
 
-export default function User() {
+interface Props {
+  username: string;
+}
+
+export default function User({ username }: Props) {
   return (
     <div className="flex gap-x-4 items-center">
       <Image
@@ -13,7 +16,7 @@ export default function User() {
         className="object-cover rounded-full"
       />
 
-      <h2 className="font-fontMedium text-base">Admin</h2>
+      <h2 className="font-fontMedium text-base">{username}</h2>
     </div>
   );
 }

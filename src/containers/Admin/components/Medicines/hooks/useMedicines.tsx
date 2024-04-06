@@ -22,7 +22,7 @@ export default function useMedicines() {
 
   const [medicines, setMedicines] = useState<Array<Medicine>>([]);
   const [loading, setLoading] = useState(false);
-  const [page] = useState(1);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setLoading(true);
@@ -30,7 +30,7 @@ export default function useMedicines() {
     getMedicines({
       body: { page: page },
       onSuccess(data) {
-        setMedicines(data);
+        setMedicines((prev) => [...prev, ...data]);
       },
       onFinally() {
         setLoading(false);
@@ -50,6 +50,10 @@ export default function useMedicines() {
         error({ id: "delete-product", message: "Hubo un error al eliminar" });
       },
     });
+  }
+
+  function handleNextPage() {
+    setPage((prev) => prev + 1);
   }
 
   function handleEditMedicine(id: string) {
@@ -110,5 +114,6 @@ export default function useMedicines() {
     loading,
     handleDeleteAll,
     selectedItems,
+    handleNextPage,
   };
 }

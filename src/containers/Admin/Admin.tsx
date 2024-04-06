@@ -21,7 +21,10 @@ export default function Admin({ children }: Props) {
           />
 
           <main className="flex flex-col w-full lg:pl-[250px]">
-            <Navbar handleChangeOpenAside={handleChangeOpenAside} />
+            <Navbar
+              handleChangeOpenAside={handleChangeOpenAside}
+              username={user.username}
+            />
             {children}
           </main>
         </div>

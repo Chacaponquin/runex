@@ -20,8 +20,8 @@ export default function useClothes() {
   const { handleSelect, selectedItems, handleCleanItems } = useSelectItems();
 
   const [fetchLoading, setFetchLoading] = useState(false);
-  const [clothes, setClothes] = useState<Array<Clothe>>([]);
-  const [page] = useState(1);
+  const [clothes, setClothes] = useState<Clothe[]>([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setFetchLoading(true);
@@ -29,7 +29,7 @@ export default function useClothes() {
     getClothes({
       body: { page: page },
       onSuccess(data) {
-        setClothes(data);
+        setClothes((prev) => [...prev, ...data]);
       },
       onFinally() {
         setFetchLoading(false);
@@ -49,6 +49,10 @@ export default function useClothes() {
         error({ id: "delete-product", message: "Hubo un error al eliminar" });
       },
     });
+  }
+
+  function handleNextPage() {
+    setPage((prev) => prev + 1);
   }
 
   function handleEditClothe(id: string) {
@@ -109,5 +113,6 @@ export default function useClothes() {
     fetchLoading,
     handleDeleteAll,
     selectedItems,
+    handleNextPage,
   };
 }

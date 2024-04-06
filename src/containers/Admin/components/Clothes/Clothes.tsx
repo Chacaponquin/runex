@@ -13,6 +13,7 @@ export default function Clothes() {
     fetchLoading,
     handleDeleteAll,
     selectedItems,
+    handleNextPage,
   } = useClothes();
 
   return (
@@ -26,6 +27,7 @@ export default function Clothes() {
           deleteDisable={selectedItems.length === 0}
         />
       }
+      handleNext={handleNextPage}
       loading={fetchLoading}
     />
   );

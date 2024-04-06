@@ -5,7 +5,6 @@ import { useSection } from "./hooks";
 import { BodyProps } from "@modules/app/modules/http/interfaces";
 import { Product as IProduct } from "@modules/product/domain";
 import { GetSpecificProductsDTO } from "@modules/product/dto/product";
-import { Fragment } from "react";
 import { Loader } from "./components";
 
 interface Props {

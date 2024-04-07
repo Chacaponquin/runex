@@ -1,6 +1,6 @@
 import { Counter } from "@modules/cart/components";
 import { ProductForm } from "../../../../interfaces";
-import { Buttons, Name, Price, Provider } from "./components";
+import { Buttons, Info, Name } from "./components";
 import React from "react";
 import { Section } from "@modules/shared/components/SelectedProduct/shared/components";
 
@@ -14,6 +14,9 @@ interface Props {
   handleDecreaseQuantity(): void;
   handleIncreaseQuantity(): void;
   extra: React.ReactNode;
+  loading: boolean;
+  isInCart: boolean;
+  handleDeleteFromCart(): void;
 }
 
 export default function Data({
@@ -25,32 +28,41 @@ export default function Data({
   handleBuyNow,
   handleDecreaseQuantity,
   handleIncreaseQuantity,
+  loading,
   extra,
+  isInCart,
+  handleDeleteFromCart,
 }: Props) {
   return (
     <div className="flex flex-col w-full">
-      <Name name={name} />
+      <Name name={name} loading={loading} />
 
-      <div className="w-full flex gap-x-4 items-center mb-6">
-        <Price price={price} />
-        <Provider provider={provider} />
-      </div>
+      <Info loading={loading} price={price} provider={provider} />
 
-      <div className="flex flex-col gap-y-3.5 w-full lg:mb-12 mb-9 esm:mb-7">
-        {extra}
+      {!loading && (
+        <div className="flex flex-col gap-y-3.5 w-full lg:mb-12 mb-9 esm:mb-7">
+          {extra}
 
-        <Section text="Cantidad" selected={form.quantity}>
-          <Counter
-            disableDecrease={false}
-            disableIncrease={false}
-            handleDecreaseQuantity={handleDecreaseQuantity}
-            handleIncreaseQuantity={handleIncreaseQuantity}
-            quantity={form.quantity}
-          />
-        </Section>
-      </div>
+          <Section text="Cantidad" selected={form.quantity}>
+            <Counter
+              disableDecrease={false}
+              disableIncrease={false}
+              handleDecreaseQuantity={handleDecreaseQuantity}
+              handleIncreaseQuantity={handleIncreaseQuantity}
+              quantity={form.quantity}
+            />
+          </Section>
+        </div>
+      )}
 
-      <Buttons handleAddToCart={handleAddToCart} handleBuyNow={handleBuyNow} />
+      {!loading && (
+        <Buttons
+          handleAddToCart={handleAddToCart}
+          handleBuyNow={handleBuyNow}
+          isInCart={isInCart}
+          handleDeleteFromCart={handleDeleteFromCart}
+        />
+      )}
     </div>
   );
 }

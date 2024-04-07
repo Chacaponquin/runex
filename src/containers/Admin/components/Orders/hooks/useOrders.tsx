@@ -10,11 +10,26 @@ import { Completed } from "../components";
 export default function useOrders() {
   const { getOrders } = useOrderServices();
 
-  const [orders, setOrders] = useState<Array<Order>>([]);
+  const [loading, setLoading] = useState(false);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getOrders().then((data) => setOrders(data));
-  }, []);
+    setLoading(true);
+
+    getOrders({
+      onSuccess(data) {
+        setOrders((prev) => [...prev, ...data]);
+      },
+      onFinally() {
+        setLoading(false);
+      },
+    });
+  }, [page]);
+
+  function handleNextPage() {
+    setPage((prev) => prev + 1);
+  }
 
   const tableData: TableData = useMemo(() => {
     return {
@@ -31,5 +46,5 @@ export default function useOrders() {
     };
   }, [orders]);
 
-  return { tableData };
+  return { tableData, loading, handleNextPage };
 }

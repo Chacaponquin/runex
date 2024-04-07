@@ -1,35 +1,30 @@
 "use client";
 
 import { Product } from "@modules/product/components";
-import { Product as ProductClass } from "@modules/product/domain";
+import { useSection } from "./hooks";
+import { BodyProps } from "@modules/app/modules/http/interfaces";
+import { Product as IProduct } from "@modules/product/domain";
+import { GetSpecificProductsDTO } from "@modules/product/dto/product";
+import { Loader } from "./components";
 
 interface Props {
-  products: Array<ProductClass>;
+  getProducts(props: BodyProps<Array<IProduct>, GetSpecificProductsDTO>): void;
   title: string;
-  handleSelectProduct(id: string): void;
 }
 
-export default function Section({
-  products,
-  title,
-  handleSelectProduct,
-}: Props) {
+export default function Section({ title, getProducts }: Props) {
+  const { products, loading } = useSection({ getProducts });
+
   return (
     <div className="flex flex-col">
-      <h1 className="font-fontSemiBold text-2xl mb-5">{title}</h1>
+      <h1 className="font-fontMedium text-2xl mb-3.5">{title}</h1>
 
-      <div className="grid xl:grid-cols-4 grid-cols-2 esm:grid-cols-1 gap-y-5 gap-x-5">
+      <div className="grid xl:grid-cols-4 grid-cols-2 esm:grid-cols-1 gap-y-4 gap-x-6">
         {products.map((product) => (
-          <Product
-            key={product.id}
-            image={product.image}
-            name={product.name}
-            price={product.priceStr}
-            id={product.id}
-            provider={product.provider}
-            handleSelectProduct={handleSelectProduct}
-          />
+          <Product key={product.id} product={product} />
         ))}
+
+        {loading && <Loader />}
       </div>
     </div>
   );

@@ -15,21 +15,25 @@ export default function Cart({ handleChangeOpenCart }: Props) {
   useBlockScroll(true);
 
   const CONTAINER_CLASS = clsx(
-    "w-full h-screen",
+    "w-full h-svh max-h-svh",
     "flex justify-end",
     "fixed top-0 left-0",
     "py-4 px-5 esm:px-2",
-    "bg-black/50",
-    "overflow-y-auto"
+    "bg-black/50"
   );
 
   const CLASS = clsx(
     "flex flex-col",
-    "w-full max-w-[600px] h-max",
+    "w-full max-w-[600px]",
     "px-5 py-3",
     "shadow-lg",
     "bg-white",
-    "rounded-lg"
+    "rounded-lg",
+    "overflow-y-auto",
+    {
+      "h-max max-h-full": cart.length > 0,
+      "h-full": cart.length === 0,
+    }
   );
 
   return (

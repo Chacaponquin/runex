@@ -4,13 +4,14 @@ import clsx from "clsx";
 
 interface Props {
   handleChangeOpenAside(): void;
+  username: string;
 }
 
-export default function Navbar({ handleChangeOpenAside }: Props) {
+export default function Navbar({ handleChangeOpenAside, username }: Props) {
   const CLASS = clsx(
     "flex lg:justify-end justify-between items-center",
     "mb-2",
-    "rounded-lg",
+    "rounded",
     "py-2.5 lg:px-8 px-5",
     "w-full",
     "bg-white",
@@ -20,7 +21,7 @@ export default function Navbar({ handleChangeOpenAside }: Props) {
   return (
     <nav className={CLASS}>
       <Menu handleClick={handleChangeOpenAside} />
-      <User />
+      <User username={username} />
     </nav>
   );
 }

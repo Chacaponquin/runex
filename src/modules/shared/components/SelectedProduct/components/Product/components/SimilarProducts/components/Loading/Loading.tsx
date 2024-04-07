@@ -1,7 +1,12 @@
-import React from 'react'
+import { ContentLoader } from "@modules/shared/components";
+import { Fragment } from "react";
 
 export default function Loading() {
   return (
-    <div>Loading</div>
-  )
+    <Fragment>
+      {Array.from({ length: 6 }).map((_, index) => (
+        <ContentLoader key={index} height={200} />
+      ))}
+    </Fragment>
+  );
 }

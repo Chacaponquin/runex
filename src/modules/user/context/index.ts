@@ -1,3 +1,4 @@
-import { UserContext, UserProvider } from "./UserContext"
+import { AdminUserContext, AdminUserProvider } from "./AdminUserContext";
+import { UserContext, UserProvider } from "./UserContext";
 
-export { UserContext, UserProvider }
+export { UserContext, UserProvider, AdminUserContext, AdminUserProvider };

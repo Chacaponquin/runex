@@ -1,19 +1,37 @@
+"use client";
+
 import { faker } from "@faker-js/faker";
 import { Order } from "../domain";
+import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { useFetch } from "@modules/app/modules/http/hooks";
+import { API_ROUTES } from "@modules/app/constants";
+import { RespOrderDTO } from "../dto";
 
 export default function useOrderServices() {
-  async function getOrders(): Promise<Array<Order>> {
-    return Array.from({ length: 10 }).map(() => {
-      return new Order({
-        id: faker.string.uuid(),
-        amount: faker.number.float({ min: 10, max: 1000 }),
-        client: faker.person.fullName(),
-        completed: faker.datatype.boolean(),
-        date: faker.date.past(),
-        paymentType: "Hola",
-      });
+  const { get } = useFetch();
+
+  function map(d: RespOrderDTO): Order {
+    return new Order({
+      id: d.id,
+      amount: d.amount,
+      client: faker.person.fullName(),
+      completed: faker.datatype.boolean(),
+      date: faker.date.past(),
+      paymentType: "Hola",
     });
   }
 
-  return { getOrders };
+  function getOrders(props: FetchProps<Order[]>): void {
+    get<RespOrderDTO[]>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) {
+          props.onSuccess(data.map((d) => map(d)));
+        }
+      },
+      url: API_ROUTES.ORDER.GET,
+    });
+  }
+
+  return { getOrders, map };
 }

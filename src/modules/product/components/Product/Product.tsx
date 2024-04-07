@@ -8,24 +8,13 @@ import {
   Image as ProductImage,
   Provider,
 } from "./components";
+import { Product as IProduct } from "@modules/product/domain";
 
 interface Props {
-  name: string;
-  image: string;
-  price: string;
-  id: string;
-  handleSelectProduct(id: string): void;
-  provider: string;
+  product: IProduct;
 }
 
-export default function Product({
-  name,
-  image,
-  price,
-  id,
-  handleSelectProduct,
-  provider,
-}: Props) {
+export default function Product({ product }: Props) {
   const {
     handleSelect,
     isFavorite,
@@ -33,30 +22,33 @@ export default function Product({
     handleDeleteFavorite,
     isInCart,
     handleDelete,
+    handleAdd,
   } = useProduct({
-    id: id,
-    handleSelectProduct: handleSelectProduct,
+    product: product,
   });
 
   return (
-    <article className="flex flex-col rounded bg-white cursor-pointer h-max shadow-md">
+    <article
+      className="flex flex-col rounded-sm bg-white cursor-pointer h-max"
+      onClick={handleSelect}
+    >
       <ProductImage
-        src={image}
+        src={product.image}
         handleAddFavorite={handleAddFavorite}
         isFavorite={isFavorite}
         handleDeleteFavorite={handleDeleteFavorite}
       />
 
-      <section className="flex flex-col pt-2.5 pb-4 px-4 w-full">
-        <Name name={name} />
+      <section className="flex flex-col pt-2.5 pb-4 w-full">
+        <Name name={product.name} />
 
         <div className="flex items-center gap-x-3 mb-3">
-          <Price price={price} />
-          <Provider provider={provider} />
+          <Price price={product.priceStr} />
+          <Provider provider={product.provider} />
         </div>
 
         <AddButton
-          handleAdd={handleSelect}
+          handleAdd={handleAdd}
           isInCart={isInCart}
           handleDelete={handleDelete}
         />

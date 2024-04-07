@@ -1,6 +1,4 @@
-import Filters from "./Filters/Filters";
-import Header from "./Header/Header";
-import Result from "./Result/Result";
-import SelectedProduct from "./SelectedProduct/SelectedProduct";
+import SearchClothe from "./SearchClothe/SearchClothe";
+import SearchMedicine from "./SearchMedicine/SearchMedicine";
 
-export { Header, Result, Filters, SelectedProduct };
+export { SearchClothe, SearchMedicine };

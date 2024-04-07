@@ -1,17 +1,10 @@
-import { Search } from "@containers";
+import { SearchMedicine } from "@containers/Search/components";
+import { SearchMedicineParams } from "@containers/Search/components/SearchMedicine/interfaces";
 
 interface Props {
-  searchParams: {
-    q: string | undefined;
-    page: string | undefined;
-    min: string | undefined;
-    max: string | undefined;
-    color: string | undefined;
-    size: string | undefined;
-    provider: string | undefined;
-  };
+  searchParams: SearchMedicineParams;
 }
 
 export default function Page(params: Props) {
-  return <Search {...params.searchParams} />;
+  return <SearchMedicine params={params.searchParams} />;
 }

@@ -1,17 +1,10 @@
-import { Search } from "@containers";
+import { SearchClothe } from "@containers/Search/components";
+import { SearchClotheParams } from "@containers/Search/components/SearchClothe/interfaces";
 
 interface Props {
-  searchParams: {
-    q: string | undefined;
-    page: string | undefined;
-    min: string | undefined;
-    max: string | undefined;
-    color: string | undefined;
-    size: string | undefined;
-    provider: string | undefined;
-  };
+  searchParams: SearchClotheParams;
 }
 
 export default function Page(params: Props) {
-  return <Search {...params.searchParams} />;
+  return <SearchClothe params={params.searchParams} />;
 }

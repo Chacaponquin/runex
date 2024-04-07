@@ -1,6 +1,6 @@
 import { useUser } from "@modules/user/hooks";
-import { useProductServices } from "../services";
 import { useCart } from "@modules/cart/hooks";
+import { useUserServices } from "@modules/user/services";
 
 interface Props {
   productId: string | null;
@@ -16,8 +16,7 @@ export default function useProductActions({ productId }: Props) {
     isProductFavorite,
   } = useUser();
 
-  const { addProductToFavorites, deleteProductInFavorites } =
-    useProductServices();
+  const { addProductToFavorites, deleteProductInFavorites } = useUserServices();
 
   const isFavorite = productId ? isProductFavorite(productId) : false;
 
@@ -29,6 +28,9 @@ export default function useProductActions({ productId }: Props) {
 
       addProductToFavorites({
         body: { userId: actualUser.id, productId: productId },
+        onError() {
+          handleDeleteProductInFavorites(productId);
+        },
       });
     }
   }
@@ -39,6 +41,9 @@ export default function useProductActions({ productId }: Props) {
 
       deleteProductInFavorites({
         body: { userId: actualUser.id, productId: productId },
+        onError() {
+          handleAddProductToFavorites(productId);
+        },
       });
     }
   }

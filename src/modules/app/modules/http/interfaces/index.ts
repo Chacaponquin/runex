@@ -4,9 +4,10 @@ export interface FetchProps<T> {
   onSuccess?: (data: T) => void;
   onError?: (error: HttpError) => void;
   onFinally?: () => void;
+  authorization?: string;
 }
 
-export interface PostProps<T, B> extends FetchProps<T> {
+export interface BodyProps<T, B> extends FetchProps<T> {
   body: B;
 }
 

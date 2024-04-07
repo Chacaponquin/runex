@@ -17,7 +17,7 @@ export default function Counter({
   disableIncrease,
 }: Props) {
   return (
-    <div className="flex rounded-xl border-[1px] border-gray-200">
+    <div className="flex rounded border-[1px] border-gray-200">
       <Button
         icon={Minus}
         handleClick={handleDecreaseQuantity}

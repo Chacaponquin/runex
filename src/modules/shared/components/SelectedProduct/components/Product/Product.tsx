@@ -1,10 +1,10 @@
 import { Product as ProductClass } from "@modules/product/domain";
 import {
   Image as ProductImage,
-  Loading,
   Data,
   SimilarProducts,
   Top,
+  NotFound,
 } from "./components";
 import { ProductForm } from "../../interfaces";
 
@@ -22,8 +22,10 @@ interface Props {
   handleShare(): void;
   isFavorite: boolean;
   handleDeleteFavorite(): void;
-  handleSelectProduct(id: string): void;
   extra: React.ReactNode;
+  isInCart: boolean;
+  handleDeleteFromCart(): void;
+  notFound: boolean;
 }
 
 export default function Product({
@@ -40,25 +42,32 @@ export default function Product({
   handleShare,
   isFavorite,
   handleDeleteFavorite,
-  handleSelectProduct,
   extra,
+  isInCart,
+  handleDeleteFromCart,
+  notFound,
 }: Props) {
   return (
     <div className="flex flex-grow bg-white w-full justify-center rounded-t-2xl overflow-y-auto pt-10 esm:pt-6 px-5">
       <div className="flex h-full flex-col max-w-[1100px] w-full">
-        {loading && <Loading />}
+        {notFound && <NotFound />}
 
-        {info && (
+        {!notFound && info && (
           <div className="flex flex-col w-full">
             <Top
               handleAddFavorite={handleAddFavorite}
               handleShare={handleShare}
               isFavorite={isFavorite}
+              loading={loading}
               handleDeleteFavorite={handleDeleteFavorite}
             />
 
             <div className="grid xl:grid-cols-2 grid-cols-1 w-full gap-x-7 gap-y-5 mb-14">
-              <ProductImage images={info.images} name={info.name} />
+              <ProductImage
+                images={info.images}
+                name={info.name}
+                loading={loading}
+              />
 
               <Data
                 extra={extra}
@@ -70,13 +79,15 @@ export default function Product({
                 handleBuyNow={handleBuyNow}
                 handleDecreaseQuantity={handleDecreaseQuantity}
                 handleIncreaseQuantity={handleIncreaseQuantity}
+                loading={loading}
+                isInCart={isInCart}
+                handleDeleteFromCart={handleDeleteFromCart}
               />
             </div>
 
             <SimilarProducts
               products={similarProducts}
               loading={similarProductsLoading}
-              handleSelectProduct={handleSelectProduct}
             />
           </div>
         )}

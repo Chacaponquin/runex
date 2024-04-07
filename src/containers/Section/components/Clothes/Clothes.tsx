@@ -1,32 +1,22 @@
 "use client";
 
 import { Footer, Navbar } from "@modules/shared/components";
-import { useClothes } from "./hooks";
 import { Header, ProductSections } from "@containers/Section/shared/components";
 import { APP_IMAGES } from "@modules/app/constants";
-import { useProductServices } from "@modules/product/services";
-import { SelectedClothe } from "./components";
+import { useClotheServices } from "@modules/product/services";
+import { PRODUCT_TYPES } from "@modules/product/constants";
 
 export default function Clothes() {
-  const { selectedProduct, handleSelectProduct, handleDeleteSelectedProduct } =
-    useClothes();
-  const { getNewProducts, getPopularProducts, getTrendingProducts } =
-    useProductServices();
+  const { getNews, getPopular, getTrending } = useClotheServices();
 
   return (
     <div className="flex flex-col w-full">
-      <SelectedClothe
-        selectedProduct={selectedProduct}
-        handleDeleteSelectedProduct={handleDeleteSelectedProduct}
-        handleSelectProduct={handleSelectProduct}
-      />
-      <Navbar disableSearch={false} fixed={false} />
+      <Navbar search={{ type: PRODUCT_TYPES.CLOTHE }} fixed={false} />
       <Header image={APP_IMAGES.LANDING.CLOTHES} />
       <ProductSections
-        handleSelectProduct={handleSelectProduct}
-        getNewProducts={getNewProducts}
-        getPopularProducts={getPopularProducts}
-        getTrendingProducts={getTrendingProducts}
+        getNewProducts={getNews}
+        getPopularProducts={getPopular}
+        getTrendingProducts={getTrending}
       />
       <Footer />
     </div>

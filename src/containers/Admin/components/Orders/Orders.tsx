@@ -5,14 +5,15 @@ import { useOrders } from "./hooks";
 import { Fragment } from "react";
 
 export default function Orders() {
-  const { tableData } = useOrders();
+  const { tableData, loading, handleNextPage } = useOrders();
 
   return (
     <div className="w-full overflow-auto">
       <Table
         header="Orders"
         data={tableData}
-        loading={false}
+        loading={loading}
+        handleNext={handleNextPage}
         actions={<Fragment></Fragment>}
       />
     </div>

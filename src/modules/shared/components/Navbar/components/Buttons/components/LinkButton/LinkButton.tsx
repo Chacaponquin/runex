@@ -7,14 +7,18 @@ interface Props {
   link: string;
   icon: React.FC<IconProps>;
   className?: string;
+  disabled: boolean;
 }
 
-export default function LinkButton({ icon, link, className }: Props) {
+export default function LinkButton({ icon, link, className, disabled }: Props) {
   return (
-    <Link href={link} className={clsx("flex items-center", className)}>
-      <button className="hover:stroke-blue-500 transition-all duration-200">
+    <button
+      className="hover:stroke-blue-500 transition-all duration-200"
+      disabled={disabled}
+    >
+      <Link href={link} className={clsx("flex items-center", className)}>
         {icon({ size: 22 })}
-      </button>
-    </Link>
+      </Link>
+    </button>
   );
 }

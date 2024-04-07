@@ -5,7 +5,8 @@ import { useContactUs } from "./hooks";
 import { Section } from "../../shared/components";
 
 export default function ContactUs() {
-  const { form, handleChange, handleSubmit, contacts } = useContactUs();
+  const { form, handleChange, handleSubmit, contacts, loading, completed } =
+    useContactUs();
 
   return (
     <Section alt={false}>
@@ -15,6 +16,8 @@ export default function ContactUs() {
           form={form}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          loading={loading}
+          completed={completed}
         />
       </div>
     </Section>

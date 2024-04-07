@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function Aside({ handleChangeOpenAside, openAside }: Props) {
-  const { bigScreen } = useScreen(SCREEN_SIZES.LG);
+  const { condition } = useScreen(SCREEN_SIZES.LG);
 
   const { sections, active } = useAside();
 
@@ -18,11 +18,11 @@ export default function Aside({ handleChangeOpenAside, openAside }: Props) {
     "fixed top-0 left-0",
     "h-svh",
 
-    { "py-3 pl-3": bigScreen },
+    { "py-3 pl-3": condition },
 
-    { "w-full": !bigScreen, "bg-black/50": !bigScreen },
+    { "w-full": !condition, "bg-black/50": !condition },
 
-    { hidden: !openAside && !bigScreen }
+    { hidden: !openAside && !condition }
   );
 
   const CLASS = clsx(
@@ -32,14 +32,14 @@ export default function Aside({ handleChangeOpenAside, openAside }: Props) {
     "py-5 px-3",
     "shadow-lg",
 
-    { "rounded-lg": bigScreen }
+    { rounded: condition }
   );
 
   return (
     <div className={CONTAINER_CLASS} onClick={handleChangeOpenAside}>
       <aside
         className={CLASS}
-        style={{ width: bigScreen ? "240px" : "270px" }}
+        style={{ width: condition ? "240px" : "270px" }}
         onClick={(e) => e.stopPropagation()}
       >
         <Header />

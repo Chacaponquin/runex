@@ -1,11 +1,32 @@
-import { Bag } from "@modules/app/modules/icon/components";
+import { Bag, Close } from "@modules/app/modules/icon/components";
+import clsx from "clsx";
 
 interface Props {
   handleAddToCart(): void;
   handleBuyNow(): void;
+  isInCart: boolean;
+  handleDeleteFromCart(): void;
 }
 
-export default function Buttons({ handleAddToCart, handleBuyNow }: Props) {
+export default function Buttons({
+  handleAddToCart,
+  handleBuyNow,
+  isInCart,
+  handleDeleteFromCart,
+}: Props) {
+  const BUTTON_CLASS = clsx(
+    "justify-center items-center flex",
+    "w-full",
+    "stroke-white",
+    "text-white",
+    "px-4 py-2",
+    "transition-all duration-200 hover:opacity-70",
+    "rounded",
+    "gap-x-4",
+
+    { "bg-blue-500": !isInCart, "bg-red-400": isInCart }
+  );
+
   return (
     <div className="grid grid-cols-2 gap-x-4 exsm:grid-cols-1 gap-y-2 text-lg esm:text-base">
       <button
@@ -16,11 +37,11 @@ export default function Buttons({ handleAddToCart, handleBuyNow }: Props) {
       </button>
 
       <button
-        onClick={handleAddToCart}
-        className="w-full bg-blue-500 text-white rounded px-4 py-2 flex gap-x-4 stroke-white justify-center items-center transition-all duration-200 hover:opacity-70"
+        onClick={isInCart ? handleDeleteFromCart : handleAddToCart}
+        className={BUTTON_CLASS}
       >
-        <Bag size={22} />
-        <p className="font-fontMedium">Añadir</p>
+        {isInCart ? <Close size={22} /> : <Bag size={22} />}
+        <p className="font-fontMedium">{isInCart ? "Eliminar" : "Añadir"}</p>
       </button>
     </div>
   );

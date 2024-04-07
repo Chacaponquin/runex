@@ -11,7 +11,7 @@ export default function ProductName({ image, name }: Props) {
       <Image
         src={image}
         alt={name}
-        className="rounded"
+        className="rounded h-[50px] w-[60px]"
         width={60}
         height={50}
       />

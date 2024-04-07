@@ -1,25 +1,47 @@
 "use client";
 
-import { TOKEN_LOCATION } from "../constants";
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../context";
+import { useLocalStorage } from "@modules/shared/hooks";
+import { STORAGE_KEYS } from "@modules/app/constants";
+import { RespUserDTO } from "../dto/user";
+
+interface SignInProps {
+  user: RespUserDTO;
+  save: boolean;
+}
 
 export default function useUser() {
+  const { get, set, remove } = useLocalStorage();
+
   const {
     actualUser,
     loading,
     handleAddProductToFavorites: handleAddProductToFavoritesContext,
     handleDeleteProductInFavorites: handleDeleteProductInFavoritesContext,
+    handleChangeUser,
+    handleRemoveUser,
   } = useContext(UserContext);
 
-  function handleSignIn(token: string) {
-    localStorage.setItem(TOKEN_LOCATION, token);
-    window.location.reload();
+  function handleSignIn({ save, user }: SignInProps) {
+    if (save) {
+      set(STORAGE_KEYS.ACCESS_TOKEN, user.accessToken);
+      set(STORAGE_KEYS.REFRESH_TOKEN, user.refreshToken);
+    }
+
+    handleChangeUser({
+      email: user.email,
+      favorites: user.favorites,
+      firstName: user.firstName,
+      id: user.id,
+      lastName: user.lastName,
+    });
   }
 
   function handleSignOut() {
-    localStorage.removeItem(TOKEN_LOCATION);
-    window.location.reload();
+    remove(STORAGE_KEYS.ACCESS_TOKEN);
+    remove(STORAGE_KEYS.REFRESH_TOKEN);
+    handleRemoveUser();
   }
 
   function isProductFavorite(productId: string): boolean {
@@ -38,12 +60,16 @@ export default function useUser() {
     handleDeleteProductInFavoritesContext(productId);
   }
 
-  const getToken = useCallback((): string => {
-    return "";
-  }, []);
+  function getAccessToken(): string | undefined {
+    return get(STORAGE_KEYS.ACCESS_TOKEN);
+  }
+
+  function getRefreshToken(): string | undefined {
+    return get(STORAGE_KEYS.REFRESH_TOKEN);
+  }
 
   return {
-    getToken,
+    getAccessToken,
     handleSignIn,
     handleSignOut,
     actualUser,
@@ -51,5 +77,6 @@ export default function useUser() {
     isProductFavorite,
     handleAddProductToFavorites,
     handleDeleteProductInFavorites,
+    getRefreshToken,
   };
 }

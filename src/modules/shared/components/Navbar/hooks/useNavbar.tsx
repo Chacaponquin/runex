@@ -4,25 +4,32 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { NavbarLink } from "../interfaces";
 import { useSections } from "@modules/app/hooks";
+import { PRODUCT_TYPES } from "@modules/product/constants";
+import { APP_ROUTES } from "@modules/app/constants";
 
 interface Props {
-  query: string | undefined;
+  type: PRODUCT_TYPES | undefined;
 }
 
-export default function useNavbar({ query }: Props) {
+export default function useNavbar({ type }: Props) {
   const { sections } = useSections();
 
   const router = useRouter();
 
-  const [search, setSearch] = useState(query ? query : "");
+  const [search, setSearch] = useState<string>("");
   const [openSide, setOpenSide] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
   const links: Array<NavbarLink> = sections;
 
   function handleSearch() {
-    if (search) {
-      router.push(`clothes/search?q=${search}`, { scroll: true });
+    if (search && type) {
+      const route = APP_ROUTES.SECTION.BUILD_SEARCH_ROUTE({
+        section: type,
+        search: search,
+      });
+
+      router.push(route, { scroll: true });
     }
   }
 

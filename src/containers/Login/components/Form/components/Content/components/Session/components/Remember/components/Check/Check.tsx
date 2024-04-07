@@ -27,7 +27,7 @@ export default function Check({ handleChange, remember }: Props) {
   );
 
   return (
-    <button className={CLASS} id={id} onClick={handleChange}>
+    <button className={CLASS} id={id} onClick={handleChange} type="button">
       {remember && <IconCheck size={12} />}
     </button>
   );

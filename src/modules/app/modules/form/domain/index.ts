@@ -4,8 +4,8 @@ interface Props {
 }
 
 export abstract class FieldValidator<V> {
-  public readonly message: string;
-  public readonly id: string;
+  readonly message: string;
+  readonly id: string;
 
   constructor({ message, id }: Props) {
     this.message = message;
@@ -22,5 +22,37 @@ export class NotValidateField extends FieldValidator<unknown> {
 
   public validate(): boolean {
     return true;
+  }
+}
+
+export class EmailFieldValidator extends FieldValidator<string> {
+  public validate(value: string): boolean {
+    const emailRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    return emailRegex.test(value);
+  }
+}
+
+export class NotEmptyFieldValidator extends FieldValidator<string> {
+  public validate(value: string): boolean {
+    return value.length > 0;
+  }
+}
+
+export class MinLengthFieldValidator extends FieldValidator<string> {
+  readonly min: number;
+
+  constructor({
+    id,
+    message,
+    min,
+  }: {
+    min: number;
+  } & Props) {
+    super({ id, message });
+    this.min = min;
+  }
+
+  public validate(value: string): boolean {
+    return value.length >= this.min;
   }
 }

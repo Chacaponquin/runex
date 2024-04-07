@@ -1,8 +1,23 @@
+import { BodyProps } from "@modules/app/modules/http/interfaces";
+import { Product } from "@modules/product/domain";
+
 export interface FilterForm {
   minPrice: number;
   maxPrice: number;
-  name: string;
   provider: string;
-  color: string;
-  size: string;
+  page: number;
 }
+
+export type SearchProductParams = Partial<{
+  q: string;
+  order: string;
+  pMax: string;
+  pMin: string;
+  provider: string;
+  page: string;
+}>;
+
+export type SearchFilterFunctionProps = BodyProps<
+  Product[],
+  FilterForm & { name: string }
+>;

@@ -5,28 +5,28 @@ import { Product as ProductComponent, Header, Share } from "./components";
 import { useSelectedProduct } from "./hooks";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
 import { Product } from "@modules/product/domain";
+import { AddProductProps } from "./interfaces";
+import { useSelectProduct } from "@modules/product/hooks";
 
 interface Props<T> {
-  selectedProduct: string | null;
-  handleDeleteSelectedProduct(): void;
-  handleSelectProduct(id: string): void;
   getProduct(props: FetchProps<T>): void;
-  getSimilarProducts(props: FetchProps<Array<Product>> & { id: string }): void;
+  getSimilarProducts(props: FetchProps<Product[]> & { id: string }): void;
   onFetchSuccess(data: T): void;
   children: React.ReactNode;
   productInfo: T | null;
+  handleAdd(props: AddProductProps): void;
 }
 
 export default function SelectedProduct<T extends Product>({
-  selectedProduct,
-  handleDeleteSelectedProduct,
-  handleSelectProduct,
   getProduct,
   getSimilarProducts,
   onFetchSuccess,
   children,
   productInfo,
+  handleAdd,
 }: Props<T>) {
+  const { selectedProduct } = useSelectProduct();
+
   const {
     loading,
     similarProducts,
@@ -42,13 +42,15 @@ export default function SelectedProduct<T extends Product>({
     openShare,
     handleCloseShare,
     handleDeleteFavorite,
+    isInCart,
+    handleDeleteFromCart,
+    notFound,
   } = useSelectedProduct<T>({
-    productId: selectedProduct,
-    handleDeleteSelectedProduct,
     getProduct,
     getSimilarProducts,
     onFetchSuccess,
     productInfo,
+    handleAdd,
   });
 
   useBlockScroll(selectedProduct !== null);
@@ -58,7 +60,7 @@ export default function SelectedProduct<T extends Product>({
       className="fixed top-0 left-0 w-full h-svh z-40 bg-black/50 flex flex-col"
       style={{ visibility: selectedProduct ? "visible" : "hidden" }}
     >
-      <Header handleDeleteSelectedProduct={handleDeleteSelectedProduct} />
+      <Header />
 
       <ProductComponent
         isFavorite={isFavorite}
@@ -74,8 +76,10 @@ export default function SelectedProduct<T extends Product>({
         handleAddFavorite={handleAddFavorite}
         handleShare={handleShare}
         handleDeleteFavorite={handleDeleteFavorite}
-        handleSelectProduct={handleSelectProduct}
         extra={children}
+        isInCart={isInCart}
+        handleDeleteFromCart={handleDeleteFromCart}
+        notFound={notFound}
       />
 
       {productInfo && openShare && (

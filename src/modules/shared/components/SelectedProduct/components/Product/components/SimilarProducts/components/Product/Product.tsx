@@ -21,7 +21,7 @@ export default function Product({
 
   return (
     <article
-      className="flex flex-col cursor-pointer mb-5"
+      className="flex flex-col cursor-pointer"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={handleClick}

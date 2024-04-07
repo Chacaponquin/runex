@@ -5,3 +5,9 @@ export interface CurrentUser {
   email: string;
   favorites: Array<string>;
 }
+
+export interface CurrentAdminUser {
+  id: string;
+  email: string;
+  username: string;
+}

@@ -10,9 +10,9 @@ interface Props {
 export default function Information({ header }: Props) {
   return (
     <div className="flex flex-col">
-      <Navbar disableSearch={true} fixed={false} />
+      <Navbar fixed={false} />
       <Header header={header} />
-  <Main/>
+      <Main />
       <Footer />
     </div>
   );

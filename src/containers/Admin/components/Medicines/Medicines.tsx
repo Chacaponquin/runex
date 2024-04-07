@@ -1,18 +1,34 @@
 "use client";
 
-import { Table } from "@containers/Admin/shared/components";
+import {
+  Table,
+  TableProductActions,
+} from "@containers/Admin/shared/components";
 import { useMedicines } from "./hooks";
-import { Actions } from "./components";
 
 export default function Medicines() {
-  const { tableData, handleAddMedicine, loading } = useMedicines();
+  const {
+    handleDeleteAll,
+    tableData,
+    handleAddMedicine,
+    loading,
+    selectedItems,
+    handleNextPage,
+  } = useMedicines();
 
   return (
     <Table
       data={tableData}
       header="Medicinas"
-      actions={<Actions handleAdd={handleAddMedicine} />}
+      actions={
+        <TableProductActions
+          handleAdd={handleAddMedicine}
+          deleteDisable={selectedItems.length === 0}
+          handleDeleteAll={handleDeleteAll}
+        />
+      }
       loading={loading}
+      handleNext={handleNextPage}
     />
   );
 }

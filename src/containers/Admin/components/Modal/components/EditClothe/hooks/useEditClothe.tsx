@@ -30,7 +30,7 @@ export default function useEditClothe(props: Props) {
       id: props.id,
       onSuccess(product) {
         handleChangeForm({
-          category: product.category,
+          category: product.categories[0],
           colors: product.colors,
           images: product.imagesData,
           name: product.name,

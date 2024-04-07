@@ -1,5 +1,6 @@
 import Aside from "./Aside/Aside";
 import Clothes from "./Clothes/Clothes";
+import Login from "./Login/Login";
 import Medicines from "./Medicines/Medicines";
 import AddClothe from "./Modal/components/AddClothe/AddClothe";
 import AddMedicine from "./Modal/components/AddMedicine/AddMedicine";
@@ -18,4 +19,5 @@ export {
   EditMedicine,
   AddMedicine,
   Medicines,
+  Login,
 };

@@ -2,33 +2,33 @@
 
 import { Product } from "@modules/product/domain";
 import { useEffect, useState } from "react";
-import { ProductForm } from "../interfaces";
-import { useProductActions } from "@modules/product/hooks";
-import { useCart } from "@modules/cart/hooks";
+import { AddProductProps, ProductForm } from "../interfaces";
+import { useProductActions, useSelectProduct } from "@modules/product/hooks";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { useCart } from "@modules/cart/hooks";
 
 interface Props<T> {
-  productId: string | null;
-  handleDeleteSelectedProduct(): void;
-  getProduct(props: FetchProps<T>): void;
+  getProduct(props: FetchProps<T> & { id: string }): void;
   getSimilarProducts(props: FetchProps<Array<Product>> & { id: string }): void;
   onFetchSuccess(data: T): void;
   productInfo: T | null;
+  handleAdd(props: AddProductProps): void;
 }
 
 export default function useSelectedProduct<T extends Product>({
-  productId,
-  handleDeleteSelectedProduct,
   getProduct,
   getSimilarProducts,
   onFetchSuccess,
   productInfo,
+  handleAdd,
 }: Props<T>) {
-  const { handleAddFavorite, handleDeleteFavorite, isFavorite } =
+  const { handleDeleteProduct } = useCart();
+  const { selectedProduct, handleDeleteSelectedProduct } = useSelectProduct();
+
+  const { handleAddFavorite, handleDeleteFavorite, isFavorite, isInCart } =
     useProductActions({
-      productId,
+      productId: selectedProduct ? selectedProduct.id : null,
     });
-  const { handleSetProduct } = useCart();
 
   const [form, setForm] = useState<ProductForm>({
     quantity: 1,
@@ -43,10 +43,11 @@ export default function useSelectedProduct<T extends Product>({
   const [openShare, setOpenShare] = useState(false);
 
   useEffect(() => {
-    if (productId) {
+    if (selectedProduct) {
       setLoading(true);
 
       getProduct({
+        id: selectedProduct.id,
         onSuccess(info) {
           onFetchSuccess(info);
         },
@@ -58,14 +59,14 @@ export default function useSelectedProduct<T extends Product>({
         },
       });
     }
-  }, [productId]);
+  }, [selectedProduct]);
 
   useEffect(() => {
-    if (productId) {
+    if (selectedProduct) {
       setSimilarProductsLoading(true);
 
       getSimilarProducts({
-        id: productId,
+        id: selectedProduct.id,
         onSuccess(data) {
           setSimilarProducts(data);
         },
@@ -74,7 +75,7 @@ export default function useSelectedProduct<T extends Product>({
         },
       });
     }
-  }, [productId]);
+  }, [selectedProduct]);
 
   function handleShare() {
     setOpenShare(true);
@@ -98,8 +99,14 @@ export default function useSelectedProduct<T extends Product>({
 
   function handleAddToCart() {
     if (productInfo) {
-      handleSetProduct({ quantity: form.quantity, product: productInfo });
+      handleAdd({ quantity: form.quantity, product: productInfo });
       handleDeleteSelectedProduct();
+    }
+  }
+
+  function handleDeleteFromCart() {
+    if (productInfo) {
+      handleDeleteProduct(productInfo.id);
     }
   }
 
@@ -119,5 +126,7 @@ export default function useSelectedProduct<T extends Product>({
     handleCloseShare,
     handleDeleteFavorite,
     notFound,
+    handleDeleteFromCart,
+    isInCart,
   };
 }

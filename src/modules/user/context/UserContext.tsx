@@ -3,6 +3,8 @@
 import { createContext, useState, useEffect } from "react";
 import { useUserServices } from "../services";
 import { CurrentUser } from "../domain";
+import { useLocalStorage } from "@modules/shared/hooks";
+import { STORAGE_KEYS } from "@modules/app/constants";
 
 interface Props {
   actualUser: CurrentUser | null;
@@ -21,6 +23,7 @@ export const UserContext = createContext<Props>({
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [actualUser, setActualUser] = useState<CurrentUser | null>(null);
+  const { set } = useLocalStorage();
 
   const { getUserByToken } = useUserServices();
 
@@ -28,6 +31,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     setLoading(true);
     getUserByToken({
       onSuccess(user) {
+        set(STORAGE_KEYS.ACCESS_TOKEN, user.accessToken);
+        set(STORAGE_KEYS.REFRESH_TOKEN, user.refreshToken);
         setActualUser(user);
       },
       onError() {

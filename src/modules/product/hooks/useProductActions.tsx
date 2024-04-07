@@ -28,6 +28,9 @@ export default function useProductActions({ productId }: Props) {
 
       addProductToFavorites({
         body: { userId: actualUser.id, productId: productId },
+        onError() {
+          handleDeleteProductInFavorites(productId);
+        },
       });
     }
   }
@@ -38,6 +41,9 @@ export default function useProductActions({ productId }: Props) {
 
       deleteProductInFavorites({
         body: { userId: actualUser.id, productId: productId },
+        onError() {
+          handleAddProductToFavorites(productId);
+        },
       });
     }
   }

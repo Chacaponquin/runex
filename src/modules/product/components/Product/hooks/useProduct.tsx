@@ -1,15 +1,17 @@
 "use client";
 
-import { PRODUCT_TYPES } from "@modules/product/constants";
+import { CartProduct } from "@modules/cart/domain";
+import { useCart } from "@modules/cart/hooks";
+import { Product } from "@modules/product/domain";
 import { useProductActions, useSelectProduct } from "@modules/product/hooks";
 
 interface Props {
-  id: string;
-  type: PRODUCT_TYPES;
+  product: Product;
 }
 
-export default function useProduct({ id, type }: Props) {
+export default function useProduct({ product }: Props) {
   const { handleSelectProduct } = useSelectProduct();
+  const { handleSetProduct } = useCart();
 
   const {
     handleAddFavorite,
@@ -18,11 +20,17 @@ export default function useProduct({ id, type }: Props) {
     isInCart,
     handleDelete,
   } = useProductActions({
-    productId: id,
+    productId: product.id,
   });
 
   function handleSelect() {
-    handleSelectProduct({ id: id, type: type });
+    handleSelectProduct({ id: product.id, type: product.type });
+  }
+
+  function handleAdd() {
+    handleSetProduct({
+      product: new CartProduct({ quantity: 1, product: product }),
+    });
   }
 
   return {
@@ -32,5 +40,6 @@ export default function useProduct({ id, type }: Props) {
     handleDeleteFavorite,
     isInCart,
     handleDelete,
+    handleAdd,
   };
 }

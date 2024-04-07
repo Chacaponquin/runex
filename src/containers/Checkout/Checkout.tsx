@@ -13,6 +13,7 @@ export default function Checkout() {
     handlePayment,
     adventages,
     handleChangeForm,
+    loading,
   } = useCheckout();
 
   return (
@@ -31,6 +32,7 @@ export default function Checkout() {
             form={personalForm}
             handlePayment={handlePayment}
             handleChangeForm={handleChangeForm}
+            loading={loading}
           />
 
           <Adventages adventages={adventages} />

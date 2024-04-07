@@ -15,6 +15,8 @@ interface Props {
   handleIncreaseQuantity(): void;
   extra: React.ReactNode;
   loading: boolean;
+  isInCart: boolean;
+  handleDeleteFromCart(): void;
 }
 
 export default function Data({
@@ -28,6 +30,8 @@ export default function Data({
   handleIncreaseQuantity,
   loading,
   extra,
+  isInCart,
+  handleDeleteFromCart,
 }: Props) {
   return (
     <div className="flex flex-col w-full">
@@ -55,6 +59,8 @@ export default function Data({
         <Buttons
           handleAddToCart={handleAddToCart}
           handleBuyNow={handleBuyNow}
+          isInCart={isInCart}
+          handleDeleteFromCart={handleDeleteFromCart}
         />
       )}
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Products, Scroll } from "./components";
+import { Empty, Header, Products, Scroll } from "./components";
 import { Product } from "@modules/product/domain";
 
 interface Props {
@@ -23,20 +23,26 @@ export default function Result({
   handleChangePage,
   loading,
 }: Props) {
+  const empty = !loading && products.length === 0;
+
   return (
     <main className="flex flex-col w-full px-5 items-center mb-20 esm:mb-12">
       <div className="flex flex-col w-full max-w-[1100px]">
         <Header length={totalProducts} />
 
-        <Products products={products} loading={loading} />
+        {empty && <Empty />}
 
-        <Scroll
-          handleNext={handleNextPage}
-          handleBack={handleBackPage}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          handleChangePage={handleChangePage}
-        />
+        <Products products={products} loading={loading} empty={empty} />
+
+        {!empty && (
+          <Scroll
+            handleNext={handleNextPage}
+            handleBack={handleBackPage}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handleChangePage={handleChangePage}
+          />
+        )}
       </div>
     </main>
   );

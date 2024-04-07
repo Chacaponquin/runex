@@ -1,6 +1,10 @@
 import clsx from "clsx";
 
-export default function Button() {
+interface Props {
+  loading: boolean;
+}
+
+export default function Button({ loading }: Props) {
   const CLASS = clsx(
     "rounded",
     "font-fontMedium",
@@ -12,12 +16,13 @@ export default function Button() {
     "uppercase",
     "w-full",
     "transition-all duration-200",
-    "hover:opacity-70"
+
+    { "hover:opacity-70": !loading, "opacity-70": loading }
   );
 
   return (
     <section className="mt-5 w-full">
-      <button type="submit" className={CLASS}>
+      <button type="submit" className={CLASS} disabled={loading}>
         Ordenar
       </button>
     </section>

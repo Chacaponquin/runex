@@ -15,14 +15,12 @@ export default function Favorite({
   const CLASS = clsx(
     "rounded-full",
     "shadow",
-    "stroke-black",
-    "bg-white",
     "p-3",
     "transition-all duration-200",
 
     {
       "bg-blue-500 stroke-white": isFavorite,
-      "hover:bg-blue-500 hover:stroke-white": !isFavorite,
+      "hover:bg-blue-500 hover:stroke-white stroke-black bg-white": !isFavorite,
     }
   );
 

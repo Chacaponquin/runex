@@ -19,17 +19,9 @@ export default function Section({ title, getProducts }: Props) {
     <div className="flex flex-col">
       <h1 className="font-fontMedium text-2xl mb-3.5">{title}</h1>
 
-      <div className="grid xl:grid-cols-4 grid-cols-2 esm:grid-cols-1 gap-y-4 gap-x-2">
+      <div className="grid xl:grid-cols-4 grid-cols-2 esm:grid-cols-1 gap-y-4 gap-x-6">
         {products.map((product) => (
-          <Product
-            key={product.id}
-            image={product.image}
-            name={product.name}
-            price={product.priceStr}
-            id={product.id}
-            provider={product.provider}
-            type={product.type}
-          />
+          <Product key={product.id} product={product} />
         ))}
 
         {loading && <Loader />}

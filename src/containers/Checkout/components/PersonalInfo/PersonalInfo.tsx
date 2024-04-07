@@ -7,12 +7,14 @@ interface Props {
   form: PersonalForm;
   handlePayment(): void;
   handleChangeForm(key: keyof PersonalForm, value: string): void;
+  loading: boolean;
 }
 
 export default function PersonalInfo({
   form,
   handlePayment,
   handleChangeForm,
+  loading,
 }: Props) {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -75,7 +77,7 @@ export default function PersonalInfo({
           />
         </FormSection>
 
-        <Button />
+        <Button loading={loading} />
       </form>
     </Section>
   );

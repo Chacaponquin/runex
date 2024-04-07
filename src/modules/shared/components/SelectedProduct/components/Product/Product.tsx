@@ -4,6 +4,7 @@ import {
   Data,
   SimilarProducts,
   Top,
+  NotFound,
 } from "./components";
 import { ProductForm } from "../../interfaces";
 
@@ -22,6 +23,9 @@ interface Props {
   isFavorite: boolean;
   handleDeleteFavorite(): void;
   extra: React.ReactNode;
+  isInCart: boolean;
+  handleDeleteFromCart(): void;
+  notFound: boolean;
 }
 
 export default function Product({
@@ -39,11 +43,16 @@ export default function Product({
   isFavorite,
   handleDeleteFavorite,
   extra,
+  isInCart,
+  handleDeleteFromCart,
+  notFound,
 }: Props) {
   return (
     <div className="flex flex-grow bg-white w-full justify-center rounded-t-2xl overflow-y-auto pt-10 esm:pt-6 px-5">
       <div className="flex h-full flex-col max-w-[1100px] w-full">
-        {info && (
+        {notFound && <NotFound />}
+
+        {!notFound && info && (
           <div className="flex flex-col w-full">
             <Top
               handleAddFavorite={handleAddFavorite}
@@ -71,6 +80,8 @@ export default function Product({
                 handleDecreaseQuantity={handleDecreaseQuantity}
                 handleIncreaseQuantity={handleIncreaseQuantity}
                 loading={loading}
+                isInCart={isInCart}
+                handleDeleteFromCart={handleDeleteFromCart}
               />
             </div>
 

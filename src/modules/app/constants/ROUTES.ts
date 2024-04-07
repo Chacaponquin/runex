@@ -60,6 +60,10 @@ export const API_ROUTES = {
     ADD_PRODUCT_FAVORITE: "/user/add-product-favorite",
     DELETE_PRODUCT_FAVORITE: "/user/delete-product-favorite",
     LOGIN: "/auth/login",
+    FAVORITES_COUNT: "/user/favorites-count",
+    ORDERS_COUNT: "/user/orders-count",
+    FAVORITES: "/user/favorites",
+    ORDERS: "/user/orders",
   },
   ADMIN_USER: {
     SIGN_IN: "/admin/sign-in",

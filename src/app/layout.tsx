@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@modules/cart/context";
 import { UserProvider } from "@modules/user/context";
 import { ToastProvider } from "@modules/app/modules/toast/context";
+import { SelectProductProvider } from "@modules/product/contexts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: Props) {
       <body>
         <ToastProvider>
           <UserProvider>
-            <CartProvider>{children}</CartProvider>
+            <CartProvider>
+              <SelectProductProvider>{children}</SelectProductProvider>
+            </CartProvider>
           </UserProvider>
         </ToastProvider>
       </body>

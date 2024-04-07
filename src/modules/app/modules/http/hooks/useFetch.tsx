@@ -4,25 +4,24 @@ import axios, { AxiosResponse } from "axios";
 import { useEnv } from "@modules/app/modules/env/hooks";
 import { useUser } from "@modules/user/hooks";
 import { useEffect, useMemo } from "react";
-import { FetchProps, BodyProps } from "../../interfaces";
-import { handleError } from "../../utils";
+import { FetchProps, BodyProps } from "../interfaces";
+import { handleError } from "../utils";
 
 export default function useFetch() {
   const { getAccessToken } = useUser();
   const { API_ROUTE } = useEnv();
 
   const instance = useMemo(() => {
-    const token = getAccessToken();
-
     return axios.create({
       baseURL: API_ROUTE,
-      headers: buildHeader(token),
     });
-  }, [getAccessToken]);
+  }, []);
 
   function buildHeader(token: string | undefined) {
+    const sendToken = token ? token : getAccessToken();
+
     return {
-      authorization: token ? `Bearer ${token}` : undefined,
+      authorization: `Bearer ${sendToken}`,
     };
   }
 

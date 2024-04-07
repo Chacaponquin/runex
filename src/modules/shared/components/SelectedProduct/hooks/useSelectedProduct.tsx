@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AddProductProps, ProductForm } from "../interfaces";
 import { useProductActions, useSelectProduct } from "@modules/product/hooks";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
+import { useCart } from "@modules/cart/hooks";
 
 interface Props<T> {
   getProduct(props: FetchProps<T> & { id: string }): void;
@@ -21,9 +22,10 @@ export default function useSelectedProduct<T extends Product>({
   productInfo,
   handleAdd,
 }: Props<T>) {
+  const { handleDeleteProduct } = useCart();
   const { selectedProduct, handleDeleteSelectedProduct } = useSelectProduct();
 
-  const { handleAddFavorite, handleDeleteFavorite, isFavorite } =
+  const { handleAddFavorite, handleDeleteFavorite, isFavorite, isInCart } =
     useProductActions({
       productId: selectedProduct ? selectedProduct.id : null,
     });
@@ -102,6 +104,12 @@ export default function useSelectedProduct<T extends Product>({
     }
   }
 
+  function handleDeleteFromCart() {
+    if (productInfo) {
+      handleDeleteProduct(productInfo.id);
+    }
+  }
+
   return {
     loading,
     similarProductsLoading,
@@ -118,5 +126,7 @@ export default function useSelectedProduct<T extends Product>({
     handleCloseShare,
     handleDeleteFavorite,
     notFound,
+    handleDeleteFromCart,
+    isInCart,
   };
 }

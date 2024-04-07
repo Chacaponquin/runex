@@ -42,6 +42,9 @@ export default function SelectedProduct<T extends Product>({
     openShare,
     handleCloseShare,
     handleDeleteFavorite,
+    isInCart,
+    handleDeleteFromCart,
+    notFound,
   } = useSelectedProduct<T>({
     getProduct,
     getSimilarProducts,
@@ -74,6 +77,9 @@ export default function SelectedProduct<T extends Product>({
         handleShare={handleShare}
         handleDeleteFavorite={handleDeleteFavorite}
         extra={children}
+        isInCart={isInCart}
+        handleDeleteFromCart={handleDeleteFromCart}
+        notFound={notFound}
       />
 
       {productInfo && openShare && (

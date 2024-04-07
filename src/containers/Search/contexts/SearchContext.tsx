@@ -82,15 +82,24 @@ export function SearchProvider({
   }
 
   function handleNextPage() {
-    setFilters((prev) => ({ ...prev, page: prev.page + 1 }));
+    handleTopScrool().then(() =>
+      setFilters((prev) => ({ ...prev, page: prev.page + 1 }))
+    );
   }
 
   function handleBackPage() {
-    setFilters((prev) => ({ ...prev, page: prev.page - 1 }));
+    handleTopScrool().then(() =>
+      setFilters((prev) => ({ ...prev, page: prev.page - 1 }))
+    );
   }
 
   function handleChangePage(p: number) {
-    setFilters((prev) => ({ ...prev, page: p }));
+    handleTopScrool().then(() => setFilters((prev) => ({ ...prev, page: p })));
+  }
+
+  function handleTopScrool() {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    return new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
   function handleChangeName(name: string) {

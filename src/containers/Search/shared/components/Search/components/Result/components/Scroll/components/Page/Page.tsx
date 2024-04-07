@@ -15,7 +15,8 @@ export default function Page({ page, selected, handleClick }: Props) {
     "rounded-sm",
 
     { "text-gray-700": !selected, "text-blue-500": selected },
-    { "border-gray-700": !selected, "border-blue-500": selected }
+    { "border-gray-700": !selected, "border-blue-500": selected },
+    { "bg-blue-100": selected, "bg-transparent": !selected }
   );
 
   return (

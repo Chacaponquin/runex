@@ -5,7 +5,7 @@ interface Props {
   handleClick?: () => void;
   color: "primary" | "cancel" | "danger";
   disabled: boolean;
-  size: "sm" | "lg" | "xl";
+  size: "sm" | "lg" | "xl" | "2xl";
   rounded: "full" | "lg" | "sm";
   type?: "button" | "submit";
   full?: boolean;
@@ -33,12 +33,6 @@ export default function Button({
     },
 
     {
-      "px-4 py-1.5": size === "sm",
-      "px-5 py-2": size === "lg",
-      "px-7 py-2.5": size === "xl",
-    },
-
-    {
       "text-white": color === "primary" || color === "danger",
       "text-black": color === "cancel",
     },
@@ -52,7 +46,15 @@ export default function Button({
     {
       "text-base": size === "lg",
       "text-lg": size === "xl",
+      "text-xl": size === "2xl",
       "text-sm": size === "sm",
+    },
+
+    {
+      "px-4 py-1.5": size === "sm",
+      "px-5 py-2": size === "lg",
+      "px-7 py-2.5": size === "xl",
+      "px-8 py-3": size === "2xl",
     },
 
     { "opacity-70": disabled },

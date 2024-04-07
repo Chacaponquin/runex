@@ -36,11 +36,11 @@ export default function Top({
               handleClick={
                 isFavorite ? handleDeleteFavorite : handleAddFavorite
               }
-              disabled={false}
+              selected={isFavorite}
             />
           )}
 
-          <Button icon={Share} disabled={false} handleClick={handleShare} />
+          <Button icon={Share} selected={false} handleClick={handleShare} />
         </Fragment>
       )}
     </div>

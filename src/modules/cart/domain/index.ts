@@ -5,7 +5,7 @@ interface Props {
   quantity: number;
 }
 
-export abstract class CartProduct {
+export class CartProduct {
   quantity: number;
   product: Product;
 

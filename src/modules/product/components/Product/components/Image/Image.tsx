@@ -18,7 +18,7 @@ export default function Image({
 
   return (
     <header
-      className="h-[170px] w-full p-3 rounded-t"
+      className="h-[170px] w-full p-3 rounded-sm"
       style={{
         backgroundImage: `url("${src}")`,
         backgroundRepeat: "no-repeat",

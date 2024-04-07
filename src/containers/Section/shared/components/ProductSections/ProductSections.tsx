@@ -8,14 +8,10 @@ import { Product } from "@modules/product/domain";
 import { GetSpecificProductsDTO } from "@modules/product/dto/product";
 
 interface Props {
-  getNewProducts(
-    props: BodyProps<Array<Product>, GetSpecificProductsDTO>
-  ): void;
-  getPopularProducts(
-    props: BodyProps<Array<Product>, GetSpecificProductsDTO>
-  ): void;
+  getNewProducts(props: BodyProps<Product[], GetSpecificProductsDTO>): void;
+  getPopularProducts(props: BodyProps<Product[], GetSpecificProductsDTO>): void;
   getTrendingProducts(
-    props: BodyProps<Array<Product>, GetSpecificProductsDTO>
+    props: BodyProps<Product[], GetSpecificProductsDTO>
   ): void;
 }
 
@@ -25,7 +21,7 @@ export default function ProductSections({
   getTrendingProducts,
 }: Props) {
   return (
-    <main className="flex flex-col w-full bg-gray-100 pt-8">
+    <main className="flex flex-col w-full pt-8">
       <Resize
         className="flex flex-col gap-y-10 w-full flex-wrap pb-6"
         containerClass="pb-20"

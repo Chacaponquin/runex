@@ -9,11 +9,23 @@ import {
 import { PAYMENT_METHODS } from "../constants";
 import { Adventage, PaymentMethod, PersonalForm } from "../interfaces";
 import { useState } from "react";
+import { useValidator } from "@modules/app/modules/form/hooks";
+import {
+  FormAddressValidator,
+  FormEmailValidator,
+  FormFirstNameValidator,
+  FormLastNameValidator,
+  FormNoteValidator,
+  FormPhoneValidator,
+} from "../domain";
 
 export default function useCheckout() {
+  const [loading, setLoading] = useState(false);
+
   const [selectedMethod, setSelectedMethod] = useState<PAYMENT_METHODS>(
     PAYMENT_METHODS.CARD
   );
+
   const [personalForm, setPersonalForm] = useState<PersonalForm>({
     address: "",
     email: "",
@@ -21,6 +33,15 @@ export default function useCheckout() {
     lastName: "",
     note: "",
     phone: "",
+  });
+
+  const { validate } = useValidator<PersonalForm>({
+    address: new FormAddressValidator(),
+    email: new FormEmailValidator(),
+    firstName: new FormFirstNameValidator(),
+    lastName: new FormLastNameValidator(),
+    note: new FormNoteValidator(),
+    phone: new FormPhoneValidator(),
   });
 
   const methods: Array<PaymentMethod> = [
@@ -55,7 +76,11 @@ export default function useCheckout() {
     setPersonalForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function handlePayment() {}
+  function handlePayment() {
+    if (validate(personalForm)) {
+      setLoading(true);
+    }
+  }
 
   return {
     methods,
@@ -65,5 +90,6 @@ export default function useCheckout() {
     handlePayment,
     adventages,
     handleChangeForm,
+    loading,
   };
 }

@@ -1,5 +1,5 @@
 import { SearchMedicine } from "@containers/Search/components";
-import { SearchMedicineParams } from "@containers/Search/components/SearchMedicine/interfaces";
+import { SearchMedicineParams } from "@modules/product/interfaces/params";
 
 interface Props {
   searchParams: SearchMedicineParams;

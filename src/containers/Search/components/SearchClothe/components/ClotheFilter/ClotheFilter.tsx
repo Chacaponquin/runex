@@ -1,42 +1,67 @@
 "use client";
 
 import { Filters, Section } from "@containers/Search/shared/components";
-import { Select } from "@modules/app/modules/form/components";
 import { useClotheFilter } from "./hooks";
-import { useId } from "react";
 import { Form } from "../../interfaces";
+import { MultiSelect } from "@containers/Search/shared/components/Filters/shared/components";
 
 interface Props {
   form: Form;
+  handleAddColor(o: string): void;
+  handleAddSize(o: string): void;
+  handleDeleteColor(o: string): void;
+  handleDeleteSize(o: string): void;
+  handleDeleteProvider(p: string): void;
+  handleAddProvider(p: string): void;
 }
 
-export default function ClotheFilter({ form }: Props) {
-  const colorId = useId();
-  const sizeId = useId();
-
-  const { colorOptions, sizeOptions } = useClotheFilter();
+export default function ClotheFilter({
+  form,
+  handleAddColor,
+  handleAddSize,
+  handleDeleteColor,
+  handleDeleteSize,
+  handleAddProvider,
+  handleDeleteProvider,
+}: Props) {
+  const {
+    colorOptions,
+    sizeOptions,
+    providerOptions,
+    colorsLoading,
+    providersLoading,
+    sizesLoading,
+  } = useClotheFilter();
 
   return (
     <Filters>
+      <Section title="Tienda">
+        <MultiSelect
+          options={providerOptions.map((p) => p.name)}
+          handleDelete={handleDeleteProvider}
+          handleSelect={handleAddProvider}
+          selected={form.providers}
+          loading={providersLoading}
+        />
+      </Section>
+
       <Section title="Color">
-        <Select
-          options={colorOptions}
-          labelKey="name"
-          valueKey="color"
-          placeholder="Color"
-          id={colorId}
-          value={form.colors[0]}
+        <MultiSelect
+          options={colorOptions.map((c) => c.name)}
+          handleDelete={handleDeleteColor}
+          handleSelect={handleAddColor}
+          selected={form.colors}
+          loading={colorsLoading}
         />
       </Section>
 
       <Section title="Talla">
-        <Select
-          options={sizeOptions}
-          labelKey="name"
-          valueKey="name"
-          placeholder="Talla"
-          value={form.sizes[0]}
-          id={sizeId}
+        <MultiSelect
+          options={sizeOptions.map((s) => s.name)}
+          handleDelete={handleDeleteSize}
+          handleSelect={handleAddSize}
+          selected={form.sizes}
+          loading={sizesLoading}
         />
       </Section>
     </Filters>

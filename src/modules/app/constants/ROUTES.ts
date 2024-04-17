@@ -1,5 +1,3 @@
-import { PRODUCT_TYPES } from "@modules/product/constants";
-
 export const APP_ROUTES = {
   ROOT: "/",
   AUTH: {
@@ -12,23 +10,6 @@ export const APP_ROUTES = {
     MEDICINE: "/section/medicines",
     SEARCH_CLOTHES: "/section/clothes/search",
     SEARCH_MEDICINE: "/section/medicines/search",
-    BUILD_SEARCH_ROUTE({
-      search,
-      section,
-    }: {
-      section: PRODUCT_TYPES;
-      search: string;
-    }) {
-      let url: string;
-
-      if (section === PRODUCT_TYPES.CLOTHE) {
-        url = "/section/clothes/search";
-      } else {
-        url = "/section/medicines/search";
-      }
-
-      return `${url}?q=${search}`;
-    },
   },
   CHECKOUT: "/checkout",
   USER: {
@@ -82,6 +63,7 @@ export const API_ROUTES = {
     TRENDING: "/clothe/trending",
     NEW: "/clothe/new",
     POPULAR: "/clothe/popular",
+    GET_ALL_PROVIDERS: "/clothe/all-providers",
   },
   MEDICINE: {
     CREATE: "/medicine/clothe",
@@ -94,5 +76,6 @@ export const API_ROUTES = {
     TRENDING: "/medicine/trending",
     NEW: "/medicine/new",
     POPULAR: "/medicine/popular",
+    GET_ALL_PROVIDERS: "/medicine/all-providers",
   },
 };

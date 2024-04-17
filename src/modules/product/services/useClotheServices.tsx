@@ -11,7 +11,13 @@ import {
   BodyProps,
   PutProps,
 } from "@modules/app/modules/http/interfaces";
-import { Clothe, Product, ProductColor, ProductSize } from "../domain";
+import {
+  Clothe,
+  Product,
+  ProductColor,
+  ProductSize,
+  Provider,
+} from "../domain";
 import { GetDTO, GetSpecificProductsDTO, RespProductDTO } from "../dto/product";
 import useProductServices from "./useProductServices";
 
@@ -138,6 +144,18 @@ export default function useClotheServices() {
     });
   }
 
+  function getAllProviders(props: FetchProps<Provider[]>) {
+    get<string[]>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) {
+          props.onSuccess(data.map((d) => ({ name: d })));
+        }
+      },
+      url: API_ROUTES.CLOTHE.GET_ALL_PROVIDERS,
+    });
+  }
+
   return {
     createClothe,
     deleteClothe,
@@ -151,5 +169,6 @@ export default function useClotheServices() {
     getPopular,
     getTrending,
     getAllColors,
+    getAllProviders,
   };
 }

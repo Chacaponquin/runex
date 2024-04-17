@@ -4,8 +4,7 @@ import { useBlockScroll } from "@modules/shared/hooks";
 import clsx from "clsx";
 import { Buttons, Header, PriceInput } from "./components";
 import { useFilters } from "./hooks";
-import { useContext, useId } from "react";
-import { Select } from "@modules/app/modules/form/components";
+import { useContext } from "react";
 import { SearchContext } from "@containers/Search/contexts";
 import Section from "../Section/Section";
 
@@ -18,13 +17,8 @@ export default function Filters({ children }: Props) {
 
   const { handleCloseFilters } = useContext(SearchContext);
 
-  const {
-    form,
-    handleSubmitForm,
-    providerOptions,
-    handleChangePriceMax,
-    handleChangePriceMin,
-  } = useFilters();
+  const { form, handleSubmitForm, handleChangePriceMax, handleChangePriceMin } =
+    useFilters();
 
   const CLASS = clsx(
     "flex justify-center items-center",
@@ -34,8 +28,6 @@ export default function Filters({ children }: Props) {
     "bg-black/50",
     "z-50"
   );
-
-  const selectId = useId();
 
   return (
     <div className={CLASS} onClick={handleCloseFilters}>
@@ -47,17 +39,6 @@ export default function Filters({ children }: Props) {
         <Header />
 
         <div className="flex flex-col gap-y-5 w-full mb-7">
-          <Section title="Tienda">
-            <Select
-              options={providerOptions}
-              labelKey="name"
-              valueKey="id"
-              placeholder="Tienda"
-              value={form.provider}
-              id={selectId}
-            />
-          </Section>
-
           <Section title="Precios">
             <PriceInput
               priceMax={form.maxPrice}

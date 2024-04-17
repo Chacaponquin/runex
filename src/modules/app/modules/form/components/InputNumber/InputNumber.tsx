@@ -48,25 +48,19 @@ export default function InputNumber({
 
   function handleIncrease() {
     const nextValue = value ? Number(Number(value + step).toFixed(2)) : 1;
-
-    if (onChange) {
-      onChange(validateValue(nextValue, max));
-    }
+    const val = validateValue(nextValue, max);
+    onChange(val);
   }
 
   function handleDecrease() {
     const nextValue = value ? Number(Number(value - step).toFixed(2)) : -1;
 
-    if (onChange) {
-      onChange(validateValue(nextValue, min));
-    }
+    onChange(validateValue(nextValue, min));
   }
 
   function handleChangeInputValue(value: string) {
     if (typeof Number(value) === "number") {
-      if (onChange) {
-        onChange(validateValue(Number(value), wichIsCloser(Number(value))));
-      }
+      onChange(validateValue(Number(value), wichIsCloser(Number(value))));
     }
   }
 
@@ -155,11 +149,11 @@ export default function InputNumber({
     "border-2",
     "bg-white",
     "transition-all duration-300",
-    "rounded",
+    "rounded-sm",
 
     {
-      "border-purple-6": isFocus || isHover,
-      "border-scale-11": !isFocus && !isHover,
+      "shadow-input border-blue-500": isFocus || isHover,
+      "border-gray-100": !isFocus && !isHover,
     }
   );
 
@@ -191,16 +185,19 @@ export default function InputNumber({
   }
 
   return (
-    <div className={CONTAINER_CLASS} style={{ height: height, width: `100%` }}>
+    <div
+      className={CONTAINER_CLASS}
+      style={{ height: height, width: `100%` }}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleLeave}
+    >
       <input
         className={INPUT_CLASS}
         type="text"
         onChange={(e) => handleChangeInputValue(e.target.value)}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleBlur}
-        value={value === undefined ? 0 : value}
+        value={value}
         id={id}
         min={min}
         max={max}
@@ -212,16 +209,12 @@ export default function InputNumber({
           handleClick={handleIncrease}
           buttonRef={upButton}
           icon={ArrowUp}
-          onMouseEnter={handleHover}
-          onMouseLeave={handleLeave}
         />
 
         <Button
           handleClick={handleDecrease}
           buttonRef={downButton}
           icon={ArrowDown}
-          onMouseEnter={handleHover}
-          onMouseLeave={handleLeave}
         />
       </div>
     </div>

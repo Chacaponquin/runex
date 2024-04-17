@@ -3,25 +3,15 @@ import { RefObject } from "react";
 
 interface Props {
   buttonRef: RefObject<HTMLButtonElement>;
-  onMouseEnter(): void;
-  onMouseLeave(): void;
   handleClick(): void;
   icon: React.FC<IconProps>;
 }
 
-export default function Button({
-  buttonRef,
-  onMouseEnter,
-  onMouseLeave,
-  handleClick,
-  icon,
-}: Props) {
+export default function Button({ buttonRef, handleClick, icon }: Props) {
   return (
     <button
       className="flex stroke-black dark:stroke-white justify-center text-center items-center w-full cursor-auto"
       type="button"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
       onClick={handleClick}
       ref={buttonRef}
     >

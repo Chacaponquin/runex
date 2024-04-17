@@ -2,6 +2,7 @@ import { FieldValidator } from "@modules/app/modules/form/domain";
 import { Clothe } from "./Clothe";
 import { Product, ProductImage } from "./Product";
 import { Medicine } from "./Medicine";
+import { ClotheParamsUrl, MedicineParamsUrl } from "./ParamUrl";
 
 export interface ProductColor {
   name: string;
@@ -20,7 +21,7 @@ export interface ProductCategory {
   name: string;
 }
 
-export { Product, Clothe, Medicine };
+export { Product, Clothe, Medicine, ClotheParamsUrl, MedicineParamsUrl };
 
 export type { ProductImage };
 

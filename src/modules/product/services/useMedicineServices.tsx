@@ -1,6 +1,6 @@
 "use client";
 
-import { Medicine, Product } from "../domain";
+import { Medicine, Product, Provider } from "../domain";
 import {
   FetchProps,
   BodyProps,
@@ -121,6 +121,18 @@ export default function useMedicineServices() {
     });
   }
 
+  function getAllProviders(props: FetchProps<Provider[]>) {
+    get<string[]>({
+      ...props,
+      onSuccess(data) {
+        if (props.onSuccess) {
+          props.onSuccess(data.map((d) => ({ name: d })));
+        }
+      },
+      url: API_ROUTES.MEDICINE.GET_ALL_PROVIDERS,
+    });
+  }
+
   return {
     findById,
     editMedicine,
@@ -131,5 +143,6 @@ export default function useMedicineServices() {
     getNews,
     getPopular,
     getTrending,
+    getAllProviders,
   };
 }

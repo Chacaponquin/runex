@@ -2,12 +2,15 @@
 
 import { Product } from "@modules/product/domain";
 import { createContext, useEffect, useState } from "react";
+import { FilterForm, SearchFilterFunctionProps } from "../interfaces";
+import { SearchProductParams } from "@modules/product/interfaces/params";
 import {
-  FilterForm,
-  SearchFilterFunctionProps,
-  SearchProductParams,
-} from "../interfaces";
-import { MaxPrice, MinPrice, Page, Provider, Query } from "../value-object";
+  MaxPrice,
+  MinPrice,
+  Order,
+  Page,
+  Query,
+} from "@modules/product/value-object";
 
 interface Props {
   openFilters: boolean;
@@ -46,13 +49,13 @@ export function SearchProvider({
 
   const [result, setResult] = useState<Product[]>([]);
 
-  const [name, setName] = useState<string>(new Query(params.q).value);
+  const [name, setName] = useState<string>(new Query().toValue(params.q));
 
   const [filters, setFilters] = useState<FilterForm>({
-    maxPrice: new MaxPrice(params.pMax).value,
-    minPrice: new MinPrice(params.pMin).value,
-    page: new Page(params.page).value,
-    provider: new Provider(params.provider).value,
+    maxPrice: new MaxPrice().toValue(params.pMax),
+    minPrice: new MinPrice().toValue(params.pMin),
+    page: new Page().toValue(params.page),
+    order: new Order().toValue(params.order),
   });
 
   useEffect(() => {

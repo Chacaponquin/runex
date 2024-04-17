@@ -18,7 +18,7 @@ export default function PriceInput({
   const priceMaxId = useId();
 
   return (
-    <div className="flex items-center justify-between gap-x-4">
+    <div className="flex flex-row items-center justify-between sm:gap-x-4 gap-x-2.5 gap-y-2">
       <Input
         id={priceMinId}
         value={priceMin}

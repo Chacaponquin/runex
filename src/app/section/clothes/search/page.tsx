@@ -1,5 +1,5 @@
 import { SearchClothe } from "@containers/Search/components";
-import { SearchClotheParams } from "@containers/Search/components/SearchClothe/interfaces";
+import { SearchClotheParams } from "@modules/product/interfaces/params";
 
 interface Props {
   searchParams: SearchClotheParams;

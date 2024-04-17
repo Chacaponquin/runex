@@ -6,7 +6,7 @@ export default function Buttons() {
   const { handleCloseFilters } = useContext(SearchContext);
 
   return (
-    <section className="grid grid-cols-2 gap-x-3">
+    <section className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5">
       <Button
         text="Cancelar"
         color="dark"

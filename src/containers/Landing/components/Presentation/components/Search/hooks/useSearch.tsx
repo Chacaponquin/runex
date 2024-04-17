@@ -6,6 +6,7 @@ import React, { useId, useState } from "react";
 import { SearchSection } from "../interfaces";
 import { useRouter } from "next/navigation";
 import { PRODUCT_TYPES } from "@modules/product/constants";
+import { ClotheParamsUrl, MedicineParamsUrl } from "@modules/product/domain";
 
 export default function useSearch() {
   const navigate = useRouter();
@@ -44,12 +45,13 @@ export default function useSearch() {
 
     const selected = sections[selectedSection];
 
-    const route = APP_ROUTES.SECTION.BUILD_SEARCH_ROUTE({
-      section: selected.type,
-      search: search,
-    });
-
-    navigate.push(route);
+    if (selected.type === PRODUCT_TYPES.CLOTHE) {
+      const url = new ClotheParamsUrl().build({ name: search });
+      navigate.push(url);
+    } else if (selected.type === PRODUCT_TYPES.MEDICINE) {
+      const url = new MedicineParamsUrl().build({ name: search });
+      navigate.push(url);
+    }
   }
 
   function handleChangeSelectedSection(index: number) {

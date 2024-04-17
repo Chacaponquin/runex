@@ -5,7 +5,7 @@ import { useState } from "react";
 import { NavbarLink } from "../interfaces";
 import { useSections } from "@modules/app/hooks";
 import { PRODUCT_TYPES } from "@modules/product/constants";
-import { APP_ROUTES } from "@modules/app/constants";
+import { ClotheParamsUrl, MedicineParamsUrl } from "@modules/product/domain";
 
 interface Props {
   type: PRODUCT_TYPES | undefined;
@@ -24,12 +24,13 @@ export default function useNavbar({ type }: Props) {
 
   function handleSearch() {
     if (search && type) {
-      const route = APP_ROUTES.SECTION.BUILD_SEARCH_ROUTE({
-        section: type,
-        search: search,
-      });
-
-      router.push(route, { scroll: true });
+      if (type === PRODUCT_TYPES.CLOTHE) {
+        const url = new ClotheParamsUrl().build({ name: search });
+        router.push(url);
+      } else if (type === PRODUCT_TYPES.MEDICINE) {
+        const url = new MedicineParamsUrl().build({ name: search });
+        router.push(url);
+      }
     }
   }
 

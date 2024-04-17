@@ -5,11 +5,11 @@ import { Header, Result } from "./components";
 import { useSearch } from "@containers/Search/hooks";
 
 interface Props {
-  filter: React.ReactNode;
+  children: React.ReactNode;
   product: string;
 }
 
-export default function Search({ filter, product }: Props) {
+export default function Search({ children: filter, product }: Props) {
   const {
     loading,
     openFilters,

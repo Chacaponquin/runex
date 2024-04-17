@@ -4,8 +4,9 @@ export interface FilterProductDTO {
   minPrice: number;
   maxPrice: number;
   name: string;
-  provider: string;
+  providers: string[];
   page: number;
+  order: string;
 }
 
 export interface RespProductDTO {

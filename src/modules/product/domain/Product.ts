@@ -47,7 +47,7 @@ export class Product {
   }
 
   static str(value: number): string {
-    return `$${value}`;
+    return `$` + `${value.toFixed(2)}`;
   }
 
   static hexColor(color: string): string {

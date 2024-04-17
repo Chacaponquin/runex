@@ -1,5 +1,5 @@
 import { BodyProps } from "@modules/app/modules/http/interfaces";
-import { Product } from "@modules/product/domain";
+import { SearchResult } from "@modules/product/interfaces/product";
 
 export interface FilterForm {
   minPrice: number;
@@ -9,6 +9,6 @@ export interface FilterForm {
 }
 
 export type SearchFilterFunctionProps = BodyProps<
-  Product[],
+  SearchResult,
   FilterForm & { name: string }
 >;

@@ -33,3 +33,8 @@ export interface GetDTO {
 export interface GetSpecificProductsDTO {
   page: number;
 }
+
+export interface RespSearchProductsDTO {
+  totalPages: number;
+  result: RespProductDTO[];
+}

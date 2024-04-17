@@ -28,7 +28,7 @@ export default function Buttons({
   );
 
   return (
-    <div className="grid grid-cols-2 gap-x-4 exsm:grid-cols-1 gap-y-2 text-lg esm:text-base">
+    <div className="grid exsm:grid-cols-2 gap-x-4 grid-cols-1 gap-y-2 text-lg esm:text-base">
       <button
         className="rounded bg-black text-white px-4 py-2 w-full font-fontMedium transition-all duration-200 hover:opacity-70"
         onClick={handleBuyNow}
@@ -40,7 +40,7 @@ export default function Buttons({
         onClick={isInCart ? handleDeleteFromCart : handleAddToCart}
         className={BUTTON_CLASS}
       >
-        {isInCart ? <Close size={22} /> : <Bag size={22} />}
+        {isInCart ? <Close size={18} /> : <Bag size={22} />}
         <p className="font-fontMedium">{isInCart ? "Eliminar" : "Añadir"}</p>
       </button>
     </div>

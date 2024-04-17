@@ -13,8 +13,14 @@ import {
   FilterMedicineDTO,
   RespMedicineDTO,
 } from "../dto/medicine";
-import { GetDTO, GetSpecificProductsDTO, RespProductDTO } from "../dto/product";
+import {
+  GetDTO,
+  GetSpecificProductsDTO,
+  RespProductDTO,
+  RespSearchProductsDTO,
+} from "../dto/product";
 import useProductServices from "./useProductServices";
+import { SearchResult } from "../interfaces/product";
 
 export default function useMedicineServices() {
   const { map: mapProduct } = useProductServices();
@@ -67,12 +73,15 @@ export default function useMedicineServices() {
     });
   }
 
-  function filter(props: BodyProps<Medicine[], FilterMedicineDTO>) {
-    post<RespMedicineDTO[], FilterMedicineDTO>({
+  function filter(props: BodyProps<SearchResult, FilterMedicineDTO>) {
+    post<RespSearchProductsDTO, FilterMedicineDTO>({
       ...props,
       onSuccess(data) {
         if (props.onSuccess) {
-          props.onSuccess(data.map((d) => map(d)));
+          props.onSuccess({
+            result: data.result.map((d) => mapProduct(d)),
+            totalPages: data.totalPages,
+          });
         }
       },
       url: API_ROUTES.MEDICINE.FILTER,

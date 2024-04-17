@@ -29,10 +29,19 @@ export default function Filters({ children }: Props) {
     "z-50"
   );
 
+  const FORM_CLASS = clsx(
+    "flex flex-col",
+    "bg-white",
+    "w-full max-w-[600px] h-max max-h-full",
+    "rounded",
+    "sm:px-10 px-7 py-4",
+    "overflow-y-auto"
+  );
+
   return (
     <div className={CLASS} onClick={handleCloseFilters}>
       <form
-        className="bg-white rounded px-10 esm:px-7 py-4 w-full max-w-[600px] flex flex-col"
+        className={FORM_CLASS}
         onSubmit={handleSubmitForm}
         onClick={(e) => e.stopPropagation()}
       >

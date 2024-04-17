@@ -18,8 +18,14 @@ import {
   ProductSize,
   Provider,
 } from "../domain";
-import { GetDTO, GetSpecificProductsDTO, RespProductDTO } from "../dto/product";
+import {
+  GetDTO,
+  GetSpecificProductsDTO,
+  RespProductDTO,
+  RespSearchProductsDTO,
+} from "../dto/product";
 import useProductServices from "./useProductServices";
+import { SearchResult } from "../interfaces/product";
 
 export default function useClotheServices() {
   const { map: mapProduct } = useProductServices();
@@ -46,11 +52,16 @@ export default function useClotheServices() {
     });
   }
 
-  function filter(props: BodyProps<Clothe[], FilterClothesDTO>) {
-    post<RespClotheDTO[], FilterClothesDTO>({
+  function filter(props: BodyProps<SearchResult, FilterClothesDTO>) {
+    post<RespSearchProductsDTO, FilterClothesDTO>({
       ...props,
       onSuccess(data) {
-        if (props.onSuccess) props.onSuccess(data.map((d) => map(d)));
+        if (props.onSuccess) {
+          props.onSuccess({
+            result: data.result.map((d) => mapProduct(d)),
+            totalPages: data.totalPages,
+          });
+        }
       },
       url: API_ROUTES.CLOTHE.FILTER,
     });

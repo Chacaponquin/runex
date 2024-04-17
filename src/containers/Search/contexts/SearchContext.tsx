@@ -45,7 +45,7 @@ export function SearchProvider({
   params,
 }: ProviderProps) {
   const [openFilters, setOpenFilters] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [result, setResult] = useState<Product[]>([]);
 
@@ -58,6 +58,8 @@ export function SearchProvider({
     order: new Order().toValue(params.order),
   });
 
+  const [totalPages, setTotalPages] = useState(0);
+
   useEffect(() => {
     handleSearch();
   }, [filters]);
@@ -68,7 +70,8 @@ export function SearchProvider({
     filterFunction({
       body: { ...filters, name: name },
       onSuccess(data) {
-        setResult(data);
+        setResult(data.result);
+        setTotalPages(data.totalPages);
       },
       onFinally() {
         setLoading(false);
@@ -112,8 +115,6 @@ export function SearchProvider({
   function handleSearchByName() {
     handleSearch();
   }
-
-  const totalPages = 10;
 
   function handleChangeFilter(f: FilterForm) {
     setFilters(f);

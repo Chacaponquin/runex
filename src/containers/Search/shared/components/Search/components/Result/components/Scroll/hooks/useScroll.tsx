@@ -1,27 +1,40 @@
 "use client";
 
-import { SCREEN_SIZES } from "@modules/app/constants";
-import { useScreen } from "@modules/shared/hooks";
 import { useMemo } from "react";
 
 interface Props {
   totalPages: number;
+  currentPage: number;
 }
 
-export default function useScroll({ totalPages }: Props) {
-  const { condition } = useScreen(SCREEN_SIZES.MD);
+export default function useScroll({ totalPages, currentPage }: Props) {
+  const pages: number[] = useMemo(() => {
+    const show = [] as number[];
 
-  const pages: Array<number> = useMemo(() => {
-    const result: Array<number> = [];
-
-    let i = 1;
-    while (i <= totalPages) {
-      result.push(i);
-      i = i + (!condition ? 3 : 1);
+    if (currentPage === 1) {
+      let i = 1;
+      while (i <= totalPages && i <= 3) {
+        show.push(i);
+        i++;
+      }
+    } else if (currentPage === totalPages) {
+      let i = currentPage - 2;
+      while (i <= currentPage && i >= 1) {
+        show.push(i);
+        i++;
+      }
+    } else {
+      show.push(currentPage - 1);
+      show.push(currentPage);
+      show.push(currentPage + 1);
     }
 
-    return result;
-  }, [totalPages, condition]);
+    return show;
+  }, [totalPages, currentPage]);
 
-  return { pages };
+  const showFirstPage = !pages.includes(1);
+
+  const showLastPage = !pages.includes(totalPages);
+
+  return { pages, showFirstPage, showLastPage };
 }

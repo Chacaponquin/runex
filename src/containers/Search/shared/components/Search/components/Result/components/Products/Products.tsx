@@ -9,9 +9,11 @@ interface Props {
 
 export default function Products({ products, loading, empty }: Props) {
   return (
-    <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 w-full gap-x-5 gap-y-5 grid-cols-1">
+    <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 w-full gap-x-3.5 gap-y-5 grid-cols-1">
       {loading && <ProductLoader size={9} />}
-      {!empty && products.map((p) => <Product product={p} key={p.id} />)}
+      {!loading &&
+        !empty &&
+        products.map((p) => <Product product={p} key={p.id} />)}
     </section>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Page } from "./components";
+import { Button, LimitPage, Page } from "./components";
 import { ArrowLeft, ArrowRight } from "@modules/app/modules/icon/components";
 import { useScroll } from "./hooks";
 
@@ -19,7 +19,10 @@ export default function Scroll({
   totalPages,
   handleChangePage,
 }: Props) {
-  const { pages } = useScroll({ totalPages: totalPages });
+  const { pages, showFirstPage, showLastPage } = useScroll({
+    currentPage: currentPage,
+    totalPages: totalPages,
+  });
 
   return (
     <section className="flex w-full justify-center items-center gap-x-8 mt-10">
@@ -29,7 +32,16 @@ export default function Scroll({
         disabled={currentPage <= 1}
       />
 
-      <div className="flex items-center gap-x-3 justify-center">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 justify-center">
+        {showFirstPage && (
+          <LimitPage
+            handleClick={() => handleChangePage(1)}
+            page={1}
+            reverse={false}
+            selected={currentPage === 1}
+          />
+        )}
+
         {pages.map((p) => (
           <Page
             key={p}
@@ -38,6 +50,15 @@ export default function Scroll({
             handleClick={() => handleChangePage(p)}
           />
         ))}
+
+        {showLastPage && (
+          <LimitPage
+            handleClick={() => handleChangePage(totalPages)}
+            reverse={true}
+            page={totalPages}
+            selected={currentPage === totalPages}
+          />
+        )}
       </div>
 
       <Button

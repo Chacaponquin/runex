@@ -7,16 +7,16 @@ interface Props {
 
 export default function ProductName({ image, name }: Props) {
   return (
-    <div className="flex items-center gap-x-5 max-w-[500px]">
+    <div className="flex items-center gap-x-5 w-full">
       <Image
         src={image}
         alt={name}
-        className="rounded h-[50px] w-[60px]"
+        className="rounded w-full h-[50px] max-w-[60px]"
         width={60}
         height={50}
       />
 
-      <p className="text-base">{name}</p>
+      <p className="text-base whitespace-nowrap">{name}</p>
     </div>
   );
 }

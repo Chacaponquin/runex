@@ -4,8 +4,11 @@ import { TableElement } from "../../../../interfaces";
 interface Props {
   children: TableElement;
   isFirst: boolean;
+  isLast: boolean;
 }
 
-export default function Td({ children, isFirst }: Props) {
-  return <td className={clsx("py-2.5", { "pl-4": isFirst })}>{children}</td>;
+export default function Td({ children, isFirst, isLast }: Props) {
+  const CLASS = clsx("py-2.5", { "pl-4": isFirst }, { "pr-3": !isLast });
+
+  return <td className={CLASS}>{children}</td>;
 }

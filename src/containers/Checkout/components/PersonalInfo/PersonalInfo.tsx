@@ -67,16 +67,6 @@ export default function PersonalInfo({
           />
         </FormSection>
 
-        <FormSection title="Dirección" required>
-          <Input
-            type="text"
-            value={form.address}
-            placeholder="Dirección"
-            handleChange={(v) => handleChangeForm("address", v)}
-            name="address"
-          />
-        </FormSection>
-
         <Button loading={loading} />
       </form>
     </Section>

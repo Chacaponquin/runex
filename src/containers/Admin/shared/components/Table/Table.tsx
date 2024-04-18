@@ -19,21 +19,23 @@ export default function Table({
   const empty = data.body.length === 0;
 
   return (
-    <div className="bg-white lg:px-8 px-5 py-5 rounded shadow-lg overflow-x-auto w-full">
+    <div className="bg-white lg:px-8 px-6 py-5 rounded shadow-lg w-full">
       <Header header={header} actions={actions} />
 
-      <table className="table-auto w-full border-2 border-gray-100">
-        <Head columns={data.columns} />
+      <div className="flex w-full overflow-auto max-h-[600px]">
+        <table className="table-auto w-full border-2 border-gray-100">
+          <Head columns={data.columns} />
 
-        {!empty && (
-          <Body
-            data={data.body}
-            loading={loading}
-            columnsSize={data.columns.length}
-            handleNext={handleNext}
-          />
-        )}
-      </table>
+          {!empty && (
+            <Body
+              data={data.body}
+              loading={loading}
+              columnsSize={data.columns.length}
+              handleNext={handleNext}
+            />
+          )}
+        </table>
+      </div>
 
       {empty && <Empty />}
     </div>

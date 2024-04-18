@@ -37,7 +37,7 @@ export default function Body({
           ref={i === data.length - 1 ? ref : undefined}
         >
           {d.map((el, j) => (
-            <Td key={j} isFirst={j === 0}>
+            <Td key={j} isFirst={j === 0} isLast={j === d.length - 1}>
               {el}
             </Td>
           ))}

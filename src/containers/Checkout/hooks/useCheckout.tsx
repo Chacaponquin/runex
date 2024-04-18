@@ -11,7 +11,6 @@ import { Adventage, PaymentMethod, PersonalForm } from "../interfaces";
 import { useState } from "react";
 import { useValidator } from "@modules/app/modules/form/hooks";
 import {
-  FormAddressValidator,
   FormEmailValidator,
   FormFirstNameValidator,
   FormLastNameValidator,
@@ -27,7 +26,6 @@ export default function useCheckout() {
   );
 
   const [personalForm, setPersonalForm] = useState<PersonalForm>({
-    address: "",
     email: "",
     firstName: "",
     lastName: "",
@@ -36,7 +34,6 @@ export default function useCheckout() {
   });
 
   const { validate } = useValidator<PersonalForm>({
-    address: new FormAddressValidator(),
     email: new FormEmailValidator(),
     firstName: new FormFirstNameValidator(),
     lastName: new FormLastNameValidator(),

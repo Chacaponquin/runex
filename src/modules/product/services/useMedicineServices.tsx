@@ -9,6 +9,7 @@ import {
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { API_ROUTES } from "@modules/app/constants";
 import {
+  CreateMedicineDTO,
   EditMedicineDTO,
   FilterMedicineDTO,
   RespMedicineDTO,
@@ -34,6 +35,15 @@ export default function useMedicineServices() {
       name: m.name,
       price: m.price,
       provider: m.provider,
+      description: m.description,
+    });
+  }
+
+  function createMedicine(props: BodyProps<void, CreateMedicineDTO>) {
+    post<void, CreateMedicineDTO>({
+      ...props,
+      url: API_ROUTES.MEDICINE.CREATE,
+      body: props.body,
     });
   }
 
@@ -153,5 +163,6 @@ export default function useMedicineServices() {
     getPopular,
     getTrending,
     getAllProviders,
+    createMedicine,
   };
 }

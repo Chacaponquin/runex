@@ -6,9 +6,10 @@ import {
   Search,
   User,
 } from "@modules/app/modules/icon/components";
-import { Button, LinkButton } from "./components";
+import { Button, LinkButton, MenuButton, UserMenu } from "./components";
 import { APP_ROUTES } from "@modules/app/constants";
 import { useUser } from "@modules/user/hooks";
+import { useButtons } from "./hooks";
 
 interface Props {
   handleChangeOpenCart(): void;
@@ -17,6 +18,7 @@ interface Props {
 
 export default function Buttons({ handleChangeOpenCart, isSearch }: Props) {
   const { actualUser, fetchUserLoading } = useUser();
+  const { openUserMenu, handleChangeOpenUserMenu } = useButtons();
 
   return (
     <section className="flex gap-x-7 esm:gap-x-5 items-center stroke-black">
@@ -37,11 +39,25 @@ export default function Buttons({ handleChangeOpenCart, isSearch }: Props) {
         disabled={false}
       />
 
-      <LinkButton
-        icon={User}
-        link={actualUser ? APP_ROUTES.USER.ORDERS : APP_ROUTES.AUTH.LOGIN}
-        disabled={fetchUserLoading}
-      />
+      {!actualUser && (
+        <LinkButton
+          icon={User}
+          link={APP_ROUTES.AUTH.LOGIN}
+          disabled={fetchUserLoading}
+        />
+      )}
+
+      {actualUser && (
+        <MenuButton icon={User} handleClick={handleChangeOpenUserMenu}>
+          {openUserMenu && (
+            <UserMenu
+              email={actualUser.email}
+              firstName={actualUser.firstName}
+              lastName={actualUser.lastName}
+            />
+          )}
+        </MenuButton>
+      )}
     </section>
   );
 }

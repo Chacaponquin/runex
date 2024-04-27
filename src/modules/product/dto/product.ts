@@ -1,5 +1,22 @@
 import { PRODUCT_TYPES } from "../constants";
 
+export interface EditProductDTO {
+  name: string;
+  price: number;
+  provider: string;
+  category: string;
+  images: string[];
+}
+
+export interface CreateProductDTO {
+  name: string;
+  price: number;
+  provider: string;
+  category: string;
+  images: string[];
+  description: string;
+}
+
 export interface FilterProductDTO {
   minPrice: number;
   maxPrice: number;
@@ -13,7 +30,8 @@ export interface RespProductDTO {
   id: string;
   name: string;
   price: number;
-  images: Array<RespProductImageDTO>;
+  description: string;
+  images: RespProductImageDTO[];
   categories: string[];
   type: PRODUCT_TYPES;
   provider: string;

@@ -25,6 +25,23 @@ export { Product, Clothe, Medicine, ClotheParamsUrl, MedicineParamsUrl };
 
 export type { ProductImage };
 
+export class ProductDescriptionValidator extends FieldValidator<string> {
+  constructor() {
+    super({
+      message: "La descripción debe tener al menos 10 caracteres",
+      id: "product-description",
+    });
+  }
+
+  public validate(value: string): boolean {
+    if (value.length < 10) {
+      return false;
+    }
+
+    return true;
+  }
+}
+
 export class ProductNameValidator extends FieldValidator<string> {
   constructor() {
     super({
@@ -42,9 +59,7 @@ export class ProductNameValidator extends FieldValidator<string> {
   }
 }
 
-export class ProductImagesValidator extends FieldValidator<
-  Array<ProductImage>
-> {
+export class ProductImagesValidator extends FieldValidator<ProductImage[]> {
   constructor() {
     super({
       id: "product-image",

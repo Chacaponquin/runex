@@ -1,23 +1,18 @@
-import { FilterProductDTO, RespProductDTO } from "./product";
+import {
+  CreateProductDTO,
+  EditProductDTO,
+  FilterProductDTO,
+  RespProductDTO,
+} from "./product";
 
-export interface CreateClotheDTO {
-  name: string;
-  price: number;
-  provider: string;
-  sizes: Array<string>;
-  colors: Array<string>;
-  category: string;
-  images: Array<string>;
+export interface CreateClotheDTO extends CreateProductDTO {
+  sizes: string[];
+  colors: string[];
 }
 
-export interface EditClotheDTO {
-  name: string;
-  price: number;
-  provider: string;
-  sizes: Array<string>;
-  colors: Array<string>;
-  category: string;
-  images: Array<string>;
+export interface EditClotheDTO extends EditProductDTO {
+  sizes: string[];
+  colors: string[];
 }
 
 export interface FilterClothesDTO extends FilterProductDTO {

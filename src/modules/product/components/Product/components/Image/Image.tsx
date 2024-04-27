@@ -18,7 +18,7 @@ export default function Image({
 
   return (
     <header
-      className="h-[170px] w-full p-3 rounded-sm"
+      className="h-[170px] w-full p-3 rounded-sm flex justify-end"
       style={{
         backgroundImage: `url("${src}")`,
         backgroundRepeat: "no-repeat",

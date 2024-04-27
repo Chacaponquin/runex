@@ -16,6 +16,7 @@ export default function Favorite({
     "rounded-full",
     "shadow",
     "p-3",
+    "h-max",
     "transition-all duration-200",
 
     {

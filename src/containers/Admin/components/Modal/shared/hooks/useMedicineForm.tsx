@@ -5,6 +5,7 @@ import { MedicineForm, UploadImage } from "../../interfaces";
 import { useMedicines } from "@modules/product/hooks";
 import { useValidator } from "@modules/app/modules/form/hooks";
 import {
+  ProductDescriptionValidator,
   ProductImagesValidator,
   ProductNameValidator,
 } from "@modules/product/domain";
@@ -28,6 +29,7 @@ export default function useMedicineForm() {
     category: categories[0].name,
     images: [],
     price: 1,
+    description: "",
   };
 
   const { validate } = useValidator<MedicineForm>({
@@ -36,6 +38,7 @@ export default function useMedicineForm() {
     images: new ProductImagesValidator(),
     category: new NotValidateField(),
     price: new NotValidateField(),
+    description: new ProductDescriptionValidator(),
   });
 
   const [form, setForm] = useState<MedicineForm>(INITIAL_FORM);
@@ -122,6 +125,10 @@ export default function useMedicineForm() {
     setUploadImages((prev) => prev.filter((i) => i.id !== id));
   }
 
+  function handleReset() {
+    setForm(INITIAL_FORM);
+  }
+
   return {
     loading,
     form,
@@ -137,5 +144,6 @@ export default function useMedicineForm() {
     uploadImages,
     handleChangeLoading,
     handleDeleteImage,
+    handleReset,
   };
 }

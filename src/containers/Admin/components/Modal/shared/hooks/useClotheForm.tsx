@@ -7,6 +7,7 @@ import { NotValidateField } from "@modules/app/modules/form/domain";
 import {
   ClotheColorsValidator,
   ClotheSizesValidator,
+  ProductDescriptionValidator,
   ProductImagesValidator,
   ProductNameValidator,
 } from "@modules/product/domain";
@@ -16,7 +17,7 @@ import { useProductServices } from "@modules/product/services";
 import { useToast } from "@modules/app/modules/toast/hooks";
 
 interface SubmitProps {
-  next(urls: Array<string>): void;
+  next(urls: string[]): void;
 }
 
 export default function useClotheForm() {
@@ -26,19 +27,20 @@ export default function useClotheForm() {
 
   const INITIAL_FORM: ClotheForm = {
     name: "",
-    price: 0,
+    price: 1,
     provider: providers[0].name,
     images: [],
     colors: [],
     sizes: [],
     category: categories[0].name,
+    description: "",
   };
 
   const [form, setForm] = useState<ClotheForm>(INITIAL_FORM);
 
   const [loading, setLoading] = useState(false);
 
-  const [uploadImages, setUploadImages] = useState<Array<UploadImage>>([]);
+  const [uploadImages, setUploadImages] = useState<UploadImage[]>([]);
 
   const { validate } = useValidator<ClotheForm>({
     category: new NotValidateField(),
@@ -48,6 +50,7 @@ export default function useClotheForm() {
     price: new NotValidateField(),
     provider: new NotValidateField(),
     sizes: new ClotheSizesValidator(),
+    description: new ProductDescriptionValidator(),
   });
 
   function handleChangeName(name: string) {
@@ -105,6 +108,10 @@ export default function useClotheForm() {
       ...prev,
       sizes: prev.sizes.filter((_, inx) => inx !== index),
     }));
+  }
+
+  function handleChangeDescription(d: string) {
+    setForm((prev) => ({ ...prev, description: d }));
   }
 
   function handleAddColor(color: string) {
@@ -171,6 +178,7 @@ export default function useClotheForm() {
     handleReset,
     handleSubmit,
     handleChangeLoading,
+    handleChangeDescription,
     providers,
     categories,
     uploadImages,

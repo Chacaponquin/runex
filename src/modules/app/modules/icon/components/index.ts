@@ -17,6 +17,7 @@ import Favorite from "./Favorite";
 import Filter from "./Filter";
 import Instagram from "./Instagram";
 import Lock from "./Lock";
+import Logout from "./Logout";
 import Medicine from "./Medicine";
 import Menu from "./Menu";
 import Minus from "./Minus";
@@ -36,6 +37,7 @@ export {
   ArrowLeft,
   ArrowUp,
   ArrowRight,
+  Logout,
   Email,
   Phone,
   User,

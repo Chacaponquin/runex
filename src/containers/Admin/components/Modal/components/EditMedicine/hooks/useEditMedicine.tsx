@@ -36,6 +36,7 @@ export default function useEditMedicine(props: Props) {
           name: product.name,
           price: product.price,
           provider: product.provider,
+          description: product.description,
         });
       },
       onFinally() {

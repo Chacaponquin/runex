@@ -21,7 +21,7 @@ export default function useMedicines() {
   const { handleSelect, selectedItems, handleCleanItems } = useSelectItems();
 
   const [medicines, setMedicines] = useState<Array<Medicine>>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
 
   useEffect(() => {

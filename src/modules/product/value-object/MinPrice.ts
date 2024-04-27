@@ -5,7 +5,7 @@ export class MinPrice extends ProductParam<number> {
     if (value) {
       const v = Number(value);
 
-      if (Number.isNaN(v)) {
+      if (!Number.isNaN(v)) {
         return v;
       } else {
         return 0;

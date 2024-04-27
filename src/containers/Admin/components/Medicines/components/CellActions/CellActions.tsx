@@ -12,7 +12,7 @@ export default function CellActions({ handleDelete, handleEdit }: Props) {
         handleClick={handleEdit}
         color="primary"
         disabled={false}
-        rounded="full"
+        rounded="sm"
         size="sm"
         text="Editar"
       />
@@ -20,7 +20,7 @@ export default function CellActions({ handleDelete, handleEdit }: Props) {
       <Button
         color="danger"
         disabled={false}
-        rounded="full"
+        rounded="sm"
         size="sm"
         text="Borrar"
         handleClick={handleDelete}

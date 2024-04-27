@@ -37,6 +37,7 @@ export default function useEditClothe(props: Props) {
           price: product.price,
           provider: product.provider,
           sizes: product.sizes,
+          description: product.description,
         });
       },
       onFinally() {

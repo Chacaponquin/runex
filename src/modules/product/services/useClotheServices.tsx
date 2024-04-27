@@ -41,6 +41,7 @@ export default function useClotheServices() {
       price: c.price,
       provider: c.provider,
       sizes: c.sizes,
+      description: c.description
     });
   }
 

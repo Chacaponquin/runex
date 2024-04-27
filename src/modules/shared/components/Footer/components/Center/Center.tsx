@@ -1,14 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { FooterSection } from "../../interfaces";
 import { Section } from "./components";
 
 interface Props {
-  sections: Array<FooterSection>;
+  sections: FooterSection[];
 }
 
 export default function Center({ sections }: Props) {
   return (
-    <div className="grid grid-cols-2 esm:grid-cols-1 gap-y-6 gap-x-3">
+    <Fragment>
       {sections.map((section, index) => (
         <Section
           key={index}
@@ -16,6 +16,6 @@ export default function Center({ sections }: Props) {
           subSections={section.subSections}
         />
       ))}
-    </div>
+    </Fragment>
   );
 }

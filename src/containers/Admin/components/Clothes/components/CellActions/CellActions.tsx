@@ -7,12 +7,12 @@ interface Props {
 
 export default function CellActions({ handleDelete, handleEdit }: Props) {
   return (
-    <div className="flex gap-x-2">
+    <div className="flex gap-x-1">
       <Button
         handleClick={handleEdit}
         color="primary"
         disabled={false}
-        rounded="full"
+        rounded="sm"
         size="sm"
         text="Editar"
       />
@@ -20,7 +20,7 @@ export default function CellActions({ handleDelete, handleEdit }: Props) {
       <Button
         color="danger"
         disabled={false}
-        rounded="full"
+        rounded="sm"
         size="sm"
         text="Borrar"
         handleClick={handleDelete}

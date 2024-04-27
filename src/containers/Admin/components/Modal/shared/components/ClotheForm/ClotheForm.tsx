@@ -4,6 +4,7 @@ import {
   InputNumber,
   InputText,
   Select,
+  Textarea,
 } from "@modules/app/modules/form/components";
 import { ClotheForm as IClotheForm } from "../../../interfaces";
 import { ProductCategory, Provider } from "@modules/product/domain";
@@ -20,8 +21,9 @@ interface Props {
   handleAddColor(v: string): void;
   handleDeleteColor(i: string): void;
   handleChangeProvider(s: string): void;
-  categories: Array<ProductCategory>;
-  providers: Array<Provider>;
+  handleChangeDescription(d: string): void;
+  categories: ProductCategory[];
+  providers: Provider[];
 }
 
 export default function ClotheForm({
@@ -38,6 +40,7 @@ export default function ClotheForm({
   categories,
   handleChangeProvider,
   providers,
+  handleChangeDescription,
 }: Props) {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5 w-full">
@@ -105,6 +108,16 @@ export default function ClotheForm({
             valueKey="name"
             onChange={handleChangeCategory}
             placeholder="Categoría"
+          />
+        </FormSection>
+
+        <FormSection label="Descripción" required>
+          <Textarea
+            onChange={handleChangeDescription}
+            name="clothe-name"
+            placeholder="Descripción"
+            size="lg"
+            value={form.description}
           />
         </FormSection>
       </div>

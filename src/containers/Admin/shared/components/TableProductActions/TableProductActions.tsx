@@ -12,14 +12,14 @@ export default function TableProductActions({
   handleAdd,
 }: Props) {
   return (
-    <div className="flex items-center gap-x-3">
+    <div className="flex items-center gap-x-1.5">
       <Button
         handleClick={handleAdd}
         text="Añadir"
         color="primary"
         disabled={false}
         size="sm"
-        rounded="full"
+        rounded="sm"
       />
 
       <Button
@@ -28,7 +28,7 @@ export default function TableProductActions({
         color="danger"
         disabled={deleteDisable}
         size="sm"
-        rounded="full"
+        rounded="sm"
       />
     </div>
   );

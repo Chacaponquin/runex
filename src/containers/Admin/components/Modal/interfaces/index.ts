@@ -4,18 +4,20 @@ export interface ClotheForm {
   name: string;
   price: number;
   provider: string;
-  images: Array<ProductImage>;
-  sizes: Array<string>;
-  colors: Array<string>;
+  images: ProductImage[];
+  sizes: string[];
+  colors: string[];
   category: string;
+  description: string;
 }
 
 export interface MedicineForm {
   name: string;
   provider: string;
-  images: Array<ProductImage>;
+  images: ProductImage[];
   price: number;
   category: string;
+  description: string;
 }
 
 export type UploadImage = {

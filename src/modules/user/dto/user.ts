@@ -4,9 +4,10 @@ export interface LoginUserDTO {
 }
 
 export interface SignUpUserDTO {
-  username: string;
-  email: string;
+  firstName: string;
+  lastName: string;
   password: string;
+  email: string;
 }
 
 export interface SendMessageDTO {

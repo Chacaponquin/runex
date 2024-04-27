@@ -38,6 +38,7 @@ export default function useProductServices() {
       price: d.price,
       provider: d.provider,
       type: d.type,
+      description: d.description,
     });
   }
 

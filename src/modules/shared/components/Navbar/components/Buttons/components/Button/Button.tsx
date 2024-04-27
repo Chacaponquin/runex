@@ -9,13 +9,11 @@ interface Props {
 
 export default function Button({ handleClick, icon }: Props) {
   return (
-    <div className="relative flex flex-col">
-      <button
-        className="hover:stroke-blue-500 transition-all duration-200"
-        onClick={handleClick}
-      >
-        {icon({ size: 22 })}
-      </button>
-    </div>
+    <button
+      className="hover:stroke-blue-500 transition-all duration-200"
+      onClick={handleClick}
+    >
+      {icon({ size: 22 })}
+    </button>
   );
 }

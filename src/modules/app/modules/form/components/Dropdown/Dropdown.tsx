@@ -1,7 +1,8 @@
 "use client";
 
+import { useClickOutside } from "@modules/shared/hooks";
 import clsx from "clsx";
-import { ReactElement, useRef, useEffect, useState, useCallback } from "react";
+import { ReactElement, useRef, useState, useCallback } from "react";
 
 interface Props {
   header: ReactElement;
@@ -47,22 +48,7 @@ export default function Dropdown({
     }
   }
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(event.target as Node)
-      ) {
-        onClickOutside();
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [onClickOutside]);
+  useClickOutside({ ref: wrapperRef, onClickOutside: onClickOutside });
 
   return (
     <div id={id} ref={wrapperRef} style={{ width: "100%" }}>

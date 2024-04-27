@@ -20,9 +20,10 @@ export class UserPasswordValidator extends FieldValidator<string> {
   }
 
   public validate(value: string): boolean {
-    const reg =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/;
-    return reg.test(value);
+    const regexpPassword =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&:=\-])[A-Za-z\d$@$!%*?&:=\-]{8,15}$/;
+
+    return regexpPassword.test(value);
   }
 }
 
@@ -30,8 +31,8 @@ export class UserFirstNameValidator extends MinLengthFieldValidator {
   constructor({ id }: { id: string }) {
     super({
       id: id,
-      message: "El primer nombre debe tener al menos 5 caracteres",
-      min: 5,
+      message: "El primer nombre debe tener al menos 3 caracteres",
+      min: 3,
     });
   }
 }

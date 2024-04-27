@@ -10,7 +10,7 @@ interface Props {
 export default function Button({ icon, text, handleClick }: Props) {
   return (
     <button
-      className="flex gap-x-3 px-6 py-3 hover:bg-gray-50 w-full"
+      className="flex gap-x-4 px-6 py-3 hover:bg-gray-50 w-full"
       onClick={handleClick}
     >
       <i className="stroke-black">{icon({ size: 22 })}</i>

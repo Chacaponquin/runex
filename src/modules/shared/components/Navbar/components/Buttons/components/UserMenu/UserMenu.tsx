@@ -5,15 +5,25 @@ import { Button, Info, LinkButton, Section } from "./components";
 import clsx from "clsx";
 import { APP_ROUTES } from "@modules/app/constants";
 import { useUser } from "@modules/user/hooks";
+import { useRef } from "react";
+import { useClickOutside } from "@modules/shared/hooks";
 
 interface Props {
   email: string;
   firstName: string;
   lastName: string;
+  handleClose(): void;
 }
 
-export default function UserMenu({ email, firstName, lastName }: Props) {
+export default function UserMenu({
+  email,
+  firstName,
+  lastName,
+  handleClose,
+}: Props) {
   const { handleSignOut } = useUser();
+
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const CLASS = clsx(
     "max-w-[500px]",
@@ -25,8 +35,10 @@ export default function UserMenu({ email, firstName, lastName }: Props) {
     "rounded"
   );
 
+  useClickOutside({ ref: wrapperRef, onClickOutside: handleClose });
+
   return (
-    <div className={CLASS}>
+    <div className={CLASS} ref={wrapperRef}>
       <Section border="bottom">
         <Info first={firstName} last={lastName} email={email} />
       </Section>

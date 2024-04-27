@@ -51,6 +51,7 @@ export default function Buttons({ handleChangeOpenCart, isSearch }: Props) {
         <MenuButton icon={User} handleClick={handleChangeOpenUserMenu}>
           {openUserMenu && (
             <UserMenu
+              handleClose={handleChangeOpenUserMenu}
               email={actualUser.email}
               firstName={actualUser.firstName}
               lastName={actualUser.lastName}

@@ -117,7 +117,12 @@ export function SearchProvider({
   }
 
   function handleChangeFilter(f: FilterForm) {
-    setFilters(f);
+    setFilters({
+      maxPrice: f.maxPrice,
+      minPrice: f.minPrice,
+      order: f.order,
+      page: f.page,
+    });
   }
 
   const value: Props = {

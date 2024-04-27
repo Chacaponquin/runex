@@ -19,7 +19,7 @@ export default function useClothes() {
   const { success, error } = useToast();
   const { handleSelect, selectedItems, handleCleanItems } = useSelectItems();
 
-  const [fetchLoading, setFetchLoading] = useState(false);
+  const [fetchLoading, setFetchLoading] = useState(true);
   const [clothes, setClothes] = useState<Clothe[]>([]);
   const [page, setPage] = useState(1);
 

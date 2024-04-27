@@ -3,7 +3,12 @@
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { API_ROUTES } from "@modules/app/constants";
 import { FetchProps, BodyProps } from "@modules/app/modules/http/interfaces";
-import { LoginUserDTO, RespUserDTO, SendMessageDTO } from "../dto/user";
+import {
+  LoginUserDTO,
+  RespUserDTO,
+  SendMessageDTO,
+  SignUpUserDTO,
+} from "../dto/user";
 import { useUser } from "../hooks";
 import { Product } from "@modules/product/domain";
 import { RespProductDTO } from "@modules/product/dto/product";
@@ -56,6 +61,13 @@ export default function useUserServices() {
     post<RespUserDTO, LoginUserDTO>({ ...props, url: API_ROUTES.USER.LOGIN });
   }
 
+  function signUp(props: BodyProps<RespUserDTO, SignUpUserDTO>) {
+    post<RespUserDTO, SignUpUserDTO>({
+      ...props,
+      url: API_ROUTES.USER.SIGN_UP,
+    });
+  }
+
   function favoritesCount(props: FetchProps<number>) {
     get<number>({ ...props, url: API_ROUTES.USER.FAVORITES_COUNT });
   }
@@ -96,5 +108,6 @@ export default function useUserServices() {
     ordersCount,
     favoriteProducts,
     getOrders,
+    signUp,
   };
 }

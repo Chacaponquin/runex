@@ -16,7 +16,7 @@ export default function Aside({ handleChangeOpenAside, openAside }: Props) {
 
   const CONTAINER_CLASS = clsx(
     "fixed top-0 left-0",
-    "z-50",
+    "z-40",
     "h-svh",
 
     { "py-3 pl-3": condition },

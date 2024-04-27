@@ -3,7 +3,7 @@ export interface CurrentUser {
   firstName: string;
   lastName: string;
   email: string;
-  favorites: Array<string>;
+  favorites: string[];
 }
 
 export interface CurrentAdminUser {

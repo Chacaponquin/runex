@@ -5,6 +5,7 @@ import InputNumber from "./InputNumber/InputNumber";
 import InputText from "./InputText/InputText";
 import MultiSelect from "./MultiSelect/MultiSelect";
 import Select from "./Select/Select";
+import Textarea from "./Textarea/Textarea";
 
 export {
   Select,
@@ -14,4 +15,5 @@ export {
   InputText,
   MultiSelect,
   Checkbox,
+  Textarea,
 };

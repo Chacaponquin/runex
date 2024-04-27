@@ -41,6 +41,7 @@ export const API_ROUTES = {
     ADD_PRODUCT_FAVORITE: "/user/add-product-favorite",
     DELETE_PRODUCT_FAVORITE: "/user/delete-product-favorite",
     LOGIN: "/auth/login",
+    SIGN_UP: "/auth/sign-up",
     FAVORITES_COUNT: "/user/favorites-count",
     ORDERS_COUNT: "/user/orders-count",
     FAVORITES: "/user/favorites",
@@ -66,7 +67,7 @@ export const API_ROUTES = {
     GET_ALL_PROVIDERS: "/clothe/all-providers",
   },
   MEDICINE: {
-    CREATE: "/medicine/clothe",
+    CREATE: "/medicine/create",
     EDIT: "/medicine/clothe",
     REMOVE: (id: string) => `/medicine/remove/${id}`,
     FILTER: "/medicine/filter",

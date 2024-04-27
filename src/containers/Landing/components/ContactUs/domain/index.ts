@@ -7,7 +7,7 @@ export class ContactEmailValidator extends EmailFieldValidator {
   constructor() {
     super({
       id: "contact-email",
-      message: "Debes insertar un email en el formulario",
+      message: EmailFieldValidator.default,
     });
   }
 }

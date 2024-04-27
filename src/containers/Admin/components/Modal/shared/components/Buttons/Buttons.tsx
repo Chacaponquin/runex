@@ -9,14 +9,14 @@ export default function Buttons({ loading }: Props) {
   const { handleClose } = useModal();
 
   return (
-    <section className="flex gap-x-4 items-center justify-end">
+    <section className="flex gap-x-2.5 items-center justify-end">
       <Button
         color="cancel"
         disabled={loading}
         handleClick={handleClose}
         size="lg"
         text="Cancelar"
-        rounded="full"
+        rounded="sm"
       />
 
       <Button
@@ -24,7 +24,7 @@ export default function Buttons({ loading }: Props) {
         disabled={loading}
         size="lg"
         text="Guardar"
-        rounded="full"
+        rounded="sm"
         type="submit"
       />
     </section>

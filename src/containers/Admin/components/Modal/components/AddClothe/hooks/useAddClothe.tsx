@@ -26,6 +26,7 @@ export default function useAddClothe() {
     providers,
     loading,
     handleChangeLoading,
+    handleChangeDescription,
   } = useClotheForm();
 
   function handleSave() {
@@ -69,6 +70,7 @@ export default function useAddClothe() {
     handleAddColor,
     handleDeleteColor,
     handleChangeCategory,
+    handleChangeDescription,
     categories,
     loading,
   };

@@ -39,7 +39,7 @@ export default function Button({
 
     {
       "rounded-full": rounded === "full",
-      rounded: rounded === "sm",
+      "rounded-sm": rounded === "sm",
       "rounded-lg": rounded === "lg",
     },
 

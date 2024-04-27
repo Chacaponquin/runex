@@ -26,9 +26,9 @@ export default function Input({
     "w-full",
     "flex flex-col",
     "px-6 py-2.5 esm:px-5",
-    "rounded-lg esm:rounded",
-    "bg-dark-900",
-    { "outline outline-blue-600": focus }
+    "rounded esm:rounded",
+    "bg-gray-100",
+    { "outline outline-blue-400": focus }
   );
 
   function handleFocus() {
@@ -43,7 +43,7 @@ export default function Input({
     <div className={CLASS}>
       <label
         htmlFor={id}
-        className="font-fontMedium mb-1 esm:mb-0 text-sm text-gray-400"
+        className="font-fontMedium mb-1 esm:mb-0 text-sm text-gray-600"
       >
         {placeholder}
       </label>

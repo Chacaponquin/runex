@@ -5,7 +5,7 @@ export class Page extends ProductParam<number> {
     if (value) {
       const v = Number(value);
 
-      if (Number.isNaN(v)) {
+      if (!Number.isNaN(v)) {
         return v;
       } else {
         return 1;

@@ -22,7 +22,7 @@ export default function useLogin() {
   const [form, setForm] = useState<LoginForm>({
     email: "",
     password: "",
-    remember: false,
+    remember: true,
   });
 
   const { validate } = useValidator<LoginForm>({

@@ -26,6 +26,8 @@ export class NotValidateField extends FieldValidator<unknown> {
 }
 
 export class EmailFieldValidator extends FieldValidator<string> {
+  static readonly default = "Se debe insertar un email válido";
+
   public validate(value: string): boolean {
     const emailRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     return emailRegex.test(value);

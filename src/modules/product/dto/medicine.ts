@@ -1,13 +1,14 @@
-import { FilterProductDTO, RespProductDTO } from "./product";
+import {
+  CreateProductDTO,
+  EditProductDTO,
+  FilterProductDTO,
+  RespProductDTO,
+} from "./product";
 
-export interface EditMedicineDTO {
-  name: string;
-  price: number;
-  provider: string;
-  category: string;
-  images: Array<string>;
-}
+export interface EditMedicineDTO extends EditProductDTO {}
 
 export interface FilterMedicineDTO extends FilterProductDTO {}
 
 export interface RespMedicineDTO extends RespProductDTO {}
+
+export interface CreateMedicineDTO extends CreateProductDTO {}

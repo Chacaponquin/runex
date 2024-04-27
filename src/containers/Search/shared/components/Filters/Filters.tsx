@@ -7,6 +7,8 @@ import { useFilters } from "./hooks";
 import { useContext } from "react";
 import { SearchContext } from "@containers/Search/contexts";
 import Section from "../Section/Section";
+import { Select } from "@modules/app/modules/form/components";
+import { Order } from "@modules/product/value-object";
 
 interface Props {
   children: React.ReactNode;
@@ -17,8 +19,14 @@ export default function Filters({ children }: Props) {
 
   const { handleCloseFilters } = useContext(SearchContext);
 
-  const { form, handleSubmitForm, handleChangePriceMax, handleChangePriceMin } =
-    useFilters();
+  const {
+    form,
+    handleSubmitForm,
+    handleChangePriceMax,
+    handleChangePriceMin,
+    handleChangeOrder,
+    orderSelect,
+  } = useFilters();
 
   const CLASS = clsx(
     "flex justify-center items-center",
@@ -48,6 +56,19 @@ export default function Filters({ children }: Props) {
         <Header />
 
         <div className="flex flex-col gap-y-5 w-full mb-7">
+          {orderSelect && (
+            <Section title="Ordenar">
+              <Select
+                options={Order.options}
+                labelKey="name"
+                value={orderSelect.url}
+                valueKey="url"
+                placeholder="Ordenar"
+                onChange={handleChangeOrder}
+              />
+            </Section>
+          )}
+
           <Section title="Precios">
             <PriceInput
               priceMax={form.maxPrice}

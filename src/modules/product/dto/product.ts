@@ -1,4 +1,4 @@
-import { PRODUCT_TYPES } from "../constants";
+import { FILTER_ORDER, PRODUCT_TYPES } from "../constants";
 
 export interface EditProductDTO {
   name: string;
@@ -23,7 +23,7 @@ export interface FilterProductDTO {
   name: string;
   providers: string[];
   page: number;
-  order: string;
+  order: FILTER_ORDER;
 }
 
 export interface RespProductDTO {

@@ -1,7 +1,6 @@
 "use client";
 
-import { faker } from "@faker-js/faker";
-import { Order } from "../domain";
+import { Order } from "../domain/Order";
 import { FetchProps } from "@modules/app/modules/http/interfaces";
 import { useFetch } from "@modules/app/modules/http/hooks";
 import { API_ROUTES } from "@modules/app/constants";
@@ -14,9 +13,9 @@ export default function useOrderServices() {
     return new Order({
       id: d.id,
       amount: d.amount,
-      client: faker.person.fullName(),
-      completed: faker.datatype.boolean(),
-      date: faker.date.past(),
+      client: "",
+      completed: false,
+      date: new Date(),
       paymentType: "Hola",
     });
   }

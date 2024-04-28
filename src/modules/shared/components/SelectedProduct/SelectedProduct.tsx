@@ -33,7 +33,6 @@ export default function SelectedProduct<T extends Product>({
     similarProductsLoading,
     form,
     handleAddToCart,
-    handleBuyNow,
     handleDecreaseQuantity,
     handleIncreaseQuantity,
     handleAddFavorite,
@@ -70,7 +69,6 @@ export default function SelectedProduct<T extends Product>({
         similarProductsLoading={similarProductsLoading}
         form={form}
         handleAddToCart={handleAddToCart}
-        handleBuyNow={handleBuyNow}
         handleIncreaseQuantity={handleIncreaseQuantity}
         handleDecreaseQuantity={handleDecreaseQuantity}
         handleAddFavorite={handleAddFavorite}

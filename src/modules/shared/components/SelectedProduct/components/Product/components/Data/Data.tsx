@@ -9,7 +9,6 @@ interface Props {
   price: string;
   provider: string;
   handleAddToCart(): void;
-  handleBuyNow(): void;
   form: ProductForm;
   handleDecreaseQuantity(): void;
   handleIncreaseQuantity(): void;
@@ -25,7 +24,6 @@ export default function Data({
   provider,
   form,
   handleAddToCart,
-  handleBuyNow,
   handleDecreaseQuantity,
   handleIncreaseQuantity,
   loading,
@@ -40,7 +38,7 @@ export default function Data({
       <Info loading={loading} price={price} provider={provider} />
 
       {!loading && (
-        <div className="flex flex-col gap-y-3.5 w-full lg:mb-12 mb-9 esm:mb-7">
+        <div className="flex flex-col gap-y-4 w-full mb-9 esm:mb-7">
           {extra}
 
           <Section text="Cantidad" selected={form.quantity}>
@@ -58,7 +56,6 @@ export default function Data({
       {!loading && (
         <Buttons
           handleAddToCart={handleAddToCart}
-          handleBuyNow={handleBuyNow}
           isInCart={isInCart}
           handleDeleteFromCart={handleDeleteFromCart}
         />

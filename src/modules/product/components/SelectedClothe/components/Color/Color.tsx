@@ -8,20 +8,17 @@ interface Props {
 
 export default function Color({ color, handleChange, selected }: Props) {
   const CLASS = clsx(
-    "min-w-[25px] min-h-[25px]",
+    "min-w-[30px] min-h-[30px]",
     "flex justify-center items-center",
-    "rounded-full"
+    "rounded",
+    { "shadow-input": selected }
   );
 
   return (
     <button
       className={CLASS}
-      style={{ backgroundColor: `${color}` }}
       onClick={handleChange}
-    >
-      {selected && (
-        <div className="min-w-[15px] bg-white rounded-full min-h-[15px]"></div>
-      )}
-    </button>
+      style={{ backgroundColor: `${color}` }}
+    ></button>
   );
 }

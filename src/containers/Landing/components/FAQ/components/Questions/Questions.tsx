@@ -22,8 +22,8 @@ export default function Questions({ faq }: Props) {
 
   return (
     <div className="flex flex-col w-full justify-center min-h-full">
-      {showQuestions.map((f) => (
-        <Card key={f.id} question={f.question} response={f.response} />
+      {showQuestions.map((f, index) => (
+        <Card key={index} question={f.question} response={f.response} />
       ))}
 
       <Pagination

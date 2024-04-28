@@ -3,24 +3,15 @@
 import { useCart } from "@modules/cart/hooks";
 import { Bill, Empty, Footer, Header, Products } from "./components";
 import clsx from "clsx";
-import { useBlockScroll } from "@modules/shared/hooks";
+import { Modal } from "@modules/app/components";
 
 interface Props {
   handleChangeOpenCart(): void;
+  open: boolean;
 }
 
-export default function Cart({ handleChangeOpenCart }: Props) {
+export default function Cart({ handleChangeOpenCart, open }: Props) {
   const { cart } = useCart();
-
-  useBlockScroll(true);
-
-  const CONTAINER_CLASS = clsx(
-    "w-full h-svh max-h-svh",
-    "flex justify-end",
-    "fixed top-0 left-0",
-    "py-4 px-5 esm:px-2",
-    "bg-black/50"
-  );
 
   const CLASS = clsx(
     "flex flex-col",
@@ -37,7 +28,7 @@ export default function Cart({ handleChangeOpenCart }: Props) {
   );
 
   return (
-    <div className={CONTAINER_CLASS} onClick={handleChangeOpenCart}>
+    <Modal handleClose={handleChangeOpenCart} open={open} align="right">
       <div className={CLASS} onClick={(e) => e.stopPropagation()}>
         <Header handleChangeOpenCart={handleChangeOpenCart} />
 
@@ -50,6 +41,6 @@ export default function Cart({ handleChangeOpenCart }: Props) {
         {cart.length > 0 && <Bill />}
         {cart.length > 0 && <Footer />}
       </div>
-    </div>
+    </Modal>
   );
 }

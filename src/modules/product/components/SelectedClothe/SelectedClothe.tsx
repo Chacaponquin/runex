@@ -6,7 +6,6 @@ import { useClotheServices } from "@modules/product/services";
 import { Fragment } from "react";
 import { Section } from "@modules/shared/components/SelectedProduct/shared/components";
 import { Color, Size } from "./components";
-import { Product } from "@modules/product/domain";
 
 export default function SelectedClothe() {
   const {
@@ -50,7 +49,7 @@ export default function SelectedClothe() {
                 <Color
                   key={index}
                   handleChange={() => handleChangeColor(c)}
-                  color={Product.hexColor(c)}
+                  color={"#000000"}
                   selected={c === form.color}
                 />
               ))}

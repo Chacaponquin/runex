@@ -41,7 +41,7 @@ export class Product {
     return this.imagesData[0].source;
   }
 
-  get images(): Array<string> {
+  get images(): string[] {
     return this.imagesData.map((i) => i.source);
   }
 
@@ -51,17 +51,5 @@ export class Product {
 
   static str(value: number): string {
     return `$` + `${value.toFixed(2)}`;
-  }
-
-  static hexColor(color: string): string {
-    if (color === "orange") {
-      return "#f0932b";
-    } else if (color === "green") {
-      return "#6ab04c";
-    } else if (color === "red") {
-      return "#eb4d4b";
-    } else {
-      return "#2d3436";
-    }
   }
 }

@@ -11,7 +11,7 @@ export default function Size({ handleChange, selected, size }: Props) {
     "font-fontMedium",
     "px-2 py-1",
     "rounded",
-    "text-sm",
+    "text-base",
 
     { "bg-dark-950": selected, "bg-gray-50": !selected },
 

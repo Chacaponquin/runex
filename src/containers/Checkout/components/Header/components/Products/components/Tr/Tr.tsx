@@ -9,12 +9,12 @@ interface Props {
   id: string;
 }
 
-export default function Tr({ image, name, id }: Props) {
+export default function Tr({ image, name, id, quantity }: Props) {
   const { handleDeleteProduct, totalProductPrice } = useCart();
 
   return (
     <tr className="">
-      <Info image={image} name={name} />
+      <Info image={image} name={name} quantity={quantity} />
       <Price price={Product.str(totalProductPrice(id))} />
       <Actions handleDelete={() => handleDeleteProduct(id)} />
     </tr>

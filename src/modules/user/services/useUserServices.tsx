@@ -13,9 +13,8 @@ import { useUser } from "../hooks";
 import { Product } from "@modules/product/domain";
 import { RespProductDTO } from "@modules/product/dto/product";
 import { useProductServices } from "@modules/product/services";
-import { Order } from "@modules/order/domain";
-import { RespOrderDTO } from "@modules/order/dto";
-import { useOrderServices } from "@modules/order/services";
+import { RespUserOrderDTO } from "@modules/order/dto";
+import { OrderProduct, UserOrder } from "@modules/order/domain";
 
 interface AddProductFavoriteDTO {
   productId: string;
@@ -29,7 +28,6 @@ interface DeleteProductFavoriteDTO {
 
 export default function useUserServices() {
   const { map: mapProduct } = useProductServices();
-  const { map: mapOrder } = useOrderServices();
   const { get, post, put } = useFetch();
   const { getRefreshToken } = useUser();
 
@@ -86,12 +84,20 @@ export default function useUserServices() {
     });
   }
 
-  function getOrders(props: FetchProps<Order[]>) {
-    get<RespOrderDTO[]>({
+  function getOrders(props: FetchProps<UserOrder[]>) {
+    get<RespUserOrderDTO[]>({
       ...props,
       onSuccess(data) {
         if (props.onSuccess) {
-          props.onSuccess(data.map((d) => mapOrder(d)));
+          props.onSuccess(
+            data.map((d) => {
+              return new UserOrder({
+                ...d,
+                date: new Date(d.date),
+                products: d.products.map((p) => new OrderProduct(p)),
+              });
+            })
+          );
         }
       },
       url: API_ROUTES.USER.ORDERS,

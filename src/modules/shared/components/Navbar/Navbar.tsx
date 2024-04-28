@@ -60,7 +60,7 @@ export default function Navbar({ search: isearch, fixed }: Props) {
         </section>
       </nav>
 
-      {openCart && <Cart handleChangeOpenCart={handleChangeOpenCart} />}
+      <Cart handleChangeOpenCart={handleChangeOpenCart} open={openCart} />
 
       {openSide && (
         <Menu

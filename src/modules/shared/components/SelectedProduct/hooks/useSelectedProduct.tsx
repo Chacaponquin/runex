@@ -93,10 +93,6 @@ export default function useSelectedProduct<T extends Product>({
     setForm((prev) => ({ ...prev, quantity: prev.quantity - 1 }));
   }
 
-  function handleBuyNow() {
-    handleDeleteSelectedProduct();
-  }
-
   function handleAddToCart() {
     if (productInfo) {
       handleAdd({ quantity: form.quantity, product: productInfo });
@@ -114,7 +110,6 @@ export default function useSelectedProduct<T extends Product>({
     loading,
     similarProductsLoading,
     similarProducts,
-    handleBuyNow,
     handleAddToCart,
     form,
     handleDecreaseQuantity,

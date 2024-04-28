@@ -2,7 +2,7 @@
 
 import { DefaultCell } from "@containers/Admin/shared/components";
 import { TableData } from "@containers/Admin/shared/components/Table/interfaces";
-import { Order } from "@modules/order/domain";
+import { Order } from "@modules/order/domain/Order";
 import { useOrderServices } from "@modules/order/services";
 import { useEffect, useMemo, useState } from "react";
 import { Completed } from "../components";

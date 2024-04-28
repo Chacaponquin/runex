@@ -5,7 +5,7 @@ import { Footer, Header, Links } from "./components";
 interface Props {
   openMenu: boolean;
   handleCloseSide(): void;
-  links: Array<NavbarLink>;
+  links: NavbarLink[];
 }
 
 export default function Menu({ openMenu, handleCloseSide, links }: Props) {

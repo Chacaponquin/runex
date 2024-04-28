@@ -14,7 +14,6 @@ interface Props {
   similarProducts: Array<ProductClass>;
   similarProductsLoading: boolean;
   handleAddToCart(): void;
-  handleBuyNow(): void;
   form: ProductForm;
   handleDecreaseQuantity(): void;
   handleIncreaseQuantity(): void;
@@ -35,7 +34,6 @@ export default function Product({
   similarProductsLoading,
   form,
   handleAddToCart,
-  handleBuyNow,
   handleDecreaseQuantity,
   handleIncreaseQuantity,
   handleAddFavorite,
@@ -76,7 +74,6 @@ export default function Product({
                 provider={info.provider}
                 form={form}
                 handleAddToCart={handleAddToCart}
-                handleBuyNow={handleBuyNow}
                 handleDecreaseQuantity={handleDecreaseQuantity}
                 handleIncreaseQuantity={handleIncreaseQuantity}
                 loading={loading}

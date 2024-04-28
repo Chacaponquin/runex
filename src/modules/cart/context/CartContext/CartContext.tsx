@@ -6,16 +6,16 @@ import { CartProduct } from "@modules/cart/domain";
 import { CART_ACTIONS } from "@modules/cart/constants";
 
 interface Props {
-  cart: Array<CartProduct>;
+  cart: CartProduct[];
   cartDispatch: Dispatch<Payload>;
 }
 
-const CartContext = createContext<Props>({
-  cart: [] as Array<CartProduct>,
+export const CartContext = createContext<Props>({
+  cart: [] as CartProduct[],
 } as Props);
 
-function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, cartDispatch] = useReducer<Reducer<Array<CartProduct>, Payload>>(
+export function CartProvider({ children }: { children: React.ReactNode }) {
+  const [cart, cartDispatch] = useReducer<Reducer<CartProduct[], Payload>>(
     cartReducer,
     []
   );
@@ -31,5 +31,3 @@ function CartProvider({ children }: { children: React.ReactNode }) {
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 }
-
-export { CartContext, CartProvider };
